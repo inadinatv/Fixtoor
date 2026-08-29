@@ -2038,7 +2038,7 @@
      "skor": "1"
     },
     "durum": "in",
-    "durum_metin": "51'",
+    "durum_metin": "50'",
     "ev": {
      "ad": "Galatasaray",
      "form": "WDLWL",
@@ -2079,7 +2079,7 @@
     "id": "401888307",
     "kanal": "beIN Sports 1",
     "kirmizi_kartlar": [],
-    "saat_gostergesi": "51'",
+    "saat_gostergesi": "50'",
     "sari_kartlar": [
      {
       "dakika": "36'",
@@ -2102,7 +2102,7 @@
       "appearances": "0",
       "foulsCommitted": "6",
       "goalAssists": "2",
-      "possessionPct": "46.1",
+      "possessionPct": "46.2",
       "shotAssists": "0",
       "shotsOnTarget": "3",
       "totalGoals": "2",
@@ -2116,7 +2116,7 @@
      "skor": "2"
     },
     "durum": "in",
-    "durum_metin": "55'",
+    "durum_metin": "53'",
     "ev": {
      "ad": "Gaziantep FK",
      "form": "WDLLL",
@@ -2125,7 +2125,7 @@
       "appearances": "0",
       "foulsCommitted": "6",
       "goalAssists": "0",
-      "possessionPct": "53.9",
+      "possessionPct": "53.8",
       "shotAssists": "0",
       "shotsOnTarget": "2",
       "totalGoals": "0",
@@ -2157,7 +2157,7 @@
     "id": "401888312",
     "kanal": "beIN Sports 2",
     "kirmizi_kartlar": [],
-    "saat_gostergesi": "55'",
+    "saat_gostergesi": "53'",
     "sari_kartlar": [],
     "sehir": "Gaziantep",
     "stadyum": "Gaziantep Stadium",
