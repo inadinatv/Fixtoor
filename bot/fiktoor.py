@@ -374,7 +374,7 @@ def mac_satiri(m: dict) -> str:
     elif oynandi:
         durum_html = f'<span class="durum-ms">{esc(m.get("durum_metin") or "MS")}</span>'
     else:
-        durum_html = esc(m.get("durum_metin") or "")
+        durum_html = ""
 
     yer = " · ".join(x for x in [m.get("stadyum"), m.get("sehir")] if x)
     return f'''<div class="kart"><div class="mac">
@@ -452,7 +452,8 @@ NOT_TR = {
     "Europa League qualifying": "AVL eleme",
     "Europa Conference League qualifying": "Konferans Ligi eleme",
     "Conference League qualifying": "Konferans Ligi eleme",
-    "Relegation": "Küme düşme",
+    "Relegation": "Küme düşme hattı",
+    "Relegated": "Küme düşme hattı",
     "Champions": "Şampiyon",
 }
 
