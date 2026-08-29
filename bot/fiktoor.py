@@ -164,6 +164,168 @@ def fetch_puan_durumu(slug: str, sezon_yili) -> list:
 
 
 # ----------------------------------------------------------------------------
+# Yayın kanalı verisi (Spor Ekranı + LiveSoccerTV)
+# ----------------------------------------------------------------------------
+TR_HARF = str.maketrans("çÇğĞıİöÖşŞüÜ", "cCgGiIoOsSuU")
+
+# Lig -> yayın akışı sayfası (Spor Ekranı)
+SPOREKRANI_LIG = {
+    "tur.1": "https://www.sporekrani.com/home/league/trendyol-super-lig",
+    "tur.2": "https://www.sporekrani.com/home/league/tff-1-lig",
+}
+# Lig -> LiveSoccerTV sayfası
+LIVESOCCERTV_LIG = {
+    "tur.1": "https://www.livesoccertv.com/competitions/turkey/super-lig/",
+    "tur.2": "https://www.livesoccertv.com/competitions/turkey/1-lig/",
+}
+
+
+def takim_norm(ad: str) -> str:
+    """Takım adını karşılaştırılabilir hale getirir: 'Çaykur Rizespor' -> 'caykurrizespor'."""
+    s = (ad or "").casefold().translate(TR_HARF)
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+# Kaynak sitelerdeki adlar -> ESPN adları (normalize edilmiş biçimde)
+TAKIM_TAKMA = {
+    "amedspor": "amedsfk", "amedsk": "amedsfk",
+    "erzurumspor": "erzurumbb", "bberzurumspor": "erzurumbb", "erzurumsporbb": "erzurumbb",
+    "rizespor": "caykurrizespor", "corumspor": "corumfk",
+    "basaksehir": "istanbulbasaksehir", "istanbulbb": "istanbulbasaksehir",
+    "goztepespor": "goztepe",
+}
+
+
+def takim_coz(ad: str, espn_adlari: set):
+    """Kaynak sitedeki takım adını ESPN takım adına eşler (yoksa None)."""
+    n = takim_norm(ad)
+    if not n:
+        return None
+    if n in espn_adlari:
+        return n
+    if TAKIM_TAKMA.get(n) in espn_adlari:
+        return TAKIM_TAKMA[n]
+    for e in espn_adlari:  # kısmi eşleşme: 'rizespor' <-> 'caykurrizespor'
+        if len(n) >= 5 and len(e) >= 5 and (n in e or e in n):
+            return e
+    return None
+
+
+def kanal_norm(ad: str) -> str:
+    """Kanal adını standartlaştırır: 'Bein Sports 1' -> 'beIN Sports 1'."""
+    s = re.sub(r"\s+", " ", ad or "").strip()
+    m = re.match(r"(?i)^be\.?\s?-?\s?in\s?sports?\s*(\d+)$", s)
+    if m:
+        return f"beIN Sports {m.group(1)}"
+    if re.match(r"(?i)^be\.?\s?-?\s?in\s*connect", s):
+        return "beIN Connect"
+    return s
+
+
+def http_get_text(url: str) -> str:
+    """URL'den HTML metni çeker (basit yeniden deneme ile)."""
+    son_hata = None
+    for deneme in range(1, HTTP_DENE + 1):
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) Fixtoor/1.0 (+github)",
+                "Accept-Language": "tr,en;q=0.8",
+            })
+            with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:
+                return resp.read().decode("utf-8", errors="replace")
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            son_hata = e
+            time.sleep(2 * deneme)
+    raise RuntimeError(f"sayfaya ulaşılamadı: {url} ({son_hata})")
+
+
+def _mac_anahtari(ev_norm: str, dep_norm: str) -> str:
+    return "|".join(sorted((ev_norm, dep_norm)))
+
+
+def scrape_sporekrani(espn_adlari: set, espn_ciftler: set, slug: str) -> dict:
+    """Spor Ekranı yayın akışından maç -> kanal eşleşmelerini çıkarır."""
+    html = http_get_text(SPOREKRANI_LIG.get(slug, SPOREKRANI_LIG["tur.1"]))
+    sonuc = {}
+    bloklar = re.findall(
+        r'<a[^>]+href="https://www\.sporekrani\.com/home/match/[^"]+"[^>]*>(.*?)</a>',
+        html, re.S)
+    for blok in bloklar:
+        kanallar = []
+        for alt in re.findall(r'alt="([^"]+)"', blok):
+            a = alt.strip()
+            if not a or a.casefold() in ("futbol", "basketbol", "tenis", "yayın yok"):
+                continue
+            if a not in kanallar:
+                kanallar.append(a)
+        if not kanallar:
+            continue
+        metin = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", blok))
+        m = re.search(r"([A-Za-zÇĞİÖŞÜçğıöşü0-9.'()+&]+)\s+-\s+([A-Za-zÇĞİÖŞÜçğıöşü0-9.'()+&]+)", metin)
+        if not m:
+            continue
+        ev, dep = takim_coz(m.group(1), espn_adlari), takim_coz(m.group(2), espn_adlari)
+        if ev and dep and frozenset((ev, dep)) in espn_ciftler:
+            sonuc[_mac_anahtari(ev, dep)] = kanal_norm(kanallar[0])
+    return sonuc
+
+
+def scrape_livesoccertv(espn_adlari: set, espn_ciftler: set, slug: str) -> dict:
+    """LiveSoccerTV maç listesinden Türk yayın kanallarını çıkarır."""
+    html = http_get_text(LIVESOCCERTV_LIG.get(slug, LIVESOCCERTV_LIG["tur.1"]))
+    sonuc = {}
+    for satir in re.findall(r"<tr[^>]*>(.*?)</tr>", html, re.S):
+        if "Repeat" in satir or "/match/" not in satir:
+            continue
+        m = re.search(r'<a[^>]+href="[^"]*/match/[^"]+"[^>]*>([^<]+?)\s+vs\.?\s+([^<]+?)</a>', satir)
+        if not m:
+            continue
+        basliklar = [b.strip() for b in re.findall(
+            r'<a[^>]+href="[^"]*/channels/[^"]+"[^>]*title="([^"]+)"', satir)]
+        tr_kanallar = [b for b in basliklar
+                       if "turkey" in b.casefold() or b.casefold() in ("tod", "digiturk play")]
+        if not tr_kanallar:
+            continue
+        sec = next((k for k in tr_kanallar if re.search(r"(?i)be\.?\s?in\s?sports?\s*\d", k)),
+                   tr_kanallar[0])
+        ev, dep = takim_coz(m.group(1), espn_adlari), takim_coz(m.group(2), espn_adlari)
+        if ev and dep and frozenset((ev, dep)) in espn_ciftler:
+            sonuc[_mac_anahtari(ev, dep)] = kanal_norm(sec.replace(" Turkey", ""))
+    return sonuc
+
+
+def fetch_yayin_kanallari(maclar: list, slug: str, data_dir: str) -> dict:
+    """İki kaynağı kazır, elle düzeltme dosyasıyla birleştirir.
+    Dönen anahtar biçimi: 'evnorm|depnorm' (alfabetik)."""
+    espn_adlari = {takim_norm(t["ad"]) for m in maclar for t in (m["ev"], m["dep"])}
+    espn_ciftler = {frozenset((takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])))
+                    for m in maclar}
+    kanallar = {}
+    for kaynak in (scrape_sporekrani, scrape_livesoccertv):
+        try:
+            veri = kaynak(espn_adlari, espn_ciftler, slug)
+            log(f"yayın kanalları ({kaynak.__name__}): {len(veri)} maç")
+            for k, v in veri.items():
+                kanallar.setdefault(k, v)
+        except Exception as e:  # kaynak düşerse diğerleriyle devam
+            log(f"UYARI: {kaynak.__name__} okunamadı: {e}")
+
+    # Elle düzeltme dosyası (varsa kazımadan üstün gelir)
+    manuel_yol = os.path.join(data_dir, "yayin-kanallari.json")
+    if os.path.exists(manuel_yol):
+        try:
+            with open(manuel_yol, encoding="utf-8") as f:
+                manuel = json.load(f)
+            for k, v in manuel.items():
+                if not k.startswith("_") and v:
+                    kanallar[k] = kanal_norm(v)
+            log(f"yayın kanalları: {os.path.basename(manuel_yol)} ile birleştirildi")
+        except (OSError, json.JSONDecodeError) as e:
+            log(f"UYARI: yayin-kanallari.json okunamadı: {e}")
+    return kanallar
+
+
+# ----------------------------------------------------------------------------
 # Ayrıştırma
 # ----------------------------------------------------------------------------
 def mac_ayristir(ev: dict) -> dict:
@@ -319,6 +481,25 @@ footer a{color:var(--mavi);text-decoration:none}
 @media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}}
 .bos{color:var(--soluk);padding:26px;text-align:center;background:var(--kart);
 border:1px dashed var(--cizgi);border-radius:14px}
+.kanal{display:inline-flex;align-items:center;gap:4px;background:#1d2939;color:#cfe3ff;
+border:1px solid #315071;border-radius:8px;padding:2px 9px;font-size:12px;font-weight:700;white-space:nowrap}
+.skor-inline{color:var(--yesil);font-weight:800;margin-left:4px}
+.tv-kart{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;
+background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.tv-zaman{text-align:center;border-right:1px dashed var(--cizgi);padding-right:12px}
+.tv-zaman .gun{font-size:11px;color:var(--soluk);text-transform:uppercase;letter-spacing:.5px}
+.tv-zaman .saat{font-size:19px;font-weight:800}
+.tv-mac .takimlar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:600;font-size:15px}
+.tv-mac .takimlar img{width:26px;height:26px;object-fit:contain}
+.tv-mac .takimlar .ayrac{color:var(--soluk);font-weight:400}
+.tv-mac .alt{color:var(--soluk);font-size:12.5px;margin-top:5px}
+.tv-kanal{justify-self:end}
+.tv-kanal .kanal{font-size:13px;padding:6px 12px}
+.tv-not{color:var(--soluk);font-size:12.5px;margin-top:10px;text-align:center}
+@media(max-width:560px){.tv-kart{grid-template-columns:1fr;gap:10px}
+.tv-zaman{border-right:none;border-bottom:1px dashed var(--cizgi);padding:0 0 10px;
+display:flex;gap:10px;align-items:baseline;justify-content:center}
+.tv-kanal{justify-self:center}}
 """
 
 JS = """
@@ -354,6 +535,48 @@ def takim_logolu(t: dict, dep: bool = False) -> str:
     return f'<div class="takim{" dep" if dep else ""}">{gorunum}<span class="isim">{isim}</span></div>'
 
 
+def tv_karti(m: dict) -> str:
+    """'Haftanın Maçları' bölümü için tek maçlık TV yayın akışı kartı."""
+    ev, dep = m["ev"], m["dep"]
+    oynandi, canli = m["durum"] == "post", m["durum"] == "in"
+    yerel = parse_utc(m["utc"]).astimezone(TR_TZ) if m["utc"] else None
+
+    def logo(t: dict) -> str:
+        if t.get("logo"):
+            return f'<img src="{esc(t["logo"])}" alt="" loading="lazy">'
+        return (f'<span class="rozet" style="width:26px;height:26px;font-size:10px">'
+                f'{esc((t.get("kisa") or "?")[:3])}</span>')
+
+    skor_html = ""
+    if oynandi or canli:
+        skor_html = (f' <span class="skor-inline">({esc(ev.get("skor") or 0)} - '
+                     f'{esc(dep.get("skor") or 0)})</span>')
+    takimlar = (f'{logo(ev)}<span>{esc(ev["ad"])}</span>'
+                f'<span class="ayrac">—</span>'
+                f'<span>{esc(dep["ad"])}</span>{logo(dep)}{skor_html}')
+
+    gun = GUNLER[yerel.weekday()][:3] if yerel else ""
+    saat = f"{yerel.hour:02d}:{yerel.minute:02d}" if yerel else "--:--"
+    if canli:
+        durum = '<div class="durum-canli" style="font-size:11px">CANLI</div>'
+    elif oynandi:
+        durum = '<div class="durum-ms" style="font-size:11px">MS</div>'
+    else:
+        durum = ""
+
+    yer = " · ".join(x for x in [m.get("stadyum"), m.get("sehir")] if x)
+    kanal = (m.get("kanal") or "").strip()
+    if kanal:
+        kanal_html = f'<span class="kanal">📺 {esc(kanal)}</span>'
+    else:
+        kanal_html = '<span class="kanal" style="opacity:.45">📺 —</span>'
+    return f'''<div class="tv-kart">
+<div class="tv-zaman"><div class="gun">{gun}</div><div class="saat">{saat}</div>{durum}</div>
+<div class="tv-mac"><div class="takimlar">{takimlar}</div><div class="alt">{esc(yer)}</div></div>
+<div class="tv-kanal">{kanal_html}</div>
+</div>'''
+
+
 def mac_satiri(m: dict) -> str:
     ev, dep = m["ev"], m["dep"]
     oynandi = m["durum"] == "post"
@@ -377,13 +600,15 @@ def mac_satiri(m: dict) -> str:
         durum_html = ""
 
     yer = " · ".join(x for x in [m.get("stadyum"), m.get("sehir")] if x)
+    kanal = (m.get("kanal") or "").strip()
+    kanal_cipi = f' · <span class="kanal">📺 {esc(kanal)}</span>' if kanal else ""
     return f'''<div class="kart"><div class="mac">
   {takim_logolu(ev)}
   <div class="skor{" onaylanmadi" if not (oynandi or canli) else ""}">{skor_html}</div>
   {takim_logolu(dep, dep=True)}
 </div>
 <div class="mac-alt"><span>{esc(tr_tarih(parse_utc(m["utc"]))) if m["utc"] else ""}</span>
-<span>{durum_html}{" · " if durum_html and yer else ""}{esc(yer)}</span></div></div>'''
+<span>{durum_html}{" · " if durum_html and yer else ""}{esc(yer)}{kanal_cipi}</span></div></div>'''
 
 
 def istatistik_bar(baslik: str, ev_d: str, dep_d: str, yuzde: bool = False) -> str:
@@ -512,6 +737,23 @@ def render_html(veri: dict, cikti: str) -> None:
             f'<div class="grid2">{mac_html}</div></div>'
         )
 
+    # --- haftanın maçları (TV yayın akışı) ---
+    haftanin = next((h for h in haftalar if h["no"] == aktif_hafta), None) or \
+        (haftalar[-1] if haftalar else None)
+    tv_html, tv_alt_baslik = "", ""
+    if haftanin:
+        dizi = sorted(haftanin["maclar"], key=lambda x: x["utc"])
+        tv_html = "".join(tv_karti(m) for m in dizi)
+        if dizi:
+            i0 = tr_tarih(parse_utc(dizi[0]["utc"]), saat_dahil=False)
+            i1 = tr_tarih(parse_utc(dizi[-1]["utc"]), saat_dahil=False)
+            aralik = i0 if i0 == i1 else f"{i0} – {i1}"
+            tv_alt_baslik = f'{haftanin["no"]}. Hafta · {aralik}'
+        else:
+            tv_alt_baslik = f'{haftanin["no"]}. Hafta'
+    if not tv_html:
+        tv_html = '<div class="bos">Bu hafta için maç bilgisi yok.</div>'
+
     # --- özetler: son 14 günde biten maçlar ---
     simdi_dt = parse_utc(simdi)
     ozetler = [
@@ -535,7 +777,7 @@ def render_html(veri: dict, cikti: str) -> None:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="{esc(lig["ad"])} fikstürü, maç özetleri ve puan durumu — Fixtoor Bot">
+<meta name="description" content="{esc(lig["ad"])} fikstürü, maç özetleri, puan durumu ve TV yayın akışı — Fixtoor">
 <title>Fixtoor · {esc(lig["ad"])} {esc(lig.get("sezon_adi", ""))}</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
 <style>{CSS}</style>
@@ -544,17 +786,24 @@ def render_html(veri: dict, cikti: str) -> None:
 <div class="kapsayici">
 <header class="ust">{logo_html}
 <div><h1>Fix<span>toor</span> ⚽ {esc(lig["ad"])}</h1>
-<div class="alt-bilgi">{esc(lig.get("sezon_adi", ""))} · Fikstür · Maç Özetleri · Puan Durumu{canli_rozet}</div>
-<div class="alt-bilgi">Son güncelleme: {esc(tr_tarih(parse_utc(simdi)))} (İstanbul) · Veri: ESPN API</div>
+<div class="alt-bilgi">{esc(lig.get("sezon_adi", ""))} · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı{canli_rozet}</div>
+<div class="alt-bilgi">Son güncelleme: {esc(tr_tarih(parse_utc(simdi)))} (İstanbul)</div>
 </div></header>
 
 <nav class="sekmeler">
-<button class="aktif" data-sekme="ozetler">📋 Özetler</button>
+<button class="aktif" data-sekme="hafta">📺 Haftanın Maçları</button>
+<button data-sekme="ozetler">📋 Özetler</button>
 <button data-sekme="fikstur">📅 Fikstür</button>
 <button data-sekme="puan">🏆 Puan Durumu</button>
 </nav>
 
-<section class="sekme-icerik aktif" id="sekme-ozetler">
+<section class="sekme-icerik aktif" id="sekme-hafta">
+<h2>Haftanın Maçları <small style="color:var(--soluk);font-weight:400">· {esc(tv_alt_baslik)}</small></h2>
+{tv_html}
+<p class="tv-not">📡 Yayın bilgileri Spor Ekranı &amp; LiveSoccerTV'den alınır · Maçlar TOD ve beIN Connect'te de izlenebilir</p>
+</section>
+
+<section class="sekme-icerik" id="sekme-ozetler">
 <h2>Son Maç Özetleri</h2>
 <div class="grid2">{ozet_html}</div>
 <h2>Yaklaşan Maçlar</h2>
@@ -573,8 +822,10 @@ def render_html(veri: dict, cikti: str) -> None:
 </section>
 
 <footer>
-Fixtoor Bot tarafından <a href="https://github.com/inadinatv/Fixtoor">inadinatv/Fixtoor</a>
-deposunda otomatik üretildi · Veriler <a href="https://www.espn.com/soccer/league/_/name/tur.1">ESPN</a>'den alınmıştır<br>
+© 2026 <b>inadina TV · Fixtoor</b> — Trendyol Süper Lig fikstür, maç özetleri, puan durumu ve yayın akışı<br>
+Veri: <a href="https://www.espn.com/soccer/league/_/name/tur.1">ESPN</a> · Yayın bilgileri:
+<a href="https://www.sporekrani.com/home/league/trendyol-super-lig">Spor Ekranı</a> &amp;
+<a href="https://www.livesoccertv.com/competitions/turkey/super-lig/">LiveSoccerTV</a> ·
 <a href="data/fikstur.json">fikstur.json</a> · <a href="data/puan-durumu.json">puan-durumu.json</a> ·
 <a href="data/ozetler.json">ozetler.json</a>
 </footer>
@@ -610,6 +861,12 @@ def calistir(args) -> None:
         for m in maclar:
             for t in (m["ev"], m["dep"]):
                 takimlar[t["id"]] = {"ad": t["ad"], "kisa": t["kisa"], "logo": t["logo"], "renk": t["renk"]}
+
+        # yayın kanalı bilgisi (Spor Ekranı / LiveSoccerTV + elle düzeltme dosyası)
+        kanal_harita = fetch_yayin_kanallari(maclar, args.league, data_dir)
+        for m in maclar:
+            m["kanal"] = kanal_harita.get(
+                _mac_anahtari(takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])), "")
 
         hafta_listesi = haftalara_ayir(maclar)
         haftalar = [
