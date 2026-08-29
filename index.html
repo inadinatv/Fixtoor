@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Trendyol Süper Lig fikstürü, maç özetleri ve puan durumu — Fixtoor Bot">
+<meta name="description" content="Trendyol Süper Lig fikstürü, maç özetleri, puan durumu ve TV yayın akışı — Fixtoor">
 <title>Fixtoor · Trendyol Süper Lig 2026-27 Turkish Super Lig</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
 <style>
@@ -77,23 +77,85 @@ footer a{color:var(--mavi);text-decoration:none}
 @media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}}
 .bos{color:var(--soluk);padding:26px;text-align:center;background:var(--kart);
 border:1px dashed var(--cizgi);border-radius:14px}
+.kanal{display:inline-flex;align-items:center;gap:4px;background:#1d2939;color:#cfe3ff;
+border:1px solid #315071;border-radius:8px;padding:2px 9px;font-size:12px;font-weight:700;white-space:nowrap}
+.skor-inline{color:var(--yesil);font-weight:800;margin-left:4px}
+.tv-kart{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;
+background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.tv-zaman{text-align:center;border-right:1px dashed var(--cizgi);padding-right:12px}
+.tv-zaman .gun{font-size:11px;color:var(--soluk);text-transform:uppercase;letter-spacing:.5px}
+.tv-zaman .saat{font-size:19px;font-weight:800}
+.tv-mac .takimlar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:600;font-size:15px}
+.tv-mac .takimlar img{width:26px;height:26px;object-fit:contain}
+.tv-mac .takimlar .ayrac{color:var(--soluk);font-weight:400}
+.tv-mac .alt{color:var(--soluk);font-size:12.5px;margin-top:5px}
+.tv-kanal{justify-self:end}
+.tv-kanal .kanal{font-size:13px;padding:6px 12px}
+.tv-not{color:var(--soluk);font-size:12.5px;margin-top:10px;text-align:center}
+@media(max-width:560px){.tv-kart{grid-template-columns:1fr;gap:10px}
+.tv-zaman{border-right:none;border-bottom:1px dashed var(--cizgi);padding:0 0 10px;
+display:flex;gap:10px;align-items:baseline;justify-content:center}
+.tv-kanal{justify-self:center}}
 </style>
 </head>
 <body>
 <div class="kapsayici">
 <header class="ust"><img src="https://a.espncdn.com/i/leaguelogos/soccer/500/18.png" alt="lig logosu">
 <div><h1>Fix<span>toor</span> ⚽ Trendyol Süper Lig</h1>
-<div class="alt-bilgi">2026-27 Turkish Super Lig · Fikstür · Maç Özetleri · Puan Durumu</div>
-<div class="alt-bilgi">Son güncelleme: Cum, 29 Ağu 17:34 (İstanbul) · Veri: ESPN API</div>
+<div class="alt-bilgi">2026-27 Turkish Super Lig · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı</div>
+<div class="alt-bilgi">Son güncelleme: Cum, 29 Ağu 18:09 (İstanbul)</div>
 </div></header>
 
 <nav class="sekmeler">
-<button class="aktif" data-sekme="ozetler">📋 Özetler</button>
+<button class="aktif" data-sekme="hafta">📺 Haftanın Maçları</button>
+<button data-sekme="ozetler">📋 Özetler</button>
 <button data-sekme="fikstur">📅 Fikstür</button>
 <button data-sekme="puan">🏆 Puan Durumu</button>
 </nav>
 
-<section class="sekme-icerik aktif" id="sekme-ozetler">
+<section class="sekme-icerik aktif" id="sekme-hafta">
+<h2>Haftanın Maçları <small style="color:var(--soluk);font-weight:400">· 3. Hafta · Cum, 28 Ağu – Paz, 31 Ağu</small></h2>
+<div class="tv-kart">
+<div class="tv-zaman"><div class="gun">Cum</div><div class="saat">21:30</div><div class="durum-ms" style="font-size:11px">MS</div></div>
+<div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/996.png" alt="" loading="lazy"><span>Genclerbirligi</span><span class="ayrac">—</span><span>Erzurum BB</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/19267.png" alt="" loading="lazy"> <span class="skor-inline">(1 - 1)</span></div><div class="alt">Eryaman Stadium · Ankara</div></div>
+<div class="tv-kanal"><span class="kanal" style="opacity:.45">📺 —</span></div>
+</div><div class="tv-kart">
+<div class="tv-zaman"><div class="gun">Cum</div><div class="saat">19:00</div></div>
+<div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7648.png" alt="" loading="lazy"><span>Konyaspor</span><span class="ayrac">—</span><span>Kocaelispor</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/995.png" alt="" loading="lazy"></div><div class="alt">Medas Konya Büyüksehir Stadyumu · Konya</div></div>
+<div class="tv-kanal"><span class="kanal">📺 beIN Sports 1</span></div>
+</div><div class="tv-kart">
+<div class="tv-zaman"><div class="gun">Cum</div><div class="saat">21:30</div></div>
+<div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/432.png" alt="" loading="lazy"><span>Galatasaray</span><span class="ayrac">—</span><span>Goztepe</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/789.png" alt="" loading="lazy"></div><div class="alt">RAMS Park · Istanbul</div></div>
+<div class="tv-kanal"><span class="kanal">📺 Digiturk Play</span></div>
+</div><div class="tv-kart">
+<div class="tv-zaman"><div class="gun">Cum</div><div class="saat">21:30</div></div>
+<div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20070.png" alt="" loading="lazy"><span>Gaziantep FK</span><span class="ayrac">—</span><span>Caykur Rizespor</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7656.png" alt="" loading="lazy"></div><div class="alt">Gaziantep Stadium · Gaziantep</div></div>
+<div class="tv-kanal"><span class="kanal">📺 beIN Sports 2</span></div>
+</div><div class="tv-kart">
+<div class="tv-zaman"><div class="gun">Paz</div><div class="saat">19:00</div></div>
+<div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20729.png" alt="" loading="lazy"><span>Eyupspor</span><span class="ayrac">—</span><span>Alanyaspor</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9078.png" alt="" loading="lazy"></div><div class="alt">Esenyurt Necmi Kadioglu Stadi · Istanbul</div></div>
+<div class="tv-kanal"><span class="kanal">📺 beIN Sports 1</span></div>
+</div><div class="tv-kart">
+<div class="tv-zaman"><div class="gun">Paz</div><div class="saat">21:30</div></div>
+<div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7914.png" alt="" loading="lazy"><span>Istanbul Basaksehir</span><span class="ayrac">—</span><span>Kasimpasa</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6870.png" alt="" loading="lazy"></div><div class="alt">Basaksehir Fatih Terim Stadium · Istanbul</div></div>
+<div class="tv-kanal"><span class="kanal">📺 beIN Sports 2</span></div>
+</div><div class="tv-kart">
+<div class="tv-zaman"><div class="gun">Paz</div><div class="saat">21:30</div></div>
+<div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/11429.png" alt="" loading="lazy"><span>Samsunspor</span><span class="ayrac">—</span><span>Fenerbahce</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/436.png" alt="" loading="lazy"></div><div class="alt">Samsun 19 Mayis Stadium · Samsun</div></div>
+<div class="tv-kanal"><span class="kanal" style="opacity:.45">📺 —</span></div>
+</div><div class="tv-kart">
+<div class="tv-zaman"><div class="gun">Paz</div><div class="saat">21:30</div></div>
+<div class="tv-mac"><div class="takimlar"><span class="rozet" style="width:26px;height:26px;font-size:10px">AME</span><span>Amed SFK</span><span class="ayrac">—</span><span>Trabzonspor</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/997.png" alt="" loading="lazy"></div><div class="alt">Diyarbakir Stadyumu · Diyarbakir</div></div>
+<div class="tv-kanal"><span class="kanal" style="opacity:.45">📺 —</span></div>
+</div><div class="tv-kart">
+<div class="tv-zaman"><div class="gun">Paz</div><div class="saat">21:30</div></div>
+<div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1895.png" alt="" loading="lazy"><span>Besiktas</span><span class="ayrac">—</span><span>Çorum FK</span><span class="rozet" style="width:26px;height:26px;font-size:10px">COR</span></div><div class="alt">Vodafone Park · Istanbul</div></div>
+<div class="tv-kanal"><span class="kanal" style="opacity:.45">📺 —</span></div>
+</div>
+<p class="tv-not">📡 Yayın bilgileri Spor Ekranı &amp; LiveSoccerTV'den alınır · Maçlar TOD ve beIN Connect'te de izlenebilir</p>
+</section>
+
+<section class="sekme-icerik" id="sekme-ozetler">
 <h2>Son Maç Özetleri</h2>
 <div class="grid2"><div class="kart">
 <div class="mac">
@@ -570,31 +632,31 @@ border:1px dashed var(--cizgi);border-radius:14px}
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/995.png" alt="" loading="lazy"><span class="isim">Kocaelispor</span></div>
 </div>
 <div class="mac-alt"><span>Cum, 29 Ağu 19:00</span>
-<span>Medas Konya Büyüksehir Stadyumu · Konya</span></div></div><div class="kart"><div class="mac">
+<span>Medas Konya Büyüksehir Stadyumu · Konya · <span class="kanal">📺 beIN Sports 1</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/432.png" alt="" loading="lazy"><span class="isim">Galatasaray</span></div>
   <div class="skor onaylanmadi">21:30</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/789.png" alt="" loading="lazy"><span class="isim">Goztepe</span></div>
 </div>
 <div class="mac-alt"><span>Cum, 29 Ağu 21:30</span>
-<span>RAMS Park · Istanbul</span></div></div><div class="kart"><div class="mac">
+<span>RAMS Park · Istanbul · <span class="kanal">📺 Digiturk Play</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20070.png" alt="" loading="lazy"><span class="isim">Gaziantep FK</span></div>
   <div class="skor onaylanmadi">21:30</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7656.png" alt="" loading="lazy"><span class="isim">Caykur Rizespor</span></div>
 </div>
 <div class="mac-alt"><span>Cum, 29 Ağu 21:30</span>
-<span>Gaziantep Stadium · Gaziantep</span></div></div><div class="kart"><div class="mac">
+<span>Gaziantep Stadium · Gaziantep · <span class="kanal">📺 beIN Sports 2</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20729.png" alt="" loading="lazy"><span class="isim">Eyupspor</span></div>
   <div class="skor onaylanmadi">19:00</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9078.png" alt="" loading="lazy"><span class="isim">Alanyaspor</span></div>
 </div>
 <div class="mac-alt"><span>Paz, 30 Ağu 19:00</span>
-<span>Esenyurt Necmi Kadioglu Stadi · Istanbul</span></div></div><div class="kart"><div class="mac">
+<span>Esenyurt Necmi Kadioglu Stadi · Istanbul · <span class="kanal">📺 beIN Sports 1</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7914.png" alt="" loading="lazy"><span class="isim">Istanbul Basaksehir</span></div>
   <div class="skor onaylanmadi">21:30</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6870.png" alt="" loading="lazy"><span class="isim">Kasimpasa</span></div>
 </div>
 <div class="mac-alt"><span>Paz, 30 Ağu 21:30</span>
-<span>Basaksehir Fatih Terim Stadium · Istanbul</span></div></div><div class="kart"><div class="mac">
+<span>Basaksehir Fatih Terim Stadium · Istanbul · <span class="kanal">📺 beIN Sports 2</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/11429.png" alt="" loading="lazy"><span class="isim">Samsunspor</span></div>
   <div class="skor onaylanmadi">21:30</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/436.png" alt="" loading="lazy"><span class="isim">Fenerbahce</span></div>
@@ -726,31 +788,31 @@ border:1px dashed var(--cizgi);border-radius:14px}
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/995.png" alt="" loading="lazy"><span class="isim">Kocaelispor</span></div>
 </div>
 <div class="mac-alt"><span>Cum, 29 Ağu 19:00</span>
-<span>Medas Konya Büyüksehir Stadyumu · Konya</span></div></div><div class="kart"><div class="mac">
+<span>Medas Konya Büyüksehir Stadyumu · Konya · <span class="kanal">📺 beIN Sports 1</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/432.png" alt="" loading="lazy"><span class="isim">Galatasaray</span></div>
   <div class="skor onaylanmadi">21:30</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/789.png" alt="" loading="lazy"><span class="isim">Goztepe</span></div>
 </div>
 <div class="mac-alt"><span>Cum, 29 Ağu 21:30</span>
-<span>RAMS Park · Istanbul</span></div></div><div class="kart"><div class="mac">
+<span>RAMS Park · Istanbul · <span class="kanal">📺 Digiturk Play</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20070.png" alt="" loading="lazy"><span class="isim">Gaziantep FK</span></div>
   <div class="skor onaylanmadi">21:30</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7656.png" alt="" loading="lazy"><span class="isim">Caykur Rizespor</span></div>
 </div>
 <div class="mac-alt"><span>Cum, 29 Ağu 21:30</span>
-<span>Gaziantep Stadium · Gaziantep</span></div></div><div class="kart"><div class="mac">
+<span>Gaziantep Stadium · Gaziantep · <span class="kanal">📺 beIN Sports 2</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20729.png" alt="" loading="lazy"><span class="isim">Eyupspor</span></div>
   <div class="skor onaylanmadi">19:00</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9078.png" alt="" loading="lazy"><span class="isim">Alanyaspor</span></div>
 </div>
 <div class="mac-alt"><span>Paz, 30 Ağu 19:00</span>
-<span>Esenyurt Necmi Kadioglu Stadi · Istanbul</span></div></div><div class="kart"><div class="mac">
+<span>Esenyurt Necmi Kadioglu Stadi · Istanbul · <span class="kanal">📺 beIN Sports 1</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7914.png" alt="" loading="lazy"><span class="isim">Istanbul Basaksehir</span></div>
   <div class="skor onaylanmadi">21:30</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6870.png" alt="" loading="lazy"><span class="isim">Kasimpasa</span></div>
 </div>
 <div class="mac-alt"><span>Paz, 30 Ağu 21:30</span>
-<span>Basaksehir Fatih Terim Stadium · Istanbul</span></div></div><div class="kart"><div class="mac">
+<span>Basaksehir Fatih Terim Stadium · Istanbul · <span class="kanal">📺 beIN Sports 2</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/11429.png" alt="" loading="lazy"><span class="isim">Samsunspor</span></div>
   <div class="skor onaylanmadi">21:30</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/436.png" alt="" loading="lazy"><span class="isim">Fenerbahce</span></div>
@@ -1638,13 +1700,13 @@ border:1px dashed var(--cizgi);border-radius:14px}
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20729.png" alt="" loading="lazy"><span class="isim">Eyupspor</span></div>
 </div>
 <div class="mac-alt"><span>Paz, 7 Şub 23:00</span>
-<span>Kirbiyik Holding Stadyumu · Antalya</span></div></div><div class="kart"><div class="mac">
+<span>Kirbiyik Holding Stadyumu · Antalya · <span class="kanal">📺 beIN Sports 1</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7656.png" alt="" loading="lazy"><span class="isim">Caykur Rizespor</span></div>
   <div class="skor onaylanmadi">23:00</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20070.png" alt="" loading="lazy"><span class="isim">Gaziantep FK</span></div>
 </div>
 <div class="mac-alt"><span>Paz, 7 Şub 23:00</span>
-<span>Estadio Caykur Didi · Rize</span></div></div><div class="kart"><div class="mac">
+<span>Estadio Caykur Didi · Rize · <span class="kanal">📺 beIN Sports 2</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><span class="rozet">COR</span><span class="isim">Çorum FK</span></div>
   <div class="skor onaylanmadi">23:00</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1895.png" alt="" loading="lazy"><span class="isim">Besiktas</span></div>
@@ -1668,19 +1730,19 @@ border:1px dashed var(--cizgi);border-radius:14px}
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/432.png" alt="" loading="lazy"><span class="isim">Galatasaray</span></div>
 </div>
 <div class="mac-alt"><span>Paz, 7 Şub 23:00</span>
-<span>Göztepe Gürsel Aksel Stadi · Izmir</span></div></div><div class="kart"><div class="mac">
+<span>Göztepe Gürsel Aksel Stadi · Izmir · <span class="kanal">📺 Digiturk Play</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6870.png" alt="" loading="lazy"><span class="isim">Kasimpasa</span></div>
   <div class="skor onaylanmadi">23:00</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7914.png" alt="" loading="lazy"><span class="isim">Istanbul Basaksehir</span></div>
 </div>
 <div class="mac-alt"><span>Paz, 7 Şub 23:00</span>
-<span>Recep Tayyip Erdogan Stadium · Istanbul</span></div></div><div class="kart"><div class="mac">
+<span>Recep Tayyip Erdogan Stadium · Istanbul · <span class="kanal">📺 beIN Sports 2</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/995.png" alt="" loading="lazy"><span class="isim">Kocaelispor</span></div>
   <div class="skor onaylanmadi">23:00</div>
   <div class="takim dep"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7648.png" alt="" loading="lazy"><span class="isim">Konyaspor</span></div>
 </div>
 <div class="mac-alt"><span>Paz, 7 Şub 23:00</span>
-<span>Yildiz Entegre Kocaeli Stadyumu · Kocaeli</span></div></div><div class="kart"><div class="mac">
+<span>Yildiz Entegre Kocaeli Stadyumu · Kocaeli · <span class="kanal">📺 beIN Sports 1</span></span></div></div><div class="kart"><div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/997.png" alt="" loading="lazy"><span class="isim">Trabzonspor</span></div>
   <div class="skor onaylanmadi">23:00</div>
   <div class="takim dep"><span class="rozet">AMED</span><span class="isim">Amed SFK</span></div>
@@ -2507,8 +2569,10 @@ border:1px dashed var(--cizgi);border-radius:14px}
 </section>
 
 <footer>
-Fixtoor Bot tarafından <a href="https://github.com/inadinatv/Fixtoor">inadinatv/Fixtoor</a>
-deposunda otomatik üretildi · Veriler <a href="https://www.espn.com/soccer/league/_/name/tur.1">ESPN</a>'den alınmıştır<br>
+© 2026 <b>inadina TV · Fixtoor</b> — Trendyol Süper Lig fikstür, maç özetleri, puan durumu ve yayın akışı<br>
+Veri: <a href="https://www.espn.com/soccer/league/_/name/tur.1">ESPN</a> · Yayın bilgileri:
+<a href="https://www.sporekrani.com/home/league/trendyol-super-lig">Spor Ekranı</a> &amp;
+<a href="https://www.livesoccertv.com/competitions/turkey/super-lig/">LiveSoccerTV</a> ·
 <a href="data/fikstur.json">fikstur.json</a> · <a href="data/puan-durumu.json">puan-durumu.json</a> ·
 <a href="data/ozetler.json">ozetler.json</a>
 </footer>
