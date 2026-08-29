@@ -1,0 +1,74 @@
+name: Fixtoor Bot
+
+# Bot çalışma tetikleyicileri:
+#  - schedule : günde 6 kez otomatik veri güncellemesi
+#  - workflow_dispatch : Actions sekmesinden elle çalıştırma
+#  - push (main) : kod değişince sayfayı yeniden yayınlama
+on:
+  schedule:
+    - cron: "17 */4 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: fixtoor-bot
+  cancel-in-progress: false
+
+jobs:
+  bot:
+    name: Veri çek ve HTML üret
+    runs-on: ubuntu-latest
+    steps:
+      - name: Depoyu al
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fixtoor botunu çalıştır
+        run: python bot/fiktoor.py
+
+      - name: Değişiklikleri işle ve gönder
+        run: |
+          git config user.name  "fixtoor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html data/
+          if git diff --cached --quiet; then
+            echo "Yeni veri yok, commit atlanıyor."
+          else
+            git commit -m "🤖 Fixtoor veri güncellemesi — $(date -u +'%Y-%m-%d %H:%M UTC') [skip ci]"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Sayfa paketini hazırla
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp -r data _site/data
+      - name: Sayfayı GitHub Pages'e yükle
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: GitHub Pages'e yayınla
+    if: github.ref == 'refs/heads/main'
+    needs: bot
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.yayinla.outputs.page_url }}
+    steps:
+      - name: Yayınla
+        id: yayinla
+        uses: actions/deploy-pages@v4
