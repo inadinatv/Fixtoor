@@ -1894,13 +1894,13 @@
      "id": "995",
      "istatistik": {
       "appearances": "0",
-      "foulsCommitted": "9",
+      "foulsCommitted": "7",
       "goalAssists": "0",
-      "possessionPct": "37.4",
+      "possessionPct": "33.5",
       "shotAssists": "0",
-      "shotsOnTarget": "1",
+      "shotsOnTarget": "0",
       "totalGoals": "0",
-      "totalShots": "2",
+      "totalShots": "0",
       "wonCorners": "1"
      },
      "kazandi": false,
@@ -1910,41 +1910,33 @@
      "skor": "0"
     },
     "durum": "in",
-    "durum_metin": "HT",
+    "durum_metin": "34'",
     "ev": {
      "ad": "Konyaspor",
      "form": "LLLLL",
      "id": "7648",
      "istatistik": {
       "appearances": "0",
-      "foulsCommitted": "9",
+      "foulsCommitted": "7",
       "goalAssists": "0",
-      "possessionPct": "62.6",
+      "possessionPct": "66.5",
       "shotAssists": "0",
       "shotsOnTarget": "0",
-      "totalGoals": "1",
-      "totalShots": "7",
+      "totalGoals": "0",
+      "totalShots": "6",
       "wonCorners": "1"
      },
      "kazandi": false,
      "kisa": "KNY",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
      "renk": "#288A00",
-     "skor": "1"
+     "skor": "0"
     },
-    "goller": [
-     {
-      "dakika": "39'",
-      "kendi_kalesine": true,
-      "oyuncu": "Tanguy Zoukrou",
-      "penalti": false,
-      "takim_id": "7648"
-     }
-    ],
+    "goller": [],
     "id": "401888308",
     "kanal": "beIN Sports 1",
     "kirmizi_kartlar": [],
-    "saat_gostergesi": "45'+3'",
+    "saat_gostergesi": "34'",
     "sari_kartlar": [
      {
       "dakika": "10'",
@@ -1957,20 +1949,6 @@
       "dakika": "11'",
       "kendi_kalesine": false,
       "oyuncu": "",
-      "penalti": false,
-      "takim_id": "995"
-     },
-     {
-      "dakika": "36'",
-      "kendi_kalesine": false,
-      "oyuncu": "Daniel Agyei",
-      "penalti": false,
-      "takim_id": "995"
-     },
-     {
-      "dakika": "37'",
-      "kendi_kalesine": false,
-      "oyuncu": "Matej Maglica",
       "penalti": false,
       "takim_id": "995"
      }

@@ -1895,13 +1895,13 @@
       "id": "995",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "9",
+       "foulsCommitted": "7",
        "goalAssists": "0",
-       "possessionPct": "37.4",
+       "possessionPct": "33.5",
        "shotAssists": "0",
-       "shotsOnTarget": "1",
+       "shotsOnTarget": "0",
        "totalGoals": "0",
-       "totalShots": "2",
+       "totalShots": "0",
        "wonCorners": "1"
       },
       "kazandi": false,
@@ -1911,41 +1911,33 @@
       "skor": "0"
      },
      "durum": "in",
-     "durum_metin": "HT",
+     "durum_metin": "34'",
      "ev": {
       "ad": "Konyaspor",
       "form": "LLLLL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "9",
+       "foulsCommitted": "7",
        "goalAssists": "0",
-       "possessionPct": "62.6",
+       "possessionPct": "66.5",
        "shotAssists": "0",
        "shotsOnTarget": "0",
-       "totalGoals": "1",
-       "totalShots": "7",
+       "totalGoals": "0",
+       "totalShots": "6",
        "wonCorners": "1"
       },
       "kazandi": false,
       "kisa": "KNY",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
       "renk": "#288A00",
-      "skor": "1"
+      "skor": "0"
      },
-     "goller": [
-      {
-       "dakika": "39'",
-       "kendi_kalesine": true,
-       "oyuncu": "Tanguy Zoukrou",
-       "penalti": false,
-       "takim_id": "7648"
-      }
-     ],
+     "goller": [],
      "id": "401888308",
      "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "45'+3'",
+     "saat_gostergesi": "34'",
      "sari_kartlar": [
       {
        "dakika": "10'",
@@ -1958,20 +1950,6 @@
        "dakika": "11'",
        "kendi_kalesine": false,
        "oyuncu": "",
-       "penalti": false,
-       "takim_id": "995"
-      },
-      {
-       "dakika": "36'",
-       "kendi_kalesine": false,
-       "oyuncu": "Daniel Agyei",
-       "penalti": false,
-       "takim_id": "995"
-      },
-      {
-       "dakika": "37'",
-       "kendi_kalesine": false,
-       "oyuncu": "Matej Maglica",
        "penalti": false,
        "takim_id": "995"
       }
@@ -12227,6 +12205,24 @@
    "yedigi": "2"
   },
   {
+   "attigi": "4",
+   "averaj": "+1",
+   "b": "0",
+   "form": "2-0-1",
+   "g": "2",
+   "kisa": "KOC",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
+   "m": "1",
+   "not": "Champions League qualifying",
+   "not_renk": "#B5E7CE",
+   "o": "3",
+   "puan": "6",
+   "sira": 2,
+   "takim": "Kocaelispor",
+   "takim_id": "995",
+   "yedigi": "3"
+  },
+  {
    "attigi": "6",
    "averaj": "+4",
    "b": "1",
@@ -12235,11 +12231,11 @@
    "kisa": "GAL",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
    "m": "0",
-   "not": "Champions League qualifying",
-   "not_renk": "#B5E7CE",
+   "not": "Europa League qualifying",
+   "not_renk": "#B2BFD0",
    "o": "2",
    "puan": "4",
-   "sira": 2,
+   "sira": 3,
    "takim": "Galatasaray",
    "takim_id": "432",
    "yedigi": "2"
@@ -12253,11 +12249,11 @@
    "kisa": "SAM",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
    "m": "0",
-   "not": "Europa League qualifying",
-   "not_renk": "#B2BFD0",
+   "not": "Conference League qualifying",
+   "not_renk": "#c6d1e0",
    "o": "2",
    "puan": "4",
-   "sira": 3,
+   "sira": 4,
    "takim": "Samsunspor",
    "takim_id": "11429",
    "yedigi": "3"
@@ -12271,11 +12267,11 @@
    "kisa": "TRAB",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
    "m": "0",
-   "not": "Conference League qualifying",
-   "not_renk": "#c6d1e0",
+   "not": "",
+   "not_renk": "",
    "o": "2",
    "puan": "4",
-   "sira": 4,
+   "sira": 5,
    "takim": "Trabzonspor",
    "takim_id": "997",
    "yedigi": "2"
@@ -12293,7 +12289,7 @@
    "not_renk": "",
    "o": "2",
    "puan": "4",
-   "sira": 5,
+   "sira": 6,
    "takim": "Alanyaspor",
    "takim_id": "9078",
    "yedigi": "1"
@@ -12311,7 +12307,7 @@
    "not_renk": "",
    "o": "2",
    "puan": "4",
-   "sira": 6,
+   "sira": 7,
    "takim": "Gaziantep FK",
    "takim_id": "20070",
    "yedigi": "1"
@@ -12329,7 +12325,7 @@
    "not_renk": "",
    "o": "2",
    "puan": "4",
-   "sira": 7,
+   "sira": 8,
    "takim": "Kasimpasa",
    "takim_id": "6870",
    "yedigi": "1"
@@ -12347,7 +12343,7 @@
    "not_renk": "",
    "o": "2",
    "puan": "3",
-   "sira": 8,
+   "sira": 9,
    "takim": "Fenerbahce",
    "takim_id": "436",
    "yedigi": "4"
@@ -12365,7 +12361,7 @@
    "not_renk": "",
    "o": "2",
    "puan": "3",
-   "sira": 9,
+   "sira": 10,
    "takim": "Amed SFK",
    "takim_id": "132335",
    "yedigi": "2"
@@ -12383,27 +12379,9 @@
    "not_renk": "",
    "o": "2",
    "puan": "3",
-   "sira": 10,
+   "sira": 11,
    "takim": "Istanbul Basaksehir",
    "takim_id": "7914",
-   "yedigi": "2"
-  },
-  {
-   "attigi": "2",
-   "averaj": "0",
-   "b": "0",
-   "form": "1-0-1",
-   "g": "1",
-   "kisa": "KOC",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
-   "m": "1",
-   "not": "",
-   "not_renk": "",
-   "o": "2",
-   "puan": "3",
-   "sira": 11,
-   "takim": "Kocaelispor",
-   "takim_id": "995",
    "yedigi": "2"
   },
   {
@@ -12515,22 +12493,22 @@
    "yedigi": "2"
   },
   {
-   "attigi": "2",
-   "averaj": "-3",
+   "attigi": "3",
+   "averaj": "-4",
    "b": "0",
-   "form": "0-0-2",
+   "form": "0-0-3",
    "g": "0",
    "kisa": "KNY",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
-   "m": "2",
+   "m": "3",
    "not": "Relegated",
    "not_renk": "#FF7F84",
-   "o": "2",
+   "o": "3",
    "puan": "0",
    "sira": 18,
    "takim": "Konyaspor",
    "takim_id": "7648",
-   "yedigi": "5"
+   "yedigi": "7"
   }
  ],
  "takimlar": {
@@ -12643,5 +12621,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-08-29T17:02:18.582770+00:00"
+ "uretim": "2026-08-29T18:13:00.953755+00:00"
 }
