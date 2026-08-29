@@ -5,9 +5,13 @@
    "form": "DLLWL",
    "id": "19267",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "11",
+    "goalAssists": "0",
     "possessionPct": "52.4",
+    "shotAssists": "0",
     "shotsOnTarget": "4",
+    "totalGoals": "1",
     "totalShots": "9",
     "wonCorners": "5"
    },
@@ -18,15 +22,19 @@
    "skor": "1"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
-   "ad": "Gençlerbirliği",
+   "ad": "Genclerbirligi",
    "form": "DWWWW",
    "id": "996",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "15",
+    "goalAssists": "1",
     "possessionPct": "47.6",
+    "shotAssists": "0",
     "shotsOnTarget": "5",
+    "totalGoals": "1",
     "totalShots": "16",
     "wonCorners": "3"
    },
@@ -73,7 +81,7 @@
    {
     "dakika": "68'",
     "kendi_kalesine": false,
-    "oyuncu": "Oğulcan Ülgün",
+    "oyuncu": "Ogulcan Ülgün",
     "penalti": false,
     "takim_id": "996"
    },
@@ -87,21 +95,21 @@
    {
     "dakika": "90'+4'",
     "kendi_kalesine": false,
-    "oyuncu": "Ousmane Diabaté",
+    "oyuncu": "Ousmane Diabate",
     "penalti": false,
     "takim_id": "996"
    },
    {
     "dakika": "90'+6'",
     "kendi_kalesine": false,
-    "oyuncu": "Nihad Mujakić",
+    "oyuncu": "Nihad Mujakic",
     "penalti": false,
     "takim_id": "19267"
    }
   ],
   "sehir": "Ankara",
-  "stadyum": "Eryaman Stadyumu",
-  "utc": "2026-08-28T18:30:00Z"
+  "stadyum": "Eryaman Stadium",
+  "utc": "2026-08-28T18:30Z"
  },
  {
   "dep": {
@@ -109,9 +117,13 @@
    "form": "LW",
    "id": "132335",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "16",
+    "goalAssists": "0",
     "possessionPct": "55.8",
+    "shotAssists": "0",
     "shotsOnTarget": "1",
+    "totalGoals": "0",
     "totalShots": "12",
     "wonCorners": "7"
    },
@@ -122,15 +134,19 @@
    "skor": "0"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
    "ad": "Kocaelispor",
    "form": "WLLLD",
    "id": "995",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "9",
+    "goalAssists": "2",
     "possessionPct": "44.2",
+    "shotAssists": "0",
     "shotsOnTarget": "3",
+    "totalGoals": "2",
     "totalShots": "11",
     "wonCorners": "3"
    },
@@ -176,18 +192,22 @@
    }
   ],
   "sehir": "Kocaeli",
-  "stadyum": "Yıldız Entegre Kocaeli Stadyumu",
-  "utc": "2026-08-24T18:30:00Z"
+  "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
+  "utc": "2026-08-24T18:30Z"
  },
  {
   "dep": {
-   "ad": "Beşiktaş",
+   "ad": "Besiktas",
    "form": "LLWWW",
    "id": "1895",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "14",
+    "goalAssists": "0",
     "possessionPct": "65.1",
+    "shotAssists": "0",
     "shotsOnTarget": "6",
+    "totalGoals": "0",
     "totalShots": "14",
     "wonCorners": "7"
    },
@@ -198,15 +218,19 @@
    "skor": "0"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
    "ad": "Alanyaspor",
    "form": "WDLWD",
    "id": "9078",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "14",
+    "goalAssists": "1",
     "possessionPct": "34.9",
+    "shotAssists": "0",
     "shotsOnTarget": "3",
+    "totalGoals": "1",
     "totalShots": "9",
     "wonCorners": "7"
    },
@@ -231,17 +255,21 @@
   "sari_kartlar": [],
   "sehir": "Antalya",
   "stadyum": "Kirbiyik Holding Stadyumu",
-  "utc": "2026-08-23T18:30:00Z"
+  "utc": "2026-08-23T18:30Z"
  },
  {
   "dep": {
-   "ad": "Gençlerbirliği",
+   "ad": "Genclerbirligi",
    "form": "DWWWW",
    "id": "996",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "12",
+    "goalAssists": "1",
     "possessionPct": "48.8",
+    "shotAssists": "0",
     "shotsOnTarget": "2",
+    "totalGoals": "1",
     "totalShots": "10",
     "wonCorners": "5"
    },
@@ -252,15 +280,19 @@
    "skor": "1"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
-   "ad": "Göztepe",
+   "ad": "Goztepe",
    "form": "LDLWD",
    "id": "789",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "15",
+    "goalAssists": "0",
     "possessionPct": "51.2",
+    "shotAssists": "0",
     "shotsOnTarget": "6",
+    "totalGoals": "0",
     "totalShots": "16",
     "wonCorners": "6"
    },
@@ -305,9 +337,9 @@
     "takim_id": "996"
    }
   ],
-  "sehir": "İzmir",
-  "stadyum": "Göztepe Gürsel Aksel Stadyumu",
-  "utc": "2026-08-23T18:30:00Z"
+  "sehir": "Izmir",
+  "stadyum": "Göztepe Gürsel Aksel Stadi",
+  "utc": "2026-08-23T18:30Z"
  },
  {
   "dep": {
@@ -315,9 +347,13 @@
    "form": "WDLLL",
    "id": "20070",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "17",
+    "goalAssists": "0",
     "possessionPct": "44.5",
+    "shotAssists": "0",
     "shotsOnTarget": "2",
+    "totalGoals": "1",
     "totalShots": "9",
     "wonCorners": "2"
    },
@@ -328,15 +364,19 @@
    "skor": "1"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
-   "ad": "Eyüpspor",
+   "ad": "Eyupspor",
    "form": "LLDWD",
    "id": "20729",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "16",
+    "goalAssists": "0",
     "possessionPct": "55.5",
+    "shotAssists": "0",
     "shotsOnTarget": "1",
+    "totalGoals": "0",
     "totalShots": "12",
     "wonCorners": "4"
    },
@@ -375,19 +415,23 @@
     "takim_id": "20070"
    }
   ],
-  "sehir": "İstanbul",
-  "stadyum": "Esenyurt Necmi Kadıoğlu Stadyumu",
-  "utc": "2026-08-23T16:00:00Z"
+  "sehir": "Istanbul",
+  "stadyum": "Esenyurt Necmi Kadioglu Stadi",
+  "utc": "2026-08-23T16:00Z"
  },
  {
   "dep": {
-   "ad": "İstanbul Başakşehir",
+   "ad": "Istanbul Basaksehir",
    "form": "LWLDW",
    "id": "7914",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "18",
+    "goalAssists": "0",
     "possessionPct": "47.6",
+    "shotAssists": "0",
     "shotsOnTarget": "4",
+    "totalGoals": "1",
     "totalShots": "12",
     "wonCorners": "1"
    },
@@ -398,15 +442,19 @@
    "skor": "1"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
    "ad": "Trabzonspor",
    "form": "LWLDL",
    "id": "997",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "13",
+    "goalAssists": "1",
     "possessionPct": "52.4",
+    "shotAssists": "0",
     "shotsOnTarget": "8",
+    "totalGoals": "2",
     "totalShots": "19",
     "wonCorners": "5"
    },
@@ -453,7 +501,7 @@
    {
     "dakika": "39'",
     "kendi_kalesine": false,
-    "oyuncu": "Bertuğ Yıldırım",
+    "oyuncu": "Bertug Yildirim",
     "penalti": false,
     "takim_id": "7914"
    },
@@ -481,21 +529,28 @@
    {
     "dakika": "89'",
     "kendi_kalesine": false,
-    "oyuncu": "Stefan Savić",
+    "oyuncu": "Onur Ergün",
     "penalti": false,
-    "takim_id": "997"
+    "takim_id": "7914"
    },
    {
     "dakika": "89'",
     "kendi_kalesine": false,
-    "oyuncu": "Onur Ergün",
+    "oyuncu": "Stefan Savic",
     "penalti": false,
-    "takim_id": "7914"
+    "takim_id": "997"
+   },
+   {
+    "dakika": "90'+3'",
+    "kendi_kalesine": false,
+    "oyuncu": "",
+    "penalti": false,
+    "takim_id": "997"
    }
   ],
   "sehir": "Trabzon",
   "stadyum": "Papara Park",
-  "utc": "2026-08-23T16:00:00Z"
+  "utc": "2026-08-23T16:00Z"
  },
  {
   "dep": {
@@ -503,9 +558,13 @@
    "form": "LLLLL",
    "id": "7648",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "10",
+    "goalAssists": "1",
     "possessionPct": "51.3",
+    "shotAssists": "0",
     "shotsOnTarget": "8",
+    "totalGoals": "2",
     "totalShots": "17",
     "wonCorners": "3"
    },
@@ -516,15 +575,19 @@
    "skor": "2"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
-   "ad": "Fenerbahçe",
+   "ad": "Fenerbahce",
    "form": "WWDLW",
    "id": "436",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "11",
+    "goalAssists": "2",
     "possessionPct": "48.7",
+    "shotAssists": "0",
     "shotsOnTarget": "9",
+    "totalGoals": "4",
     "totalShots": "20",
     "wonCorners": "7"
    },
@@ -585,7 +648,14 @@
    {
     "dakika": "45'+4'",
     "kendi_kalesine": false,
-    "oyuncu": "Adil Demirbağ",
+    "oyuncu": "Adil Demirbag",
+    "penalti": false,
+    "takim_id": "7648"
+   },
+   {
+    "dakika": "45'+4'",
+    "kendi_kalesine": false,
+    "oyuncu": "Deniz Turuc",
     "penalti": false,
     "takim_id": "7648"
    },
@@ -597,9 +667,9 @@
     "takim_id": "7648"
    }
   ],
-  "sehir": "İstanbul",
-  "stadyum": "Ülker Stadyumu",
-  "utc": "2026-08-22T18:30:00Z"
+  "sehir": "Istanbul",
+  "stadyum": "Ulker Stadyumu",
+  "utc": "2026-08-22T18:30Z"
  },
  {
   "dep": {
@@ -607,9 +677,13 @@
    "form": "WDWLW",
    "id": "11429",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "11",
+    "goalAssists": "2",
     "possessionPct": "39.9",
+    "shotAssists": "0",
     "shotsOnTarget": "3",
+    "totalGoals": "2",
     "totalShots": "6",
     "wonCorners": "1"
    },
@@ -620,15 +694,19 @@
    "skor": "2"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
-   "ad": "Çaykur Rizespor",
+   "ad": "Caykur Rizespor",
    "form": "LWDLW",
    "id": "7656",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "13",
+    "goalAssists": "0",
     "possessionPct": "60.1",
+    "shotAssists": "0",
     "shotsOnTarget": "8",
+    "totalGoals": "0",
     "totalShots": "28",
     "wonCorners": "10"
    },
@@ -674,18 +752,22 @@
    }
   ],
   "sehir": "Rize",
-  "stadyum": "Çaykur Didi Stadyumu",
-  "utc": "2026-08-22T16:00:00Z"
+  "stadyum": "Estadio Caykur Didi",
+  "utc": "2026-08-22T16:00Z"
  },
  {
   "dep": {
-   "ad": "Kasımpaşa",
+   "ad": "Kasimpasa",
    "form": "WDWLD",
    "id": "6870",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "13",
+    "goalAssists": "1",
     "possessionPct": "25.1",
+    "shotAssists": "0",
     "shotsOnTarget": "1",
+    "totalGoals": "1",
     "totalShots": "6",
     "wonCorners": "1"
    },
@@ -696,15 +778,19 @@
    "skor": "1"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
    "ad": "Çorum FK",
    "form": "LD",
    "id": "132334",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "12",
+    "goalAssists": "0",
     "possessionPct": "74.9",
+    "shotAssists": "0",
     "shotsOnTarget": "2",
+    "totalGoals": "0",
     "totalShots": "16",
     "wonCorners": "7"
    },
@@ -749,6 +835,13 @@
     "takim_id": "132334"
    },
    {
+    "dakika": "84'",
+    "kendi_kalesine": false,
+    "oyuncu": "",
+    "penalti": false,
+    "takim_id": "132334"
+   },
+   {
     "dakika": "89'",
     "kendi_kalesine": false,
     "oyuncu": "Ayberk Karapo",
@@ -756,9 +849,9 @@
     "takim_id": "6870"
    }
   ],
-  "sehir": "Çorum",
-  "stadyum": "Çorum Şehir Stadyumu",
-  "utc": "2026-08-22T16:00:00Z"
+  "sehir": "",
+  "stadyum": "Çorum Sehir Stadyumu",
+  "utc": "2026-08-22T16:00Z"
  },
  {
   "dep": {
@@ -766,9 +859,13 @@
    "form": "WDLWL",
    "id": "432",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "12",
+    "goalAssists": "2",
     "possessionPct": "51.8",
+    "shotAssists": "0",
     "shotsOnTarget": "4",
+    "totalGoals": "4",
     "totalShots": "10",
     "wonCorners": "2"
    },
@@ -779,15 +876,19 @@
    "skor": "4"
   },
   "durum": "post",
-  "durum_metin": "MS",
+  "durum_metin": "FT",
   "ev": {
    "ad": "Erzurum BB",
    "form": "DLLWL",
    "id": "19267",
    "istatistik": {
+    "appearances": "0",
     "foulsCommitted": "11",
+    "goalAssists": "0",
     "possessionPct": "48.2",
+    "shotAssists": "0",
     "shotsOnTarget": "4",
+    "totalGoals": "0",
     "totalShots": "12",
     "wonCorners": "2"
    },
@@ -840,7 +941,631 @@
    }
   ],
   "sehir": "Erzurum",
-  "stadyum": "Erzurum Kazım Karabekir",
-  "utc": "2026-08-21T18:30:00Z"
+  "stadyum": "Erzurum Kazim Karabekir",
+  "utc": "2026-08-21T18:30Z"
+ },
+ {
+  "dep": {
+   "ad": "Goztepe",
+   "form": "LDLWD",
+   "id": "789",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "13",
+    "goalAssists": "1",
+    "possessionPct": "30.7",
+    "shotAssists": "0",
+    "shotsOnTarget": "7",
+    "totalGoals": "3",
+    "totalShots": "20",
+    "wonCorners": "8"
+   },
+   "kazandi": false,
+   "kisa": "GOZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
+   "renk": "#000000",
+   "skor": "3"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Samsunspor",
+   "form": "WDWLW",
+   "id": "11429",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "8",
+    "goalAssists": "2",
+    "possessionPct": "69.3",
+    "shotAssists": "0",
+    "shotsOnTarget": "3",
+    "totalGoals": "3",
+    "totalShots": "21",
+    "wonCorners": "4"
+   },
+   "kazandi": false,
+   "kisa": "SAM",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
+   "renk": "#000000",
+   "skor": "3"
+  },
+  "goller": [
+   {
+    "dakika": "3'",
+    "kendi_kalesine": false,
+    "oyuncu": "Alex Matos",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "30'",
+    "kendi_kalesine": false,
+    "oyuncu": "Marius Mouandilmadji",
+    "penalti": true,
+    "takim_id": "11429"
+   },
+   {
+    "dakika": "43'",
+    "kendi_kalesine": false,
+    "oyuncu": "Emre Kilinc",
+    "penalti": false,
+    "takim_id": "11429"
+   },
+   {
+    "dakika": "46'",
+    "kendi_kalesine": false,
+    "oyuncu": "Sinclair Armstrong",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "65'",
+    "kendi_kalesine": false,
+    "oyuncu": "Efkan Bekiroglu",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "90'",
+    "kendi_kalesine": false,
+    "oyuncu": "Celil Yuksel",
+    "penalti": false,
+    "takim_id": "11429"
+   }
+  ],
+  "id": "401888320",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+6'",
+  "sari_kartlar": [
+   {
+    "dakika": "4'",
+    "kendi_kalesine": false,
+    "oyuncu": "",
+    "penalti": false,
+    "takim_id": "11429"
+   },
+   {
+    "dakika": "17'",
+    "kendi_kalesine": false,
+    "oyuncu": "Alex Matos",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "28'",
+    "kendi_kalesine": false,
+    "oyuncu": "Juan",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "52'",
+    "kendi_kalesine": false,
+    "oyuncu": "Toni Borevkovic",
+    "penalti": false,
+    "takim_id": "11429"
+   },
+   {
+    "dakika": "52'",
+    "kendi_kalesine": false,
+    "oyuncu": "Sinclair Armstrong",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "56'",
+    "kendi_kalesine": false,
+    "oyuncu": "Santos",
+    "penalti": false,
+    "takim_id": "789"
+   }
+  ],
+  "sehir": "Samsun",
+  "stadyum": "Samsun 19 Mayis Stadium",
+  "utc": "2026-08-17T18:30Z"
+ },
+ {
+  "dep": {
+   "ad": "Erzurum BB",
+   "form": "DLLWL",
+   "id": "19267",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "12",
+    "goalAssists": "1",
+    "possessionPct": "53.5",
+    "shotAssists": "0",
+    "shotsOnTarget": "1",
+    "totalGoals": "1",
+    "totalShots": "5",
+    "wonCorners": "4"
+   },
+   "kazandi": false,
+   "kisa": "ERZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
+   "renk": "#000000",
+   "skor": "0"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Amed SFK",
+   "form": "LW",
+   "id": "132335",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "10",
+    "goalAssists": "3",
+    "possessionPct": "46.5",
+    "shotAssists": "0",
+    "shotsOnTarget": "5",
+    "totalGoals": "3",
+    "totalShots": "13",
+    "wonCorners": "4"
+   },
+   "kazandi": true,
+   "kisa": "AMED",
+   "logo": "",
+   "renk": "#000000",
+   "skor": "3"
+  },
+  "goller": [
+   {
+    "dakika": "53'",
+    "kendi_kalesine": false,
+    "oyuncu": "Dia Saba",
+    "penalti": false,
+    "takim_id": "132335"
+   },
+   {
+    "dakika": "62'",
+    "kendi_kalesine": false,
+    "oyuncu": "Dia Saba",
+    "penalti": false,
+    "takim_id": "132335"
+   },
+   {
+    "dakika": "70'",
+    "kendi_kalesine": false,
+    "oyuncu": "Gökhan Gül",
+    "penalti": false,
+    "takim_id": "132335"
+   }
+  ],
+  "id": "401888392",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+4'",
+  "sari_kartlar": [
+   {
+    "dakika": "90'+1'",
+    "kendi_kalesine": false,
+    "oyuncu": "Rayan Raveloson",
+    "penalti": false,
+    "takim_id": "132335"
+   }
+  ],
+  "sehir": "Diyarbakir",
+  "stadyum": "Diyarbakir Stadyumu",
+  "utc": "2026-08-16T18:30Z"
+ },
+ {
+  "dep": {
+   "ad": "Eyupspor",
+   "form": "LLDWD",
+   "id": "20729",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "14",
+    "goalAssists": "0",
+    "possessionPct": "33.8",
+    "shotAssists": "0",
+    "shotsOnTarget": "1",
+    "totalGoals": "0",
+    "totalShots": "4",
+    "wonCorners": "2"
+   },
+   "kazandi": false,
+   "kisa": "EYU",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20729.png",
+   "renk": "#000000",
+   "skor": "0"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Besiktas",
+   "form": "LLWWW",
+   "id": "1895",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "20",
+    "goalAssists": "1",
+    "possessionPct": "66.2",
+    "shotAssists": "0",
+    "shotsOnTarget": "5",
+    "totalGoals": "1",
+    "totalShots": "19",
+    "wonCorners": "8"
+   },
+   "kazandi": true,
+   "kisa": "BES",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+   "renk": "#ffffff",
+   "skor": "1"
+  },
+  "goller": [
+   {
+    "dakika": "25'",
+    "kendi_kalesine": false,
+    "oyuncu": "Václav Cerný",
+    "penalti": false,
+    "takim_id": "1895"
+   }
+  ],
+  "id": "401888321",
+  "kirmizi_kartlar": [
+   {
+    "dakika": "68'",
+    "kendi_kalesine": false,
+    "oyuncu": "David Costa",
+    "penalti": false,
+    "takim_id": "20729"
+   }
+  ],
+  "saat_gostergesi": "90'+4'",
+  "sari_kartlar": [
+   {
+    "dakika": "28'",
+    "kendi_kalesine": false,
+    "oyuncu": "David Costa",
+    "penalti": false,
+    "takim_id": "20729"
+   },
+   {
+    "dakika": "48'",
+    "kendi_kalesine": false,
+    "oyuncu": "Charles-Andre Raux Yao",
+    "penalti": false,
+    "takim_id": "20729"
+   },
+   {
+    "dakika": "53'",
+    "kendi_kalesine": false,
+    "oyuncu": "Leandro Trossard",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "90'+4'",
+    "kendi_kalesine": false,
+    "oyuncu": "Tiago Djaló",
+    "penalti": false,
+    "takim_id": "1895"
+   }
+  ],
+  "sehir": "Istanbul",
+  "stadyum": "Vodafone Park",
+  "utc": "2026-08-16T18:30Z"
+ },
+ {
+  "dep": {
+   "ad": "Kocaelispor",
+   "form": "WLLLD",
+   "id": "995",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "14",
+    "goalAssists": "0",
+    "possessionPct": "49.4",
+    "shotAssists": "0",
+    "shotsOnTarget": "4",
+    "totalGoals": "0",
+    "totalShots": "8",
+    "wonCorners": "2"
+   },
+   "kazandi": false,
+   "kisa": "KOC",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
+   "renk": "#000000",
+   "skor": "0"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Istanbul Basaksehir",
+   "form": "LWLDW",
+   "id": "7914",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "14",
+    "goalAssists": "2",
+    "possessionPct": "50.6",
+    "shotAssists": "0",
+    "shotsOnTarget": "5",
+    "totalGoals": "2",
+    "totalShots": "17",
+    "wonCorners": "8"
+   },
+   "kazandi": true,
+   "kisa": "IBFK",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7914.png",
+   "renk": "#ff6600",
+   "skor": "2"
+  },
+  "goller": [
+   {
+    "dakika": "14'",
+    "kendi_kalesine": false,
+    "oyuncu": "Christopher Operi",
+    "penalti": false,
+    "takim_id": "7914"
+   },
+   {
+    "dakika": "72'",
+    "kendi_kalesine": false,
+    "oyuncu": "Eldor Shomurodov",
+    "penalti": false,
+    "takim_id": "7914"
+   }
+  ],
+  "id": "401888324",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+3'",
+  "sari_kartlar": [
+   {
+    "dakika": "29'",
+    "kendi_kalesine": false,
+    "oyuncu": "",
+    "penalti": false,
+    "takim_id": "995"
+   },
+   {
+    "dakika": "31'",
+    "kendi_kalesine": false,
+    "oyuncu": "Tayfur Bingöl",
+    "penalti": false,
+    "takim_id": "995"
+   },
+   {
+    "dakika": "51'",
+    "kendi_kalesine": false,
+    "oyuncu": "Abbosbek Fayzullaev",
+    "penalti": false,
+    "takim_id": "7914"
+   },
+   {
+    "dakika": "81'",
+    "kendi_kalesine": false,
+    "oyuncu": "Tanguy Zoukrou",
+    "penalti": false,
+    "takim_id": "995"
+   },
+   {
+    "dakika": "90'+2'",
+    "kendi_kalesine": false,
+    "oyuncu": "Omer Sahiner",
+    "penalti": false,
+    "takim_id": "7914"
+   }
+  ],
+  "sehir": "Istanbul",
+  "stadyum": "Basaksehir Fatih Terim Stadium",
+  "utc": "2026-08-16T16:00Z"
+ },
+ {
+  "dep": {
+   "ad": "Alanyaspor",
+   "form": "WDLWD",
+   "id": "9078",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "21",
+    "goalAssists": "0",
+    "possessionPct": "38.9",
+    "shotAssists": "0",
+    "shotsOnTarget": "2",
+    "totalGoals": "1",
+    "totalShots": "11",
+    "wonCorners": "4"
+   },
+   "kazandi": false,
+   "kisa": "ALA",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
+   "renk": "#000000",
+   "skor": "1"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Gaziantep FK",
+   "form": "WDLLL",
+   "id": "20070",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "14",
+    "goalAssists": "1",
+    "possessionPct": "61.1",
+    "shotAssists": "0",
+    "shotsOnTarget": "5",
+    "totalGoals": "1",
+    "totalShots": "13",
+    "wonCorners": "0"
+   },
+   "kazandi": false,
+   "kisa": "GAZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
+   "renk": "#000000",
+   "skor": "1"
+  },
+  "goller": [
+   {
+    "dakika": "20'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ruan",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "61'",
+    "kendi_kalesine": false,
+    "oyuncu": "Deian Sorescu",
+    "penalti": false,
+    "takim_id": "20070"
+   }
+  ],
+  "id": "401888326",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+4'",
+  "sari_kartlar": [
+   {
+    "dakika": "53'",
+    "kendi_kalesine": false,
+    "oyuncu": "Juninho Bacuna",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "58'",
+    "kendi_kalesine": false,
+    "oyuncu": "Fidan Aliti",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "69'",
+    "kendi_kalesine": false,
+    "oyuncu": "Gaïus Makouta",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "84'",
+    "kendi_kalesine": false,
+    "oyuncu": "Serdar Dursun",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "88'",
+    "kendi_kalesine": false,
+    "oyuncu": "Enes Keskin",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "90'+2'",
+    "kendi_kalesine": false,
+    "oyuncu": "Victor Gidado",
+    "penalti": false,
+    "takim_id": "20070"
+   }
+  ],
+  "sehir": "Gaziantep",
+  "stadyum": "Gaziantep Stadium",
+  "utc": "2026-08-15T18:30Z"
+ },
+ {
+  "dep": {
+   "ad": "Fenerbahce",
+   "form": "WWDLW",
+   "id": "436",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "10",
+    "goalAssists": "1",
+    "possessionPct": "71.1",
+    "shotAssists": "0",
+    "shotsOnTarget": "11",
+    "totalGoals": "1",
+    "totalShots": "27",
+    "wonCorners": "12"
+   },
+   "kazandi": false,
+   "kisa": "FEN",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+   "renk": "#ffff00",
+   "skor": "1"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Genclerbirligi",
+   "form": "DWWWW",
+   "id": "996",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "7",
+    "goalAssists": "2",
+    "possessionPct": "28.9",
+    "shotAssists": "0",
+    "shotsOnTarget": "3",
+    "totalGoals": "2",
+    "totalShots": "10",
+    "wonCorners": "1"
+   },
+   "kazandi": true,
+   "kisa": "GEN",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
+   "renk": "#000000",
+   "skor": "2"
+  },
+  "goller": [
+   {
+    "dakika": "13'",
+    "kendi_kalesine": false,
+    "oyuncu": "Talisca",
+    "penalti": false,
+    "takim_id": "436"
+   },
+   {
+    "dakika": "37'",
+    "kendi_kalesine": false,
+    "oyuncu": "Franco Tongya",
+    "penalti": false,
+    "takim_id": "996"
+   },
+   {
+    "dakika": "56'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ogulcan Ülgün",
+    "penalti": false,
+    "takim_id": "996"
+   }
+  ],
+  "id": "401888323",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+6'",
+  "sari_kartlar": [
+   {
+    "dakika": "58'",
+    "kendi_kalesine": false,
+    "oyuncu": "Kerem Aktürkoglu",
+    "penalti": false,
+    "takim_id": "436"
+   }
+  ],
+  "sehir": "Ankara",
+  "stadyum": "Eryaman Stadium",
+  "utc": "2026-08-15T18:30Z"
  }
 ]
