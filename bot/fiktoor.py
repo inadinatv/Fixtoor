@@ -32,6 +32,8 @@ WEB_API = "https://site.web.api.espn.com/apis/v2/sports/soccer/{slug}"
 TR_TZ = ZoneInfo("Europe/Istanbul")
 
 GUNLER = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]
+# Takvim kısaltmaları: Cuma/Cumartesi ("Cum") ve Pazar/Pazartesi ("Paz") karışmasın diye ayrı liste
+GUNLER_KISA = ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"]
 AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
 
 HTTP_TIMEOUT = 25
@@ -72,9 +74,9 @@ def esc(s) -> str:
 
 
 def tr_tarih(dt: datetime, saat_dahil: bool = True) -> str:
-    """UTC datetime -> 'Cum, 29 Ağu 19:00' (İstanbul saati)."""
+    """UTC datetime -> 'Cmt, 29 Ağu 19:00' (İstanbul saati)."""
     yerel = dt.astimezone(TR_TZ)
-    metin = f"{GUNLER[yerel.weekday()][:3]}, {yerel.day} {AYLAR[yerel.month - 1]}"
+    metin = f"{GUNLER_KISA[yerel.weekday()]}, {yerel.day} {AYLAR[yerel.month - 1]}"
     if saat_dahil:
         metin += f" {yerel.hour:02d}:{yerel.minute:02d}"
     return metin
@@ -426,7 +428,11 @@ header.ust{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom
 background:linear-gradient(180deg,rgba(56,189,248,.07),rgba(34,197,94,.05));
 border:1px solid var(--cizgi);border-radius:18px;padding:18px 20px}
 header.ust>img{width:56px;height:56px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.45))}
-header.ust img.marka-logo{width:auto;height:clamp(34px,7vw,48px);max-width:min(200px,55vw);object-fit:contain}
+.logo-seridi{padding:4px 10px 0;margin-bottom:12px;text-align:center}
+.logo-seridi img{display:inline-block;width:100%;max-width:520px;height:auto;max-height:150px;
+object-fit:contain;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
+header.ust.sade{justify-content:center;text-align:center}
+header.ust.sade .lig-etiket{margin-left:0}
 h1{font-size:26px;letter-spacing:.4px;display:inline}
 h1 span{background:linear-gradient(90deg,#22c55e,#38bdf8);
 -webkit-background-clip:text;background-clip:text;color:transparent}
@@ -585,7 +591,7 @@ def tv_karti(m: dict) -> str:
                 f'<span class="ayrac">—</span>'
                 f'<span>{esc(dep["ad"])}</span>{logo(dep)}{skor_html}')
 
-    gun = GUNLER[yerel.weekday()][:3] if yerel else ""
+    gun = GUNLER_KISA[yerel.weekday()] if yerel else ""
     saat = f"{yerel.hour:02d}:{yerel.minute:02d}" if yerel else "--:--"
     tarih = f"{yerel.day} {AYLAR[yerel.month - 1]}" if yerel else ""
     if canli:
@@ -803,16 +809,22 @@ def render_html(veri: dict, cikti: str) -> None:
 
     canli_rozet = ' <span class="canli">CANLI</span>' if canli_var else ""
 
-    # İnadına TV markası: depoda logo dosyası varsa üst başlıkta ve altta o kullanılır,
-    # yoksa üstte lig logosu, altta yerleşik SVG amblem gösterilir
+    # İnadına TV markası: depoda logo dosyası varsa üstte tam genişlik şerit olarak
+    # ve altta o kullanılır; yoksa üstte lig logosu, altta yerleşik SVG amblem gösterilir
     kok = os.path.dirname(os.path.abspath(cikti))
     logo_dosya = next((ad for ad in ("logo.png", "logo.svg", "logo.jpg", "logo.webp",
                                      "assets/logo.png", "assets/logo.svg")
                        if os.path.exists(os.path.join(kok, ad))), "")
     if logo_dosya:
-        ust_logo_html = f'<img class="marka-logo" src="{esc(logo_dosya)}" alt="İnadına TV">'
+        # Logo tam genişlik, üst şerit hâlinde, ortada gösterilir; başlık sadeleşir
+        logo_seridi = (f'<div class="logo-seridi">'
+                       f'<img src="{esc(logo_dosya)}" alt="İnadına TV"></div>')
+        ust_logo_html = ""
+        ust_sinif = "ust sade"
         marka_html = f'<span class="marka"><img src="{esc(logo_dosya)}" alt="İnadına TV"></span>'
     else:
+        logo_seridi = ""
+        ust_sinif = "ust"
         ust_logo_html = f'<img src="{esc(lig["logo"])}" alt="lig logosu">' if lig.get("logo") else ""
         marka_html = ('<span class="marka">'
                       '<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">'
@@ -834,7 +846,8 @@ def render_html(veri: dict, cikti: str) -> None:
 </head>
 <body>
 <div class="kapsayici">
-<header class="ust">{ust_logo_html}
+{logo_seridi}
+<header class="{ust_sinif}">{ust_logo_html}
 <div><h1>Fix<span>toor</span></h1><span class="lig-etiket">⚽ {esc(lig["ad"])}</span>
 <div class="alt-bilgi">{esc(lig.get("sezon_adi", ""))} · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı{canli_rozet}</div>
 <div class="alt-bilgi">Son güncelleme: {esc(tr_tarih(parse_utc(simdi)))} (İstanbul)</div>
