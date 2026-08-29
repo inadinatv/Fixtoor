@@ -426,6 +426,7 @@ header.ust{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom
 background:linear-gradient(180deg,rgba(56,189,248,.07),rgba(34,197,94,.05));
 border:1px solid var(--cizgi);border-radius:18px;padding:18px 20px}
 header.ust>img{width:56px;height:56px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.45))}
+header.ust img.marka-logo{width:auto;height:64px;max-width:250px;object-fit:contain}
 h1{font-size:26px;letter-spacing:.4px;display:inline}
 h1 span{background:linear-gradient(90deg,#22c55e,#38bdf8);
 -webkit-background-clip:text;background-clip:text;color:transparent}
@@ -444,7 +445,7 @@ nav.sekmeler button:hover{color:var(--metin);border-color:#3b4c61;transform:tran
 nav.sekmeler button.aktif{background:linear-gradient(135deg,#22c55e,#16a34a);color:#04220e;
 border-color:#22c55e;box-shadow:0 6px 20px rgba(34,197,94,.28)}
 html.js .sekme-icerik{display:none}
-html.js .sekme-icerik.aktif{display:block}
+html.js .sekme-icerig.aktif{display:block}
 h2{font-size:19px;margin:22px 0 12px;display:flex;align-items:center;gap:8px}
 h2::before{content:'';width:4px;height:18px;background:var(--yesil);border-radius:2px}
 .kart{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;margin-bottom:12px;
@@ -800,18 +801,19 @@ def render_html(veri: dict, cikti: str) -> None:
     yaklasan_html = "".join(mac_satiri(m) for m in yaklasan[:6]) or \
         '<div class="bos">Kalan maç yok — sezon tamamlandı. 🏆</div>'
 
-    logo_html = f'<img src="{esc(lig["logo"])}" alt="lig logosu">' if lig.get("logo") else ""
     canli_rozet = ' <span class="canli">CANLI</span>' if canli_var else ""
 
-    # İnadına TV markası: depoda logo dosyası varsa o, yoksa yerleşik SVG amblem kullanılır
+    # İnadına TV markası: depoda logo dosyası varsa üst başlıkta ve altta o kullanılır,
+    # yoksa üstte lig logosu, altta yerleşik SVG amblem gösterilir
     kok = os.path.dirname(os.path.abspath(cikti))
     logo_dosya = next((ad for ad in ("logo.png", "logo.svg", "logo.jpg", "logo.webp",
                                      "assets/logo.png", "assets/logo.svg")
                        if os.path.exists(os.path.join(kok, ad))), "")
     if logo_dosya:
-        marka_html = (f'<span class="marka"><img src="{esc(logo_dosya)}" alt="İnadına TV">'
-                      f'<span class="itv-ad">inadına <b>TV</b></span></span>')
+        ust_logo_html = f'<img class="marka-logo" src="{esc(logo_dosya)}" alt="İnadına TV">'
+        marka_html = f'<span class="marka"><img src="{esc(logo_dosya)}" alt="İnadına TV"></span>'
     else:
+        ust_logo_html = f'<img src="{esc(lig["logo"])}" alt="lig logosu">' if lig.get("logo") else ""
         marka_html = ('<span class="marka">'
                       '<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">'
                       '<defs><linearGradient id="itvg" x1="0" y1="0" x2="1" y2="1">'
@@ -832,7 +834,7 @@ def render_html(veri: dict, cikti: str) -> None:
 </head>
 <body>
 <div class="kapsayici">
-<header class="ust">{logo_html}
+<header class="ust">{ust_logo_html}
 <div><h1>Fix<span>toor</span></h1><span class="lig-etiket">⚽ {esc(lig["ad"])}</span>
 <div class="alt-bilgi">{esc(lig.get("sezon_adi", ""))} · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı{canli_rozet}</div>
 <div class="alt-bilgi">Son güncelleme: {esc(tr_tarih(parse_utc(simdi)))} (İstanbul)</div>
