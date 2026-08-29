@@ -494,7 +494,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -1711,7 +1711,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -1891,40 +1891,40 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "9",
-       "goalAssists": "0",
-       "possessionPct": "37.4",
+       "foulsCommitted": "12",
+       "goalAssists": "2",
+       "possessionPct": "55.8",
        "shotAssists": "0",
-       "shotsOnTarget": "1",
-       "totalGoals": "0",
-       "totalShots": "2",
-       "wonCorners": "1"
+       "shotsOnTarget": "7",
+       "totalGoals": "2",
+       "totalShots": "15",
+       "wonCorners": "4"
       },
-      "kazandi": false,
+      "kazandi": true,
       "kisa": "KOC",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "2"
      },
-     "durum": "in",
-     "durum_metin": "HT",
+     "durum": "post",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Konyaspor",
       "form": "LLLLL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "9",
+       "foulsCommitted": "16",
        "goalAssists": "0",
-       "possessionPct": "62.6",
+       "possessionPct": "44.2",
        "shotAssists": "0",
        "shotsOnTarget": "0",
        "totalGoals": "1",
-       "totalShots": "7",
+       "totalShots": "10",
        "wonCorners": "1"
       },
       "kazandi": false,
@@ -1940,12 +1940,34 @@
        "oyuncu": "Tanguy Zoukrou",
        "penalti": false,
        "takim_id": "7648"
+      },
+      {
+       "dakika": "72'",
+       "kendi_kalesine": false,
+       "oyuncu": "Massadio Haidara",
+       "penalti": false,
+       "takim_id": "995"
+      },
+      {
+       "dakika": "86'",
+       "kendi_kalesine": false,
+       "oyuncu": "Metehan Altunbas",
+       "penalti": false,
+       "takim_id": "995"
       }
      ],
      "id": "401888308",
      "kanal": "beIN Sports 1",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "45'+3'",
+     "kirmizi_kartlar": [
+      {
+       "dakika": "48'",
+       "kendi_kalesine": false,
+       "oyuncu": "Enis Bardhi",
+       "penalti": false,
+       "takim_id": "7648"
+      }
+     ],
+     "saat_gostergesi": "90'+4'",
      "sari_kartlar": [
       {
        "dakika": "10'",
@@ -1974,6 +1996,20 @@
        "oyuncu": "Matej Maglica",
        "penalti": false,
        "takim_id": "995"
+      },
+      {
+       "dakika": "73'",
+       "kendi_kalesine": false,
+       "oyuncu": "",
+       "penalti": false,
+       "takim_id": "7648"
+      },
+      {
+       "dakika": "88'",
+       "kendi_kalesine": false,
+       "oyuncu": "Rajmund Tóth",
+       "penalti": false,
+       "takim_id": "7648"
       }
      ],
      "sehir": "Konya",
@@ -1985,32 +2021,75 @@
       "ad": "Goztepe",
       "form": "LDLWD",
       "id": "789",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "10",
+       "goalAssists": "1",
+       "possessionPct": "27.4",
+       "shotAssists": "0",
+       "shotsOnTarget": "3",
+       "totalGoals": "1",
+       "totalShots": "4",
+       "wonCorners": "1"
+      },
       "kazandi": false,
       "kisa": "GOZ",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "1"
      },
-     "durum": "pre",
-     "durum_metin": "Scheduled",
+     "durum": "in",
+     "durum_metin": "51'",
      "ev": {
       "ad": "Galatasaray",
       "form": "WDLWL",
       "id": "432",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "3",
+       "goalAssists": "0",
+       "possessionPct": "72.6",
+       "shotAssists": "0",
+       "shotsOnTarget": "3",
+       "totalGoals": "1",
+       "totalShots": "17",
+       "wonCorners": "3"
+      },
       "kazandi": false,
       "kisa": "GAL",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
       "renk": "#aa0031",
-      "skor": "0"
+      "skor": "1"
      },
-     "goller": [],
+     "goller": [
+      {
+       "dakika": "16'",
+       "kendi_kalesine": false,
+       "oyuncu": "Novatus Miroshi",
+       "penalti": false,
+       "takim_id": "789"
+      },
+      {
+       "dakika": "33'",
+       "kendi_kalesine": false,
+       "oyuncu": "Davinson Sánchez",
+       "penalti": false,
+       "takim_id": "432"
+      }
+     ],
      "id": "401888307",
      "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "51'",
+     "sari_kartlar": [
+      {
+       "dakika": "36'",
+       "kendi_kalesine": false,
+       "oyuncu": "André Henrique",
+       "penalti": false,
+       "takim_id": "789"
+      }
+     ],
      "sehir": "Istanbul",
      "stadyum": "RAMS Park",
      "utc": "2026-08-29T18:30Z"
@@ -2020,31 +2099,66 @@
       "ad": "Caykur Rizespor",
       "form": "LWDLW",
       "id": "7656",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "6",
+       "goalAssists": "2",
+       "possessionPct": "46.1",
+       "shotAssists": "0",
+       "shotsOnTarget": "3",
+       "totalGoals": "2",
+       "totalShots": "8",
+       "wonCorners": "0"
+      },
       "kazandi": false,
       "kisa": "CAY",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7656.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "2"
      },
-     "durum": "pre",
-     "durum_metin": "Scheduled",
+     "durum": "in",
+     "durum_metin": "55'",
      "ev": {
       "ad": "Gaziantep FK",
       "form": "WDLLL",
       "id": "20070",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "6",
+       "goalAssists": "0",
+       "possessionPct": "53.9",
+       "shotAssists": "0",
+       "shotsOnTarget": "2",
+       "totalGoals": "0",
+       "totalShots": "9",
+       "wonCorners": "3"
+      },
       "kazandi": false,
       "kisa": "GAZ",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
       "renk": "#000000",
       "skor": "0"
      },
-     "goller": [],
+     "goller": [
+      {
+       "dakika": "12'",
+       "kendi_kalesine": false,
+       "oyuncu": "Emrecan Bulut",
+       "penalti": false,
+       "takim_id": "7656"
+      },
+      {
+       "dakika": "35'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ali Sowe",
+       "penalti": false,
+       "takim_id": "7656"
+      }
+     ],
      "id": "401888312",
      "kanal": "beIN Sports 2",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
+     "saat_gostergesi": "55'",
      "sari_kartlar": [],
      "sehir": "Gaziantep",
      "stadyum": "Gaziantep Stadium",
@@ -2421,7 +2535,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -2693,7 +2807,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -3131,7 +3245,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -3228,7 +3342,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -3771,7 +3885,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -3833,7 +3947,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -4376,7 +4490,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -4613,7 +4727,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -5016,7 +5130,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -5218,7 +5332,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -5503,7 +5617,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -6046,7 +6160,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -6353,7 +6467,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -6686,7 +6800,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -6971,7 +7085,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -7033,7 +7147,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -7611,7 +7725,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -7953,7 +8067,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -8251,7 +8365,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -8488,7 +8602,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -8891,7 +9005,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -9163,7 +9277,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -9531,7 +9645,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -9663,7 +9777,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -10136,7 +10250,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -10408,7 +10522,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -10776,7 +10890,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -11131,7 +11245,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -11298,7 +11412,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -11806,7 +11920,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -12008,7 +12122,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLLLD",
+      "form": "WWLLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -12209,6 +12323,24 @@
  },
  "puan_durumu": [
   {
+   "attigi": "9",
+   "averaj": "+5",
+   "b": "1",
+   "form": "2-1-0",
+   "g": "2",
+   "kisa": "GAL",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
+   "m": "0",
+   "not": "Champions League",
+   "not_renk": "#81D6AC",
+   "o": "3",
+   "puan": "7",
+   "sira": 1,
+   "takim": "Galatasaray",
+   "takim_id": "432",
+   "yedigi": "4"
+  },
+  {
    "attigi": "4",
    "averaj": "+2",
    "b": "1",
@@ -12217,11 +12349,11 @@
    "kisa": "GEN",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
    "m": "0",
-   "not": "Champions League",
-   "not_renk": "#81D6AC",
+   "not": "Champions League qualifying",
+   "not_renk": "#B5E7CE",
    "o": "3",
    "puan": "7",
-   "sira": 1,
+   "sira": 2,
    "takim": "Genclerbirligi",
    "takim_id": "996",
    "yedigi": "2"
@@ -12235,32 +12367,32 @@
    "kisa": "KOC",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
    "m": "1",
-   "not": "Champions League qualifying",
-   "not_renk": "#B5E7CE",
+   "not": "Europa League qualifying",
+   "not_renk": "#B2BFD0",
    "o": "3",
    "puan": "6",
-   "sira": 2,
+   "sira": 3,
    "takim": "Kocaelispor",
    "takim_id": "995",
    "yedigi": "3"
   },
   {
-   "attigi": "6",
-   "averaj": "+4",
-   "b": "1",
-   "form": "1-1-0",
-   "g": "1",
-   "kisa": "GAL",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
-   "m": "0",
-   "not": "Europa League qualifying",
-   "not_renk": "#B2BFD0",
-   "o": "2",
-   "puan": "4",
-   "sira": 3,
-   "takim": "Galatasaray",
-   "takim_id": "432",
-   "yedigi": "2"
+   "attigi": "3",
+   "averaj": "0",
+   "b": "0",
+   "form": "2-0-1",
+   "g": "2",
+   "kisa": "CAY",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7656.png",
+   "m": "1",
+   "not": "Conference League qualifying",
+   "not_renk": "#c6d1e0",
+   "o": "3",
+   "puan": "6",
+   "sira": 4,
+   "takim": "Caykur Rizespor",
+   "takim_id": "7656",
+   "yedigi": "3"
   },
   {
    "attigi": "5",
@@ -12271,11 +12403,11 @@
    "kisa": "SAM",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
    "m": "0",
-   "not": "Conference League qualifying",
-   "not_renk": "#c6d1e0",
+   "not": "",
+   "not_renk": "",
    "o": "2",
    "puan": "4",
-   "sira": 4,
+   "sira": 5,
    "takim": "Samsunspor",
    "takim_id": "11429",
    "yedigi": "3"
@@ -12293,7 +12425,7 @@
    "not_renk": "",
    "o": "2",
    "puan": "4",
-   "sira": 5,
+   "sira": 6,
    "takim": "Trabzonspor",
    "takim_id": "997",
    "yedigi": "2"
@@ -12311,27 +12443,9 @@
    "not_renk": "",
    "o": "2",
    "puan": "4",
-   "sira": 6,
+   "sira": 7,
    "takim": "Alanyaspor",
    "takim_id": "9078",
-   "yedigi": "1"
-  },
-  {
-   "attigi": "2",
-   "averaj": "+1",
-   "b": "1",
-   "form": "1-1-0",
-   "g": "1",
-   "kisa": "GAZ",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
-   "m": "0",
-   "not": "",
-   "not_renk": "",
-   "o": "2",
-   "puan": "4",
-   "sira": 7,
-   "takim": "Gaziantep FK",
-   "takim_id": "20070",
    "yedigi": "1"
   },
   {
@@ -12353,6 +12467,24 @@
    "yedigi": "1"
   },
   {
+   "attigi": "3",
+   "averaj": "0",
+   "b": "1",
+   "form": "1-1-1",
+   "g": "1",
+   "kisa": "GAZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
+   "m": "1",
+   "not": "",
+   "not_renk": "",
+   "o": "3",
+   "puan": "4",
+   "sira": 9,
+   "takim": "Gaziantep FK",
+   "takim_id": "20070",
+   "yedigi": "3"
+  },
+  {
    "attigi": "5",
    "averaj": "+1",
    "b": "0",
@@ -12365,7 +12497,7 @@
    "not_renk": "",
    "o": "2",
    "puan": "3",
-   "sira": 9,
+   "sira": 10,
    "takim": "Fenerbahce",
    "takim_id": "436",
    "yedigi": "4"
@@ -12383,7 +12515,7 @@
    "not_renk": "",
    "o": "2",
    "puan": "3",
-   "sira": 10,
+   "sira": 11,
    "takim": "Amed SFK",
    "takim_id": "132335",
    "yedigi": "2"
@@ -12401,7 +12533,7 @@
    "not_renk": "",
    "o": "2",
    "puan": "3",
-   "sira": 11,
+   "sira": 12,
    "takim": "Istanbul Basaksehir",
    "takim_id": "7914",
    "yedigi": "2"
@@ -12419,46 +12551,10 @@
    "not_renk": "",
    "o": "2",
    "puan": "3",
-   "sira": 12,
+   "sira": 13,
    "takim": "Besiktas",
    "takim_id": "1895",
    "yedigi": "1"
-  },
-  {
-   "attigi": "1",
-   "averaj": "-1",
-   "b": "0",
-   "form": "1-0-1",
-   "g": "1",
-   "kisa": "CAY",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7656.png",
-   "m": "1",
-   "not": "",
-   "not_renk": "",
-   "o": "2",
-   "puan": "3",
-   "sira": 13,
-   "takim": "Caykur Rizespor",
-   "takim_id": "7656",
-   "yedigi": "2"
-  },
-  {
-   "attigi": "3",
-   "averaj": "-1",
-   "b": "1",
-   "form": "0-1-1",
-   "g": "0",
-   "kisa": "GOZ",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
-   "m": "1",
-   "not": "",
-   "not_renk": "",
-   "o": "2",
-   "puan": "1",
-   "sira": 14,
-   "takim": "Goztepe",
-   "takim_id": "789",
-   "yedigi": "4"
   },
   {
    "attigi": "2",
@@ -12473,10 +12569,28 @@
    "not_renk": "",
    "o": "2",
    "puan": "1",
-   "sira": 15,
+   "sira": 14,
    "takim": "Çorum FK",
    "takim_id": "132334",
    "yedigi": "3"
+  },
+  {
+   "attigi": "5",
+   "averaj": "-2",
+   "b": "1",
+   "form": "0-1-2",
+   "g": "0",
+   "kisa": "GOZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
+   "m": "2",
+   "not": "",
+   "not_renk": "",
+   "o": "3",
+   "puan": "1",
+   "sira": 15,
+   "takim": "Goztepe",
+   "takim_id": "789",
+   "yedigi": "7"
   },
   {
    "attigi": "1",
@@ -12643,5 +12757,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-08-29T19:44:37.692912+00:00"
+ "uretim": "2026-08-29T20:37:55.729540+00:00"
 }
