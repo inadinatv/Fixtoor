@@ -426,7 +426,7 @@ header.ust{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom
 background:linear-gradient(180deg,rgba(56,189,248,.07),rgba(34,197,94,.05));
 border:1px solid var(--cizgi);border-radius:18px;padding:18px 20px}
 header.ust>img{width:56px;height:56px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.45))}
-header.ust img.marka-logo{width:auto;height:64px;max-width:250px;object-fit:contain}
+header.ust img.marka-logo{width:auto;height:clamp(34px,7vw,48px);max-width:min(200px,55vw);object-fit:contain}
 h1{font-size:26px;letter-spacing:.4px;display:inline}
 h1 span{background:linear-gradient(90deg,#22c55e,#38bdf8);
 -webkit-background-clip:text;background-clip:text;color:transparent}
@@ -445,7 +445,7 @@ nav.sekmeler button:hover{color:var(--metin);border-color:#3b4c61;transform:tran
 nav.sekmeler button.aktif{background:linear-gradient(135deg,#22c55e,#16a34a);color:#04220e;
 border-color:#22c55e;box-shadow:0 6px 20px rgba(34,197,94,.28)}
 html.js .sekme-icerik{display:none}
-html.js .sekme-icerig.aktif{display:block}
+html.js .sekme-icerik.aktif{display:block}
 h2{font-size:19px;margin:22px 0 12px;display:flex;align-items:center;gap:8px}
 h2::before{content:'';width:4px;height:18px;background:var(--yesil);border-radius:2px}
 .kart{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;margin-bottom:12px;
@@ -500,7 +500,7 @@ footer{margin-top:46px;padding:32px 16px 26px;text-align:center;border-top:1px s
 footer::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);
 width:220px;height:2px;background:linear-gradient(90deg,transparent,#22c55e,#38bdf8,transparent)}
 .marka{display:inline-flex;align-items:center;gap:11px;filter:drop-shadow(0 0 18px rgba(56,189,248,.3))}
-.marka img{height:46px;width:auto;max-width:180px;object-fit:contain}
+.marka img{height:clamp(26px,5vw,38px);width:auto;max-width:160px;object-fit:contain}
 .marka .itv-ad{font-size:22px;font-weight:800;letter-spacing:.4px;color:var(--metin)}
 .marka .itv-ad b{color:var(--mavi)}
 .telif{margin-top:10px;color:var(--soluk);font-size:12.5px}
@@ -692,7 +692,7 @@ def ozet_karti(m: dict) -> str:
   {takim_logolu(dep, dep=True)}
 </div>
 <div class="mac-alt"><span>{esc(tr_tarih(parse_utc(m["utc"])) if m["utc"] else "")}</span>
-<span class="durum-ms">{esc(m.get("durum_metin") or "MS")}{(" · " + esc(m["stadyum"])) if m.get("stadyum") else ""}</span></div>
+<span class="durum-ms">{esc(m.get("durum_metin") or "MS")}{" · " + esc(m["stadyum"]) if m.get("stadyum") else ""}</span></div>
 <div class="ozet-govde">
   <div>{gol_listesi(ev["id"], ev)}</div>
   <div class="dep-kolon">{gol_listesi(dep["id"], dep)}</div>
