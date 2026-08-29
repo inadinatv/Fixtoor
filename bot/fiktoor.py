@@ -414,25 +414,43 @@ CSS = """
 :root{--bg:#0b0f14;--kart:#141b24;--kart2:#1b2430;--cizgi:#263242;--metin:#e7edf5;
 --soluk:#8b98a9;--yesil:#22c55e;--kirmizi:#ef4444;--sari:#eab308;--mavi:#38bdf8}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--metin);font:15px/1.55 -apple-system,'Segoe UI',Roboto,Arial,sans-serif}
-.kapsayici{max-width:960px;margin:0 auto;padding:20px 16px 60px}
-header.ust{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
-header.ust img{width:52px;height:52px}
-h1{font-size:26px;letter-spacing:.3px}
-h1 span{color:var(--yesil)}
-.alt-bilgi{color:var(--soluk);font-size:13px;margin-bottom:18px}
+body{color:var(--metin);font:15px/1.55 -apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+background:radial-gradient(1100px 480px at 85% -10%,rgba(56,189,248,.08),transparent 60%),
+radial-gradient(900px 420px at 8% -5%,rgba(34,197,94,.07),transparent 55%),var(--bg)}
+body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;z-index:10;
+background:linear-gradient(90deg,#22c55e,#38bdf8,#a78bfa)}
+::selection{background:rgba(34,197,94,.35)}
+.kapsayici{max-width:980px;margin:0 auto;padding:22px 16px 40px;animation:giris .45s ease}
+@keyframes giris{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+header.ust{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:4px;
+background:linear-gradient(180deg,rgba(56,189,248,.07),rgba(34,197,94,.05));
+border:1px solid var(--cizgi);border-radius:18px;padding:18px 20px}
+header.ust>img{width:56px;height:56px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.45))}
+h1{font-size:26px;letter-spacing:.4px;display:inline}
+h1 span{background:linear-gradient(90deg,#22c55e,#38bdf8);
+-webkit-background-clip:text;background-clip:text;color:transparent}
+.lig-etiket{display:inline-block;margin-left:10px;padding:3px 12px;border-radius:99px;font-size:13px;
+font-weight:700;color:#cfe9ff;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);
+vertical-align:middle;white-space:nowrap}
+.alt-bilgi{color:var(--soluk);font-size:13px;margin-top:6px}
 .canli{background:var(--kirmizi);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;
 border-radius:99px;animation:nabiz 1.2s infinite}
 @keyframes nabiz{50%{opacity:.55}}
 nav.sekmeler{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}
 nav.sekmeler button{background:var(--kart);color:var(--soluk);border:1px solid var(--cizgi);
-padding:9px 16px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:600}
-nav.sekmeler button.aktif{background:var(--yesil);color:#06220f;border-color:var(--yesil)}
+padding:9px 16px;border-radius:12px;cursor:pointer;font-size:14px;font-weight:600;
+transition:transform .15s,color .15s,border-color .15s,box-shadow .15s}
+nav.sekmeler button:hover{color:var(--metin);border-color:#3b4c61;transform:translateY(-1px)}
+nav.sekmeler button.aktif{background:linear-gradient(135deg,#22c55e,#16a34a);color:#04220e;
+border-color:#22c55e;box-shadow:0 6px 20px rgba(34,197,94,.28)}
 html.js .sekme-icerik{display:none}
 html.js .sekme-icerik.aktif{display:block}
 h2{font-size:19px;margin:22px 0 12px;display:flex;align-items:center;gap:8px}
 h2::before{content:'';width:4px;height:18px;background:var(--yesil);border-radius:2px}
-.kart{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.kart{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;margin-bottom:12px;
+transition:border-color .15s,transform .15s,box-shadow .15s}
+.kart:hover{border-color:#33465c;transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.35)}
+.skor,.tv-zaman .saat,table.puan{font-variant-numeric:tabular-nums}
 .mac{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px}
 .takim{display:flex;align-items:center;gap:10px;min-width:0;font-weight:600}
 .takim.dep{flex-direction:row-reverse;text-align:right}
@@ -471,31 +489,42 @@ table.puan th{color:var(--soluk);font-weight:600;text-align:center;padding:8px 6
 table.puan th:first-child,table.puan td:first-child{text-align:left}
 table.puan td{padding:8px 6px;text-align:center;border-bottom:1px solid #1a2330}
 table.puan tr:last-child td{border-bottom:none}
+table.puan tbody tr{transition:background .12s}
+table.puan tbody tr:hover td{background:rgba(56,189,248,.055)}
 table.puan .takim-hucre{display:flex;align-items:center;gap:9px;min-width:0}
 table.puan .takim-hucre img{width:22px;height:22px;object-fit:contain}
 table.puan .puan{font-weight:800;font-size:15px}
 .nokta{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
-footer{margin-top:36px;color:var(--soluk);font-size:12.5px;text-align:center;line-height:1.9}
-footer a{color:var(--mavi);text-decoration:none}
+footer{margin-top:46px;padding:32px 16px 26px;text-align:center;border-top:1px solid var(--cizgi);position:relative}
+footer::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+width:220px;height:2px;background:linear-gradient(90deg,transparent,#22c55e,#38bdf8,transparent)}
+.marka{display:inline-flex;align-items:center;gap:11px;filter:drop-shadow(0 0 18px rgba(56,189,248,.3))}
+.marka img{height:46px;width:auto;max-width:180px;object-fit:contain}
+.marka .itv-ad{font-size:22px;font-weight:800;letter-spacing:.4px;color:var(--metin)}
+.marka .itv-ad b{color:var(--mavi)}
+.telif{margin-top:10px;color:var(--soluk);font-size:12.5px}
 .grid2{display:grid;grid-template-columns:1fr;gap:12px}
 @media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}}
 .bos{color:var(--soluk);padding:26px;text-align:center;background:var(--kart);
 border:1px dashed var(--cizgi);border-radius:14px}
-.kanal{display:inline-flex;align-items:center;gap:4px;background:#1d2939;color:#cfe3ff;
-border:1px solid #315071;border-radius:8px;padding:2px 9px;font-size:12px;font-weight:700;white-space:nowrap}
+.kanal{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#20395c,#16283e);
+color:#cfe9ff;border:1px solid #315071;border-radius:9px;padding:2px 10px;font-size:12px;font-weight:700;
+white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .skor-inline{color:var(--yesil);font-weight:800;margin-left:4px}
-.tv-kart{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:center;
-background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.tv-kart{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;
+background:linear-gradient(180deg,var(--kart),#111823);border:1px solid var(--cizgi);border-radius:14px;
+padding:14px 16px;margin-bottom:12px;transition:border-color .15s,transform .15s,box-shadow .15s}
+.tv-kart:hover{border-color:#33465c;transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.35)}
 .tv-zaman{text-align:center;border-right:1px dashed var(--cizgi);padding-right:12px}
 .tv-zaman .gun{font-size:11px;color:var(--soluk);text-transform:uppercase;letter-spacing:.5px}
 .tv-zaman .saat{font-size:19px;font-weight:800}
+.tv-zaman .tarih{font-size:10.5px;color:var(--soluk);margin-top:1px}
 .tv-mac .takimlar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:600;font-size:15px}
 .tv-mac .takimlar img{width:26px;height:26px;object-fit:contain}
 .tv-mac .takimlar .ayrac{color:var(--soluk);font-weight:400}
 .tv-mac .alt{color:var(--soluk);font-size:12.5px;margin-top:5px}
 .tv-kanal{justify-self:end}
 .tv-kanal .kanal{font-size:13px;padding:6px 12px}
-.tv-not{color:var(--soluk);font-size:12.5px;margin-top:10px;text-align:center}
 @media(max-width:560px){.tv-kart{grid-template-columns:1fr;gap:10px}
 .tv-zaman{border-right:none;border-bottom:1px dashed var(--cizgi);padding:0 0 10px;
 display:flex;gap:10px;align-items:baseline;justify-content:center}
@@ -557,6 +586,7 @@ def tv_karti(m: dict) -> str:
 
     gun = GUNLER[yerel.weekday()][:3] if yerel else ""
     saat = f"{yerel.hour:02d}:{yerel.minute:02d}" if yerel else "--:--"
+    tarih = f"{yerel.day} {AYLAR[yerel.month - 1]}" if yerel else ""
     if canli:
         durum = '<div class="durum-canli" style="font-size:11px">CANLI</div>'
     elif oynandi:
@@ -571,7 +601,7 @@ def tv_karti(m: dict) -> str:
     else:
         kanal_html = '<span class="kanal" style="opacity:.45">📺 —</span>'
     return f'''<div class="tv-kart">
-<div class="tv-zaman"><div class="gun">{gun}</div><div class="saat">{saat}</div>{durum}</div>
+<div class="tv-zaman"><div class="gun">{gun}</div><div class="saat">{saat}</div><div class="tarih">{tarih}</div>{durum}</div>
 <div class="tv-mac"><div class="takimlar">{takimlar}</div><div class="alt">{esc(yer)}</div></div>
 <div class="tv-kanal">{kanal_html}</div>
 </div>'''
@@ -772,6 +802,24 @@ def render_html(veri: dict, cikti: str) -> None:
 
     logo_html = f'<img src="{esc(lig["logo"])}" alt="lig logosu">' if lig.get("logo") else ""
     canli_rozet = ' <span class="canli">CANLI</span>' if canli_var else ""
+
+    # İnadına TV markası: depoda logo dosyası varsa o, yoksa yerleşik SVG amblem kullanılır
+    kok = os.path.dirname(os.path.abspath(cikti))
+    logo_dosya = next((ad for ad in ("logo.png", "logo.svg", "logo.jpg", "logo.webp",
+                                     "assets/logo.png", "assets/logo.svg")
+                       if os.path.exists(os.path.join(kok, ad))), "")
+    if logo_dosya:
+        marka_html = (f'<span class="marka"><img src="{esc(logo_dosya)}" alt="İnadına TV">'
+                      f'<span class="itv-ad">inadına <b>TV</b></span></span>')
+    else:
+        marka_html = ('<span class="marka">'
+                      '<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">'
+                      '<defs><linearGradient id="itvg" x1="0" y1="0" x2="1" y2="1">'
+                      '<stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#38bdf8"/>'
+                      '</linearGradient></defs>'
+                      '<rect x="2" y="2" width="36" height="36" rx="11" fill="url(#itvg)"/>'
+                      '<path d="M16.5 12.8v14.4L29 20z" fill="#0b0f14"/></svg>'
+                      '<span class="itv-ad">inadına <b>TV</b></span></span>')
     sayfa = f'''<!DOCTYPE html>
 <html lang="tr" class="no-js">
 <head>
@@ -785,7 +833,7 @@ def render_html(veri: dict, cikti: str) -> None:
 <body>
 <div class="kapsayici">
 <header class="ust">{logo_html}
-<div><h1>Fix<span>toor</span> ⚽ {esc(lig["ad"])}</h1>
+<div><h1>Fix<span>toor</span></h1><span class="lig-etiket">⚽ {esc(lig["ad"])}</span>
 <div class="alt-bilgi">{esc(lig.get("sezon_adi", ""))} · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı{canli_rozet}</div>
 <div class="alt-bilgi">Son güncelleme: {esc(tr_tarih(parse_utc(simdi)))} (İstanbul)</div>
 </div></header>
@@ -800,7 +848,6 @@ def render_html(veri: dict, cikti: str) -> None:
 <section class="sekme-icerik aktif" id="sekme-hafta">
 <h2>Haftanın Maçları <small style="color:var(--soluk);font-weight:400">· {esc(tv_alt_baslik)}</small></h2>
 {tv_html}
-<p class="tv-not">📡 Yayın bilgileri Spor Ekranı &amp; LiveSoccerTV'den alınır · Maçlar TOD ve beIN Connect'te de izlenebilir</p>
 </section>
 
 <section class="sekme-icerik" id="sekme-ozetler">
@@ -822,12 +869,8 @@ def render_html(veri: dict, cikti: str) -> None:
 </section>
 
 <footer>
-© 2026 <b>inadina TV · Fixtoor</b> — Trendyol Süper Lig fikstür, maç özetleri, puan durumu ve yayın akışı<br>
-Veri: <a href="https://www.espn.com/soccer/league/_/name/tur.1">ESPN</a> · Yayın bilgileri:
-<a href="https://www.sporekrani.com/home/league/trendyol-super-lig">Spor Ekranı</a> &amp;
-<a href="https://www.livesoccertv.com/competitions/turkey/super-lig/">LiveSoccerTV</a> ·
-<a href="data/fikstur.json">fikstur.json</a> · <a href="data/puan-durumu.json">puan-durumu.json</a> ·
-<a href="data/ozetler.json">ozetler.json</a>
+{marka_html}
+<div class="telif">© 2026 İnadına TV · Fixtoor</div>
 </footer>
 </div>
 <script>{JS}</script>
