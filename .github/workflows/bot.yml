@@ -55,6 +55,10 @@ jobs:
           mkdir -p _site
           cp index.html _site/
           cp -r data _site/data
+          for f in logo.png logo.svg logo.jpg logo.webp; do
+            if [ -f "$f" ]; then cp "$f" _site/; fi
+          done
+          if [ -d assets ]; then cp -r assets _site/assets; fi
       - name: Sayfayı GitHub Pages'e yükle
         uses: actions/upload-pages-artifact@v3
         with:
