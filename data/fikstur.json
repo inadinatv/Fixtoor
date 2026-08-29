@@ -2028,7 +2028,7 @@
       "shotAssists": "0",
       "shotsOnTarget": "4",
       "totalGoals": "2",
-      "totalShots": "9",
+      "totalShots": "10",
       "wonCorners": "2"
      },
      "kazandi": false,
@@ -3482,7 +3482,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -3942,7 +3942,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -4240,7 +4240,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -5012,7 +5012,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -5735,7 +5735,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -5827,7 +5827,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -5862,7 +5862,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -5985,7 +5985,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -6077,7 +6077,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -6160,7 +6160,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -6195,7 +6195,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -6257,7 +6257,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -6292,7 +6292,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -6340,7 +6340,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -6502,7 +6502,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -6625,7 +6625,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -6787,7 +6787,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -6800,7 +6800,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -6835,7 +6835,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -6897,7 +6897,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -6945,7 +6945,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -6967,7 +6967,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -7120,7 +7120,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -7300,7 +7300,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -7335,7 +7335,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -7357,7 +7357,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -7497,7 +7497,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -7572,7 +7572,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -7585,7 +7585,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -7712,7 +7712,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -7725,7 +7725,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -7857,7 +7857,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -8010,7 +8010,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -8032,7 +8032,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -8045,7 +8045,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -8190,7 +8190,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -8282,7 +8282,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -8330,7 +8330,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -8422,7 +8422,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -8567,7 +8567,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -8580,7 +8580,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -8650,7 +8650,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -8685,7 +8685,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -8852,7 +8852,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -8922,7 +8922,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -8970,7 +8970,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -9027,7 +9027,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -9220,7 +9220,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -9290,7 +9290,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -9325,7 +9325,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -9360,7 +9360,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -9492,7 +9492,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -9527,7 +9527,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -9562,7 +9562,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -9737,7 +9737,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -9860,7 +9860,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -9965,7 +9965,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -10000,7 +10000,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -10035,7 +10035,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -10097,7 +10097,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -10132,7 +10132,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -10237,7 +10237,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -10272,7 +10272,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -10500,7 +10500,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -10640,7 +10640,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -10675,7 +10675,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -10697,7 +10697,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -10737,7 +10737,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -10820,7 +10820,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -10912,7 +10912,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -11017,7 +11017,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -11092,7 +11092,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -11105,7 +11105,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -11245,7 +11245,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -11280,7 +11280,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -11412,7 +11412,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -11460,7 +11460,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -11517,7 +11517,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -11587,7 +11587,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -11697,7 +11697,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -11745,7 +11745,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -11920,7 +11920,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -11955,7 +11955,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -12052,7 +12052,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "LLDLW",
+     "form": "LDLWD",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -12087,7 +12087,7 @@
    {
     "dep": {
      "ad": "Gaziantep FK",
-     "form": "LWDLL",
+     "form": "WDLLL",
      "id": "20070",
      "istatistik": {},
      "kazandi": false,
@@ -12100,7 +12100,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "WWDLW",
+     "form": "WDLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -12122,7 +12122,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "WLWDL",
+     "form": "LWDLW",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
