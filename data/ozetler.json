@@ -1,6 +1,196 @@
 [
  {
   "dep": {
+   "ad": "Kasimpasa",
+   "form": "DWDWL",
+   "id": "6870",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "13",
+    "goalAssists": "1",
+    "possessionPct": "35.7",
+    "shotAssists": "0",
+    "shotsOnTarget": "3",
+    "totalGoals": "1",
+    "totalShots": "12",
+    "wonCorners": "3"
+   },
+   "kazandi": false,
+   "kisa": "KAS",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
+   "renk": "#000000",
+   "skor": "1"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Istanbul Basaksehir",
+   "form": "DLWLD",
+   "id": "7914",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "11",
+    "goalAssists": "1",
+    "possessionPct": "64.3",
+    "shotAssists": "0",
+    "shotsOnTarget": "2",
+    "totalGoals": "1",
+    "totalShots": "12",
+    "wonCorners": "5"
+   },
+   "kazandi": false,
+   "kisa": "IBFK",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7914.png",
+   "renk": "#ff6600",
+   "skor": "1"
+  },
+  "goller": [
+   {
+    "dakika": "18'",
+    "kendi_kalesine": false,
+    "oyuncu": "Eldor Shomurodov",
+    "penalti": false,
+    "takim_id": "7914"
+   },
+   {
+    "dakika": "81'",
+    "kendi_kalesine": false,
+    "oyuncu": "Fousseni Diabate",
+    "penalti": false,
+    "takim_id": "6870"
+   }
+  ],
+  "id": "401888310",
+  "kanal": "beIN Sports 2",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+3'",
+  "sari_kartlar": [
+   {
+    "dakika": "3'",
+    "kendi_kalesine": false,
+    "oyuncu": "Jerome Opoku",
+    "penalti": false,
+    "takim_id": "7914"
+   },
+   {
+    "dakika": "13'",
+    "kendi_kalesine": false,
+    "oyuncu": "Olivier Kemen",
+    "penalti": false,
+    "takim_id": "7914"
+   },
+   {
+    "dakika": "55'",
+    "kendi_kalesine": false,
+    "oyuncu": "Cláudio Winck",
+    "penalti": false,
+    "takim_id": "6870"
+   },
+   {
+    "dakika": "90'",
+    "kendi_kalesine": false,
+    "oyuncu": "Hamza Güreler",
+    "penalti": false,
+    "takim_id": "7914"
+   }
+  ],
+  "sehir": "Istanbul",
+  "stadyum": "Basaksehir Fatih Terim Stadium",
+  "utc": "2026-08-30T18:30Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
+ },
+ {
+  "dep": {
+   "ad": "Fenerbahce",
+   "form": "WWWDL",
+   "id": "436",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "18",
+    "goalAssists": "2",
+    "possessionPct": "41.8",
+    "shotAssists": "0",
+    "shotsOnTarget": "7",
+    "totalGoals": "2",
+    "totalShots": "15",
+    "wonCorners": "6"
+   },
+   "kazandi": true,
+   "kisa": "FEN",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+   "renk": "#ffff00",
+   "skor": "2"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Samsunspor",
+   "form": "LWDWL",
+   "id": "11429",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "13",
+    "goalAssists": "0",
+    "possessionPct": "58.2",
+    "shotAssists": "0",
+    "shotsOnTarget": "0",
+    "totalGoals": "0",
+    "totalShots": "6",
+    "wonCorners": "1"
+   },
+   "kazandi": false,
+   "kisa": "SAM",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
+   "renk": "#000000",
+   "skor": "0"
+  },
+  "goller": [
+   {
+    "dakika": "3'",
+    "kendi_kalesine": false,
+    "oyuncu": "Vedat Muriqi",
+    "penalti": false,
+    "takim_id": "436"
+   },
+   {
+    "dakika": "49'",
+    "kendi_kalesine": false,
+    "oyuncu": "Oguz Aydin",
+    "penalti": false,
+    "takim_id": "436"
+   }
+  ],
+  "id": "401888306",
+  "kanal": "beIN Sports 1",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+4'",
+  "sari_kartlar": [
+   {
+    "dakika": "25'",
+    "kendi_kalesine": false,
+    "oyuncu": "",
+    "penalti": false,
+    "takim_id": "11429"
+   },
+   {
+    "dakika": "70'",
+    "kendi_kalesine": false,
+    "oyuncu": "Romelu Lukaku",
+    "penalti": false,
+    "takim_id": "436"
+   }
+  ],
+  "sehir": "Samsun",
+  "stadyum": "Samsun 19 Mayis Stadium",
+  "utc": "2026-08-30T18:30Z",
+  "video_id": "xb2gu5e",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
+ },
+ {
+  "dep": {
    "ad": "Alanyaspor",
    "form": "LWDLW",
    "id": "9078",
@@ -112,9 +302,9 @@
   "sehir": "Istanbul",
   "stadyum": "Esenyurt Necmi Kadioglu Stadi",
   "utc": "2026-08-30T16:00Z",
-  "video_id": "xb2gs32",
-  "video_kanal": "Maç Özetleri",
-  "video_kaynak": "dm"
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
  },
  {
   "dep": {
@@ -915,7 +1105,7 @@
  {
   "dep": {
    "ad": "Istanbul Basaksehir",
-   "form": "LWLDW",
+   "form": "DLWLD",
    "id": "7914",
    "istatistik": {
     "appearances": "0",
@@ -1075,7 +1265,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Fenerbahce",
-   "form": "WWDLW",
+   "form": "WWWDL",
    "id": "436",
    "istatistik": {
     "appearances": "0",
@@ -1175,7 +1365,7 @@
  {
   "dep": {
    "ad": "Samsunspor",
-   "form": "WDWLW",
+   "form": "LWDWL",
    "id": "11429",
    "istatistik": {
     "appearances": "0",
@@ -1263,7 +1453,7 @@
  {
   "dep": {
    "ad": "Kasimpasa",
-   "form": "WDWLD",
+   "form": "DWDWL",
    "id": "6870",
    "istatistik": {
     "appearances": "0",
@@ -1456,149 +1646,5 @@
   "video_id": "xazobx2",
   "video_kanal": "beIN SPORTS USA",
   "video_kaynak": "dm"
- },
- {
-  "dep": {
-   "ad": "Goztepe",
-   "form": "LLDLW",
-   "id": "789",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "13",
-    "goalAssists": "1",
-    "possessionPct": "30.7",
-    "shotAssists": "0",
-    "shotsOnTarget": "7",
-    "totalGoals": "3",
-    "totalShots": "20",
-    "wonCorners": "8"
-   },
-   "kazandi": false,
-   "kisa": "GOZ",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
-   "renk": "#000000",
-   "skor": "3"
-  },
-  "durum": "post",
-  "durum_metin": "FT",
-  "ev": {
-   "ad": "Samsunspor",
-   "form": "WDWLW",
-   "id": "11429",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "8",
-    "goalAssists": "2",
-    "possessionPct": "69.3",
-    "shotAssists": "0",
-    "shotsOnTarget": "3",
-    "totalGoals": "3",
-    "totalShots": "21",
-    "wonCorners": "4"
-   },
-   "kazandi": false,
-   "kisa": "SAM",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
-   "renk": "#000000",
-   "skor": "3"
-  },
-  "goller": [
-   {
-    "dakika": "3'",
-    "kendi_kalesine": false,
-    "oyuncu": "Alex Matos",
-    "penalti": false,
-    "takim_id": "789"
-   },
-   {
-    "dakika": "30'",
-    "kendi_kalesine": false,
-    "oyuncu": "Marius Mouandilmadji",
-    "penalti": true,
-    "takim_id": "11429"
-   },
-   {
-    "dakika": "43'",
-    "kendi_kalesine": false,
-    "oyuncu": "Emre Kilinc",
-    "penalti": false,
-    "takim_id": "11429"
-   },
-   {
-    "dakika": "46'",
-    "kendi_kalesine": false,
-    "oyuncu": "Sinclair Armstrong",
-    "penalti": false,
-    "takim_id": "789"
-   },
-   {
-    "dakika": "65'",
-    "kendi_kalesine": false,
-    "oyuncu": "Efkan Bekiroglu",
-    "penalti": false,
-    "takim_id": "789"
-   },
-   {
-    "dakika": "90'",
-    "kendi_kalesine": false,
-    "oyuncu": "Celil Yuksel",
-    "penalti": false,
-    "takim_id": "11429"
-   }
-  ],
-  "id": "401888320",
-  "kanal": "",
-  "kirmizi_kartlar": [],
-  "saat_gostergesi": "90'+6'",
-  "sari_kartlar": [
-   {
-    "dakika": "4'",
-    "kendi_kalesine": false,
-    "oyuncu": "",
-    "penalti": false,
-    "takim_id": "11429"
-   },
-   {
-    "dakika": "17'",
-    "kendi_kalesine": false,
-    "oyuncu": "Alex Matos",
-    "penalti": false,
-    "takim_id": "789"
-   },
-   {
-    "dakika": "28'",
-    "kendi_kalesine": false,
-    "oyuncu": "Juan",
-    "penalti": false,
-    "takim_id": "789"
-   },
-   {
-    "dakika": "52'",
-    "kendi_kalesine": false,
-    "oyuncu": "Toni Borevkovic",
-    "penalti": false,
-    "takim_id": "11429"
-   },
-   {
-    "dakika": "52'",
-    "kendi_kalesine": false,
-    "oyuncu": "Sinclair Armstrong",
-    "penalti": false,
-    "takim_id": "789"
-   },
-   {
-    "dakika": "56'",
-    "kendi_kalesine": false,
-    "oyuncu": "Santos",
-    "penalti": false,
-    "takim_id": "789"
-   }
-  ],
-  "sehir": "Samsun",
-  "stadyum": "Samsun 19 Mayis Stadium",
-  "utc": "2026-08-17T18:30Z",
-  "video_id": "",
-  "video_kanal": "",
-  "video_kaynak": ""
  }
 ]
