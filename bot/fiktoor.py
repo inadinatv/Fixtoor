@@ -93,6 +93,42 @@ def video_url(m: dict) -> str:
     return "https://www.youtube.com/results?search_query=" + urllib.parse.quote(q)
 
 
+def youtube_video_bul(sorgu: str) -> str:
+    """YouTube arama sayfasından özet videonun kimliğini (ID) çıkarır; API anahtarı gerekmez.
+    beIN Sports kanalına ait sonuç önceliklidir, bulunamazsa ilk sonuç alınır."""
+    try:
+        html = http_get_text(
+            "https://www.youtube.com/results?search_query=" + urllib.parse.quote(sorgu))
+    except Exception as e:
+        log(f"UYARI: YouTube araması okunamadı: {e}")
+        return ""
+    adaylar = []
+    for parca in html.split('"videoRenderer"')[1:]:
+        vid = re.search(r'"videoId":"([\w-]{11})"', parca)
+        if not vid:
+            continue
+        kanal = re.search(r'"ownerText":\{"runs":\[\{"text":"([^"]*)"', parca)
+        adaylar.append((vid.group(1), (kanal.group(1) if kanal else "").casefold()))
+        if len(adaylar) >= 12:
+            break
+    for vid, kanal in adaylar:  # önce beIN Sports kanalının videosu
+        if "bein" in kanal:
+            return vid
+    return adaylar[0][0] if adaylar else ""
+
+
+def video_id_cache_yukle(data_dir: str) -> dict:
+    """Önceki çalıştırmada bulunmuş video kimliklerini yükler
+    (her seferinde aynı YouTube isteklerini tekrar atmamak için)."""
+    try:
+        with open(os.path.join(data_dir, "fikstur.json"), encoding="utf-8") as f:
+            eski = json.load(f)
+        return {m.get("id", ""): m.get("video_id", "")
+                for h in eski for m in h.get("maclar", []) if m.get("id")}
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
 # ----------------------------------------------------------------------------
 # Veri çekme
 # ----------------------------------------------------------------------------
@@ -526,10 +562,23 @@ color:#cfe9ff;border:1px solid #315071;border-radius:9px;padding:2px 10px;font-s
 white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .skor-inline{color:var(--yesil);font-weight:800;margin-left:4px}
 .video-btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:10px;
-background:linear-gradient(135deg,#e52d27,#b3271d);color:#fff;font-size:13px;font-weight:700;
-text-decoration:none;transition:transform .15s,box-shadow .15s}
+border:none;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#e52d27,#b3271d);
+color:#fff;font-size:13px;font-weight:700;text-decoration:none;
+transition:transform .15s,box-shadow .15s}
 .video-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(229,45,39,.42);color:#fff}
 .video-btn.kucuk{padding:5px 11px;font-size:11.5px}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(4,7,12,.9);
+padding:18px;overflow-y:auto}
+.modal.acik{display:flex;align-items:center;justify-content:center}
+.modal-kutu{width:min(860px,100%);background:var(--kart);border:1px solid var(--cizgi);
+border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:giris .25s ease}
+.modal-ust{display:flex;justify-content:space-between;align-items:center;gap:12px;
+padding:10px 14px;border-bottom:1px solid var(--cizgi);font-weight:700;font-size:14px}
+.modal-kapat{background:var(--kart2);border:1px solid var(--cizgi);color:var(--metin);
+width:32px;height:32px;border-radius:9px;cursor:pointer;font-size:14px;flex-shrink:0}
+.modal-kapat:hover{border-color:#3b4c61;color:#fff}
+.modal-govde{position:relative;padding-top:56.25%;background:#000}
+.modal-govde iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .tv-kart{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;
 background:linear-gradient(180deg,var(--kart),#111823);border:1px solid var(--cizgi);border-radius:14px;
 padding:14px 16px;margin-bottom:12px;transition:border-color .15s,transform .15s,box-shadow .15s}
@@ -542,12 +591,12 @@ padding:14px 16px;margin-bottom:12px;transition:border-color .15s,transform .15s
 .tv-mac .takimlar img{width:26px;height:26px;object-fit:contain}
 .tv-mac .takimlar .ayrac{color:var(--soluk);font-weight:400}
 .tv-mac .alt{color:var(--soluk);font-size:12.5px;margin-top:5px}
-.tv-kanal{justify-self:end;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.tv-kanal{justify-self:end;display:flex;flex-direction:row;gap:8px;align-items:center}
 .tv-kanal .kanal{font-size:13px;padding:6px 12px}
 @media(max-width:560px){.tv-kart{grid-template-columns:1fr;gap:10px}
 .tv-zaman{border-right:none;border-bottom:1px dashed var(--cizgi);padding:0 0 10px;
 display:flex;gap:10px;align-items:baseline;justify-content:center}
-.tv-kanal{justify-self:center;align-items:center}}
+.tv-kanal{justify-self:center;align-items:center;justify-content:center;flex-wrap:wrap}}
 """
 
 JS = """
@@ -570,6 +619,26 @@ function haftaSec(b){
 document.querySelectorAll('.cipsler button').forEach(function(b){
   b.addEventListener('click',function(){haftaSec(b)});
 });
+// Video modalı: özet videolar siteden çıkmadan, sayfa içinde açılır
+var modal=document.getElementById('video-modal');
+var cerceve=document.getElementById('video-cerceve');
+var videoBaslik=document.getElementById('video-baslik');
+function videoAc(id,ad){
+  videoBaslik.textContent=ad||'Maç Özeti';
+  cerceve.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+  modal.classList.add('acik');
+}
+function videoKapat(){
+  modal.classList.remove('acik');
+  cerceve.src='';
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest?e.target.closest('[data-video]'):null;
+  if(b){e.preventDefault();videoAc(b.getAttribute('data-video'),b.getAttribute('data-baslik'));}
+});
+modal.addEventListener('click',function(e){if(e.target===modal)videoKapat();});
+document.querySelector('.modal-kapat').addEventListener('click',videoKapat);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')videoKapat();});
 """
 
 
@@ -621,8 +690,13 @@ def tv_karti(m: dict) -> str:
         kanal_html = '<span class="kanal" style="opacity:.45">📺 —</span>'
     video_html = ""
     if oynandi or canli:
-        video_html = (f'<a class="video-btn kucuk" href="{video_url(m)}" '
-                      f'target="_blank" rel="noopener">▶ Özet video</a>')
+        if m.get("video_id"):
+            video_html = (f'<button type="button" class="video-btn kucuk" '
+                          f'data-video="{esc(m["video_id"])}" '
+                          f'data-baslik="{esc(ev["ad"])} - {esc(dep["ad"])}">▶ Özet video</button>')
+        else:  # video bulunamadıysa YouTube aramasına düşer
+            video_html = (f'<a class="video-btn kucuk" href="{video_url(m)}" '
+                          f'target="_blank" rel="noopener">▶ Özet video</a>')
     return f'''<div class="tv-kart">
 <div class="tv-zaman"><div class="gun">{gun}</div><div class="saat">{saat}</div><div class="tarih">{tarih}</div>{durum}</div>
 <div class="tv-mac"><div class="takimlar">{takimlar}</div><div class="alt">{esc(yer)}</div></div>
@@ -707,8 +781,13 @@ def ozet_karti(m: dict) -> str:
             istatistik_bar("Faul", ie.get("foulsCommitted", "0"), idp.get("foulsCommitted", "0")),
         ]) + "</div>"
 
-    video_btn = (f'<a class="video-btn" href="{video_url(m)}" target="_blank" '
-                 f'rel="noopener">▶ Video Özeti İzle</a>')
+    if m.get("video_id"):
+        video_btn = (f'<button type="button" class="video-btn" '
+                     f'data-video="{esc(m["video_id"])}" '
+                     f'data-baslik="{esc(ev["ad"])} - {esc(dep["ad"])}">▶ Video Özeti İzle</button>')
+    else:  # video bulunamadıysa YouTube aramasına düşer
+        video_btn = (f'<a class="video-btn" href="{video_url(m)}" target="_blank" '
+                     f'rel="noopener">▶ Video Özeti İzle</a>')
     return f'''<div class="kart">
 <div class="mac">
   {takim_logolu(ev)}
@@ -907,6 +986,15 @@ def render_html(veri: dict, cikti: str) -> None:
 <div class="telif">© 2026 İnadına TV · Fixtoor</div>
 </footer>
 </div>
+
+<div class="modal" id="video-modal">
+<div class="modal-kutu">
+<div class="modal-ust"><span id="video-baslik">Maç Özeti</span>
+<button type="button" class="modal-kapat" aria-label="Kapat">✕</button></div>
+<div class="modal-govde"><iframe id="video-cerceve" src="" title="Maç özeti videosu"
+allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
+</div>
+</div>
 <script>{JS}</script>
 </body>
 </html>'''
@@ -945,6 +1033,22 @@ def calistir(args) -> None:
             m["kanal"] = kanal_harita.get(
                 _mac_anahtari(takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])), "")
 
+        # --- video özetleri: son 21 günün oynanmış/canlı maçları için YouTube'tan ID çek ---
+        simdi_dt = datetime.now(timezone.utc)
+        eski_videolar = video_id_cache_yukle(data_dir)
+        sinir = simdi_dt - timedelta(days=21)
+        adaylar = [m for m in maclar
+                   if m["durum"] != "pre" and m["utc"] and parse_utc(m["utc"]) >= sinir]
+        for m in adaylar[:40]:
+            if eski_videolar.get(m["id"]):
+                m["video_id"] = eski_videolar[m["id"]]
+                continue
+            m["video_id"] = youtube_video_bul(f'{m["ev"]["ad"]} {m["dep"]["ad"]} maç özeti')
+            if m["video_id"]:
+                log(f'video özeti bulundu: {m["ev"]["ad"]} - {m["dep"]["ad"]}')
+            time.sleep(0.3)
+        log(f"video özetleri: {sum(1 for m in maclar if m.get('video_id'))} maç")
+
         hafta_listesi = haftalara_ayir(maclar)
         haftalar = [
             {"no": i + 1, "maclar": sorted(h, key=lambda m: m["utc"])}
@@ -959,7 +1063,6 @@ def calistir(args) -> None:
         except Exception as e:  # puan durumu düşerse sayfa yine üretilsin
             log(f"UYARI: puan durumu alınamadı: {e}")
 
-        simdi_dt = datetime.now(timezone.utc)
         ozetler = [
             m for m in maclar if m["durum"] == "post"
             and m["utc"] and parse_utc(m["utc"]) >= simdi_dt - timedelta(days=14)
