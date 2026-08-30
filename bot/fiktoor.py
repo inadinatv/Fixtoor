@@ -93,37 +93,50 @@ def video_url(m: dict) -> str:
     return "https://www.youtube.com/results?search_query=" + urllib.parse.quote(q)
 
 
-def youtube_video_bul(sorgu: str) -> str:
-    """YouTube arama sayfasından özet videonun kimliğini (ID) çıkarır; API anahtarı gerekmez.
-    beIN Sports kanalına ait sonuç önceliklidir, bulunamazsa ilk sonuç alınır."""
+def youtube_video_bul(sorgu: str):
+    """YouTube arama sayfasından özet videonun (ID, kanal) bilgisini çıkarır; API anahtarı gerekmez.
+    Sadece beIN Sports kanallarının videoları kabul edilir: başka kanallar videolarını
+    Türkiye'den izlemeye kapatabiliyor ('ülkenizde verilmiyor' hatası bu yüzden olur)."""
     try:
         html = http_get_text(
             "https://www.youtube.com/results?search_query=" + urllib.parse.quote(sorgu))
     except Exception as e:
         log(f"UYARI: YouTube araması okunamadı: {e}")
-        return ""
+        return "", ""
     adaylar = []
     for parca in html.split('"videoRenderer"')[1:]:
         vid = re.search(r'"videoId":"([\w-]{11})"', parca)
         if not vid:
             continue
-        kanal = re.search(r'"ownerText":\{"runs":\[\{"text":"([^"]*)"', parca)
-        adaylar.append((vid.group(1), (kanal.group(1) if kanal else "").casefold()))
-        if len(adaylar) >= 12:
+        kanal_m = re.search(r'"ownerText":\{"runs":\[\{"text":"([^"]*)"', parca)
+        baslik_m = re.search(r'"title":\{"runs":\[\{"text":"([^"]*)"', parca)
+        adaylar.append({
+            "id": vid.group(1),
+            "kanal": (kanal_m.group(1) if kanal_m else "").casefold(),
+            "baslik": (baslik_m.group(1) if baslik_m else "").casefold(),
+        })
+        if len(adaylar) >= 15:
             break
-    for vid, kanal in adaylar:  # önce beIN Sports kanalının videosu
-        if "bein" in kanal:
-            return vid
-    return adaylar[0][0] if adaylar else ""
+    for a in adaylar:  # 1) beIN Sports Türkiye / beIN Arşiv (resmî özet)
+        if "bein" in a["kanal"] and any(x in a["kanal"] for x in ("türkiye", "turkiye", "arşiv", "arsiv")):
+            return a["id"], a["kanal"]
+    for a in adaylar:  # 2) diğer beIN kanalları
+        if "bein" in a["kanal"]:
+            return a["id"], a["kanal"]
+    for a in adaylar:  # 3) başlığında lig adı geçen özet videosu
+        if "trendyol" in a["baslik"] and "öz" in a["baslik"]:
+            return a["id"], a["kanal"]
+    return "", ""  # güvenilir video yok: buton YouTube aramasına düşer
 
 
 def video_id_cache_yukle(data_dir: str) -> dict:
-    """Önceki çalıştırmada bulunmuş video kimliklerini yükler
-    (her seferinde aynı YouTube isteklerini tekrar atmamak için)."""
+    """Önceki çalıştırmada bulunmuş video kimliklerini yükler.
+    Sadece kanal bilgisiyle kaydedilmiş (yeni biçim) kayıtlar kullanılır;
+    eski/kötü seçimler otomatik olarak yeniden aranır."""
     try:
         with open(os.path.join(data_dir, "fikstur.json"), encoding="utf-8") as f:
             eski = json.load(f)
-        return {m.get("id", ""): m.get("video_id", "")
+        return {m.get("id", ""): (m.get("video_id", ""), m.get("video_kanal", ""))
                 for h in eski for m in h.get("maclar", []) if m.get("id")}
     except (OSError, json.JSONDecodeError):
         return {}
@@ -626,6 +639,7 @@ var videoBaslik=document.getElementById('video-baslik');
 function videoAc(id,ad){
   videoBaslik.textContent=ad||'Maç Özeti';
   cerceve.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+  document.getElementById('video-youtube-link').href='https://www.youtube.com/watch?v='+id;
   modal.classList.add('acik');
 }
 function videoKapat(){
@@ -990,7 +1004,10 @@ def render_html(veri: dict, cikti: str) -> None:
 <div class="modal" id="video-modal">
 <div class="modal-kutu">
 <div class="modal-ust"><span id="video-baslik">Maç Özeti</span>
-<button type="button" class="modal-kapat" aria-label="Kapat">✕</button></div>
+<span style="display:flex;gap:10px;align-items:center;flex-shrink:0">
+<a id="video-youtube-link" href="#" target="_blank" rel="noopener"
+style="color:var(--mavi);font-size:12.5px;font-weight:600;text-decoration:none">YouTube'da aç ↗</a>
+<button type="button" class="modal-kapat" aria-label="Kapat">✕</button></span></div>
 <div class="modal-govde"><iframe id="video-cerceve" src="" title="Maç özeti videosu"
 allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
 </div>
@@ -1040,12 +1057,15 @@ def calistir(args) -> None:
         adaylar = [m for m in maclar
                    if m["durum"] != "pre" and m["utc"] and parse_utc(m["utc"]) >= sinir]
         for m in adaylar[:40]:
-            if eski_videolar.get(m["id"]):
-                m["video_id"] = eski_videolar[m["id"]]
+            eski_kayit = eski_videolar.get(m["id"], ("", ""))
+            if eski_kayit[0] and eski_kayit[1]:
+                # kanalı bilinen, doğrulanmış kayıt: yeniden aramaya gerek yok
+                m["video_id"], m["video_kanal"] = eski_kayit
                 continue
-            m["video_id"] = youtube_video_bul(f'{m["ev"]["ad"]} {m["dep"]["ad"]} maç özeti')
-            if m["video_id"]:
-                log(f'video özeti bulundu: {m["ev"]["ad"]} - {m["dep"]["ad"]}')
+            vid, kanal = youtube_video_bul(f'{m["ev"]["ad"]} {m["dep"]["ad"]} maç özeti')
+            m["video_id"], m["video_kanal"] = vid, kanal
+            if vid:
+                log(f'video özeti bulundu: {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
             time.sleep(0.3)
         log(f"video özetleri: {sum(1 for m in maclar if m.get('video_id'))} maç")
 
