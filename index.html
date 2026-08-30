@@ -113,10 +113,23 @@ color:#cfe9ff;border:1px solid #315071;border-radius:9px;padding:2px 10px;font-s
 white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .skor-inline{color:var(--yesil);font-weight:800;margin-left:4px}
 .video-btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:10px;
-background:linear-gradient(135deg,#e52d27,#b3271d);color:#fff;font-size:13px;font-weight:700;
-text-decoration:none;transition:transform .15s,box-shadow .15s}
+border:none;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#e52d27,#b3271d);
+color:#fff;font-size:13px;font-weight:700;text-decoration:none;
+transition:transform .15s,box-shadow .15s}
 .video-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(229,45,39,.42);color:#fff}
 .video-btn.kucuk{padding:5px 11px;font-size:11.5px}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(4,7,12,.9);
+padding:18px;overflow-y:auto}
+.modal.acik{display:flex;align-items:center;justify-content:center}
+.modal-kutu{width:min(860px,100%);background:var(--kart);border:1px solid var(--cizgi);
+border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:giris .25s ease}
+.modal-ust{display:flex;justify-content:space-between;align-items:center;gap:12px;
+padding:10px 14px;border-bottom:1px solid var(--cizgi);font-weight:700;font-size:14px}
+.modal-kapat{background:var(--kart2);border:1px solid var(--cizgi);color:var(--metin);
+width:32px;height:32px;border-radius:9px;cursor:pointer;font-size:14px;flex-shrink:0}
+.modal-kapat:hover{border-color:#3b4c61;color:#fff}
+.modal-govde{position:relative;padding-top:56.25%;background:#000}
+.modal-govde iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .tv-kart{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;
 background:linear-gradient(180deg,var(--kart),#111823);border:1px solid var(--cizgi);border-radius:14px;
 padding:14px 16px;margin-bottom:12px;transition:border-color .15s,transform .15s,box-shadow .15s}
@@ -129,12 +142,12 @@ padding:14px 16px;margin-bottom:12px;transition:border-color .15s,transform .15s
 .tv-mac .takimlar img{width:26px;height:26px;object-fit:contain}
 .tv-mac .takimlar .ayrac{color:var(--soluk);font-weight:400}
 .tv-mac .alt{color:var(--soluk);font-size:12.5px;margin-top:5px}
-.tv-kanal{justify-self:end;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.tv-kanal{justify-self:end;display:flex;flex-direction:row;gap:8px;align-items:center}
 .tv-kanal .kanal{font-size:13px;padding:6px 12px}
 @media(max-width:560px){.tv-kart{grid-template-columns:1fr;gap:10px}
 .tv-zaman{border-right:none;border-bottom:1px dashed var(--cizgi);padding:0 0 10px;
 display:flex;gap:10px;align-items:baseline;justify-content:center}
-.tv-kanal{justify-self:center;align-items:center}}
+.tv-kanal{justify-self:center;align-items:center;justify-content:center;flex-wrap:wrap}}
 </style>
 </head>
 <body>
@@ -143,7 +156,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <header class="ust sade">
 <div><h1>Fix<span>toor</span></h1><span class="lig-etiket">⚽ Trendyol Süper Lig</span>
 <div class="alt-bilgi">2026-27 Turkish Super Lig · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı</div>
-<div class="alt-bilgi">Son güncelleme: Paz, 30 Ağu 09:47 (İstanbul)</div>
+<div class="alt-bilgi">Son güncelleme: Paz, 30 Ağu 10:48 (İstanbul)</div>
 </div></header>
 
 <nav class="sekmeler">
@@ -158,19 +171,19 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div class="tv-kart">
 <div class="tv-zaman"><div class="gun">Cum</div><div class="saat">21:30</div><div class="tarih">28 Ağu</div><div class="durum-ms" style="font-size:11px">MS</div></div>
 <div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/996.png" alt="" loading="lazy"><span>Genclerbirligi</span><span class="ayrac">—</span><span>Erzurum BB</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/19267.png" alt="" loading="lazy"> <span class="skor-inline">(1 - 1)</span></div><div class="alt">Eryaman Stadium · Ankara</div></div>
-<div class="tv-kanal"><span class="kanal">📺 beIN Sports 1</span><a class="video-btn kucuk" href="https://www.youtube.com/results?search_query=Genclerbirligi%20Erzurum%20BB%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Özet video</a></div>
+<div class="tv-kanal"><span class="kanal">📺 beIN Sports 1</span><button type="button" class="video-btn kucuk" data-video="DaI9XS0K7W4" data-baslik="Genclerbirligi - Erzurum BB">▶ Özet video</button></div>
 </div><div class="tv-kart">
 <div class="tv-zaman"><div class="gun">Cmt</div><div class="saat">19:00</div><div class="tarih">29 Ağu</div><div class="durum-ms" style="font-size:11px">MS</div></div>
 <div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7648.png" alt="" loading="lazy"><span>Konyaspor</span><span class="ayrac">—</span><span>Kocaelispor</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/995.png" alt="" loading="lazy"> <span class="skor-inline">(1 - 2)</span></div><div class="alt">Medas Konya Büyüksehir Stadyumu · Konya</div></div>
-<div class="tv-kanal"><span class="kanal">📺 beIN Sports 1</span><a class="video-btn kucuk" href="https://www.youtube.com/results?search_query=Konyaspor%20Kocaelispor%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Özet video</a></div>
+<div class="tv-kanal"><span class="kanal">📺 beIN Sports 1</span><button type="button" class="video-btn kucuk" data-video="i4Dvgvo2Uo0" data-baslik="Konyaspor - Kocaelispor">▶ Özet video</button></div>
 </div><div class="tv-kart">
 <div class="tv-zaman"><div class="gun">Cmt</div><div class="saat">21:30</div><div class="tarih">29 Ağu</div><div class="durum-ms" style="font-size:11px">MS</div></div>
 <div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/432.png" alt="" loading="lazy"><span>Galatasaray</span><span class="ayrac">—</span><span>Goztepe</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/789.png" alt="" loading="lazy"> <span class="skor-inline">(3 - 2)</span></div><div class="alt">RAMS Park · Istanbul</div></div>
-<div class="tv-kanal"><span class="kanal">📺 beIN Sports 1</span><a class="video-btn kucuk" href="https://www.youtube.com/results?search_query=Galatasaray%20Goztepe%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Özet video</a></div>
+<div class="tv-kanal"><span class="kanal">📺 beIN Sports 1</span><button type="button" class="video-btn kucuk" data-video="3eygTqHXzP0" data-baslik="Galatasaray - Goztepe">▶ Özet video</button></div>
 </div><div class="tv-kart">
 <div class="tv-zaman"><div class="gun">Cmt</div><div class="saat">21:30</div><div class="tarih">29 Ağu</div><div class="durum-ms" style="font-size:11px">MS</div></div>
 <div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20070.png" alt="" loading="lazy"><span>Gaziantep FK</span><span class="ayrac">—</span><span>Caykur Rizespor</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7656.png" alt="" loading="lazy"> <span class="skor-inline">(1 - 2)</span></div><div class="alt">Gaziantep Stadium · Gaziantep</div></div>
-<div class="tv-kanal"><span class="kanal">📺 beIN Sports 2</span><a class="video-btn kucuk" href="https://www.youtube.com/results?search_query=Gaziantep%20FK%20Caykur%20Rizespor%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Özet video</a></div>
+<div class="tv-kanal"><span class="kanal">📺 beIN Sports 2</span><button type="button" class="video-btn kucuk" data-video="29gERHhnjZ0" data-baslik="Gaziantep FK - Caykur Rizespor">▶ Özet video</button></div>
 </div><div class="tv-kart">
 <div class="tv-zaman"><div class="gun">Paz</div><div class="saat">19:00</div><div class="tarih">30 Ağu</div></div>
 <div class="tv-mac"><div class="takimlar"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20729.png" alt="" loading="lazy"><span>Eyupspor</span><span class="ayrac">—</span><span>Alanyaspor</span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9078.png" alt="" loading="lazy"></div><div class="alt">Esenyurt Necmi Kadioglu Stadi · Istanbul</div></div>
@@ -227,7 +240,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:29%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">12</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Galatasaray%20Goztepe%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="3eygTqHXzP0" data-baslik="Galatasaray - Goztepe">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20070.png" alt="" loading="lazy"><span class="isim">Gaziantep FK</span></div>
@@ -257,7 +270,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:37%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">17</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Gaziantep%20FK%20Caykur%20Rizespor%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="29gERHhnjZ0" data-baslik="Gaziantep FK - Caykur Rizespor">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7648.png" alt="" loading="lazy"><span class="isim">Konyaspor</span></div>
@@ -288,7 +301,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:57%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">12</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Konyaspor%20Kocaelispor%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="i4Dvgvo2Uo0" data-baslik="Konyaspor - Kocaelispor">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/996.png" alt="" loading="lazy"><span class="isim">Genclerbirligi</span></div>
@@ -317,7 +330,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:57%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">11</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Genclerbirligi%20Erzurum%20BB%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="DaI9XS0K7W4" data-baslik="Genclerbirligi - Erzurum BB">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/995.png" alt="" loading="lazy"><span class="isim">Kocaelispor</span></div>
@@ -347,7 +360,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:36%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">16</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Kocaelispor%20Amed%20SFK%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="7iIsNdrU9jE" data-baslik="Kocaelispor - Amed SFK">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9078.png" alt="" loading="lazy"><span class="isim">Alanyaspor</span></div>
@@ -376,7 +389,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:50%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">14</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Alanyaspor%20Besiktas%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="QJ31yOM88UQ" data-baslik="Alanyaspor - Besiktas">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/789.png" alt="" loading="lazy"><span class="isim">Goztepe</span></div>
@@ -405,7 +418,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:55%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">12</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Goztepe%20Genclerbirligi%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="oGUoS17qhAc" data-baslik="Goztepe - Genclerbirligi">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20729.png" alt="" loading="lazy"><span class="isim">Eyupspor</span></div>
@@ -435,7 +448,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:48%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">17</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Eyupspor%20Gaziantep%20FK%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="VR9bBtfmquw" data-baslik="Eyupspor - Gaziantep FK">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/997.png" alt="" loading="lazy"><span class="isim">Trabzonspor</span></div>
@@ -465,7 +478,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:41%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">18</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Trabzonspor%20Istanbul%20Basaksehir%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="j5pYnq1xDfg" data-baslik="Trabzonspor - Istanbul Basaksehir">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/436.png" alt="" loading="lazy"><span class="isim">Fenerbahce</span></div>
@@ -498,7 +511,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:52%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">10</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Fenerbahce%20Konyaspor%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="nqTwc8rKkdM" data-baslik="Fenerbahce - Konyaspor">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7656.png" alt="" loading="lazy"><span class="isim">Caykur Rizespor</span></div>
@@ -528,7 +541,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:54%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">11</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Caykur%20Rizespor%20Samsunspor%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="QiJyqud0PYA" data-baslik="Caykur Rizespor - Samsunspor">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><span class="rozet">COR</span><span class="isim">Çorum FK</span></div>
@@ -557,7 +570,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:48%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">13</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=%C3%87orum%20FK%20Kasimpasa%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="7DKjgopygoI" data-baslik="Çorum FK - Kasimpasa">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/19267.png" alt="" loading="lazy"><span class="isim">Erzurum BB</span></div>
@@ -589,7 +602,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:47%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">12</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Erzurum%20BB%20Galatasaray%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="N6NYrEeWhIE" data-baslik="Erzurum BB - Galatasaray">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/11429.png" alt="" loading="lazy"><span class="isim">Samsunspor</span></div>
@@ -622,7 +635,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:38%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">13</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Samsunspor%20Goztepe%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="JhJx0-cdGjQ" data-baslik="Samsunspor - Goztepe">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><span class="rozet">AMED</span><span class="isim">Amed SFK</span></div>
@@ -653,7 +666,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:45%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">12</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Amed%20SFK%20Erzurum%20BB%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="yzsO1Pgi1c0" data-baslik="Amed SFK - Erzurum BB">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1895.png" alt="" loading="lazy"><span class="isim">Besiktas</span></div>
@@ -682,7 +695,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:58%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">14</span></div></div>
-<div style="text-align:center"><a class="video-btn" href="https://www.youtube.com/results?search_query=Besiktas%20Eyupspor%20ma%C3%A7%20%C3%B6zeti" target="_blank" rel="noopener">▶ Video Özeti İzle</a></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="T85B_iKVJQs" data-baslik="Besiktas - Eyupspor">▶ Video Özeti İzle</button></div>
 </div></div>
 <h2>Yaklaşan Maçlar</h2>
 <div class="grid2"><div class="kart"><div class="mac">
@@ -2632,6 +2645,15 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div class="telif">© 2026 İnadına TV · Fixtoor</div>
 </footer>
 </div>
+
+<div class="modal" id="video-modal">
+<div class="modal-kutu">
+<div class="modal-ust"><span id="video-baslik">Maç Özeti</span>
+<button type="button" class="modal-kapat" aria-label="Kapat">✕</button></div>
+<div class="modal-govde"><iframe id="video-cerceve" src="" title="Maç özeti videosu"
+allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
+</div>
+</div>
 <script>
 document.documentElement.classList.add('js');
 // Sekmeler
@@ -2652,6 +2674,26 @@ function haftaSec(b){
 document.querySelectorAll('.cipsler button').forEach(function(b){
   b.addEventListener('click',function(){haftaSec(b)});
 });
+// Video modalı: özet videolar siteden çıkmadan, sayfa içinde açılır
+var modal=document.getElementById('video-modal');
+var cerceve=document.getElementById('video-cerceve');
+var videoBaslik=document.getElementById('video-baslik');
+function videoAc(id,ad){
+  videoBaslik.textContent=ad||'Maç Özeti';
+  cerceve.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+  modal.classList.add('acik');
+}
+function videoKapat(){
+  modal.classList.remove('acik');
+  cerceve.src='';
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest?e.target.closest('[data-video]'):null;
+  if(b){e.preventDefault();videoAc(b.getAttribute('data-video'),b.getAttribute('data-baslik'));}
+});
+modal.addEventListener('click',function(e){if(e.target===modal)videoKapat();});
+document.querySelector('.modal-kapat').addEventListener('click',videoKapat);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')videoKapat();});
 </script>
 </body>
 </html>

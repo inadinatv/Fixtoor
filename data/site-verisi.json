@@ -100,7 +100,8 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "RAMS Park",
-     "utc": "2026-08-14T18:30Z"
+     "utc": "2026-08-14T18:30Z",
+     "video_id": "VHlAqKp_wB4"
     },
     {
      "dep": {
@@ -192,7 +193,8 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Recep Tayyip Erdogan Stadium",
-     "utc": "2026-08-15T16:00Z"
+     "utc": "2026-08-15T16:00Z",
+     "video_id": "VveHHWSsjhg"
     },
     {
      "dep": {
@@ -291,7 +293,8 @@
      ],
      "sehir": "Konya",
      "stadyum": "Medas Konya Büyüksehir Stadyumu",
-     "utc": "2026-08-15T16:00Z"
+     "utc": "2026-08-15T16:00Z",
+     "video_id": "R_By2FuJwMk"
     },
     {
      "dep": {
@@ -404,7 +407,8 @@
      ],
      "sehir": "Gaziantep",
      "stadyum": "Gaziantep Stadium",
-     "utc": "2026-08-15T18:30Z"
+     "utc": "2026-08-15T18:30Z",
+     "video_id": "CakZ87zwZd4"
     },
     {
      "dep": {
@@ -489,7 +493,8 @@
      ],
      "sehir": "Ankara",
      "stadyum": "Eryaman Stadium",
-     "utc": "2026-08-15T18:30Z"
+     "utc": "2026-08-15T18:30Z",
+     "video_id": "xBv5MviJkD8"
     },
     {
      "dep": {
@@ -595,7 +600,8 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Basaksehir Fatih Terim Stadium",
-     "utc": "2026-08-16T16:00Z"
+     "utc": "2026-08-16T16:00Z",
+     "video_id": "3ORWhp5sL3s"
     },
     {
      "dep": {
@@ -680,7 +686,8 @@
      ],
      "sehir": "Diyarbakir",
      "stadyum": "Diyarbakir Stadyumu",
-     "utc": "2026-08-16T18:30Z"
+     "utc": "2026-08-16T18:30Z",
+     "video_id": "yzsO1Pgi1c0"
     },
     {
      "dep": {
@@ -780,7 +787,8 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Vodafone Park",
-     "utc": "2026-08-16T18:30Z"
+     "utc": "2026-08-16T18:30Z",
+     "video_id": "T85B_iKVJQs"
     },
     {
      "dep": {
@@ -921,7 +929,8 @@
      ],
      "sehir": "Samsun",
      "stadyum": "Samsun 19 Mayis Stadium",
-     "utc": "2026-08-17T18:30Z"
+     "utc": "2026-08-17T18:30Z",
+     "video_id": "JhJx0-cdGjQ"
     }
    ],
    "no": 1
@@ -1018,7 +1027,8 @@
      ],
      "sehir": "Erzurum",
      "stadyum": "Erzurum Kazim Karabekir",
-     "utc": "2026-08-21T18:30Z"
+     "utc": "2026-08-21T18:30Z",
+     "video_id": "N6NYrEeWhIE"
     },
     {
      "dep": {
@@ -1103,7 +1113,8 @@
      ],
      "sehir": "Rize",
      "stadyum": "Estadio Caykur Didi",
-     "utc": "2026-08-22T16:00Z"
+     "utc": "2026-08-22T16:00Z",
+     "video_id": "QiJyqud0PYA"
     },
     {
      "dep": {
@@ -1202,7 +1213,8 @@
      ],
      "sehir": "",
      "stadyum": "Çorum Sehir Stadyumu",
-     "utc": "2026-08-22T16:00Z"
+     "utc": "2026-08-22T16:00Z",
+     "video_id": "7DKjgopygoI"
     },
     {
      "dep": {
@@ -1322,7 +1334,8 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Ulker Stadyumu",
-     "utc": "2026-08-22T18:30Z"
+     "utc": "2026-08-22T18:30Z",
+     "video_id": "nqTwc8rKkdM"
     },
     {
      "dep": {
@@ -1401,7 +1414,8 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Esenyurt Necmi Kadioglu Stadi",
-     "utc": "2026-08-23T16:00Z"
+     "utc": "2026-08-23T16:00Z",
+     "video_id": "VR9bBtfmquw"
     },
     {
      "dep": {
@@ -1535,7 +1549,8 @@
      ],
      "sehir": "Trabzon",
      "stadyum": "Papara Park",
-     "utc": "2026-08-23T16:00Z"
+     "utc": "2026-08-23T16:00Z",
+     "video_id": "j5pYnq1xDfg"
     },
     {
      "dep": {
@@ -1598,7 +1613,8 @@
      "sari_kartlar": [],
      "sehir": "Antalya",
      "stadyum": "Kirbiyik Holding Stadyumu",
-     "utc": "2026-08-23T18:30Z"
+     "utc": "2026-08-23T18:30Z",
+     "video_id": "QJ31yOM88UQ"
     },
     {
      "dep": {
@@ -1683,7 +1699,8 @@
      ],
      "sehir": "Izmir",
      "stadyum": "Göztepe Gürsel Aksel Stadi",
-     "utc": "2026-08-23T18:30Z"
+     "utc": "2026-08-23T18:30Z",
+     "video_id": "oGUoS17qhAc"
     },
     {
      "dep": {
@@ -1768,7 +1785,8 @@
      ],
      "sehir": "Kocaeli",
      "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
-     "utc": "2026-08-24T18:30Z"
+     "utc": "2026-08-24T18:30Z",
+     "video_id": "7iIsNdrU9jE"
     }
    ],
    "no": 2
@@ -1886,7 +1904,8 @@
      ],
      "sehir": "Ankara",
      "stadyum": "Eryaman Stadium",
-     "utc": "2026-08-28T18:30Z"
+     "utc": "2026-08-28T18:30Z",
+     "video_id": "DaI9XS0K7W4"
     },
     {
      "dep": {
@@ -2014,7 +2033,8 @@
      ],
      "sehir": "Konya",
      "stadyum": "Medas Konya Büyüksehir Stadyumu",
-     "utc": "2026-08-29T16:00Z"
+     "utc": "2026-08-29T16:00Z",
+     "video_id": "i4Dvgvo2Uo0"
     },
     {
      "dep": {
@@ -2134,7 +2154,8 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "RAMS Park",
-     "utc": "2026-08-29T18:30Z"
+     "utc": "2026-08-29T18:30Z",
+     "video_id": "3eygTqHXzP0"
     },
     {
      "dep": {
@@ -2233,7 +2254,8 @@
      ],
      "sehir": "Gaziantep",
      "stadyum": "Gaziantep Stadium",
-     "utc": "2026-08-29T18:30Z"
+     "utc": "2026-08-29T18:30Z",
+     "video_id": "29gERHhnjZ0"
     },
     {
      "dep": {
@@ -12828,5 +12850,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-08-30T06:47:19.658921+00:00"
+ "uretim": "2026-08-30T07:48:30.573795+00:00"
 }
