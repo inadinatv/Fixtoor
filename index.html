@@ -156,7 +156,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <header class="ust sade">
 <div><h1>Fix<span>toor</span></h1><span class="lig-etiket">⚽ Trendyol Süper Lig</span>
 <div class="alt-bilgi">2026-27 Turkish Super Lig · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı</div>
-<div class="alt-bilgi">Son güncelleme: Paz, 30 Ağu 10:48 (İstanbul)</div>
+<div class="alt-bilgi">Son güncelleme: Paz, 30 Ağu 11:05 (İstanbul)</div>
 </div></header>
 
 <nav class="sekmeler">
@@ -541,7 +541,7 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div><div class="bar"><i class="ev" style="width:54%"></i></div>
 <div class="orta">Faul</div></div>
 <span class="deger" style="text-align:right">11</span></div></div>
-<div style="text-align:center"><button type="button" class="video-btn" data-video="QiJyqud0PYA" data-baslik="Caykur Rizespor - Samsunspor">▶ Video Özeti İzle</button></div>
+<div style="text-align:center"><button type="button" class="video-btn" data-video="29gERHhnjZ0" data-baslik="Caykur Rizespor - Samsunspor">▶ Video Özeti İzle</button></div>
 </div><div class="kart">
 <div class="mac">
   <div class="takim"><span class="rozet">COR</span><span class="isim">Çorum FK</span></div>
@@ -2649,7 +2649,10 @@ display:flex;gap:10px;align-items:baseline;justify-content:center}
 <div class="modal" id="video-modal">
 <div class="modal-kutu">
 <div class="modal-ust"><span id="video-baslik">Maç Özeti</span>
-<button type="button" class="modal-kapat" aria-label="Kapat">✕</button></div>
+<span style="display:flex;gap:10px;align-items:center;flex-shrink:0">
+<a id="video-youtube-link" href="#" target="_blank" rel="noopener"
+style="color:var(--mavi);font-size:12.5px;font-weight:600;text-decoration:none">YouTube'da aç ↗</a>
+<button type="button" class="modal-kapat" aria-label="Kapat">✕</button></span></div>
 <div class="modal-govde"><iframe id="video-cerceve" src="" title="Maç özeti videosu"
 allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
 </div>
@@ -2681,6 +2684,7 @@ var videoBaslik=document.getElementById('video-baslik');
 function videoAc(id,ad){
   videoBaslik.textContent=ad||'Maç Özeti';
   cerceve.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+  document.getElementById('video-youtube-link').href='https://www.youtube.com/watch?v='+id;
   modal.classList.add('acik');
 }
 function videoKapat(){
