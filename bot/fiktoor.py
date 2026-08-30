@@ -31,6 +31,9 @@ from zoneinfo import ZoneInfo
 SITE_API = "https://site.api.espn.com/apis/site/v2/sports/soccer/{slug}"
 WEB_API = "https://site.web.api.espn.com/apis/v2/sports/soccer/{slug}"
 DM_API = "https://api.dailymotion.com/videos"
+DM_BEIN_KANAL = "x1jf30l"   # beIN SPORTS USA'nın resmî Dailymotion kanalı
+DM_ALANLAR = ("id,title,duration,created_time,owner.screenname,"
+              "allow_embed,geoblocking")
 TR_TZ = ZoneInfo("Europe/Istanbul")
 
 GUNLER = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]
@@ -76,7 +79,7 @@ def esc(s) -> str:
 
 
 def tr_tarih(dt: datetime, saat_dahil: bool = True) -> str:
-    """UTC datetime -> 'Cmt, 29 Ağu 19:00' (İstanbul saati)."""
+    """UTC datetime -> 'Cum, 29 Ağu 19:00' (İstanbul saati)."""
     yerel = dt.astimezone(TR_TZ)
     metin = f"{GUNLER_KISA[yerel.weekday()]}, {yerel.day} {AYLAR[yerel.month - 1]}"
     if saat_dahil:
@@ -94,64 +97,159 @@ def video_url(m: dict) -> str:
     return "https://www.youtube.com/results?search_query=" + urllib.parse.quote(q)
 
 
-def youtube_video_bul(sorgu: str):
-    """YouTube arama sayfasından özet videonun (ID, kanal) bilgisini çıkarır; API anahtarı gerekmez.
-    Sadece beIN Sports kanallarının videoları kabul edilir: başka kanallar videolarını
-    Türkiye'den izlemeye kapatabiliyor ('ülkenizde verilmiyor' hatası bu yüzden olur)."""
+def _sure_saniye(metin: str) -> int:
+    """'11:24' / '1:02:03' biçimindeki süreyi saniyeye çevirir."""
+    toplam = 0
+    for parca in (metin or "").split(":"):
+        if parca.strip().isdigit():
+            toplam = toplam * 60 + int(parca)
+    return toplam
+
+
+def youtube_video_bul(ev_ad: str, dep_ad: str):
+    """YouTube yedek araması (son çare). beIN, YouTube'taki Süper Lig özetlerini
+    Türkiye'ye karşı kasıtlı olarak kilitliyor ('ülkenizde verilmiyor' hatası bu
+    yüzdendir); bu yüzden beIN DIŞI kanallarda, başlığında iki takımın adı ve
+    'özet' kelimesi geçen, en az 2 dakikalık videolar kabul edilir."""
+    ev, dep = takim_varyantlari(ev_ad), takim_varyantlari(dep_ad)
     try:
         html = http_get_text(
-            "https://www.youtube.com/results?search_query=" + urllib.parse.quote(sorgu))
+            "https://www.youtube.com/results?search_query="
+            + urllib.parse.quote(f"{ev_ad} {dep_ad} maç özeti"))
     except Exception as e:
         log(f"UYARI: YouTube araması okunamadı: {e}")
         return "", ""
-    adaylar = []
-    for parca in html.split('"videoRenderer"')[1:]:
+    for parca in html.split('"videoRenderer"')[1:16]:
         vid = re.search(r'"videoId":"([\w-]{11})"', parca)
         if not vid:
             continue
         kanal_m = re.search(r'"ownerText":\{"runs":\[\{"text":"([^"]*)"', parca)
         baslik_m = re.search(r'"title":\{"runs":\[\{"text":"([^"]*)"', parca)
-        adaylar.append({
-            "id": vid.group(1),
-            "kanal": (kanal_m.group(1) if kanal_m else "").casefold(),
-            "baslik": (baslik_m.group(1) if baslik_m else "").casefold(),
-        })
-        if len(adaylar) >= 15:
-            break
-    for a in adaylar:  # 1) beIN Sports Türkiye / beIN Arşiv (resmî özet)
-        if "bein" in a["kanal"] and any(x in a["kanal"] for x in ("türkiye", "turkiye", "arşiv", "arsiv")):
-            return a["id"], a["kanal"]
-    for a in adaylar:  # 2) diğer beIN kanalları
-        if "bein" in a["kanal"]:
-            return a["id"], a["kanal"]
-    for a in adaylar:  # 3) başlığında lig adı geçen özet videosu
-        if "trendyol" in a["baslik"] and "öz" in a["baslik"]:
-            return a["id"], a["kanal"]
+        sure_m = re.search(r'"lengthText":\{[^}]*"simpleText":"([\d:]+)"', parca)
+        kanal = (kanal_m.group(1) if kanal_m else "").casefold()
+        if "bein" in kanal:
+            continue    # beIN videoları Türkiye'den izlenemiyor
+        baslik = takim_norm(baslik_m.group(1) if baslik_m else "")
+        if not (any(x in baslik for x in ev) and any(x in baslik for x in dep)):
+            continue    # iki takımın adı da başlıkta geçmeli
+        if not any(k in baslik for k in ("ozet", "ozetler", "highlights")):
+            continue    # röportaj/kanal tanıtımı değil, özet olmalı
+        if _sure_saniye(sure_m.group(1) if sure_m else "") < 120:
+            continue    # kısa klipsler değil, gerçek özet (2 dk+)
+        return vid.group(1), kanal
     return "", ""  # güvenilir video yok: buton YouTube aramasına düşer
 
 
+# Aynı takım farklı kaynaklarda farklı yazılıyor ('Çorum FK' ↔ 'Corum',
+# 'Çaykur Rizespor' ↔ 'Rizespor', 'İstanbul Başakşehir' ↔ 'Basaksehir'...)
+TAKIM_VARYANT = {
+    "corumfk": ("corum",),
+    "erzurumbb": ("erzurumspor",),
+    "gaziantepfk": ("gaziantep",),
+    "caykurrizespor": ("rizespor",),
+    "istanbulbasaksehir": ("basaksehir",),
+    "amedsfk": ("amedspor",),
+}
+
+
+def takim_varyantlari(ad: str) -> set:
+    """Takım adının normalize edilmiş tüm yazım varyantlarını üretir."""
+    n = takim_norm(ad)
+    varyantlar = {n} | set(TAKIM_VARYANT.get(n, ()))
+    if n.endswith("fk") and len(n) > 5:
+        varyantlar.add(n[:-2])
+    if n.endswith("spor") and len(n) > 9:
+        varyantlar.add(n[:-4])
+    return {v for v in varyantlar if v}
+
+
+def bein_arama_adi(ad: str) -> str:
+    """beIN SPORTS USA videolarında geçen (Türkçesiz) takım adını üretir."""
+    n = takim_norm(ad)
+    return (TAKIM_VARYANT.get(n) or (n,))[0]
+
+
+def _dm_sonuc_uyun(v: dict, ev: set, dep: set, mac_epoch: float, min_sure: int) -> bool:
+    """Dailymotion sonucu gerçek, izlenebilir maç özeti mi?
+    (İki takım da başlıkta, yeterince uzun, maçtan sonra yüklenmiş,
+    başka sitelere gömülebilir ve bölge kısıtlaması YOK.)"""
+    if not v.get("allow_embed"):
+        return False
+    if v.get("geoblocking") != ["allow"]:
+        return False        # Türkiye'ye kapalı olabilir: asla seçme
+    if (v.get("duration") or 0) < min_sure:
+        return False
+    if (v.get("created_time") or 0) < mac_epoch - 3600:
+        return False
+    baslik = takim_norm(v.get("title") or "")
+    return any(x in baslik for x in ev) and any(x in baslik for x in dep)
+
+
+def bein_ozet_bul(ev_ad: str, dep_ad: str, mac_epoch: float):
+    """BİRİNCİL KAYNAK: beIN SPORTS USA'nın resmî Dailymotion kanalındaki maç özeti.
+    beIN, YouTube'taki Süper Lig özetlerini Türkiye'ye kilitliyor; ama kendi
+    Dailymotion kanalına yüklediği 10-13 dakikalık resmî özetlerde bölge kısıtlaması
+    yok — Türkiye'den sorunsuz, en yüksek kaliteli özetler bunlar."""
+    ev, dep = takim_varyantlari(ev_ad), takim_varyantlari(dep_ad)
+    try:
+        data = http_get_json(
+            DM_API + "?owners=" + DM_BEIN_KANAL
+            + "&search=" + urllib.parse.quote(f"{bein_arama_adi(ev_ad)} {bein_arama_adi(dep_ad)}")
+            + f"&fields={DM_ALANLAR}&sort=recent&limit=20")
+    except Exception as e:
+        log(f"UYARI: beIN Dailymotion araması okunamadı: {e}")
+        return "", ""
+    normal, uzun = [], []
+    for v in data.get("list") or []:
+        if not _dm_sonuc_uyun(v, ev, dep, mac_epoch, 300):
+            continue        # beIN resmî özetleri 5 dakikadan uzun
+        if "extended" in takim_norm(v.get("title") or ""):
+            uzun.append(v)
+        else:
+            normal.append(v)
+    for havuz in (normal, uzun):   # önce standart özet, yoksa uzun (extended) özet
+        if havuz:
+            en_yeni = max(havuz, key=lambda v: v.get("created_time") or 0)
+            return en_yeni["id"], en_yeni.get("owner.screenname") or "beIN SPORTS"
+    return "", ""
+
+
 def dailymotion_video_bul(ev_ad: str, dep_ad: str, mac_epoch: float):
-    """Dailymotion'da maçın özet videosunu arar (anahtarsız resmî API).
-    Türk haber ajansları (İHA/ajansspor, Fanatik...) özetleri Dailymotion'da da yayınlıyor
-    ve Türkiye'de ülke kısıtlaması koymuyorlar — bu yüzden birincil kaynak Dailymotion."""
+    """İKİNCİL KAYNAK: Dailymotion genel aramasında haber ajansı özeti
+    (İHA/ajansspor 'Maç sonucu', Fanatik, Sporx...) — anahtarsız resmî API."""
+    ev, dep = takim_varyantlari(ev_ad), takim_varyantlari(dep_ad)
     try:
         data = http_get_json(
             DM_API + "?search=" + urllib.parse.quote(f"{ev_ad} {dep_ad}")
-            + "&fields=id,title,duration,created_time,owner.screenname&sort=recent&limit=20")
+            + f"&fields={DM_ALANLAR}&sort=recent&limit=20")
     except Exception as e:
         log(f"UYARI: Dailymotion araması okunamadı: {e}")
         return "", ""
-    evn, depn = takim_norm(ev_ad), takim_norm(dep_ad)
+    kesin, olasi = [], []
     for v in data.get("list") or []:
+        if not _dm_sonuc_uyun(v, ev, dep, mac_epoch, 150):
+            continue        # başlıkta iki takım + 2,5 dk+ + maç sonrası + bölge kısıtsız
         baslik = takim_norm(v.get("title") or "")
-        if not (evn in baslik and depn in baslik):
-            continue        # başlıkta iki takımın adı geçmeli (eski maç/haber videoları elenir)
-        if (v.get("duration") or 0) < 150:
-            continue        # kısa haber/törenci klipleri değil, gerçek özet (2,5 dk+)
-        if (v.get("created_time") or 0) < mac_epoch - 3600:
-            continue        # maçtan önce yüklenmiş video olamaz
-        return v["id"], v.get("owner.screenname") or ""
+        if any(k in baslik for k in ("ozet", "macsonucu", "goller", "ilkyari")):
+            kesin.append(v)     # başlığında 'özet / maç sonucu / goller' geçiyor
+        else:
+            olasi.append(v)
+    for havuz in (kesin, olasi):
+        if havuz:
+            en_yeni = max(havuz, key=lambda v: v.get("created_time") or 0)
+            return en_yeni["id"], en_yeni.get("owner.screenname") or ""
     return "", ""
+
+
+def dm_video_gosteriliyor(video_id: str) -> bool:
+    """Önbellekteki Dailymotion videosu hâlâ yayında mı? (beIN aynı özeti iki kez
+    yükleyip ilkini silebiliyor; silinmişse video yeniden aranır.)"""
+    try:
+        data = http_get_json(f"https://api.dailymotion.com/video/{video_id}"
+                             "?fields=status,geoblocking")
+        return data.get("status") == "published" and data.get("geoblocking") == ["allow"]
+    except Exception:
+        return True     # doğrulanamadıysa mevcut kayıt korunur
 
 
 def video_id_cache_yukle(data_dir: str) -> dict:
@@ -505,13 +603,13 @@ radial-gradient(900px 420px at 8% -5%,rgba(34,197,94,.07),transparent 55%),var(-
 body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;z-index:10;
 background:linear-gradient(90deg,#22c55e,#38bdf8,#a78bfa)}
 ::selection{background:rgba(34,197,94,.35)}
-.kapsayici{max-width:980px;margin:0 auto;padding:22px 16px 40px;animation:giris .45s ease}
+.kapsayici{max-width:980px;margin:0 auto;padding:8px 16px 40px;animation:giris .45s ease}
 @keyframes giris{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 header.ust{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:4px;
 background:linear-gradient(180deg,rgba(56,189,248,.07),rgba(34,197,94,.05));
 border:1px solid var(--cizgi);border-radius:18px;padding:18px 20px}
 header.ust>img{width:56px;height:56px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.45))}
-.logo-seridi{padding:4px 10px 0;margin-bottom:12px;text-align:center}
+.logo-seridi{padding:0 10px;margin-bottom:8px;text-align:center}
 .logo-seridi img{display:inline-block;width:100%;max-width:520px;height:auto;max-height:150px;
 object-fit:contain;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
 header.ust.sade{justify-content:center;text-align:center}
@@ -1087,7 +1185,7 @@ def calistir(args) -> None:
             m["kanal"] = kanal_harita.get(
                 _mac_anahtari(takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])), "")
 
-        # --- video özetleri: önce Dailymotion, bulunamazsa YouTube ---
+        # --- video özetleri: son 21 günün oynanmış/canlı maçları için kaynaklardan ID çek ---
         simdi_dt = datetime.now(timezone.utc)
         eski_videolar = video_id_cache_yukle(data_dir)
         sinir = simdi_dt - timedelta(days=21)
@@ -1095,22 +1193,31 @@ def calistir(args) -> None:
                    if m["durum"] != "pre" and m["utc"] and parse_utc(m["utc"]) >= sinir]
         for m in adaylar[:40]:
             eski_kayit = eski_videolar.get(m["id"], {})
-            if eski_kayit.get("video_kaynak") == "dm" and eski_kayit.get("video_id"):
-                # Dailymotion'dan bulunmuş kayıt: güvenle kullan
+            if (eski_kayit.get("video_kaynak") == "dm" and eski_kayit.get("video_id")
+                    and "bein" in (eski_kayit.get("video_kanal") or "").casefold()
+                    and dm_video_gosteriliyor(eski_kayit["video_id"])):
+                # beIN'in resmî Dailymotion özeti zaten bulunmuş: en iyi kaynak, koru
                 m["video_id"] = eski_kayit["video_id"]
                 m["video_kanal"] = eski_kayit.get("video_kanal", "")
                 m["video_kaynak"] = "dm"
                 continue
-            # 1) Dailymotion (Türkiye'de kısıtsız, haber ajansı özetleri)
             mac_epoch = parse_utc(m["utc"]).timestamp() if m["utc"] else 0
+            # 1) beIN SPORTS USA resmî özeti (Dailymotion, Türkiye'de kısıtsız)
+            vid, kanal = bein_ozet_bul(m["ev"]["ad"], m["dep"]["ad"], mac_epoch)
+            if vid:
+                m["video_id"], m["video_kanal"], m["video_kaynak"] = vid, kanal, "dm"
+                log(f'video özeti (beIN resmî·DM): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
+                time.sleep(0.2)
+                continue
+            # 2) Dailymotion'da haber ajansı özeti (İHA/ajansspor, Fanatik...)
             vid, kanal = dailymotion_video_bul(m["ev"]["ad"], m["dep"]["ad"], mac_epoch)
             if vid:
                 m["video_id"], m["video_kanal"], m["video_kaynak"] = vid, kanal, "dm"
-                log(f'video özeti (Dailymotion): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
+                log(f'video özeti (ajans·DM): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
                 time.sleep(0.2)
                 continue
-            # 2) YouTube (yedek: Türkiye'de beIN videoları kısıtlı olabiliyor)
-            vid, kanal = youtube_video_bul(f'{m["ev"]["ad"]} {m["dep"]["ad"]} maç özeti')
+            # 3) YouTube yedek (beIN dışı kanallar — beIN videoları TR'de kilitli)
+            vid, kanal = youtube_video_bul(m["ev"]["ad"], m["dep"]["ad"])
             m["video_id"], m["video_kanal"] = vid, kanal
             m["video_kaynak"] = "yt" if vid else ""
             if vid:
