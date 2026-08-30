@@ -62,7 +62,7 @@
    {
     "dakika": "55'",
     "kendi_kalesine": false,
-    "oyuncu": "Gabriel Gomes",
+    "oyuncu": "Gabriel Sara",
     "penalti": false,
     "takim_id": "432"
    },
@@ -709,9 +709,9 @@
   "sehir": "Izmir",
   "stadyum": "Göztepe Gürsel Aksel Stadi",
   "utc": "2026-08-23T18:30Z",
-  "video_id": "xb073sa",
-  "video_kanal": "Maç Özetleri",
-  "video_kaynak": "dm"
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
  },
  {
   "dep": {
