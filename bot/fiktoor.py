@@ -20,6 +20,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -84,6 +85,12 @@ def tr_tarih(dt: datetime, saat_dahil: bool = True) -> str:
 
 def parse_utc(s: str) -> datetime:
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+
+def video_url(m: dict) -> str:
+    """Maçın özeti için YouTube arama bağlantısı (beIN Sports Türkiye özetleri orada yayınlanır)."""
+    q = f'{m["ev"]["ad"]} {m["dep"]["ad"]} maç özeti'
+    return "https://www.youtube.com/results?search_query=" + urllib.parse.quote(q)
 
 
 # ----------------------------------------------------------------------------
@@ -518,6 +525,11 @@ border:1px dashed var(--cizgi);border-radius:14px}
 color:#cfe9ff;border:1px solid #315071;border-radius:9px;padding:2px 10px;font-size:12px;font-weight:700;
 white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .skor-inline{color:var(--yesil);font-weight:800;margin-left:4px}
+.video-btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:10px;
+background:linear-gradient(135deg,#e52d27,#b3271d);color:#fff;font-size:13px;font-weight:700;
+text-decoration:none;transition:transform .15s,box-shadow .15s}
+.video-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(229,45,39,.42);color:#fff}
+.video-btn.kucuk{padding:5px 11px;font-size:11.5px}
 .tv-kart{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;
 background:linear-gradient(180deg,var(--kart),#111823);border:1px solid var(--cizgi);border-radius:14px;
 padding:14px 16px;margin-bottom:12px;transition:border-color .15s,transform .15s,box-shadow .15s}
@@ -530,12 +542,12 @@ padding:14px 16px;margin-bottom:12px;transition:border-color .15s,transform .15s
 .tv-mac .takimlar img{width:26px;height:26px;object-fit:contain}
 .tv-mac .takimlar .ayrac{color:var(--soluk);font-weight:400}
 .tv-mac .alt{color:var(--soluk);font-size:12.5px;margin-top:5px}
-.tv-kanal{justify-self:end}
+.tv-kanal{justify-self:end;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
 .tv-kanal .kanal{font-size:13px;padding:6px 12px}
 @media(max-width:560px){.tv-kart{grid-template-columns:1fr;gap:10px}
 .tv-zaman{border-right:none;border-bottom:1px dashed var(--cizgi);padding:0 0 10px;
 display:flex;gap:10px;align-items:baseline;justify-content:center}
-.tv-kanal{justify-self:center}}
+.tv-kanal{justify-self:center;align-items:center}}
 """
 
 JS = """
@@ -607,10 +619,14 @@ def tv_karti(m: dict) -> str:
         kanal_html = f'<span class="kanal">📺 {esc(kanal)}</span>'
     else:
         kanal_html = '<span class="kanal" style="opacity:.45">📺 —</span>'
+    video_html = ""
+    if oynandi or canli:
+        video_html = (f'<a class="video-btn kucuk" href="{video_url(m)}" '
+                      f'target="_blank" rel="noopener">▶ Özet video</a>')
     return f'''<div class="tv-kart">
 <div class="tv-zaman"><div class="gun">{gun}</div><div class="saat">{saat}</div><div class="tarih">{tarih}</div>{durum}</div>
 <div class="tv-mac"><div class="takimlar">{takimlar}</div><div class="alt">{esc(yer)}</div></div>
-<div class="tv-kanal">{kanal_html}</div>
+<div class="tv-kanal">{kanal_html}{video_html}</div>
 </div>'''
 
 
@@ -691,6 +707,8 @@ def ozet_karti(m: dict) -> str:
             istatistik_bar("Faul", ie.get("foulsCommitted", "0"), idp.get("foulsCommitted", "0")),
         ]) + "</div>"
 
+    video_btn = (f'<a class="video-btn" href="{video_url(m)}" target="_blank" '
+                 f'rel="noopener">▶ Video Özeti İzle</a>')
     return f'''<div class="kart">
 <div class="mac">
   {takim_logolu(ev)}
@@ -698,12 +716,13 @@ def ozet_karti(m: dict) -> str:
   {takim_logolu(dep, dep=True)}
 </div>
 <div class="mac-alt"><span>{esc(tr_tarih(parse_utc(m["utc"])) if m["utc"] else "")}</span>
-<span class="durum-ms">{esc(m.get("durum_metin") or "MS")}{" · " + esc(m["stadyum"]) if m.get("stadyum") else ""}</span></div>
+<span class="durum-ms">{esc(m.get("durum_metin") or "MS")}{(" · " + esc(m["stadyum"])) if m.get("stadyum") else ""}</span></div>
 <div class="ozet-govde">
   <div>{gol_listesi(ev["id"], ev)}</div>
   <div class="dep-kolon">{gol_listesi(dep["id"], dep)}</div>
 </div>
 {ist_html}
+<div style="text-align:center">{video_btn}</div>
 </div>'''
 
 
@@ -809,8 +828,8 @@ def render_html(veri: dict, cikti: str) -> None:
 
     canli_rozet = ' <span class="canli">CANLI</span>' if canli_var else ""
 
-    # İnadına TV markası: depoda logo dosyası varsa üstte tam genişlik şerit olarak
-    # ve altta o kullanılır; yoksa üstte lig logosu, altta yerleşik SVG amblem gösterilir
+    # İnadına TV markası: depoda logo dosyası varsa üst başlıkta ve altta o kullanılır,
+    # yoksa üstte lig logosu, altta yerleşik SVG amblem gösterilir
     kok = os.path.dirname(os.path.abspath(cikti))
     logo_dosya = next((ad for ad in ("logo.png", "logo.svg", "logo.jpg", "logo.webp",
                                      "assets/logo.png", "assets/logo.svg")
