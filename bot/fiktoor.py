@@ -30,6 +30,7 @@ from zoneinfo import ZoneInfo
 # ----------------------------------------------------------------------------
 SITE_API = "https://site.api.espn.com/apis/site/v2/sports/soccer/{slug}"
 WEB_API = "https://site.web.api.espn.com/apis/v2/sports/soccer/{slug}"
+DM_API = "https://api.dailymotion.com/videos"
 TR_TZ = ZoneInfo("Europe/Istanbul")
 
 GUNLER = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]
@@ -129,14 +130,40 @@ def youtube_video_bul(sorgu: str):
     return "", ""  # güvenilir video yok: buton YouTube aramasına düşer
 
 
+def dailymotion_video_bul(ev_ad: str, dep_ad: str, mac_epoch: float):
+    """Dailymotion'da maçın özet videosunu arar (anahtarsız resmî API).
+    Türk haber ajansları (İHA/ajansspor, Fanatik...) özetleri Dailymotion'da da yayınlıyor
+    ve Türkiye'de ülke kısıtlaması koymuyorlar — bu yüzden birincil kaynak Dailymotion."""
+    try:
+        data = http_get_json(
+            DM_API + "?search=" + urllib.parse.quote(f"{ev_ad} {dep_ad}")
+            + "&fields=id,title,duration,created_time,owner.screenname&sort=recent&limit=20")
+    except Exception as e:
+        log(f"UYARI: Dailymotion araması okunamadı: {e}")
+        return "", ""
+    evn, depn = takim_norm(ev_ad), takim_norm(dep_ad)
+    for v in data.get("list") or []:
+        baslik = takim_norm(v.get("title") or "")
+        if not (evn in baslik and depn in baslik):
+            continue        # başlıkta iki takımın adı geçmeli (eski maç/haber videoları elenir)
+        if (v.get("duration") or 0) < 150:
+            continue        # kısa haber/törenci klipleri değil, gerçek özet (2,5 dk+)
+        if (v.get("created_time") or 0) < mac_epoch - 3600:
+            continue        # maçtan önce yüklenmiş video olamaz
+        return v["id"], v.get("owner.screenname") or ""
+    return "", ""
+
+
 def video_id_cache_yukle(data_dir: str) -> dict:
     """Önceki çalıştırmada bulunmuş video kimliklerini yükler.
-    Sadece kanal bilgisiyle kaydedilmiş (yeni biçim) kayıtlar kullanılır;
-    eski/kötü seçimler otomatik olarak yeniden aranır."""
+    Sadece Dailymotion kaynaklı kayıtlar olduğu gibi kullanılır; YouTube'lu kayıtlar
+    her çalışmada yeniden denenir (Dailymotion'a düşerse otomatik geçilir)."""
     try:
         with open(os.path.join(data_dir, "fikstur.json"), encoding="utf-8") as f:
             eski = json.load(f)
-        return {m.get("id", ""): (m.get("video_id", ""), m.get("video_kanal", ""))
+        return {m.get("id", ""): {"video_id": m.get("video_id", ""),
+                                  "video_kanal": m.get("video_kanal", ""),
+                                  "video_kaynak": m.get("video_kaynak", "")}
                 for h in eski for m in h.get("maclar", []) if m.get("id")}
     except (OSError, json.JSONDecodeError):
         return {}
@@ -636,10 +663,18 @@ document.querySelectorAll('.cipsler button').forEach(function(b){
 var modal=document.getElementById('video-modal');
 var cerceve=document.getElementById('video-cerceve');
 var videoBaslik=document.getElementById('video-baslik');
-function videoAc(id,ad){
+function videoAc(id,ad,kaynak){
   videoBaslik.textContent=ad||'Maç Özeti';
-  cerceve.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
-  document.getElementById('video-youtube-link').href='https://www.youtube.com/watch?v='+id;
+  var link=document.getElementById('video-kaynak-link');
+  if(kaynak==='dm'){
+    cerceve.src='https://www.dailymotion.com/embed/video/'+id+'?autoplay=1';
+    link.href='https://www.dailymotion.com/video/'+id;
+    link.textContent="Dailymotion'da aç ↗";
+  }else{
+    cerceve.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+    link.href='https://www.youtube.com/watch?v='+id;
+    link.textContent="YouTube'da aç ↗";
+  }
   modal.classList.add('acik');
 }
 function videoKapat(){
@@ -648,7 +683,7 @@ function videoKapat(){
 }
 document.addEventListener('click',function(e){
   var b=e.target.closest?e.target.closest('[data-video]'):null;
-  if(b){e.preventDefault();videoAc(b.getAttribute('data-video'),b.getAttribute('data-baslik'));}
+  if(b){e.preventDefault();videoAc(b.getAttribute('data-video'),b.getAttribute('data-baslik'),b.getAttribute('data-kaynak'));}
 });
 modal.addEventListener('click',function(e){if(e.target===modal)videoKapat();});
 document.querySelector('.modal-kapat').addEventListener('click',videoKapat);
@@ -707,6 +742,7 @@ def tv_karti(m: dict) -> str:
         if m.get("video_id"):
             video_html = (f'<button type="button" class="video-btn kucuk" '
                           f'data-video="{esc(m["video_id"])}" '
+                          f'data-kaynak="{esc(m.get("video_kaynak") or "yt")}" '
                           f'data-baslik="{esc(ev["ad"])} - {esc(dep["ad"])}">▶ Özet video</button>')
         else:  # video bulunamadıysa YouTube aramasına düşer
             video_html = (f'<a class="video-btn kucuk" href="{video_url(m)}" '
@@ -798,6 +834,7 @@ def ozet_karti(m: dict) -> str:
     if m.get("video_id"):
         video_btn = (f'<button type="button" class="video-btn" '
                      f'data-video="{esc(m["video_id"])}" '
+                     f'data-kaynak="{esc(m.get("video_kaynak") or "yt")}" '
                      f'data-baslik="{esc(ev["ad"])} - {esc(dep["ad"])}">▶ Video Özeti İzle</button>')
     else:  # video bulunamadıysa YouTube aramasına düşer
         video_btn = (f'<a class="video-btn" href="{video_url(m)}" target="_blank" '
@@ -1005,8 +1042,8 @@ def render_html(veri: dict, cikti: str) -> None:
 <div class="modal-kutu">
 <div class="modal-ust"><span id="video-baslik">Maç Özeti</span>
 <span style="display:flex;gap:10px;align-items:center;flex-shrink:0">
-<a id="video-youtube-link" href="#" target="_blank" rel="noopener"
-style="color:var(--mavi);font-size:12.5px;font-weight:600;text-decoration:none">YouTube'da aç ↗</a>
+<a id="video-kaynak-link" href="#" target="_blank" rel="noopener"
+style="color:var(--mavi);font-size:12.5px;font-weight:600;text-decoration:none">Videoda aç ↗</a>
 <button type="button" class="modal-kapat" aria-label="Kapat">✕</button></span></div>
 <div class="modal-govde"><iframe id="video-cerceve" src="" title="Maç özeti videosu"
 allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
@@ -1050,24 +1087,37 @@ def calistir(args) -> None:
             m["kanal"] = kanal_harita.get(
                 _mac_anahtari(takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])), "")
 
-        # --- video özetleri: son 21 günün oynanmış/canlı maçları için YouTube'tan ID çek ---
+        # --- video özetleri: önce Dailymotion, bulunamazsa YouTube ---
         simdi_dt = datetime.now(timezone.utc)
         eski_videolar = video_id_cache_yukle(data_dir)
         sinir = simdi_dt - timedelta(days=21)
         adaylar = [m for m in maclar
                    if m["durum"] != "pre" and m["utc"] and parse_utc(m["utc"]) >= sinir]
         for m in adaylar[:40]:
-            eski_kayit = eski_videolar.get(m["id"], ("", ""))
-            if eski_kayit[0] and eski_kayit[1]:
-                # kanalı bilinen, doğrulanmış kayıt: yeniden aramaya gerek yok
-                m["video_id"], m["video_kanal"] = eski_kayit
+            eski_kayit = eski_videolar.get(m["id"], {})
+            if eski_kayit.get("video_kaynak") == "dm" and eski_kayit.get("video_id"):
+                # Dailymotion'dan bulunmuş kayıt: güvenle kullan
+                m["video_id"] = eski_kayit["video_id"]
+                m["video_kanal"] = eski_kayit.get("video_kanal", "")
+                m["video_kaynak"] = "dm"
                 continue
+            # 1) Dailymotion (Türkiye'de kısıtsız, haber ajansı özetleri)
+            mac_epoch = parse_utc(m["utc"]).timestamp() if m["utc"] else 0
+            vid, kanal = dailymotion_video_bul(m["ev"]["ad"], m["dep"]["ad"], mac_epoch)
+            if vid:
+                m["video_id"], m["video_kanal"], m["video_kaynak"] = vid, kanal, "dm"
+                log(f'video özeti (Dailymotion): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
+                time.sleep(0.2)
+                continue
+            # 2) YouTube (yedek: Türkiye'de beIN videoları kısıtlı olabiliyor)
             vid, kanal = youtube_video_bul(f'{m["ev"]["ad"]} {m["dep"]["ad"]} maç özeti')
             m["video_id"], m["video_kanal"] = vid, kanal
+            m["video_kaynak"] = "yt" if vid else ""
             if vid:
-                log(f'video özeti bulundu: {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
+                log(f'video özeti (YouTube): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
             time.sleep(0.3)
-        log(f"video özetleri: {sum(1 for m in maclar if m.get('video_id'))} maç")
+        log(f"video özetleri: {sum(1 for m in maclar if m.get('video_id'))} maç "
+            f"({sum(1 for m in maclar if m.get('video_kaynak') == 'dm')} Dailymotion)")
 
         hafta_listesi = haftalara_ayir(maclar)
         haftalar = [
