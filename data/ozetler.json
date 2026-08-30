@@ -1,6 +1,123 @@
 [
  {
   "dep": {
+   "ad": "Alanyaspor",
+   "form": "LWDLW",
+   "id": "9078",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "22",
+    "goalAssists": "0",
+    "possessionPct": "37.3",
+    "shotAssists": "0",
+    "shotsOnTarget": "2",
+    "totalGoals": "1",
+    "totalShots": "7",
+    "wonCorners": "2"
+   },
+   "kazandi": false,
+   "kisa": "ALA",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
+   "renk": "#000000",
+   "skor": "1"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Eyupspor",
+   "form": "WLLDW",
+   "id": "20729",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "16",
+    "goalAssists": "1",
+    "possessionPct": "62.7",
+    "shotAssists": "0",
+    "shotsOnTarget": "4",
+    "totalGoals": "2",
+    "totalShots": "11",
+    "wonCorners": "1"
+   },
+   "kazandi": true,
+   "kisa": "EYU",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20729.png",
+   "renk": "#000000",
+   "skor": "2"
+  },
+  "goller": [
+   {
+    "dakika": "1'",
+    "kendi_kalesine": false,
+    "oyuncu": "Arda Usluoglu",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "39'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ahmed Abdullahi",
+    "penalti": false,
+    "takim_id": "20729"
+   },
+   {
+    "dakika": "90'+4'",
+    "kendi_kalesine": false,
+    "oyuncu": "Zak Jules",
+    "penalti": false,
+    "takim_id": "20729"
+   }
+  ],
+  "id": "401888311",
+  "kanal": "beIN Sports 1",
+  "kirmizi_kartlar": [
+   {
+    "dakika": "52'",
+    "kendi_kalesine": false,
+    "oyuncu": "",
+    "penalti": false,
+    "takim_id": "20729"
+   }
+  ],
+  "saat_gostergesi": "90'+7'",
+  "sari_kartlar": [
+   {
+    "dakika": "49'",
+    "kendi_kalesine": false,
+    "oyuncu": "Chandrel Géraud Massanga",
+    "penalti": false,
+    "takim_id": "20729"
+   },
+   {
+    "dakika": "62'",
+    "kendi_kalesine": false,
+    "oyuncu": "Umit Akdag",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "66'",
+    "kendi_kalesine": false,
+    "oyuncu": "Talha Ülvan",
+    "penalti": false,
+    "takim_id": "20729"
+   },
+   {
+    "dakika": "77'",
+    "kendi_kalesine": false,
+    "oyuncu": "Charles-Andre Raux Yao",
+    "penalti": false,
+    "takim_id": "20729"
+   }
+  ],
+  "sehir": "Istanbul",
+  "stadyum": "Esenyurt Necmi Kadioglu Stadi",
+  "utc": "2026-08-30T16:00Z",
+  "video_id": "xb2gs32",
+  "video_kanal": "Maç Özetleri",
+  "video_kaynak": "dm"
+ },
+ {
+  "dep": {
    "ad": "Goztepe",
    "form": "LLDLW",
    "id": "789",
@@ -585,7 +702,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Alanyaspor",
-   "form": "WDLWD",
+   "form": "LWDLW",
    "id": "9078",
    "istatistik": {
     "appearances": "0",
@@ -739,7 +856,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Eyupspor",
-   "form": "LLDWD",
+   "form": "WLLDW",
    "id": "20729",
    "istatistik": {
     "appearances": "0",
