@@ -5,7 +5,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -108,7 +108,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -641,7 +641,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -729,7 +729,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -1164,7 +1164,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -1471,7 +1471,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -1585,7 +1585,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -1739,7 +1739,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -1820,9 +1820,9 @@
      "sehir": "Kocaeli",
      "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
      "utc": "2026-08-24T18:30Z",
-     "video_id": "xb0kwh2",
-     "video_kanal": "Maç Özetleri",
-     "video_kaynak": "dm"
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     }
    ],
    "no": 2
@@ -2516,9 +2516,9 @@
      "sehir": "Istanbul",
      "stadyum": "Basaksehir Fatih Terim Stadium",
      "utc": "2026-08-30T18:30Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "video_id": "xb2tiyu",
+     "video_kanal": "Maç Özetleri",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -2611,18 +2611,18 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "6",
+       "foulsCommitted": "10",
        "goalAssists": "1",
-       "possessionPct": "58.3",
+       "possessionPct": "59.9",
        "shotAssists": "0",
-       "shotsOnTarget": "4",
+       "shotsOnTarget": "5",
        "totalGoals": "1",
-       "totalShots": "5",
-       "wonCorners": "3"
+       "totalShots": "8",
+       "wonCorners": "5"
       },
       "kazandi": false,
       "kisa": "TRAB",
@@ -2630,28 +2630,28 @@
       "renk": "#5699eb",
       "skor": "1"
      },
-     "durum": "in",
-     "durum_metin": "76'",
+     "durum": "post",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "12",
-       "goalAssists": "0",
-       "possessionPct": "41.7",
+       "foulsCommitted": "18",
+       "goalAssists": "1",
+       "possessionPct": "40.1",
        "shotAssists": "0",
-       "shotsOnTarget": "6",
-       "totalGoals": "1",
-       "totalShots": "12",
-       "wonCorners": "1"
+       "shotsOnTarget": "7",
+       "totalGoals": "2",
+       "totalShots": "17",
+       "wonCorners": "2"
       },
-      "kazandi": false,
+      "kazandi": true,
       "kisa": "AMED",
       "logo": "",
       "renk": "#000000",
-      "skor": "1"
+      "skor": "2"
      },
      "goller": [
       {
@@ -2667,12 +2667,19 @@
        "oyuncu": "Yira Sor",
        "penalti": false,
        "takim_id": "132335"
+      },
+      {
+       "dakika": "90'",
+       "kendi_kalesine": false,
+       "oyuncu": "Gift Orban",
+       "penalti": false,
+       "takim_id": "132335"
       }
      ],
      "id": "401888388",
      "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "76'",
+     "saat_gostergesi": "90'+9'",
      "sari_kartlar": [
       {
        "dakika": "39'",
@@ -2701,6 +2708,41 @@
        "oyuncu": "Samuel Ballet",
        "penalti": false,
        "takim_id": "132335"
+      },
+      {
+       "dakika": "84'",
+       "kendi_kalesine": false,
+       "oyuncu": "Umut Meras",
+       "penalti": false,
+       "takim_id": "132335"
+      },
+      {
+       "dakika": "85'",
+       "kendi_kalesine": false,
+       "oyuncu": "Furkan Soyalp",
+       "penalti": false,
+       "takim_id": "132335"
+      },
+      {
+       "dakika": "90'+2'",
+       "kendi_kalesine": false,
+       "oyuncu": "Gift Orban",
+       "penalti": false,
+       "takim_id": "132335"
+      },
+      {
+       "dakika": "90'+9'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ermal Krasniqi",
+       "penalti": false,
+       "takim_id": "132335"
+      },
+      {
+       "dakika": "90'+9'",
+       "kendi_kalesine": false,
+       "oyuncu": "Stefan Savic",
+       "penalti": false,
+       "takim_id": "997"
       }
      ],
      "sehir": "Diyarbakir",
@@ -2713,13 +2755,13 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "9",
+       "foulsCommitted": "11",
        "goalAssists": "2",
-       "possessionPct": "47.8",
+       "possessionPct": "48.4",
        "shotAssists": "0",
        "shotsOnTarget": "3",
        "totalGoals": "2",
@@ -2732,28 +2774,28 @@
       "renk": "#000000",
       "skor": "2"
      },
-     "durum": "in",
-     "durum_metin": "81'",
+     "durum": "post",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "8",
-       "goalAssists": "2",
-       "possessionPct": "52.2",
+       "foulsCommitted": "9",
+       "goalAssists": "3",
+       "possessionPct": "51.6",
        "shotAssists": "0",
-       "shotsOnTarget": "6",
-       "totalGoals": "5",
-       "totalShots": "17",
-       "wonCorners": "7"
+       "shotsOnTarget": "7",
+       "totalGoals": "6",
+       "totalShots": "18",
+       "wonCorners": "8"
       },
-      "kazandi": false,
+      "kazandi": true,
       "kisa": "BES",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
       "renk": "#ffffff",
-      "skor": "5"
+      "skor": "6"
      },
      "goller": [
       {
@@ -2804,12 +2846,19 @@
        "oyuncu": "Ermin Mahmic",
        "penalti": false,
        "takim_id": "132334"
+      },
+      {
+       "dakika": "83'",
+       "kendi_kalesine": false,
+       "oyuncu": "Amir Murillo",
+       "penalti": false,
+       "takim_id": "1895"
       }
      ],
      "id": "401888387",
      "kanal": "beIN Sports 2",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "81'",
+     "saat_gostergesi": "90'+3'",
      "sari_kartlar": [
       {
        "dakika": "15'",
@@ -2893,7 +2942,7 @@
      },
      "goller": [],
      "id": "401888304",
-     "kanal": "beIN Sports 1",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -2939,7 +2988,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -2963,7 +3012,7 @@
      },
      "goller": [],
      "id": "401888301",
-     "kanal": "beIN Sports 1",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -2987,7 +3036,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -3009,7 +3058,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -3092,7 +3141,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -3237,7 +3286,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -3272,7 +3321,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -3434,7 +3483,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -3469,7 +3518,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -3509,7 +3558,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -3522,7 +3571,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -3557,7 +3606,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -3802,7 +3851,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -3877,7 +3926,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -4004,7 +4053,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -4039,7 +4088,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -4109,7 +4158,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -4162,7 +4211,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -4197,7 +4246,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -4429,7 +4478,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -4442,7 +4491,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -4517,7 +4566,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -4539,7 +4588,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -4679,7 +4728,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -4749,7 +4798,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -4802,7 +4851,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -4824,7 +4873,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -4964,7 +5013,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -5082,7 +5131,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -5109,7 +5158,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -5157,7 +5206,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -5227,7 +5276,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -5284,7 +5333,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -5442,7 +5491,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -5569,7 +5618,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -5674,7 +5723,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -5722,7 +5771,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -5797,7 +5846,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -5867,7 +5916,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -5959,7 +6008,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -5994,7 +6043,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -6082,7 +6131,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -6117,7 +6166,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -6349,7 +6398,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -6362,7 +6411,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -6459,7 +6508,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -6472,7 +6521,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -6564,7 +6613,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -6599,7 +6648,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -6722,7 +6771,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -6757,7 +6806,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -6814,7 +6863,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -7002,7 +7051,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -7112,7 +7161,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -7134,7 +7183,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -7204,7 +7253,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -7274,7 +7323,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -7432,7 +7481,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -7454,7 +7503,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -7489,7 +7538,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -7642,7 +7691,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -7682,7 +7731,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -7717,7 +7766,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -7844,7 +7893,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -7879,7 +7928,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -8059,7 +8108,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -8072,7 +8121,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -8269,7 +8318,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -8282,7 +8331,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -8357,7 +8406,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -8392,7 +8441,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -8403,7 +8452,7 @@
      },
      "goller": [],
      "id": "401888183",
-     "kanal": "beIN Sports 1",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8414,7 +8463,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -8473,7 +8522,7 @@
      },
      "goller": [],
      "id": "401888186",
-     "kanal": "beIN Sports 1",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8519,7 +8568,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -8677,7 +8726,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -8699,7 +8748,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -8804,7 +8853,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -8922,7 +8971,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -8949,7 +8998,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -8984,7 +9033,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -8997,7 +9046,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -9089,7 +9138,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -9282,7 +9331,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -9317,7 +9366,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -9514,7 +9563,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -9562,7 +9611,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -9624,7 +9673,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -9637,7 +9686,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -9659,7 +9708,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -9834,7 +9883,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -9922,7 +9971,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -9957,7 +10006,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -10084,7 +10133,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10202,7 +10251,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -10277,7 +10326,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10347,7 +10396,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -10369,7 +10418,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -10439,7 +10488,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -10562,7 +10611,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -10619,7 +10668,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -10654,7 +10703,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10842,7 +10891,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -10917,7 +10966,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10939,7 +10988,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -10987,7 +11036,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11009,7 +11058,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -11202,7 +11251,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -11259,7 +11308,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -11399,7 +11448,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11482,7 +11531,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -11509,7 +11558,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -11579,7 +11628,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -11592,7 +11641,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11789,7 +11838,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -11829,7 +11878,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11842,7 +11891,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -11877,7 +11926,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12122,7 +12171,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -12184,7 +12233,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12232,7 +12281,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -12394,7 +12443,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -12429,7 +12478,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -12482,7 +12531,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "LW",
+      "form": "WLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -12517,7 +12566,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LLWWW",
+      "form": "WLLWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12679,7 +12728,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LD",
+      "form": "LLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -12762,7 +12811,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LWLDL",
+      "form": "LLWLD",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -13279,5 +13328,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-08-31T21:17:56.019719+00:00"
+ "uretim": "2026-08-31T23:52:41.140574+00:00"
 }

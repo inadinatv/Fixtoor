@@ -1,6 +1,308 @@
 [
  {
   "dep": {
+   "ad": "Trabzonspor",
+   "form": "LLWLD",
+   "id": "997",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "10",
+    "goalAssists": "1",
+    "possessionPct": "59.9",
+    "shotAssists": "0",
+    "shotsOnTarget": "5",
+    "totalGoals": "1",
+    "totalShots": "8",
+    "wonCorners": "5"
+   },
+   "kazandi": false,
+   "kisa": "TRAB",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
+   "renk": "#5699eb",
+   "skor": "1"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Amed SFK",
+   "form": "WLW",
+   "id": "132335",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "18",
+    "goalAssists": "1",
+    "possessionPct": "40.1",
+    "shotAssists": "0",
+    "shotsOnTarget": "7",
+    "totalGoals": "2",
+    "totalShots": "17",
+    "wonCorners": "2"
+   },
+   "kazandi": true,
+   "kisa": "AMED",
+   "logo": "",
+   "renk": "#000000",
+   "skor": "2"
+  },
+  "goller": [
+   {
+    "dakika": "11'",
+    "kendi_kalesine": false,
+    "oyuncu": "Mohamed Salah",
+    "penalti": false,
+    "takim_id": "997"
+   },
+   {
+    "dakika": "45'+5'",
+    "kendi_kalesine": false,
+    "oyuncu": "Yira Sor",
+    "penalti": false,
+    "takim_id": "132335"
+   },
+   {
+    "dakika": "90'",
+    "kendi_kalesine": false,
+    "oyuncu": "Gift Orban",
+    "penalti": false,
+    "takim_id": "132335"
+   }
+  ],
+  "id": "401888388",
+  "kanal": "beIN Sports 1",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+9'",
+  "sari_kartlar": [
+   {
+    "dakika": "39'",
+    "kendi_kalesine": false,
+    "oyuncu": "Sidny Lopes Cabral",
+    "penalti": false,
+    "takim_id": "997"
+   },
+   {
+    "dakika": "44'",
+    "kendi_kalesine": false,
+    "oyuncu": "Chibuike Nwaiwu",
+    "penalti": false,
+    "takim_id": "997"
+   },
+   {
+    "dakika": "45'",
+    "kendi_kalesine": false,
+    "oyuncu": "",
+    "penalti": false,
+    "takim_id": "132335"
+   },
+   {
+    "dakika": "75'",
+    "kendi_kalesine": false,
+    "oyuncu": "Samuel Ballet",
+    "penalti": false,
+    "takim_id": "132335"
+   },
+   {
+    "dakika": "84'",
+    "kendi_kalesine": false,
+    "oyuncu": "Umut Meras",
+    "penalti": false,
+    "takim_id": "132335"
+   },
+   {
+    "dakika": "85'",
+    "kendi_kalesine": false,
+    "oyuncu": "Furkan Soyalp",
+    "penalti": false,
+    "takim_id": "132335"
+   },
+   {
+    "dakika": "90'+2'",
+    "kendi_kalesine": false,
+    "oyuncu": "Gift Orban",
+    "penalti": false,
+    "takim_id": "132335"
+   },
+   {
+    "dakika": "90'+9'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ermal Krasniqi",
+    "penalti": false,
+    "takim_id": "132335"
+   },
+   {
+    "dakika": "90'+9'",
+    "kendi_kalesine": false,
+    "oyuncu": "Stefan Savic",
+    "penalti": false,
+    "takim_id": "997"
+   }
+  ],
+  "sehir": "Diyarbakir",
+  "stadyum": "Diyarbakir Stadyumu",
+  "utc": "2026-08-31T18:30Z",
+  "video_id": "xb2tama",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
+ },
+ {
+  "dep": {
+   "ad": "Çorum FK",
+   "form": "LLD",
+   "id": "132334",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "11",
+    "goalAssists": "2",
+    "possessionPct": "48.4",
+    "shotAssists": "0",
+    "shotsOnTarget": "3",
+    "totalGoals": "2",
+    "totalShots": "11",
+    "wonCorners": "6"
+   },
+   "kazandi": false,
+   "kisa": "COR",
+   "logo": "",
+   "renk": "#000000",
+   "skor": "2"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Besiktas",
+   "form": "WLLWW",
+   "id": "1895",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "9",
+    "goalAssists": "3",
+    "possessionPct": "51.6",
+    "shotAssists": "0",
+    "shotsOnTarget": "7",
+    "totalGoals": "6",
+    "totalShots": "18",
+    "wonCorners": "8"
+   },
+   "kazandi": true,
+   "kisa": "BES",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+   "renk": "#ffffff",
+   "skor": "6"
+  },
+  "goller": [
+   {
+    "dakika": "9'",
+    "kendi_kalesine": false,
+    "oyuncu": "Václav Cerný",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "43'",
+    "kendi_kalesine": false,
+    "oyuncu": "Dusan Vlahovic",
+    "penalti": true,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "52'",
+    "kendi_kalesine": false,
+    "oyuncu": "Mohammed Diomande",
+    "penalti": false,
+    "takim_id": "132334"
+   },
+   {
+    "dakika": "59'",
+    "kendi_kalesine": false,
+    "oyuncu": "Dusan Vlahovic",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "66'",
+    "kendi_kalesine": false,
+    "oyuncu": "Dusan Vlahovic",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "73'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ilhan Fakili",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "77'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ermin Mahmic",
+    "penalti": false,
+    "takim_id": "132334"
+   },
+   {
+    "dakika": "83'",
+    "kendi_kalesine": false,
+    "oyuncu": "Amir Murillo",
+    "penalti": false,
+    "takim_id": "1895"
+   }
+  ],
+  "id": "401888387",
+  "kanal": "beIN Sports 2",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+3'",
+  "sari_kartlar": [
+   {
+    "dakika": "15'",
+    "kendi_kalesine": false,
+    "oyuncu": "Orkun Kökçü",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "15'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ylber Ramadani",
+    "penalti": false,
+    "takim_id": "132334"
+   },
+   {
+    "dakika": "30'",
+    "kendi_kalesine": false,
+    "oyuncu": "Gokhan Sazdagi",
+    "penalti": false,
+    "takim_id": "132334"
+   },
+   {
+    "dakika": "63'",
+    "kendi_kalesine": false,
+    "oyuncu": "Jesús Ramírez",
+    "penalti": false,
+    "takim_id": "132334"
+   },
+   {
+    "dakika": "63'",
+    "kendi_kalesine": false,
+    "oyuncu": "",
+    "penalti": false,
+    "takim_id": "132334"
+   },
+   {
+    "dakika": "67'",
+    "kendi_kalesine": false,
+    "oyuncu": "Dusan Vlahovic",
+    "penalti": false,
+    "takim_id": "1895"
+   }
+  ],
+  "sehir": "Istanbul",
+  "stadyum": "Vodafone Park",
+  "utc": "2026-08-31T18:30Z",
+  "video_id": "xb2t8j2",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
+ },
+ {
+  "dep": {
    "ad": "Kasimpasa",
    "form": "DWDWL",
    "id": "6870",
@@ -97,9 +399,9 @@
   "sehir": "Istanbul",
   "stadyum": "Basaksehir Fatih Terim Stadium",
   "utc": "2026-08-30T18:30Z",
-  "video_id": "",
-  "video_kanal": "",
-  "video_kaynak": ""
+  "video_id": "xb2tiyu",
+  "video_kanal": "Maç Özetleri",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -781,7 +1083,7 @@
  {
   "dep": {
    "ad": "Amed SFK",
-   "form": "LW",
+   "form": "WLW",
    "id": "132335",
    "istatistik": {
     "appearances": "0",
@@ -862,14 +1164,14 @@
   "sehir": "Kocaeli",
   "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
   "utc": "2026-08-24T18:30Z",
-  "video_id": "xb0kwh2",
-  "video_kanal": "Maç Özetleri",
-  "video_kaynak": "dm"
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
  },
  {
   "dep": {
    "ad": "Besiktas",
-   "form": "LLWWW",
+   "form": "WLLWW",
    "id": "1895",
    "istatistik": {
     "appearances": "0",
@@ -1128,7 +1430,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Trabzonspor",
-   "form": "LWLDL",
+   "form": "LLWLD",
    "id": "997",
    "istatistik": {
     "appearances": "0",
@@ -1449,202 +1751,5 @@
   "video_id": "",
   "video_kanal": "",
   "video_kaynak": ""
- },
- {
-  "dep": {
-   "ad": "Kasimpasa",
-   "form": "DWDWL",
-   "id": "6870",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "13",
-    "goalAssists": "1",
-    "possessionPct": "25.1",
-    "shotAssists": "0",
-    "shotsOnTarget": "1",
-    "totalGoals": "1",
-    "totalShots": "6",
-    "wonCorners": "1"
-   },
-   "kazandi": true,
-   "kisa": "KAS",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
-   "renk": "#000000",
-   "skor": "1"
-  },
-  "durum": "post",
-  "durum_metin": "FT",
-  "ev": {
-   "ad": "Çorum FK",
-   "form": "LD",
-   "id": "132334",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "12",
-    "goalAssists": "0",
-    "possessionPct": "74.9",
-    "shotAssists": "0",
-    "shotsOnTarget": "2",
-    "totalGoals": "0",
-    "totalShots": "16",
-    "wonCorners": "7"
-   },
-   "kazandi": false,
-   "kisa": "COR",
-   "logo": "",
-   "renk": "#000000",
-   "skor": "0"
-  },
-  "goller": [
-   {
-    "dakika": "6'",
-    "kendi_kalesine": false,
-    "oyuncu": "Adrian Benedyczak",
-    "penalti": false,
-    "takim_id": "6870"
-   }
-  ],
-  "id": "401888390",
-  "kanal": "",
-  "kirmizi_kartlar": [],
-  "saat_gostergesi": "90'+5'",
-  "sari_kartlar": [
-   {
-    "dakika": "39'",
-    "kendi_kalesine": false,
-    "oyuncu": "Jakob Jessen",
-    "penalti": false,
-    "takim_id": "6870"
-   },
-   {
-    "dakika": "77'",
-    "kendi_kalesine": false,
-    "oyuncu": "Matei Ilie",
-    "penalti": false,
-    "takim_id": "6870"
-   },
-   {
-    "dakika": "84'",
-    "kendi_kalesine": false,
-    "oyuncu": "Ahmed Ildiz",
-    "penalti": false,
-    "takim_id": "132334"
-   },
-   {
-    "dakika": "84'",
-    "kendi_kalesine": false,
-    "oyuncu": "",
-    "penalti": false,
-    "takim_id": "132334"
-   },
-   {
-    "dakika": "89'",
-    "kendi_kalesine": false,
-    "oyuncu": "Ayberk Karapo",
-    "penalti": false,
-    "takim_id": "6870"
-   }
-  ],
-  "sehir": "",
-  "stadyum": "Çorum Sehir Stadyumu",
-  "utc": "2026-08-22T16:00Z",
-  "video_id": "",
-  "video_kanal": "",
-  "video_kaynak": ""
- },
- {
-  "dep": {
-   "ad": "Galatasaray",
-   "form": "WWDLW",
-   "id": "432",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "12",
-    "goalAssists": "2",
-    "possessionPct": "51.8",
-    "shotAssists": "0",
-    "shotsOnTarget": "4",
-    "totalGoals": "4",
-    "totalShots": "10",
-    "wonCorners": "2"
-   },
-   "kazandi": true,
-   "kisa": "GAL",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
-   "renk": "#aa0031",
-   "skor": "4"
-  },
-  "durum": "post",
-  "durum_metin": "FT",
-  "ev": {
-   "ad": "Erzurum BB",
-   "form": "DLLWL",
-   "id": "19267",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "11",
-    "goalAssists": "0",
-    "possessionPct": "48.2",
-    "shotAssists": "0",
-    "shotsOnTarget": "4",
-    "totalGoals": "0",
-    "totalShots": "12",
-    "wonCorners": "2"
-   },
-   "kazandi": false,
-   "kisa": "ERZ",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
-   "renk": "#000000",
-   "skor": "0"
-  },
-  "goller": [
-   {
-    "dakika": "12'",
-    "kendi_kalesine": false,
-    "oyuncu": "Roland Sallai",
-    "penalti": false,
-    "takim_id": "432"
-   },
-   {
-    "dakika": "20'",
-    "kendi_kalesine": false,
-    "oyuncu": "Yunus Akgün",
-    "penalti": false,
-    "takim_id": "432"
-   },
-   {
-    "dakika": "45'",
-    "kendi_kalesine": false,
-    "oyuncu": "Victor Osimhen",
-    "penalti": false,
-    "takim_id": "432"
-   },
-   {
-    "dakika": "79'",
-    "kendi_kalesine": false,
-    "oyuncu": "Victor Osimhen",
-    "penalti": false,
-    "takim_id": "432"
-   }
-  ],
-  "id": "401888313",
-  "kanal": "",
-  "kirmizi_kartlar": [],
-  "saat_gostergesi": "90'+3'",
-  "sari_kartlar": [
-   {
-    "dakika": "84'",
-    "kendi_kalesine": false,
-    "oyuncu": "Nariman Akhundzade",
-    "penalti": false,
-    "takim_id": "19267"
-   }
-  ],
-  "sehir": "Erzurum",
-  "stadyum": "Erzurum Kazim Karabekir",
-  "utc": "2026-08-21T18:30Z",
-  "video_id": "xazobx2",
-  "video_kanal": "beIN SPORTS USA",
-  "video_kaynak": "dm"
  }
 ]
