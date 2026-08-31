@@ -735,6 +735,15 @@ padding:14px 16px;margin-bottom:12px;transition:border-color .15s,transform .15s
 .tv-zaman{border-right:none;border-bottom:1px dashed var(--cizgi);padding:0 0 10px;
 display:flex;gap:10px;align-items:baseline;justify-content:center}
 .tv-kanal{justify-self:center;align-items:center;justify-content:center;flex-wrap:wrap}}
+.gol-bildirim{position:fixed;top:14px;left:50%;transform:translate(-50%,0);z-index:200;
+background:linear-gradient(135deg,#16a34a,#22c55e);color:#03230f;font-weight:800;font-size:14px;
+padding:11px 20px;border-radius:13px;box-shadow:0 14px 34px rgba(34,197,94,.5);
+max-width:92vw;text-align:center;animation:golgelsin .35s ease}
+.gol-bildirim.gitti{opacity:0;transform:translate(-50%,-10px);transition:all .45s}
+@keyframes golgelsin{from{opacity:0;transform:translate(-50%,-12px)}to{opacity:1;transform:translate(-50%,0)}}
+.kart.parla{border-color:var(--yesil);box-shadow:0 0 0 3px rgba(34,197,94,.28),0 12px 26px rgba(0,0,0,.35)}
+@keyframes skorpop{0%{transform:scale(1)}45%{transform:scale(1.16)}100%{transform:scale(1)}}
+.pop{animation:skorpop .6s ease}
 """
 
 JS = """
@@ -786,6 +795,107 @@ document.addEventListener('click',function(e){
 modal.addEventListener('click',function(e){if(e.target===modal)videoKapat();});
 document.querySelector('.modal-kapat').addEventListener('click',videoKapat);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')videoKapat();});
+// ---- CANLI SKOR: sayfa yenilenmeden, ziyaretçinin tarayıcısı ESPN'in
+// anahtarsız açık API'sinden skoru çeker ve kartları günceller.
+// İstek başarısız olursa sayfa sessizce statik veriyle kalır.
+var CANLI=window.FIXTOOR_CANLI||{lig:'tur.1',maclar:{}};
+if(Object.keys(CANLI.maclar).length&&window.fetch){
+  var canliSayac=0;
+  function macAktifMi(m){
+    return m.durum==='in'||(m.durum==='pre'&&m.utc&&Date.parse(m.utc)-Date.now()<3*3600000);
+  }
+  function canliRozetEkle(){
+    if(document.querySelector('.alt-bilgi .canli')){return;}
+    var h=document.querySelector('.alt-bilgi');
+    if(h){var s=document.createElement('span');s.className='canli';s.textContent='CANLI';h.appendChild(s);}
+  }
+  function golBildir(m,detay){
+    var d=document.createElement('div');d.className='gol-bildirim';
+    d.textContent='⚽ GOL! '+m.ev+' '+m.evk+' - '+m.depk+' '+m.dep+(detay?' · '+detay:'');
+    document.body.appendChild(d);
+    setTimeout(function(){d.classList.add('gitti');},6000);
+    setTimeout(function(){d.remove();},6600);
+    if(navigator.vibrate){try{navigator.vibrate([120,70,180]);}catch(e){}}
+  }
+  function sonGolDetay(c){
+    var det=c.details||[];
+    for(var i=det.length-1;i>=0;i--){
+      var d=det[i];
+      if(d.scoringPlay){
+        var ad=(d.athletesInvolved&&d.athletesInvolved[0]&&d.athletesInvolved[0].displayName)||'';
+        var dk=(d.clock&&d.clock.displayValue)||'';
+        return (ad?ad+' ':'')+dk;
+      }
+    }
+    return '';
+  }
+  function macGuncelle(id,g,detay){
+    var m=CANLI.maclar[id];if(!m){return;}
+    // '_goruldu' ile ilk bakış sessiz senkronize edilir; bildirim yalnız
+    // sayfa açıkken atılan gollerde çıkar (sayfa açılmadan atılan gol sessiz işlenir)
+    var gol=g.durum==='in'&&(g.evk>(m.evk||0)||g.depk>(m.depk||0))&&m._goruldu;
+    document.querySelectorAll('[data-mac-id="'+id+'"]').forEach(function(k){
+      if(k.classList.contains('tv-kart')){
+        var si=k.querySelector('.skor-inline');
+        if(!si){si=document.createElement('span');si.className='skor-inline';
+                (k.querySelector('.takimlar')||k).appendChild(si);}
+        si.textContent='('+g.evk+' - '+g.depk+')';
+        var et=k.querySelector('[data-etiket]');
+        if(g.durum==='in'){
+          if(!et){et=document.createElement('div');et.setAttribute('data-etiket','1');
+                  (k.querySelector('.tv-zaman')||k).appendChild(et);}
+          et.className='durum-canli';et.style.fontSize='11px';et.textContent='CANLI · '+g.saat;
+        }else if(g.durum==='post'&&et){et.className='durum-ms';et.textContent='MS';}
+      }else{
+        var s=k.querySelector('.skor');
+        if(s&&g.durum!=='pre'){s.classList.remove('onaylanmadi');s.textContent=g.evk+' : '+g.depk;}
+        var et=k.querySelector('[data-etiket]');
+        var hucre=k.querySelector('.mac-alt span:last-child');
+        if(g.durum==='in'){
+          if(!et&&hucre){et=document.createElement('span');et.setAttribute('data-etiket','1');
+                         hucre.insertBefore(et,hucre.firstChild);}
+          if(et){et.className='durum-canli';et.textContent='● CANLI '+g.saat;}
+        }else if(g.durum==='post'&&et){et.className='durum-ms';et.textContent='MS';}
+      }
+      if(gol){
+        k.classList.add('parla');
+        setTimeout(function(){k.classList.remove('parla');},9000);
+        var v=k.querySelector('.skor-inline')||k.querySelector('.skor');
+        if(v){v.classList.add('pop');setTimeout(function(){v.classList.remove('pop');},700);}
+      }
+    });
+    if(gol){golBildir(m,detay);}
+    m.evk=g.evk;m.depk=g.depk;m.durum=g.durum;m._goruldu=true;
+  }
+  function tazele(){
+    if(document.hidden){return;}
+    canliSayac++;
+    var aktif=false;
+    for(var id in CANLI.maclar){if(macAktifMi(CANLI.maclar[id])){aktif=true;break;}}
+    if(!aktif&&canliSayac%10!==1){return;}   // maç yokken kontrol 5 dakikada bire düşer
+    function gun(n){var x=new Date(Date.now()+n*86400000);
+      return x.toISOString().slice(0,10).replace(/-/g,'');}
+    var url='https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+
+            '/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100';
+    fetch(url).then(function(r){return r.json();}).then(function(data){
+      (data.events||[]).forEach(function(ev){
+        var id=String(ev.id);if(!CANLI.maclar[id]){return;}
+        var c=(ev.competitions||[])[0]||{};
+        var st=c.status||ev.status||{};
+        var evk=0,depk=0;
+        (c.competitors||[]).forEach(function(t){
+          if(t.homeAway==='home'){evk=parseInt(t.score,10)||0;}else{depk=parseInt(t.score,10)||0;}
+        });
+        if(((st.type||{}).state)==='in'){canliRozetEkle();}
+        macGuncelle(id,{evk:evk,depk:depk,
+                        durum:(st.type||{}).state||CANLI.maclar[id].durum,
+                        saat:st.displayClock||''},sonGolDetay(c));
+      });
+    }).catch(function(){});
+  }
+  tazele();
+  setInterval(tazele,30000);   // 30 saniyede bir canlı kontrol
+}
 """
 
 
@@ -823,9 +933,9 @@ def tv_karti(m: dict) -> str:
     saat = f"{yerel.hour:02d}:{yerel.minute:02d}" if yerel else "--:--"
     tarih = f"{yerel.day} {AYLAR[yerel.month - 1]}" if yerel else ""
     if canli:
-        durum = '<div class="durum-canli" style="font-size:11px">CANLI</div>'
+        durum = '<div class="durum-canli" style="font-size:11px" data-etiket="1">CANLI</div>'
     elif oynandi:
-        durum = '<div class="durum-ms" style="font-size:11px">MS</div>'
+        durum = '<div class="durum-ms" style="font-size:11px" data-etiket="1">MS</div>'
     else:
         durum = ""
 
@@ -845,7 +955,7 @@ def tv_karti(m: dict) -> str:
         else:  # video bulunamadıysa YouTube aramasına düşer
             video_html = (f'<a class="video-btn kucuk" href="{video_url(m)}" '
                           f'target="_blank" rel="noopener">▶ Özet video</a>')
-    return f'''<div class="tv-kart">
+    return f'''<div class="tv-kart" data-mac-id="{esc(m["id"])}">
 <div class="tv-zaman"><div class="gun">{gun}</div><div class="saat">{saat}</div><div class="tarih">{tarih}</div>{durum}</div>
 <div class="tv-mac"><div class="takimlar">{takimlar}</div><div class="alt">{esc(yer)}</div></div>
 <div class="tv-kanal">{kanal_html}{video_html}</div>
@@ -868,16 +978,16 @@ def mac_satiri(m: dict) -> str:
         skor_html = f"{yerel.hour:02d}:{yerel.minute:02d}" if yerel else "&nbsp;"
 
     if canli:
-        durum_html = f'<span class="durum-canli">● CANLI {esc(m.get("saat_gostergesi", ""))}</span>'
+        durum_html = f'<span class="durum-canli" data-etiket="1">● CANLI {esc(m.get("saat_gostergesi", ""))}</span>'
     elif oynandi:
-        durum_html = f'<span class="durum-ms">{esc(m.get("durum_metin") or "MS")}</span>'
+        durum_html = f'<span class="durum-ms" data-etiket="1">{esc(m.get("durum_metin") or "MS")}</span>'
     else:
         durum_html = ""
 
     yer = " · ".join(x for x in [m.get("stadyum"), m.get("sehir")] if x)
     kanal = (m.get("kanal") or "").strip()
     kanal_cipi = f' · <span class="kanal">📺 {esc(kanal)}</span>' if kanal else ""
-    return f'''<div class="kart"><div class="mac">
+    return f'''<div class="kart" data-mac-id="{esc(m["id"])}"><div class="mac">
   {takim_logolu(ev)}
   <div class="skor{" onaylanmadi" if not (oynandi or canli) else ""}">{skor_html}</div>
   {takim_logolu(dep, dep=True)}
@@ -1056,6 +1166,22 @@ def render_html(veri: dict, cikti: str) -> None:
 
     canli_rozet = ' <span class="canli">CANLI</span>' if canli_var else ""
 
+    # --- canlı skor takibi: tarayıcı 30 sn'de bir ESPN'in açık API'sinden günceller ---
+    canli_map = {}
+    for h in haftalar:
+        for m in h["maclar"]:
+            if not m.get("id") or not m.get("utc"):
+                continue
+            if abs((parse_utc(m["utc"]) - simdi_dt).total_seconds()) > 4 * 86400:
+                continue      # bugünden 4 günden uzak/eski maçlar gerekmez
+            canli_map[str(m["id"])] = {
+                "ev": m["ev"]["ad"], "dep": m["dep"]["ad"],
+                "evk": m["ev"].get("skor") or 0, "depk": m["dep"].get("skor") or 0,
+                "durum": m["durum"], "utc": m["utc"],
+            }
+    canli_json = json.dumps({"lig": lig.get("slug") or "tur.1", "maclar": canli_map},
+                            ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
     # İnadına TV markası: depoda logo dosyası varsa üst başlıkta ve altta o kullanılır,
     # yoksa üstte lig logosu, altta yerleşik SVG amblem gösterilir
     kok = os.path.dirname(os.path.abspath(cikti))
@@ -1147,6 +1273,7 @@ style="color:var(--mavi);font-size:12.5px;font-weight:600;text-decoration:none">
 allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
 </div>
 </div>
+<script>window.FIXTOOR_CANLI={canli_json};</script>
 <script>{JS}</script>
 </body>
 </html>'''
