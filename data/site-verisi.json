@@ -2139,7 +2139,7 @@
       {
        "dakika": "55'",
        "kendi_kalesine": false,
-       "oyuncu": "Gabriel Sara",
+       "oyuncu": "Gabriel Gomes",
        "penalti": false,
        "takim_id": "432"
       },
@@ -2710,7 +2710,7 @@
      },
      "goller": [],
      "id": "401888304",
-     "kanal": "Digiturk Play",
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -2780,7 +2780,7 @@
      },
      "goller": [],
      "id": "401888301",
-     "kanal": "Digiturk Play",
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8220,7 +8220,7 @@
      },
      "goller": [],
      "id": "401888183",
-     "kanal": "Digiturk Play",
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8290,7 +8290,7 @@
      },
      "goller": [],
      "id": "401888186",
-     "kanal": "Digiturk Play",
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -13096,5 +13096,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-08-31T05:59:37.028480+00:00"
+ "uretim": "2026-08-31T13:55:27.137068+00:00"
 }
