@@ -3237,76 +3237,6 @@
    "maclar": [
     {
      "dep": {
-      "ad": "Goztepe",
-      "form": "LLDLW",
-      "id": "789",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "GOZ",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "durum": "pre",
-     "durum_metin": "TBD",
-     "ev": {
-      "ad": "Alanyaspor",
-      "form": "LWDLW",
-      "id": "9078",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "ALA",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "goller": [],
-     "id": "401888296",
-     "kanal": "",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
-     "sehir": "Antalya",
-     "stadyum": "Kirbiyik Holding Stadyumu",
-     "utc": "2026-09-13T18:00Z"
-    },
-    {
-     "dep": {
-      "ad": "Istanbul Basaksehir",
-      "form": "DLWLD",
-      "id": "7914",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "IBFK",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7914.png",
-      "renk": "#ff6600",
-      "skor": "0"
-     },
-     "durum": "pre",
-     "durum_metin": "TBD",
-     "ev": {
-      "ad": "Amed SFK",
-      "form": "WLW",
-      "id": "132335",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "AMED",
-      "logo": "",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "goller": [],
-     "id": "401888384",
-     "kanal": "",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
-     "sehir": "Diyarbakir",
-     "stadyum": "Diyarbakir Stadyumu",
-     "utc": "2026-09-13T18:00Z"
-    },
-    {
-     "dep": {
       "ad": "Erzurum BB",
       "form": "DLLWL",
       "id": "19267",
@@ -3318,7 +3248,7 @@
       "skor": "0"
      },
      "durum": "pre",
-     "durum_metin": "TBD",
+     "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
       "form": "WLLWW",
@@ -3338,7 +3268,7 @@
      "sari_kartlar": [],
      "sehir": "Istanbul",
      "stadyum": "Vodafone Park",
-     "utc": "2026-09-13T18:00Z"
+     "utc": "2026-09-11T17:00Z"
     },
     {
      "dep": {
@@ -3353,7 +3283,7 @@
       "skor": "0"
      },
      "durum": "pre",
-     "durum_metin": "TBD",
+     "durum_metin": "Scheduled",
      "ev": {
       "ad": "Eyupspor",
       "form": "WLLDW",
@@ -3373,147 +3303,7 @@
      "sari_kartlar": [],
      "sehir": "Istanbul",
      "stadyum": "Esenyurt Necmi Kadioglu Stadi",
-     "utc": "2026-09-13T18:00Z"
-    },
-    {
-     "dep": {
-      "ad": "Kocaelispor",
-      "form": "WWLLL",
-      "id": "995",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "KOC",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "durum": "pre",
-     "durum_metin": "TBD",
-     "ev": {
-      "ad": "Galatasaray",
-      "form": "WWDLW",
-      "id": "432",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "GAL",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
-      "renk": "#aa0031",
-      "skor": "0"
-     },
-     "goller": [],
-     "id": "401888293",
-     "kanal": "",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
-     "sehir": "Istanbul",
-     "stadyum": "RAMS Park",
-     "utc": "2026-09-13T18:00Z"
-    },
-    {
-     "dep": {
-      "ad": "Fenerbahce",
-      "form": "WWWDL",
-      "id": "436",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "FEN",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
-      "renk": "#ffff00",
-      "skor": "0"
-     },
-     "durum": "pre",
-     "durum_metin": "TBD",
-     "ev": {
-      "ad": "Gaziantep FK",
-      "form": "LWDLL",
-      "id": "20070",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "GAZ",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "goller": [],
-     "id": "401888298",
-     "kanal": "",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
-     "sehir": "Gaziantep",
-     "stadyum": "Gaziantep Stadium",
-     "utc": "2026-09-13T18:00Z"
-    },
-    {
-     "dep": {
-      "ad": "Kasimpasa",
-      "form": "DWDWL",
-      "id": "6870",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "KAS",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "durum": "pre",
-     "durum_metin": "TBD",
-     "ev": {
-      "ad": "Genclerbirligi",
-      "form": "DWWWW",
-      "id": "996",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "GEN",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "goller": [],
-     "id": "401888295",
-     "kanal": "",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
-     "sehir": "Ankara",
-     "stadyum": "Eryaman Stadium",
-     "utc": "2026-09-13T18:00Z"
-    },
-    {
-     "dep": {
-      "ad": "Trabzonspor",
-      "form": "LLWLD",
-      "id": "997",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "TRAB",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
-      "renk": "#5699eb",
-      "skor": "0"
-     },
-     "durum": "pre",
-     "durum_metin": "TBD",
-     "ev": {
-      "ad": "Konyaspor",
-      "form": "LLLLL",
-      "id": "7648",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "KNY",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
-      "renk": "#288A00",
-      "skor": "0"
-     },
-     "goller": [],
-     "id": "401888294",
-     "kanal": "",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
-     "sehir": "Konya",
-     "stadyum": "Medas Konya Büyüksehir Stadyumu",
-     "utc": "2026-09-13T18:00Z"
+     "utc": "2026-09-12T14:00Z"
     },
     {
      "dep": {
@@ -3528,7 +3318,7 @@
       "skor": "0"
      },
      "durum": "pre",
-     "durum_metin": "TBD",
+     "durum_metin": "Scheduled",
      "ev": {
       "ad": "Samsunspor",
       "form": "LWDWL",
@@ -3548,27 +3338,127 @@
      "sari_kartlar": [],
      "sehir": "Samsun",
      "stadyum": "Samsun 19 Mayis Stadium",
-     "utc": "2026-09-13T18:00Z"
-    }
-   ],
-   "no": 5
-  },
-  {
-   "maclar": [
+     "utc": "2026-09-12T14:00Z"
+    },
     {
      "dep": {
-      "ad": "Besiktas",
-      "form": "WLLWW",
-      "id": "1895",
+      "ad": "Goztepe",
+      "form": "LLDLW",
+      "id": "789",
       "istatistik": {},
       "kazandi": false,
-      "kisa": "BES",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
-      "renk": "#ffffff",
+      "kisa": "GOZ",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
+      "renk": "#000000",
       "skor": "0"
      },
      "durum": "pre",
-     "durum_metin": "TBD",
+     "durum_metin": "Scheduled",
+     "ev": {
+      "ad": "Alanyaspor",
+      "form": "LWDLW",
+      "id": "9078",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "ALA",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "goller": [],
+     "id": "401888296",
+     "kanal": "",
+     "kirmizi_kartlar": [],
+     "saat_gostergesi": "0'",
+     "sari_kartlar": [],
+     "sehir": "Antalya",
+     "stadyum": "Kirbiyik Holding Stadyumu",
+     "utc": "2026-09-12T17:00Z"
+    },
+    {
+     "dep": {
+      "ad": "Trabzonspor",
+      "form": "LLWLD",
+      "id": "997",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "TRAB",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
+      "renk": "#5699eb",
+      "skor": "0"
+     },
+     "durum": "pre",
+     "durum_metin": "Scheduled",
+     "ev": {
+      "ad": "Konyaspor",
+      "form": "LLLLL",
+      "id": "7648",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "KNY",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
+      "renk": "#288A00",
+      "skor": "0"
+     },
+     "goller": [],
+     "id": "401888294",
+     "kanal": "",
+     "kirmizi_kartlar": [],
+     "saat_gostergesi": "0'",
+     "sari_kartlar": [],
+     "sehir": "Konya",
+     "stadyum": "Medas Konya Büyüksehir Stadyumu",
+     "utc": "2026-09-12T17:00Z"
+    },
+    {
+     "dep": {
+      "ad": "Kasimpasa",
+      "form": "DWDWL",
+      "id": "6870",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "KAS",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "durum": "pre",
+     "durum_metin": "Scheduled",
+     "ev": {
+      "ad": "Genclerbirligi",
+      "form": "DWWWW",
+      "id": "996",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "GEN",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "goller": [],
+     "id": "401888295",
+     "kanal": "",
+     "kirmizi_kartlar": [],
+     "saat_gostergesi": "0'",
+     "sari_kartlar": [],
+     "sehir": "Ankara",
+     "stadyum": "Eryaman Stadium",
+     "utc": "2026-09-13T14:00Z"
+    },
+    {
+     "dep": {
+      "ad": "Istanbul Basaksehir",
+      "form": "DLWLD",
+      "id": "7914",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "IBFK",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7914.png",
+      "renk": "#ff6600",
+      "skor": "0"
+     },
+     "durum": "pre",
+     "durum_metin": "Scheduled",
      "ev": {
       "ad": "Amed SFK",
       "form": "WLW",
@@ -3581,100 +3471,52 @@
       "skor": "0"
      },
      "goller": [],
-     "id": "401888382",
+     "id": "401888384",
      "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
      "sehir": "Diyarbakir",
      "stadyum": "Diyarbakir Stadyumu",
-     "utc": "2026-09-20T18:00Z"
+     "utc": "2026-09-13T17:00Z"
     },
     {
      "dep": {
-      "ad": "Alanyaspor",
-      "form": "LWDLW",
-      "id": "9078",
+      "ad": "Kocaelispor",
+      "form": "WWLLL",
+      "id": "995",
       "istatistik": {},
       "kazandi": false,
-      "kisa": "ALA",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
+      "kisa": "KOC",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
       "renk": "#000000",
       "skor": "0"
      },
      "durum": "pre",
-     "durum_metin": "TBD",
+     "durum_metin": "Scheduled",
      "ev": {
-      "ad": "Çorum FK",
-      "form": "LLD",
-      "id": "132334",
+      "ad": "Galatasaray",
+      "form": "WWDLW",
+      "id": "432",
       "istatistik": {},
       "kazandi": false,
-      "kisa": "COR",
-      "logo": "",
-      "renk": "#000000",
+      "kisa": "GAL",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
+      "renk": "#aa0031",
       "skor": "0"
      },
      "goller": [],
-     "id": "401888381",
+     "id": "401888293",
      "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
-     "sehir": "",
-     "stadyum": "Çorum Sehir Stadyumu",
-     "utc": "2026-09-20T18:00Z"
+     "sehir": "Istanbul",
+     "stadyum": "RAMS Park",
+     "utc": "2026-09-13T17:00Z"
     },
     {
      "dep": {
-      "ad": "Samsunspor",
-      "form": "LWDWL",
-      "id": "11429",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "SAM",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "durum": "pre",
-     "durum_metin": "TBD",
-     "ev": {
-      "ad": "Erzurum BB",
-      "form": "DLLWL",
-      "id": "19267",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "ERZ",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "goller": [],
-     "id": "401888285",
-     "kanal": "",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
-     "sehir": "Erzurum",
-     "stadyum": "Erzurum Kazim Karabekir",
-     "utc": "2026-09-20T18:00Z"
-    },
-    {
-     "dep": {
-      "ad": "Eyupspor",
-      "form": "WLLDW",
-      "id": "20729",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "EYU",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20729.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "durum": "pre",
-     "durum_metin": "TBD",
-     "ev": {
       "ad": "Fenerbahce",
       "form": "WWWDL",
       "id": "436",
@@ -3685,86 +3527,34 @@
       "renk": "#ffff00",
       "skor": "0"
      },
-     "goller": [],
-     "id": "401888287",
-     "kanal": "",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
-     "sehir": "Istanbul",
-     "stadyum": "Ulker Stadyumu",
-     "utc": "2026-09-20T18:00Z"
-    },
-    {
-     "dep": {
-      "ad": "Caykur Rizespor",
-      "form": "WLWDL",
-      "id": "7656",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "CAY",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7656.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
      "durum": "pre",
-     "durum_metin": "TBD",
+     "durum_metin": "Scheduled",
      "ev": {
-      "ad": "Goztepe",
-      "form": "LLDLW",
-      "id": "789",
+      "ad": "Gaziantep FK",
+      "form": "LWDLL",
+      "id": "20070",
       "istatistik": {},
       "kazandi": false,
-      "kisa": "GOZ",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
+      "kisa": "GAZ",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
       "renk": "#000000",
       "skor": "0"
      },
      "goller": [],
-     "id": "401888288",
+     "id": "401888298",
      "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
-     "sehir": "Izmir",
-     "stadyum": "Göztepe Gürsel Aksel Stadi",
-     "utc": "2026-09-20T18:00Z"
-    },
-    {
-     "dep": {
-      "ad": "Genclerbirligi",
-      "form": "DWWWW",
-      "id": "996",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "GEN",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
-      "renk": "#000000",
-      "skor": "0"
-     },
-     "durum": "pre",
-     "durum_metin": "TBD",
-     "ev": {
-      "ad": "Istanbul Basaksehir",
-      "form": "DLWLD",
-      "id": "7914",
-      "istatistik": {},
-      "kazandi": false,
-      "kisa": "IBFK",
-      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7914.png",
-      "renk": "#ff6600",
-      "skor": "0"
-     },
-     "goller": [],
-     "id": "401888289",
-     "kanal": "",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
-     "sehir": "Istanbul",
-     "stadyum": "Basaksehir Fatih Terim Stadium",
-     "utc": "2026-09-20T18:00Z"
-    },
+     "sehir": "Gaziantep",
+     "stadyum": "Gaziantep Stadium",
+     "utc": "2026-09-14T17:00Z"
+    }
+   ],
+   "no": 5
+  },
+  {
+   "maclar": [
     {
      "dep": {
       "ad": "Konyaspor",
@@ -3778,7 +3568,7 @@
       "skor": "0"
      },
      "durum": "pre",
-     "durum_metin": "TBD",
+     "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kasimpasa",
       "form": "DWDWL",
@@ -3798,7 +3588,42 @@
      "sari_kartlar": [],
      "sehir": "Istanbul",
      "stadyum": "Recep Tayyip Erdogan Stadium",
-     "utc": "2026-09-20T18:00Z"
+     "utc": "2026-09-18T17:00Z"
+    },
+    {
+     "dep": {
+      "ad": "Alanyaspor",
+      "form": "LWDLW",
+      "id": "9078",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "ALA",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "durum": "pre",
+     "durum_metin": "Scheduled",
+     "ev": {
+      "ad": "Çorum FK",
+      "form": "LLD",
+      "id": "132334",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "COR",
+      "logo": "",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "goller": [],
+     "id": "401888381",
+     "kanal": "",
+     "kirmizi_kartlar": [],
+     "saat_gostergesi": "0'",
+     "sari_kartlar": [],
+     "sehir": "",
+     "stadyum": "Çorum Sehir Stadyumu",
+     "utc": "2026-09-19T14:00Z"
     },
     {
      "dep": {
@@ -3813,7 +3638,7 @@
       "skor": "0"
      },
      "durum": "pre",
-     "durum_metin": "TBD",
+     "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
       "form": "WWLLL",
@@ -3833,7 +3658,42 @@
      "sari_kartlar": [],
      "sehir": "Kocaeli",
      "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
-     "utc": "2026-09-20T18:00Z"
+     "utc": "2026-09-19T14:00Z"
+    },
+    {
+     "dep": {
+      "ad": "Genclerbirligi",
+      "form": "DWWWW",
+      "id": "996",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "GEN",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "durum": "pre",
+     "durum_metin": "Scheduled",
+     "ev": {
+      "ad": "Istanbul Basaksehir",
+      "form": "DLWLD",
+      "id": "7914",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "IBFK",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7914.png",
+      "renk": "#ff6600",
+      "skor": "0"
+     },
+     "goller": [],
+     "id": "401888289",
+     "kanal": "",
+     "kirmizi_kartlar": [],
+     "saat_gostergesi": "0'",
+     "sari_kartlar": [],
+     "sehir": "Istanbul",
+     "stadyum": "Basaksehir Fatih Terim Stadium",
+     "utc": "2026-09-19T17:00Z"
     },
     {
      "dep": {
@@ -3848,7 +3708,7 @@
       "skor": "0"
      },
      "durum": "pre",
-     "durum_metin": "TBD",
+     "durum_metin": "Scheduled",
      "ev": {
       "ad": "Trabzonspor",
       "form": "LLWLD",
@@ -3868,7 +3728,147 @@
      "sari_kartlar": [],
      "sehir": "Trabzon",
      "stadyum": "Papara Park",
-     "utc": "2026-09-20T18:00Z"
+     "utc": "2026-09-19T17:00Z"
+    },
+    {
+     "dep": {
+      "ad": "Samsunspor",
+      "form": "LWDWL",
+      "id": "11429",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "SAM",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "durum": "pre",
+     "durum_metin": "Scheduled",
+     "ev": {
+      "ad": "Erzurum BB",
+      "form": "DLLWL",
+      "id": "19267",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "ERZ",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "goller": [],
+     "id": "401888285",
+     "kanal": "",
+     "kirmizi_kartlar": [],
+     "saat_gostergesi": "0'",
+     "sari_kartlar": [],
+     "sehir": "Erzurum",
+     "stadyum": "Erzurum Kazim Karabekir",
+     "utc": "2026-09-20T14:00Z"
+    },
+    {
+     "dep": {
+      "ad": "Eyupspor",
+      "form": "WLLDW",
+      "id": "20729",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "EYU",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20729.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "durum": "pre",
+     "durum_metin": "Scheduled",
+     "ev": {
+      "ad": "Fenerbahce",
+      "form": "WWWDL",
+      "id": "436",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "FEN",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+      "renk": "#ffff00",
+      "skor": "0"
+     },
+     "goller": [],
+     "id": "401888287",
+     "kanal": "",
+     "kirmizi_kartlar": [],
+     "saat_gostergesi": "0'",
+     "sari_kartlar": [],
+     "sehir": "Istanbul",
+     "stadyum": "Ulker Stadyumu",
+     "utc": "2026-09-20T14:00Z"
+    },
+    {
+     "dep": {
+      "ad": "Besiktas",
+      "form": "WLLWW",
+      "id": "1895",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "BES",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+      "renk": "#ffffff",
+      "skor": "0"
+     },
+     "durum": "pre",
+     "durum_metin": "Scheduled",
+     "ev": {
+      "ad": "Amed SFK",
+      "form": "WLW",
+      "id": "132335",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "AMED",
+      "logo": "",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "goller": [],
+     "id": "401888382",
+     "kanal": "",
+     "kirmizi_kartlar": [],
+     "saat_gostergesi": "0'",
+     "sari_kartlar": [],
+     "sehir": "Diyarbakir",
+     "stadyum": "Diyarbakir Stadyumu",
+     "utc": "2026-09-20T17:00Z"
+    },
+    {
+     "dep": {
+      "ad": "Caykur Rizespor",
+      "form": "WLWDL",
+      "id": "7656",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "CAY",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7656.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "durum": "pre",
+     "durum_metin": "Scheduled",
+     "ev": {
+      "ad": "Goztepe",
+      "form": "LLDLW",
+      "id": "789",
+      "istatistik": {},
+      "kazandi": false,
+      "kisa": "GOZ",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
+      "renk": "#000000",
+      "skor": "0"
+     },
+     "goller": [],
+     "id": "401888288",
+     "kanal": "",
+     "kirmizi_kartlar": [],
+     "saat_gostergesi": "0'",
+     "sari_kartlar": [],
+     "sehir": "Izmir",
+     "stadyum": "Göztepe Gürsel Aksel Stadi",
+     "utc": "2026-09-20T17:00Z"
     }
    ],
    "no": 6
@@ -12860,7 +12860,12 @@
    "2026-09-05",
    "2026-09-06",
    "2026-09-07",
+   "2026-09-11",
+   "2026-09-12",
    "2026-09-13",
+   "2026-09-14",
+   "2026-09-18",
+   "2026-09-19",
    "2026-09-20",
    "2026-10-11",
    "2026-10-18",
@@ -13328,5 +13333,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-01T10:10:41.679759+00:00"
+ "uretim": "2026-09-01T14:55:40.064664+00:00"
 }
