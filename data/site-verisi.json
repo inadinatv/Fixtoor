@@ -2516,9 +2516,9 @@
      "sehir": "Istanbul",
      "stadyum": "Basaksehir Fatih Terim Stadium",
      "utc": "2026-08-30T18:30Z",
-     "video_id": "xb2tiyu",
-     "video_kanal": "Maç Özetleri",
-     "video_kaynak": "dm"
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     },
     {
      "dep": {
@@ -13328,5 +13328,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-08-31T23:52:41.140574+00:00"
+ "uretim": "2026-09-01T05:13:12.113439+00:00"
 }
