@@ -99,10 +99,7 @@
     ],
     "sehir": "Istanbul",
     "stadyum": "RAMS Park",
-    "utc": "2026-08-14T18:30Z",
-    "video_id": "xaxsmma",
-    "video_kanal": "beIN SPORTS USA",
-    "video_kaynak": "dm"
+    "utc": "2026-08-14T18:30Z"
    },
    {
     "dep": {
@@ -2961,7 +2958,7 @@
     },
     "goller": [],
     "id": "401888304",
-    "kanal": "Digiturk Play",
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -3136,7 +3133,7 @@
     },
     "goller": [],
     "id": "401888300",
-    "kanal": "",
+    "kanal": "beIN Sports 2",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -8541,7 +8538,7 @@
     },
     "goller": [],
     "id": "401888186",
-    "kanal": "Digiturk Play",
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -8681,7 +8678,7 @@
     },
     "goller": [],
     "id": "401888049",
-    "kanal": "",
+    "kanal": "beIN Sports 2",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],

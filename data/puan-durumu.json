@@ -1,21 +1,21 @@
 [
  {
-  "attigi": "9",
-  "averaj": "+5",
+  "attigi": "12",
+  "averaj": "+6",
   "b": "1",
-  "form": "2-1-0",
-  "g": "2",
+  "form": "3-1-0",
+  "g": "3",
   "kisa": "GAL",
   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
   "m": "0",
   "not": "Champions League",
   "not_renk": "#81D6AC",
-  "o": "3",
-  "puan": "7",
+  "o": "4",
+  "puan": "10",
   "sira": 1,
   "takim": "Galatasaray",
   "takim_id": "432",
-  "yedigi": "4"
+  "yedigi": "6"
  },
  {
   "attigi": "4",
@@ -144,22 +144,22 @@
   "yedigi": "2"
  },
  {
-  "attigi": "4",
-  "averaj": "+1",
+  "attigi": "6",
+  "averaj": "0",
   "b": "1",
-  "form": "1-1-1",
+  "form": "1-1-2",
   "g": "1",
   "kisa": "IBFK",
   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7914.png",
-  "m": "1",
+  "m": "2",
   "not": "",
   "not_renk": "",
-  "o": "3",
+  "o": "4",
   "puan": "4",
   "sira": 9,
   "takim": "Istanbul Basaksehir",
   "takim_id": "7914",
-  "yedigi": "3"
+  "yedigi": "6"
  },
  {
   "attigi": "5",
