@@ -1,6 +1,108 @@
 [
  {
   "dep": {
+   "ad": "Konyaspor",
+   "form": "LLLLL",
+   "id": "7648",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "0",
+    "goalAssists": "0",
+    "possessionPct": "0",
+    "shotAssists": "0",
+    "shotsOnTarget": "0",
+    "totalGoals": "0",
+    "totalShots": "0",
+    "wonCorners": "0"
+   },
+   "kazandi": false,
+   "kisa": "KNY",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
+   "renk": "#288A00",
+   "skor": "0"
+  },
+  "durum": "post",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Erzurum BB",
+   "form": "WDLLW",
+   "id": "19267",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "0",
+    "goalAssists": "1",
+    "possessionPct": "0",
+    "shotAssists": "0",
+    "shotsOnTarget": "0",
+    "totalGoals": "1",
+    "totalShots": "0",
+    "wonCorners": "0"
+   },
+   "kazandi": true,
+   "kisa": "ERZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
+   "renk": "#000000",
+   "skor": "1"
+  },
+  "goller": [
+   {
+    "dakika": "17'",
+    "kendi_kalesine": false,
+    "oyuncu": "Eren Tozlu",
+    "penalti": false,
+    "takim_id": "19267"
+   }
+  ],
+  "id": "401888299",
+  "kanal": "",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+4'",
+  "sari_kartlar": [
+   {
+    "dakika": "26'",
+    "kendi_kalesine": false,
+    "oyuncu": "Rayyan Baniya",
+    "penalti": false,
+    "takim_id": "7648"
+   },
+   {
+    "dakika": "45'+2'",
+    "kendi_kalesine": false,
+    "oyuncu": "Marko Jevtovic",
+    "penalti": false,
+    "takim_id": "7648"
+   },
+   {
+    "dakika": "45'+2'",
+    "kendi_kalesine": false,
+    "oyuncu": "Jackson Muleka",
+    "penalti": false,
+    "takim_id": "7648"
+   },
+   {
+    "dakika": "72'",
+    "kendi_kalesine": false,
+    "oyuncu": "Adil Demirbag",
+    "penalti": false,
+    "takim_id": "7648"
+   },
+   {
+    "dakika": "75'",
+    "kendi_kalesine": false,
+    "oyuncu": "Martín Rodríguez",
+    "penalti": false,
+    "takim_id": "19267"
+   }
+  ],
+  "sehir": "Erzurum",
+  "stadyum": "Erzurum Kazim Karabekir",
+  "utc": "2026-09-05T14:00Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
+ },
+ {
+  "dep": {
    "ad": "Galatasaray",
    "form": "WWWDL",
    "id": "432",
@@ -1119,7 +1221,7 @@
  {
   "dep": {
    "ad": "Erzurum BB",
-   "form": "DLLWL",
+   "form": "WDLLW",
    "id": "19267",
    "istatistik": {
     "appearances": "0",
@@ -1690,129 +1792,6 @@
   "stadyum": "Papara Park",
   "utc": "2026-08-23T16:00Z",
   "video_id": "xb016yy",
-  "video_kanal": "beIN SPORTS USA",
-  "video_kaynak": "dm"
- },
- {
-  "dep": {
-   "ad": "Konyaspor",
-   "form": "LLLLL",
-   "id": "7648",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "10",
-    "goalAssists": "1",
-    "possessionPct": "51.3",
-    "shotAssists": "0",
-    "shotsOnTarget": "8",
-    "totalGoals": "2",
-    "totalShots": "17",
-    "wonCorners": "3"
-   },
-   "kazandi": false,
-   "kisa": "KNY",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
-   "renk": "#288A00",
-   "skor": "2"
-  },
-  "durum": "post",
-  "durum_metin": "FT",
-  "ev": {
-   "ad": "Fenerbahce",
-   "form": "WWWDL",
-   "id": "436",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "11",
-    "goalAssists": "2",
-    "possessionPct": "48.7",
-    "shotAssists": "0",
-    "shotsOnTarget": "9",
-    "totalGoals": "4",
-    "totalShots": "20",
-    "wonCorners": "7"
-   },
-   "kazandi": true,
-   "kisa": "FEN",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
-   "renk": "#ffff00",
-   "skor": "4"
-  },
-  "goller": [
-   {
-    "dakika": "7'",
-    "kendi_kalesine": false,
-    "oyuncu": "Vedat Muriqi",
-    "penalti": false,
-    "takim_id": "436"
-   },
-   {
-    "dakika": "10'",
-    "kendi_kalesine": false,
-    "oyuncu": "Ebrima Colley",
-    "penalti": false,
-    "takim_id": "7648"
-   },
-   {
-    "dakika": "20'",
-    "kendi_kalesine": false,
-    "oyuncu": "Mason Greenwood",
-    "penalti": false,
-    "takim_id": "436"
-   },
-   {
-    "dakika": "33'",
-    "kendi_kalesine": false,
-    "oyuncu": "Marco Asensio",
-    "penalti": false,
-    "takim_id": "436"
-   },
-   {
-    "dakika": "49'",
-    "kendi_kalesine": false,
-    "oyuncu": "Mason Greenwood",
-    "penalti": false,
-    "takim_id": "436"
-   },
-   {
-    "dakika": "90'+4'",
-    "kendi_kalesine": false,
-    "oyuncu": "Deniz Turuc",
-    "penalti": false,
-    "takim_id": "7648"
-   }
-  ],
-  "id": "401888314",
-  "kanal": "",
-  "kirmizi_kartlar": [],
-  "saat_gostergesi": "90'+5'",
-  "sari_kartlar": [
-   {
-    "dakika": "45'+4'",
-    "kendi_kalesine": false,
-    "oyuncu": "Adil Demirbag",
-    "penalti": false,
-    "takim_id": "7648"
-   },
-   {
-    "dakika": "45'+4'",
-    "kendi_kalesine": false,
-    "oyuncu": "Deniz Turuc",
-    "penalti": false,
-    "takim_id": "7648"
-   },
-   {
-    "dakika": "61'",
-    "kendi_kalesine": false,
-    "oyuncu": "Enis Bardhi",
-    "penalti": false,
-    "takim_id": "7648"
-   }
-  ],
-  "sehir": "Istanbul",
-  "stadyum": "Ulker Stadyumu",
-  "utc": "2026-08-22T18:30Z",
-  "video_id": "xazv6lu",
   "video_kanal": "beIN SPORTS USA",
   "video_kaynak": "dm"
  }
