@@ -391,11 +391,15 @@ def istatistik_bar(baslik: str, ev_d: str, dep_d: str, yuzde: bool = False) -> s
         ev_f, dep_f = float(ev_d or 0), float(dep_d or 0)
     except ValueError:
         ev_f, dep_f = 0.0, 0.0
-    toplam = ev_f + dep_f or 1
-    ev_w = int(ev_f / toplam * 100)
+    toplam = ev_f + dep_f
+    if toplam > 0:
+        ev_w = int(round(ev_f / toplam * 100))
+        dep_w = 100 - ev_w
+    else:
+        ev_w = dep_w = 0
     birim = "%" if yuzde else ""
     return f'''<div class="ist-satir"><span class="deger">{esc(ev_d or 0)}{birim}</span>
-<div><div class="bar"><i class="ev" style="width:{ev_w}%"></i></div>
+<div><div class="bar"><i class="ev" style="width:{ev_w}%"></i><i class="dep" style="width:{dep_w}%"></i></div>
 <div class="orta">{esc(baslik)}</div></div>
 <span class="deger" style="text-align:right">{esc(dep_d or 0)}{birim}</span></div>'''
 
