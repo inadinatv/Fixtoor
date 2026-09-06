@@ -3373,9 +3373,9 @@
      "sehir": "",
      "stadyum": "Çorum Sehir Stadyumu",
      "utc": "2026-09-06T14:00Z",
-     "video_id": "xb4l9i6",
-     "video_kanal": "Maç Özetleri",
-     "video_kaynak": "dm"
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     },
     {
      "dep": {
@@ -13884,5 +13884,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-06T21:24:05.982568+00:00"
+ "uretim": "2026-09-06T23:56:40.216559+00:00"
 }
