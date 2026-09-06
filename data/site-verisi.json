@@ -3150,9 +3150,9 @@
      "sehir": "Erzurum",
      "stadyum": "Erzurum Kazim Karabekir",
      "utc": "2026-09-05T14:00Z",
-     "video_id": "xb4cdt2",
-     "video_kanal": "Maç Özetleri",
-     "video_kaynak": "dm"
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     },
     {
      "dep": {
@@ -13597,5 +13597,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-06T01:00:30.277993+00:00"
+ "uretim": "2026-09-06T06:39:48.934157+00:00"
 }
