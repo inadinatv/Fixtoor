@@ -68,6 +68,7 @@
    }
   ],
   "id": "401888301",
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+8'",
   "sari_kartlar": [
@@ -123,7 +124,10 @@
   ],
   "sehir": "Istanbul",
   "stadyum": "Ulker Stadyumu",
-  "utc": "2026-09-05T17:00Z"
+  "utc": "2026-09-05T17:00Z",
+  "video_id": "xb4avu6",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -180,6 +184,7 @@
    }
   ],
   "id": "401888299",
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -221,7 +226,10 @@
   ],
   "sehir": "Erzurum",
   "stadyum": "Erzurum Kazim Karabekir",
-  "utc": "2026-09-05T14:00Z"
+  "utc": "2026-09-05T14:00Z",
+  "video_id": "xb4cdt2",
+  "video_kanal": "Maç Özetleri",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -306,6 +314,7 @@
    }
   ],
   "id": "401888304",
+  "kanal": "",
   "kirmizi_kartlar": [
    {
     "dakika": "79'",
@@ -369,7 +378,10 @@
   ],
   "sehir": "Istanbul",
   "stadyum": "Basaksehir Fatih Terim Stadium",
-  "utc": "2026-09-04T17:00Z"
+  "utc": "2026-09-04T17:00Z",
+  "video_id": "xb40ki6",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -440,6 +452,7 @@
    }
   ],
   "id": "401888388",
+  "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+9'",
   "sari_kartlar": [
@@ -509,7 +522,10 @@
   ],
   "sehir": "Diyarbakir",
   "stadyum": "Diyarbakir Stadyumu",
-  "utc": "2026-08-31T18:30Z"
+  "utc": "2026-08-31T18:30Z",
+  "video_id": "xb2tama",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -615,6 +631,7 @@
    }
   ],
   "id": "401888387",
+  "kanal": "beIN Sports 2",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+3'",
   "sari_kartlar": [
@@ -663,7 +680,10 @@
   ],
   "sehir": "Istanbul",
   "stadyum": "Vodafone Park",
-  "utc": "2026-08-31T18:30Z"
+  "utc": "2026-08-31T18:30Z",
+  "video_id": "xb2t8j2",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -727,6 +747,7 @@
    }
   ],
   "id": "401888310",
+  "kanal": "beIN Sports 2",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+3'",
   "sari_kartlar": [
@@ -761,7 +782,10 @@
   ],
   "sehir": "Istanbul",
   "stadyum": "Basaksehir Fatih Terim Stadium",
-  "utc": "2026-08-30T18:30Z"
+  "utc": "2026-08-30T18:30Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
  },
  {
   "dep": {
@@ -825,6 +849,7 @@
    }
   ],
   "id": "401888306",
+  "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -845,7 +870,10 @@
   ],
   "sehir": "Samsun",
   "stadyum": "Samsun 19 Mayis Stadium",
-  "utc": "2026-08-30T18:30Z"
+  "utc": "2026-08-30T18:30Z",
+  "video_id": "xb2gu5e",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -916,6 +944,7 @@
    }
   ],
   "id": "401888311",
+  "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [
    {
     "dakika": "52'",
@@ -958,7 +987,10 @@
   ],
   "sehir": "Istanbul",
   "stadyum": "Esenyurt Necmi Kadioglu Stadi",
-  "utc": "2026-08-30T16:00Z"
+  "utc": "2026-08-30T16:00Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
  },
  {
   "dep": {
@@ -1043,6 +1075,7 @@
    }
   ],
   "id": "401888307",
+  "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+7'",
   "sari_kartlar": [
@@ -1077,7 +1110,10 @@
   ],
   "sehir": "Istanbul",
   "stadyum": "RAMS Park",
-  "utc": "2026-08-29T18:30Z"
+  "utc": "2026-08-29T18:30Z",
+  "video_id": "xb27vtq",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -1148,6 +1184,7 @@
    }
   ],
   "id": "401888312",
+  "kanal": "beIN Sports 2",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -1175,7 +1212,10 @@
   ],
   "sehir": "Gaziantep",
   "stadyum": "Gaziantep Stadium",
-  "utc": "2026-08-29T18:30Z"
+  "utc": "2026-08-29T18:30Z",
+  "video_id": "xb2grt6",
+  "video_kanal": "Maç Özetleri",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -1246,6 +1286,7 @@
    }
   ],
   "id": "401888308",
+  "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [
    {
     "dakika": "48'",
@@ -1302,7 +1343,10 @@
   ],
   "sehir": "Konya",
   "stadyum": "Medas Konya Büyüksehir Stadyumu",
-  "utc": "2026-08-29T16:00Z"
+  "utc": "2026-08-29T16:00Z",
+  "video_id": "xb2grw6",
+  "video_kanal": "Maç Özetleri",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -1366,6 +1410,7 @@
    }
   ],
   "id": "401888309",
+  "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+7'",
   "sari_kartlar": [
@@ -1414,7 +1459,10 @@
   ],
   "sehir": "Ankara",
   "stadyum": "Eryaman Stadium",
-  "utc": "2026-08-28T18:30Z"
+  "utc": "2026-08-28T18:30Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
  },
  {
   "dep": {
@@ -1478,6 +1526,7 @@
    }
   ],
   "id": "401888389",
+  "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+3'",
   "sari_kartlar": [
@@ -1498,7 +1547,10 @@
   ],
   "sehir": "Kocaeli",
   "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
-  "utc": "2026-08-24T18:30Z"
+  "utc": "2026-08-24T18:30Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
  },
  {
   "dep": {
@@ -1555,12 +1607,16 @@
    }
   ],
   "id": "401888317",
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [],
   "sehir": "Antalya",
   "stadyum": "Kirbiyik Holding Stadyumu",
-  "utc": "2026-08-23T18:30Z"
+  "utc": "2026-08-23T18:30Z",
+  "video_id": "xb01bra",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -1617,6 +1673,7 @@
    }
   ],
   "id": "401888315",
+  "kanal": "beIN Sports 2",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+5'",
   "sari_kartlar": [
@@ -1644,7 +1701,10 @@
   ],
   "sehir": "Izmir",
   "stadyum": "Göztepe Gürsel Aksel Stadi",
-  "utc": "2026-08-23T18:30Z"
+  "utc": "2026-08-23T18:30Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
  },
  {
   "dep": {
@@ -1701,6 +1761,7 @@
    }
   ],
   "id": "401888318",
+  "kanal": "",
   "kirmizi_kartlar": [
    {
     "dakika": "64'",
@@ -1722,6 +1783,9 @@
   ],
   "sehir": "Istanbul",
   "stadyum": "Esenyurt Necmi Kadioglu Stadi",
-  "utc": "2026-08-23T16:00Z"
+  "utc": "2026-08-23T16:00Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
  }
 ]
