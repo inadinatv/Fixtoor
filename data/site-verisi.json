@@ -3150,9 +3150,9 @@
      "sehir": "Erzurum",
      "stadyum": "Erzurum Kazim Karabekir",
      "utc": "2026-09-05T14:00Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "video_id": "xb4cdt2",
+     "video_kanal": "Maç Özetleri",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -4190,7 +4190,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -4830,7 +4830,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -5277,7 +5277,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -5470,7 +5470,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -5987,7 +5987,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -6110,7 +6110,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -6430,7 +6430,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -6912,7 +6912,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -7070,7 +7070,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -7197,7 +7197,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -7530,7 +7530,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -7587,7 +7587,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -7802,7 +7802,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -7850,7 +7850,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -8030,7 +8030,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -8227,7 +8227,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -8372,7 +8372,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -8455,7 +8455,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -8692,7 +8692,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -8705,7 +8705,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -9012,7 +9012,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -9060,7 +9060,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -9310,7 +9310,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -9367,7 +9367,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -9700,7 +9700,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -9827,7 +9827,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -9902,7 +9902,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -9950,7 +9950,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10340,7 +10340,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10397,7 +10397,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10590,7 +10590,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10787,7 +10787,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10945,7 +10945,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10967,7 +10967,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -11230,7 +11230,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -11370,7 +11370,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -11537,7 +11537,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -11572,7 +11572,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -11975,7 +11975,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -12102,7 +12102,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12190,7 +12190,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12422,7 +12422,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -12497,7 +12497,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12650,7 +12650,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -12782,7 +12782,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "WWWDL",
+      "form": "LWWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -12830,7 +12830,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "WLLWW",
+      "form": "WWLLW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -13597,5 +13597,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-05T22:59:27.424671+00:00"
+ "uretim": "2026-09-06T01:00:30.277993+00:00"
 }
