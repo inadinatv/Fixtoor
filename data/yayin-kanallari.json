@@ -1,0 +1,14 @@
+{
+  "_aciklama": "Yayın kanalı elle düzeltme dosyası. Anahtar: 'evnorm|depnorm' (takım adları Türkçe karakterlerden arındırılmış ve alfabetik sıralı, örn: 'galatasaray|goztepe'). Bot, Spor Ekranı ve LiveSoccerTV'den kazıdığı verilerle birleştirir; buradaki değerler her zaman önceliklidir.",
+  "erzurumbb|genclerbirligi": "beIN Sports 1",
+  "kocaelispor|konyaspor": "beIN Sports 1",
+  "galatasaray|goztepe": "beIN Sports 1",
+  "caykurrizespor|gaziantepfk": "beIN Sports 2",
+  "alanyaspor|eyupspor": "beIN Sports 1",
+  "istanbulbasaksehir|kasimpasa": "beIN Sports 2",
+  "fenerbahce|samsunspor": "beIN Sports 1",
+  "amedsfk|trabzonspor": "beIN Sports 1",
+  "besiktas|corumfk": "beIN Sports 2",
+  "genclerbirligi|goztepe": "beIN Sports 2",
+  "amedsfk|kocaelispor": "beIN Sports 1"
+}

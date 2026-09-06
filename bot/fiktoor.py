@@ -20,6 +20,7 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -29,9 +30,15 @@ from zoneinfo import ZoneInfo
 # ----------------------------------------------------------------------------
 SITE_API = "https://site.api.espn.com/apis/site/v2/sports/soccer/{slug}"
 WEB_API = "https://site.web.api.espn.com/apis/v2/sports/soccer/{slug}"
+DM_API = "https://api.dailymotion.com/videos"
+DM_BEIN_KANAL = "x1jf30l"   # beIN SPORTS USA'nın resmî Dailymotion kanalı
+DM_ALANLAR = ("id,title,duration,created_time,owner.screenname,"
+              "allow_embed,geoblocking")
 TR_TZ = ZoneInfo("Europe/Istanbul")
 
 GUNLER = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]
+# Takvim kısaltmaları: Cuma/Cumartesi ("Cum") ve Pazar/Pazartesi ("Paz") karışmasın diye ayrı liste
+GUNLER_KISA = ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"]
 AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
 
 HTTP_TIMEOUT = 25
@@ -74,7 +81,7 @@ def esc(s) -> str:
 def tr_tarih(dt: datetime, saat_dahil: bool = True) -> str:
     """UTC datetime -> 'Cum, 29 Ağu 19:00' (İstanbul saati)."""
     yerel = dt.astimezone(TR_TZ)
-    metin = f"{GUNLER[yerel.weekday()][:3]}, {yerel.day} {AYLAR[yerel.month - 1]}"
+    metin = f"{GUNLER_KISA[yerel.weekday()]}, {yerel.day} {AYLAR[yerel.month - 1]}"
     if saat_dahil:
         metin += f" {yerel.hour:02d}:{yerel.minute:02d}"
     return metin
@@ -82,6 +89,182 @@ def tr_tarih(dt: datetime, saat_dahil: bool = True) -> str:
 
 def parse_utc(s: str) -> datetime:
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+
+def video_url(m: dict) -> str:
+    """Maçın özeti için YouTube arama bağlantısı (beIN Sports Türkiye özetleri orada yayınlanır)."""
+    q = f'{m["ev"]["ad"]} {m["dep"]["ad"]} maç özeti'
+    return "https://www.youtube.com/results?search_query=" + urllib.parse.quote(q)
+
+
+def _sure_saniye(metin: str) -> int:
+    """'11:24' / '1:02:03' biçimindeki süreyi saniyeye çevirir."""
+    toplam = 0
+    for parca in (metin or "").split(":"):
+        if parca.strip().isdigit():
+            toplam = toplam * 60 + int(parca)
+    return toplam
+
+
+def youtube_video_bul(ev_ad: str, dep_ad: str):
+    """YouTube yedek araması (son çare). beIN, YouTube'taki Süper Lig özetlerini
+    Türkiye'ye karşı kasıtlı olarak kilitliyor ('ülkenizde verilmiyor' hatası bu
+    yüzdendir); bu yüzden beIN DIŞI kanallarda, başlığında iki takımın adı ve
+    'özet' kelimesi geçen, en az 2 dakikalık videolar kabul edilir."""
+    ev, dep = takim_varyantlari(ev_ad), takim_varyantlari(dep_ad)
+    try:
+        html = http_get_text(
+            "https://www.youtube.com/results?search_query="
+            + urllib.parse.quote(f"{ev_ad} {dep_ad} maç özeti"))
+    except Exception as e:
+        log(f"UYARI: YouTube araması okunamadı: {e}")
+        return "", ""
+    for parca in html.split('"videoRenderer"')[1:16]:
+        vid = re.search(r'"videoId":"([\w-]{11})"', parca)
+        if not vid:
+            continue
+        kanal_m = re.search(r'"ownerText":\{"runs":\[\{"text":"([^"]*)"', parca)
+        baslik_m = re.search(r'"title":\{"runs":\[\{"text":"([^"]*)"', parca)
+        sure_m = re.search(r'"lengthText":\{[^}]*"simpleText":"([\d:]+)"', parca)
+        kanal = (kanal_m.group(1) if kanal_m else "").casefold()
+        if "bein" in kanal:
+            continue    # beIN videoları Türkiye'den izlenemiyor
+        baslik = takim_norm(baslik_m.group(1) if baslik_m else "")
+        if not (any(x in baslik for x in ev) and any(x in baslik for x in dep)):
+            continue    # iki takımın adı da başlıkta geçmeli
+        if not any(k in baslik for k in ("ozet", "ozetler", "highlights")):
+            continue    # röportaj/kanal tanıtımı değil, özet olmalı
+        if _sure_saniye(sure_m.group(1) if sure_m else "") < 120:
+            continue    # kısa klipsler değil, gerçek özet (2 dk+)
+        return vid.group(1), kanal
+    return "", ""  # güvenilir video yok: buton YouTube aramasına düşer
+
+
+# Aynı takım farklı kaynaklarda farklı yazılıyor ('Çorum FK' ↔ 'Corum',
+# 'Çaykur Rizespor' ↔ 'Rizespor', 'İstanbul Başakşehir' ↔ 'Basaksehir'...)
+TAKIM_VARYANT = {
+    "corumfk": ("corum",),
+    "erzurumbb": ("erzurumspor",),
+    "gaziantepfk": ("gaziantep",),
+    "caykurrizespor": ("rizespor",),
+    "istanbulbasaksehir": ("basaksehir",),
+    "amedsfk": ("amedspor",),
+}
+
+
+def takim_varyantlari(ad: str) -> set:
+    """Takım adının normalize edilmiş tüm yazım varyantlarını üretir."""
+    n = takim_norm(ad)
+    varyantlar = {n} | set(TAKIM_VARYANT.get(n, ()))
+    if n.endswith("fk") and len(n) > 5:
+        varyantlar.add(n[:-2])
+    if n.endswith("spor") and len(n) > 9:
+        varyantlar.add(n[:-4])
+    return {v for v in varyantlar if v}
+
+
+def bein_arama_adi(ad: str) -> str:
+    """beIN SPORTS USA videolarında geçen (Türkçesiz) takım adını üretir."""
+    n = takim_norm(ad)
+    return (TAKIM_VARYANT.get(n) or (n,))[0]
+
+
+def _dm_sonuc_uyun(v: dict, ev: set, dep: set, mac_epoch: float, min_sure: int) -> bool:
+    """Dailymotion sonucu gerçek, izlenebilir maç özeti mi?
+    (İki takım da başlıkta, yeterince uzun, maçtan sonra yüklenmiş,
+    başka sitelere gömülebilir ve bölge kısıtlaması YOK.)"""
+    if not v.get("allow_embed"):
+        return False
+    if v.get("geoblocking") != ["allow"]:
+        return False        # Türkiye'ye kapalı olabilir: asla seçme
+    if (v.get("duration") or 0) < min_sure:
+        return False
+    if (v.get("created_time") or 0) < mac_epoch - 3600:
+        return False
+    baslik = takim_norm(v.get("title") or "")
+    return any(x in baslik for x in ev) and any(x in baslik for x in dep)
+
+
+def bein_ozet_bul(ev_ad: str, dep_ad: str, mac_epoch: float):
+    """BİRİNCİL KAYNAK: beIN SPORTS USA'nın resmî Dailymotion kanalındaki maç özeti.
+    beIN, YouTube'taki Süper Lig özetlerini Türkiye'ye kilitliyor; ama kendi
+    Dailymotion kanalına yüklediği 10-13 dakikalık resmî özetlerde bölge kısıtlaması
+    yok — Türkiye'den sorunsuz, en yüksek kaliteli özetler bunlar."""
+    ev, dep = takim_varyantlari(ev_ad), takim_varyantlari(dep_ad)
+    try:
+        data = http_get_json(
+            DM_API + "?owners=" + DM_BEIN_KANAL
+            + "&search=" + urllib.parse.quote(f"{bein_arama_adi(ev_ad)} {bein_arama_adi(dep_ad)}")
+            + f"&fields={DM_ALANLAR}&sort=recent&limit=20")
+    except Exception as e:
+        log(f"UYARI: beIN Dailymotion araması okunamadı: {e}")
+        return "", ""
+    normal, uzun = [], []
+    for v in data.get("list") or []:
+        if not _dm_sonuc_uyun(v, ev, dep, mac_epoch, 300):
+            continue        # beIN resmî özetleri 5 dakikadan uzun
+        if "extended" in takim_norm(v.get("title") or ""):
+            uzun.append(v)
+        else:
+            normal.append(v)
+    for havuz in (normal, uzun):   # önce standart özet, yoksa uzun (extended) özet
+        if havuz:
+            en_yeni = max(havuz, key=lambda v: v.get("created_time") or 0)
+            return en_yeni["id"], en_yeni.get("owner.screenname") or "beIN SPORTS"
+    return "", ""
+
+
+def dailymotion_video_bul(ev_ad: str, dep_ad: str, mac_epoch: float):
+    """İKİNCİL KAYNAK: Dailymotion genel aramasında haber ajansı özeti
+    (İHA/ajansspor 'Maç sonucu', Fanatik, Sporx...) — anahtarsız resmî API."""
+    ev, dep = takim_varyantlari(ev_ad), takim_varyantlari(dep_ad)
+    try:
+        data = http_get_json(
+            DM_API + "?search=" + urllib.parse.quote(f"{ev_ad} {dep_ad}")
+            + f"&fields={DM_ALANLAR}&sort=recent&limit=20")
+    except Exception as e:
+        log(f"UYARI: Dailymotion araması okunamadı: {e}")
+        return "", ""
+    kesin, olasi = [], []
+    for v in data.get("list") or []:
+        if not _dm_sonuc_uyun(v, ev, dep, mac_epoch, 150):
+            continue        # başlıkta iki takım + 2,5 dk+ + maç sonrası + bölge kısıtsız
+        baslik = takim_norm(v.get("title") or "")
+        if any(k in baslik for k in ("ozet", "macsonucu", "goller", "ilkyari")):
+            kesin.append(v)     # başlığında 'özet / maç sonucu / goller' geçiyor
+        else:
+            olasi.append(v)
+    for havuz in (kesin, olasi):
+        if havuz:
+            en_yeni = max(havuz, key=lambda v: v.get("created_time") or 0)
+            return en_yeni["id"], en_yeni.get("owner.screenname") or ""
+    return "", ""
+
+
+def dm_video_gosteriliyor(video_id: str) -> bool:
+    """Önbellekteki Dailymotion videosu hâlâ yayında mı? (beIN aynı özeti iki kez
+    yükleyip ilkini silebiliyor; silinmişse video yeniden aranır.)"""
+    try:
+        data = http_get_json(f"https://api.dailymotion.com/video/{video_id}"
+                             "?fields=status,geoblocking")
+        return data.get("status") == "published" and data.get("geoblocking") == ["allow"]
+    except Exception:
+        return True     # doğrulanamadıysa mevcut kayıt korunur
+
+
+def video_id_cache_yukle(data_dir: str) -> dict:
+    """Önceki çalıştırmada bulunmuş video kimliklerini yükler.
+    Sadece Dailymotion kaynaklı kayıtlar olduğu gibi kullanılır; YouTube'lu kayıtlar
+    her çalışmada yeniden denenir (Dailymotion'a düşerse otomatik geçilir)."""
+    try:
+        with open(os.path.join(data_dir, "fikstur.json"), encoding="utf-8") as f:
+            eski = json.load(f)
+        return {m.get("id", ""): {"video_id": m.get("video_id", ""),
+                                  "video_kanal": m.get("video_kanal", ""),
+                                  "video_kaynak": m.get("video_kaynak", "")}
+                for h in eski for m in h.get("maclar", []) if m.get("id")}
+    except (OSError, json.JSONDecodeError):
+        return {}
 
 
 # ----------------------------------------------------------------------------
@@ -161,6 +344,168 @@ def fetch_puan_durumu(slug: str, sezon_yili) -> list:
             })
     satirlar.sort(key=lambda x: x["sira"])
     return satirlar
+
+
+# ----------------------------------------------------------------------------
+# Yayın kanalı verisi (Spor Ekranı + LiveSoccerTV)
+# ----------------------------------------------------------------------------
+TR_HARF = str.maketrans("çÇğĞıİöÖşŞüÜ", "cCgGiIoOsSuU")
+
+# Lig -> yayın akışı sayfası (Spor Ekranı)
+SPOREKRANI_LIG = {
+    "tur.1": "https://www.sporekrani.com/home/league/trendyol-super-lig",
+    "tur.2": "https://www.sporekrani.com/home/league/tff-1-lig",
+}
+# Lig -> LiveSoccerTV sayfası
+LIVESOCCERTV_LIG = {
+    "tur.1": "https://www.livesoccertv.com/competitions/turkey/super-lig/",
+    "tur.2": "https://www.livesoccertv.com/competitions/turkey/1-lig/",
+}
+
+
+def takim_norm(ad: str) -> str:
+    """Takım adını karşılaştırılabilir hale getirir: 'Çaykur Rizespor' -> 'caykurrizespor'."""
+    s = (ad or "").casefold().translate(TR_HARF)
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+# Kaynak sitelerdeki adlar -> ESPN adları (normalize edilmiş biçimde)
+TAKIM_TAKMA = {
+    "amedspor": "amedsfk", "amedsk": "amedsfk",
+    "erzurumspor": "erzurumbb", "bberzurumspor": "erzurumbb", "erzurumsporbb": "erzurumbb",
+    "rizespor": "caykurrizespor", "corumspor": "corumfk",
+    "basaksehir": "istanbulbasaksehir", "istanbulbb": "istanbulbasaksehir",
+    "goztepespor": "goztepe",
+}
+
+
+def takim_coz(ad: str, espn_adlari: set):
+    """Kaynak sitedeki takım adını ESPN takım adına eşler (yoksa None)."""
+    n = takim_norm(ad)
+    if not n:
+        return None
+    if n in espn_adlari:
+        return n
+    if TAKIM_TAKMA.get(n) in espn_adlari:
+        return TAKIM_TAKMA[n]
+    for e in espn_adlari:  # kısmi eşleşme: 'rizespor' <-> 'caykurrizespor'
+        if len(n) >= 5 and len(e) >= 5 and (n in e or e in n):
+            return e
+    return None
+
+
+def kanal_norm(ad: str) -> str:
+    """Kanal adını standartlaştırır: 'Bein Sports 1' -> 'beIN Sports 1'."""
+    s = re.sub(r"\s+", " ", ad or "").strip()
+    m = re.match(r"(?i)^be\.?\s?-?\s?in\s?sports?\s*(\d+)$", s)
+    if m:
+        return f"beIN Sports {m.group(1)}"
+    if re.match(r"(?i)^be\.?\s?-?\s?in\s*connect", s):
+        return "beIN Connect"
+    return s
+
+
+def http_get_text(url: str) -> str:
+    """URL'den HTML metni çeker (basit yeniden deneme ile)."""
+    son_hata = None
+    for deneme in range(1, HTTP_DENE + 1):
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) Fixtoor/1.0 (+github)",
+                "Accept-Language": "tr,en;q=0.8",
+            })
+            with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:
+                return resp.read().decode("utf-8", errors="replace")
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            son_hata = e
+            time.sleep(2 * deneme)
+    raise RuntimeError(f"sayfaya ulaşılamadı: {url} ({son_hata})")
+
+
+def _mac_anahtari(ev_norm: str, dep_norm: str) -> str:
+    return "|".join(sorted((ev_norm, dep_norm)))
+
+
+def scrape_sporekrani(espn_adlari: set, espn_ciftler: set, slug: str) -> dict:
+    """Spor Ekranı yayın akışından maç -> kanal eşleşmelerini çıkarır."""
+    html = http_get_text(SPOREKRANI_LIG.get(slug, SPOREKRANI_LIG["tur.1"]))
+    sonuc = {}
+    bloklar = re.findall(
+        r'<a[^>]+href="https://www\.sporekrani\.com/home/match/[^"]+"[^>]*>(.*?)</a>',
+        html, re.S)
+    for blok in bloklar:
+        kanallar = []
+        for alt in re.findall(r'alt="([^"]+)"', blok):
+            a = alt.strip()
+            if not a or a.casefold() in ("futbol", "basketbol", "tenis", "yayın yok"):
+                continue
+            if a not in kanallar:
+                kanallar.append(a)
+        if not kanallar:
+            continue
+        metin = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", blok))
+        m = re.search(r"([A-Za-zÇĞİÖŞÜçğıöşü0-9.'()+&]+)\s+-\s+([A-Za-zÇĞİÖŞÜçğıöşü0-9.'()+&]+)", metin)
+        if not m:
+            continue
+        ev, dep = takim_coz(m.group(1), espn_adlari), takim_coz(m.group(2), espn_adlari)
+        if ev and dep and frozenset((ev, dep)) in espn_ciftler:
+            sonuc[_mac_anahtari(ev, dep)] = kanal_norm(kanallar[0])
+    return sonuc
+
+
+def scrape_livesoccertv(espn_adlari: set, espn_ciftler: set, slug: str) -> dict:
+    """LiveSoccerTV maç listesinden Türk yayın kanallarını çıkarır."""
+    html = http_get_text(LIVESOCCERTV_LIG.get(slug, LIVESOCCERTV_LIG["tur.1"]))
+    sonuc = {}
+    for satir in re.findall(r"<tr[^>]*>(.*?)</tr>", html, re.S):
+        if "Repeat" in satir or "/match/" not in satir:
+            continue
+        m = re.search(r'<a[^>]+href="[^"]*/match/[^"]+"[^>]*>([^<]+?)\s+vs\.?\s+([^<]+?)</a>', satir)
+        if not m:
+            continue
+        basliklar = [b.strip() for b in re.findall(
+            r'<a[^>]+href="[^"]*/channels/[^"]+"[^>]*title="([^"]+)"', satir)]
+        tr_kanallar = [b for b in basliklar
+                       if "turkey" in b.casefold() or b.casefold() in ("tod", "digiturk play")]
+        if not tr_kanallar:
+            continue
+        sec = next((k for k in tr_kanallar if re.search(r"(?i)be\.?\s?in\s?sports?\s*\d", k)),
+                   tr_kanallar[0])
+        ev, dep = takim_coz(m.group(1), espn_adlari), takim_coz(m.group(2), espn_adlari)
+        if ev and dep and frozenset((ev, dep)) in espn_ciftler:
+            sonuc[_mac_anahtari(ev, dep)] = kanal_norm(sec.replace(" Turkey", ""))
+    return sonuc
+
+
+def fetch_yayin_kanallari(maclar: list, slug: str, data_dir: str) -> dict:
+    """İki kaynağı kazır, elle düzeltme dosyasıyla birleştirir.
+    Dönen anahtar biçimi: 'evnorm|depnorm' (alfabetik)."""
+    espn_adlari = {takim_norm(t["ad"]) for m in maclar for t in (m["ev"], m["dep"])}
+    espn_ciftler = {frozenset((takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])))
+                    for m in maclar}
+    kanallar = {}
+    for kaynak in (scrape_sporekrani, scrape_livesoccertv):
+        try:
+            veri = kaynak(espn_adlari, espn_ciftler, slug)
+            log(f"yayın kanalları ({kaynak.__name__}): {len(veri)} maç")
+            for k, v in veri.items():
+                kanallar.setdefault(k, v)
+        except Exception as e:  # kaynak düşerse diğerleriyle devam
+            log(f"UYARI: {kaynak.__name__} okunamadı: {e}")
+
+    # Elle düzeltme dosyası (varsa kazımadan üstün gelir)
+    manuel_yol = os.path.join(data_dir, "yayin-kanallari.json")
+    if os.path.exists(manuel_yol):
+        try:
+            with open(manuel_yol, encoding="utf-8") as f:
+                manuel = json.load(f)
+            for k, v in manuel.items():
+                if not k.startswith("_") and v:
+                    kanallar[k] = kanal_norm(v)
+            log(f"yayın kanalları: {os.path.basename(manuel_yol)} ile birleştirildi")
+        except (OSError, json.JSONDecodeError) as e:
+            log(f"UYARI: yayin-kanallari.json okunamadı: {e}")
+    return kanallar
 
 
 # ----------------------------------------------------------------------------
@@ -252,25 +597,48 @@ CSS = """
 :root{--bg:#0b0f14;--kart:#141b24;--kart2:#1b2430;--cizgi:#263242;--metin:#e7edf5;
 --soluk:#8b98a9;--yesil:#22c55e;--kirmizi:#ef4444;--sari:#eab308;--mavi:#38bdf8}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--metin);font:15px/1.55 -apple-system,'Segoe UI',Roboto,Arial,sans-serif}
-.kapsayici{max-width:960px;margin:0 auto;padding:20px 16px 60px}
-header.ust{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
-header.ust img{width:52px;height:52px}
-h1{font-size:26px;letter-spacing:.3px}
-h1 span{color:var(--yesil)}
-.alt-bilgi{color:var(--soluk);font-size:13px;margin-bottom:18px}
+body{color:var(--metin);font:15px/1.55 -apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+background:radial-gradient(1100px 480px at 85% -10%,rgba(56,189,248,.08),transparent 60%),
+radial-gradient(900px 420px at 8% -5%,rgba(34,197,94,.07),transparent 55%),var(--bg)}
+body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;z-index:10;
+background:linear-gradient(90deg,#22c55e,#38bdf8,#a78bfa)}
+::selection{background:rgba(34,197,94,.35)}
+.kapsayici{max-width:980px;margin:0 auto;padding:8px 16px 40px;animation:giris .45s ease}
+@keyframes giris{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+header.ust{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:4px;
+background:linear-gradient(180deg,rgba(56,189,248,.07),rgba(34,197,94,.05));
+border:1px solid var(--cizgi);border-radius:18px;padding:18px 20px}
+header.ust>img{width:56px;height:56px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.45))}
+.logo-seridi{padding:0 10px;margin-bottom:8px;text-align:center}
+.logo-seridi img{display:inline-block;width:100%;max-width:520px;height:auto;max-height:150px;
+object-fit:contain;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))}
+header.ust.sade{justify-content:center;text-align:center}
+header.ust.sade .lig-etiket{margin-left:0}
+h1{font-size:26px;letter-spacing:.4px;display:inline}
+h1 span{background:linear-gradient(90deg,#22c55e,#38bdf8);
+-webkit-background-clip:text;background-clip:text;color:transparent}
+.lig-etiket{display:inline-block;margin-left:10px;padding:3px 12px;border-radius:99px;font-size:13px;
+font-weight:700;color:#cfe9ff;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);
+vertical-align:middle;white-space:nowrap}
+.alt-bilgi{color:var(--soluk);font-size:13px;margin-top:6px}
 .canli{background:var(--kirmizi);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;
 border-radius:99px;animation:nabiz 1.2s infinite}
 @keyframes nabiz{50%{opacity:.55}}
 nav.sekmeler{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}
 nav.sekmeler button{background:var(--kart);color:var(--soluk);border:1px solid var(--cizgi);
-padding:9px 16px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:600}
-nav.sekmeler button.aktif{background:var(--yesil);color:#06220f;border-color:var(--yesil)}
+padding:9px 16px;border-radius:12px;cursor:pointer;font-size:14px;font-weight:600;
+transition:transform .15s,color .15s,border-color .15s,box-shadow .15s}
+nav.sekmeler button:hover{color:var(--metin);border-color:#3b4c61;transform:translateY(-1px)}
+nav.sekmeler button.aktif{background:linear-gradient(135deg,#22c55e,#16a34a);color:#04220e;
+border-color:#22c55e;box-shadow:0 6px 20px rgba(34,197,94,.28)}
 html.js .sekme-icerik{display:none}
 html.js .sekme-icerik.aktif{display:block}
 h2{font-size:19px;margin:22px 0 12px;display:flex;align-items:center;gap:8px}
 h2::before{content:'';width:4px;height:18px;background:var(--yesil);border-radius:2px}
-.kart{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.kart{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;margin-bottom:12px;
+transition:border-color .15s,transform .15s,box-shadow .15s}
+.kart:hover{border-color:#33465c;transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.35)}
+.skor,.tv-zaman .saat,table.puan{font-variant-numeric:tabular-nums}
 .mac{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px}
 .takim{display:flex;align-items:center;gap:10px;min-width:0;font-weight:600}
 .takim.dep{flex-direction:row-reverse;text-align:right}
@@ -309,16 +677,73 @@ table.puan th{color:var(--soluk);font-weight:600;text-align:center;padding:8px 6
 table.puan th:first-child,table.puan td:first-child{text-align:left}
 table.puan td{padding:8px 6px;text-align:center;border-bottom:1px solid #1a2330}
 table.puan tr:last-child td{border-bottom:none}
+table.puan tbody tr{transition:background .12s}
+table.puan tbody tr:hover td{background:rgba(56,189,248,.055)}
 table.puan .takim-hucre{display:flex;align-items:center;gap:9px;min-width:0}
 table.puan .takim-hucre img{width:22px;height:22px;object-fit:contain}
 table.puan .puan{font-weight:800;font-size:15px}
 .nokta{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
-footer{margin-top:36px;color:var(--soluk);font-size:12.5px;text-align:center;line-height:1.9}
-footer a{color:var(--mavi);text-decoration:none}
+footer{margin-top:46px;padding:32px 16px 26px;text-align:center;border-top:1px solid var(--cizgi);position:relative}
+footer::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+width:220px;height:2px;background:linear-gradient(90deg,transparent,#22c55e,#38bdf8,transparent)}
+.marka{display:inline-flex;align-items:center;gap:11px;filter:drop-shadow(0 0 18px rgba(56,189,248,.3))}
+.marka img{height:clamp(26px,5vw,38px);width:auto;max-width:160px;object-fit:contain}
+.marka .itv-ad{font-size:22px;font-weight:800;letter-spacing:.4px;color:var(--metin)}
+.marka .itv-ad b{color:var(--mavi)}
+.telif{margin-top:10px;color:var(--soluk);font-size:12.5px}
 .grid2{display:grid;grid-template-columns:1fr;gap:12px}
 @media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}}
 .bos{color:var(--soluk);padding:26px;text-align:center;background:var(--kart);
 border:1px dashed var(--cizgi);border-radius:14px}
+.kanal{display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#20395c,#16283e);
+color:#cfe9ff;border:1px solid #315071;border-radius:9px;padding:2px 10px;font-size:12px;font-weight:700;
+white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.skor-inline{color:var(--yesil);font-weight:800;margin-left:4px}
+.video-btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:10px;
+border:none;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#e52d27,#b3271d);
+color:#fff;font-size:13px;font-weight:700;text-decoration:none;
+transition:transform .15s,box-shadow .15s}
+.video-btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(229,45,39,.42);color:#fff}
+.video-btn.kucuk{padding:5px 11px;font-size:11.5px}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(4,7,12,.9);
+padding:18px;overflow-y:auto}
+.modal.acik{display:flex;align-items:center;justify-content:center}
+.modal-kutu{width:min(860px,100%);background:var(--kart);border:1px solid var(--cizgi);
+border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);animation:giris .25s ease}
+.modal-ust{display:flex;justify-content:space-between;align-items:center;gap:12px;
+padding:10px 14px;border-bottom:1px solid var(--cizgi);font-weight:700;font-size:14px}
+.modal-kapat{background:var(--kart2);border:1px solid var(--cizgi);color:var(--metin);
+width:32px;height:32px;border-radius:9px;cursor:pointer;font-size:14px;flex-shrink:0}
+.modal-kapat:hover{border-color:#3b4c61;color:#fff}
+.modal-govde{position:relative;padding-top:56.25%;background:#000}
+.modal-govde iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.tv-kart{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;
+background:linear-gradient(180deg,var(--kart),#111823);border:1px solid var(--cizgi);border-radius:14px;
+padding:14px 16px;margin-bottom:12px;transition:border-color .15s,transform .15s,box-shadow .15s}
+.tv-kart:hover{border-color:#33465c;transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.35)}
+.tv-zaman{text-align:center;border-right:1px dashed var(--cizgi);padding-right:12px}
+.tv-zaman .gun{font-size:11px;color:var(--soluk);text-transform:uppercase;letter-spacing:.5px}
+.tv-zaman .saat{font-size:19px;font-weight:800}
+.tv-zaman .tarih{font-size:10.5px;color:var(--soluk);margin-top:1px}
+.tv-mac .takimlar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:600;font-size:15px}
+.tv-mac .takimlar img{width:26px;height:26px;object-fit:contain}
+.tv-mac .takimlar .ayrac{color:var(--soluk);font-weight:400}
+.tv-mac .alt{color:var(--soluk);font-size:12.5px;margin-top:5px}
+.tv-kanal{justify-self:end;display:flex;flex-direction:row;gap:8px;align-items:center}
+.tv-kanal .kanal{font-size:13px;padding:6px 12px}
+@media(max-width:560px){.tv-kart{grid-template-columns:1fr;gap:10px}
+.tv-zaman{border-right:none;border-bottom:1px dashed var(--cizgi);padding:0 0 10px;
+display:flex;gap:10px;align-items:baseline;justify-content:center}
+.tv-kanal{justify-self:center;align-items:center;justify-content:center;flex-wrap:wrap}}
+.gol-bildirim{position:fixed;top:14px;left:50%;transform:translate(-50%,0);z-index:200;
+background:linear-gradient(135deg,#16a34a,#22c55e);color:#03230f;font-weight:800;font-size:14px;
+padding:11px 20px;border-radius:13px;box-shadow:0 14px 34px rgba(34,197,94,.5);
+max-width:92vw;text-align:center;animation:golgelsin .35s ease}
+.gol-bildirim.gitti{opacity:0;transform:translate(-50%,-10px);transition:all .45s}
+@keyframes golgelsin{from{opacity:0;transform:translate(-50%,-12px)}to{opacity:1;transform:translate(-50%,0)}}
+.kart.parla{border-color:var(--yesil);box-shadow:0 0 0 3px rgba(34,197,94,.28),0 12px 26px rgba(0,0,0,.35)}
+@keyframes skorpop{0%{transform:scale(1)}45%{transform:scale(1.16)}100%{transform:scale(1)}}
+.pop{animation:skorpop .6s ease}
 """
 
 JS = """
@@ -341,6 +766,136 @@ function haftaSec(b){
 document.querySelectorAll('.cipsler button').forEach(function(b){
   b.addEventListener('click',function(){haftaSec(b)});
 });
+// Video modalı: özet videolar siteden çıkmadan, sayfa içinde açılır
+var modal=document.getElementById('video-modal');
+var cerceve=document.getElementById('video-cerceve');
+var videoBaslik=document.getElementById('video-baslik');
+function videoAc(id,ad,kaynak){
+  videoBaslik.textContent=ad||'Maç Özeti';
+  var link=document.getElementById('video-kaynak-link');
+  if(kaynak==='dm'){
+    cerceve.src='https://www.dailymotion.com/embed/video/'+id+'?autoplay=1';
+    link.href='https://www.dailymotion.com/video/'+id;
+    link.textContent="Dailymotion'da aç ↗";
+  }else{
+    cerceve.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+    link.href='https://www.youtube.com/watch?v='+id;
+    link.textContent="YouTube'da aç ↗";
+  }
+  modal.classList.add('acik');
+}
+function videoKapat(){
+  modal.classList.remove('acik');
+  cerceve.src='';
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest?e.target.closest('[data-video]'):null;
+  if(b){e.preventDefault();videoAc(b.getAttribute('data-video'),b.getAttribute('data-baslik'),b.getAttribute('data-kaynak'));}
+});
+modal.addEventListener('click',function(e){if(e.target===modal)videoKapat();});
+document.querySelector('.modal-kapat').addEventListener('click',videoKapat);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')videoKapat();});
+// ---- CANLI SKOR: sayfa yenilenmeden, ziyaretçinin tarayıcısı ESPN'in
+// anahtarsız açık API'sinden skoru çeker ve kartları günceller.
+// İstek başarısız olursa sayfa sessizce statik veriyle kalır.
+var CANLI=window.FIXTOOR_CANLI||{lig:'tur.1',maclar:{}};
+if(Object.keys(CANLI.maclar).length&&window.fetch){
+  var canliSayac=0;
+  function macAktifMi(m){
+    return m.durum==='in'||(m.durum==='pre'&&m.utc&&Date.parse(m.utc)-Date.now()<3*3600000);
+  }
+  function canliRozetEkle(){
+    if(document.querySelector('.alt-bilgi .canli')){return;}
+    var h=document.querySelector('.alt-bilgi');
+    if(h){var s=document.createElement('span');s.className='canli';s.textContent='CANLI';h.appendChild(s);}
+  }
+  function golBildir(m,detay){
+    var d=document.createElement('div');d.className='gol-bildirim';
+    d.textContent='⚽ GOL! '+m.ev+' '+m.evk+' - '+m.depk+' '+m.dep+(detay?' · '+detay:'');
+    document.body.appendChild(d);
+    setTimeout(function(){d.classList.add('gitti');},6000);
+    setTimeout(function(){d.remove();},6600);
+    if(navigator.vibrate){try{navigator.vibrate([120,70,180]);}catch(e){}}
+  }
+  function sonGolDetay(c){
+    var det=c.details||[];
+    for(var i=det.length-1;i>=0;i--){
+      var d=det[i];
+      if(d.scoringPlay){
+        var ad=(d.athletesInvolved&&d.athletesInvolved[0]&&d.athletesInvolved[0].displayName)||'';
+        var dk=(d.clock&&d.clock.displayValue)||'';
+        return (ad?ad+' ':'')+dk;
+      }
+    }
+    return '';
+  }
+  function macGuncelle(id,g,detay){
+    var m=CANLI.maclar[id];if(!m){return;}
+    // '_goruldu' ile ilk bakış sessiz senkronize edilir; bildirim yalnız
+    // sayfa açıkken atılan gollerde çıkar (sayfa açılmadan atılan gol sessiz işlenir)
+    var gol=g.durum==='in'&&(g.evk>(m.evk||0)||g.depk>(m.depk||0))&&m._goruldu;
+    document.querySelectorAll('[data-mac-id="'+id+'"]').forEach(function(k){
+      if(k.classList.contains('tv-kart')){
+        var si=k.querySelector('.skor-inline');
+        if(!si){si=document.createElement('span');si.className='skor-inline';
+                (k.querySelector('.takimlar')||k).appendChild(si);}
+        si.textContent='('+g.evk+' - '+g.depk+')';
+        var et=k.querySelector('[data-etiket]');
+        if(g.durum==='in'){
+          if(!et){et=document.createElement('div');et.setAttribute('data-etiket','1');
+                  (k.querySelector('.tv-zaman')||k).appendChild(et);}
+          et.className='durum-canli';et.style.fontSize='11px';et.textContent='CANLI · '+g.saat;
+        }else if(g.durum==='post'&&et){et.className='durum-ms';et.textContent='MS';}
+      }else{
+        var s=k.querySelector('.skor');
+        if(s&&g.durum!=='pre'){s.classList.remove('onaylanmadi');s.textContent=g.evk+' : '+g.depk;}
+        var et=k.querySelector('[data-etiket]');
+        var hucre=k.querySelector('.mac-alt span:last-child');
+        if(g.durum==='in'){
+          if(!et&&hucre){et=document.createElement('span');et.setAttribute('data-etiket','1');
+                         hucre.insertBefore(et,hucre.firstChild);}
+          if(et){et.className='durum-canli';et.textContent='● CANLI '+g.saat;}
+        }else if(g.durum==='post'&&et){et.className='durum-ms';et.textContent='MS';}
+      }
+      if(gol){
+        k.classList.add('parla');
+        setTimeout(function(){k.classList.remove('parla');},9000);
+        var v=k.querySelector('.skor-inline')||k.querySelector('.skor');
+        if(v){v.classList.add('pop');setTimeout(function(){v.classList.remove('pop');},700);}
+      }
+    });
+    if(gol){golBildir(m,detay);}
+    m.evk=g.evk;m.depk=g.depk;m.durum=g.durum;m._goruldu=true;
+  }
+  function tazele(){
+    if(document.hidden){return;}
+    canliSayac++;
+    var aktif=false;
+    for(var id in CANLI.maclar){if(macAktifMi(CANLI.maclar[id])){aktif=true;break;}}
+    if(!aktif&&canliSayac%10!==1){return;}   // maç yokken kontrol 5 dakikada bire düşer
+    function gun(n){var x=new Date(Date.now()+n*86400000);
+      return x.toISOString().slice(0,10).replace(/-/g,'');}
+    var url='https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+
+            '/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100';
+    fetch(url).then(function(r){return r.json();}).then(function(data){
+      (data.events||[]).forEach(function(ev){
+        var id=String(ev.id);if(!CANLI.maclar[id]){return;}
+        var c=(ev.competitions||[])[0]||{};
+        var st=c.status||ev.status||{};
+        var evk=0,depk=0;
+        (c.competitors||[]).forEach(function(t){
+          if(t.homeAway==='home'){evk=parseInt(t.score,10)||0;}else{depk=parseInt(t.score,10)||0;}
+        });
+        if(((st.type||{}).state)==='in'){canliRozetEkle();}
+        macGuncelle(id,{evk:evk,depk:depk,
+                        durum:(st.type||{}).state||CANLI.maclar[id].durum,
+                        saat:st.displayClock||''},sonGolDetay(c));
+      });
+    }).catch(function(){});
+  }
+  tazele();
+  setInterval(tazele,30000);   // 30 saniyede bir canlı kontrol
+}
 """
 
 
@@ -352,6 +907,59 @@ def takim_logolu(t: dict, dep: bool = False) -> str:
         kisa = esc(t.get("kisa") or (t.get("ad") or "?")[:3].upper())
         gorunum = f'<span class="rozet">{kisa}</span>'
     return f'<div class="takim{" dep" if dep else ""}">{gorunum}<span class="isim">{isim}</span></div>'
+
+
+def tv_karti(m: dict) -> str:
+    """'Haftanın Maçları' bölümü için tek maçlık TV yayın akışı kartı."""
+    ev, dep = m["ev"], m["dep"]
+    oynandi, canli = m["durum"] == "post", m["durum"] == "in"
+    yerel = parse_utc(m["utc"]).astimezone(TR_TZ) if m["utc"] else None
+
+    def logo(t: dict) -> str:
+        if t.get("logo"):
+            return f'<img src="{esc(t["logo"])}" alt="" loading="lazy">'
+        return (f'<span class="rozet" style="width:26px;height:26px;font-size:10px">'
+                f'{esc((t.get("kisa") or "?")[:3])}</span>')
+
+    skor_html = ""
+    if oynandi or canli:
+        skor_html = (f' <span class="skor-inline">({esc(ev.get("skor") or 0)} - '
+                     f'{esc(dep.get("skor") or 0)})</span>')
+    takimlar = (f'{logo(ev)}<span>{esc(ev["ad"])}</span>'
+                f'<span class="ayrac">—</span>'
+                f'<span>{esc(dep["ad"])}</span>{logo(dep)}{skor_html}')
+
+    gun = GUNLER_KISA[yerel.weekday()] if yerel else ""
+    saat = f"{yerel.hour:02d}:{yerel.minute:02d}" if yerel else "--:--"
+    tarih = f"{yerel.day} {AYLAR[yerel.month - 1]}" if yerel else ""
+    if canli:
+        durum = '<div class="durum-canli" style="font-size:11px" data-etiket="1">CANLI</div>'
+    elif oynandi:
+        durum = '<div class="durum-ms" style="font-size:11px" data-etiket="1">MS</div>'
+    else:
+        durum = ""
+
+    yer = " · ".join(x for x in [m.get("stadyum"), m.get("sehir")] if x)
+    kanal = (m.get("kanal") or "").strip()
+    if kanal:
+        kanal_html = f'<span class="kanal">📺 {esc(kanal)}</span>'
+    else:
+        kanal_html = '<span class="kanal" style="opacity:.45">📺 —</span>'
+    video_html = ""
+    if oynandi or canli:
+        if m.get("video_id"):
+            video_html = (f'<button type="button" class="video-btn kucuk" '
+                          f'data-video="{esc(m["video_id"])}" '
+                          f'data-kaynak="{esc(m.get("video_kaynak") or "yt")}" '
+                          f'data-baslik="{esc(ev["ad"])} - {esc(dep["ad"])}">▶ Özet video</button>')
+        else:  # video bulunamadıysa YouTube aramasına düşer
+            video_html = (f'<a class="video-btn kucuk" href="{video_url(m)}" '
+                          f'target="_blank" rel="noopener">▶ Özet video</a>')
+    return f'''<div class="tv-kart" data-mac-id="{esc(m["id"])}">
+<div class="tv-zaman"><div class="gun">{gun}</div><div class="saat">{saat}</div><div class="tarih">{tarih}</div>{durum}</div>
+<div class="tv-mac"><div class="takimlar">{takimlar}</div><div class="alt">{esc(yer)}</div></div>
+<div class="tv-kanal">{kanal_html}{video_html}</div>
+</div>'''
 
 
 def mac_satiri(m: dict) -> str:
@@ -370,20 +978,22 @@ def mac_satiri(m: dict) -> str:
         skor_html = f"{yerel.hour:02d}:{yerel.minute:02d}" if yerel else "&nbsp;"
 
     if canli:
-        durum_html = f'<span class="durum-canli">● CANLI {esc(m.get("saat_gostergesi", ""))}</span>'
+        durum_html = f'<span class="durum-canli" data-etiket="1">● CANLI {esc(m.get("saat_gostergesi", ""))}</span>'
     elif oynandi:
-        durum_html = f'<span class="durum-ms">{esc(m.get("durum_metin") or "MS")}</span>'
+        durum_html = f'<span class="durum-ms" data-etiket="1">{esc(m.get("durum_metin") or "MS")}</span>'
     else:
         durum_html = ""
 
     yer = " · ".join(x for x in [m.get("stadyum"), m.get("sehir")] if x)
-    return f'''<div class="kart"><div class="mac">
+    kanal = (m.get("kanal") or "").strip()
+    kanal_cipi = f' · <span class="kanal">📺 {esc(kanal)}</span>' if kanal else ""
+    return f'''<div class="kart" data-mac-id="{esc(m["id"])}"><div class="mac">
   {takim_logolu(ev)}
   <div class="skor{" onaylanmadi" if not (oynandi or canli) else ""}">{skor_html}</div>
   {takim_logolu(dep, dep=True)}
 </div>
 <div class="mac-alt"><span>{esc(tr_tarih(parse_utc(m["utc"]))) if m["utc"] else ""}</span>
-<span>{durum_html}{" · " if durum_html and yer else ""}{esc(yer)}</span></div></div>'''
+<span>{durum_html}{" · " if durum_html and yer else ""}{esc(yer)}{kanal_cipi}</span></div></div>'''
 
 
 def istatistik_bar(baslik: str, ev_d: str, dep_d: str, yuzde: bool = False) -> str:
@@ -433,6 +1043,14 @@ def ozet_karti(m: dict) -> str:
             istatistik_bar("Faul", ie.get("foulsCommitted", "0"), idp.get("foulsCommitted", "0")),
         ]) + "</div>"
 
+    if m.get("video_id"):
+        video_btn = (f'<button type="button" class="video-btn" '
+                     f'data-video="{esc(m["video_id"])}" '
+                     f'data-kaynak="{esc(m.get("video_kaynak") or "yt")}" '
+                     f'data-baslik="{esc(ev["ad"])} - {esc(dep["ad"])}">▶ Video Özeti İzle</button>')
+    else:  # video bulunamadıysa YouTube aramasına düşer
+        video_btn = (f'<a class="video-btn" href="{video_url(m)}" target="_blank" '
+                     f'rel="noopener">▶ Video Özeti İzle</a>')
     return f'''<div class="kart">
 <div class="mac">
   {takim_logolu(ev)}
@@ -446,6 +1064,7 @@ def ozet_karti(m: dict) -> str:
   <div class="dep-kolon">{gol_listesi(dep["id"], dep)}</div>
 </div>
 {ist_html}
+<div style="text-align:center">{video_btn}</div>
 </div>'''
 
 
@@ -516,6 +1135,23 @@ def render_html(veri: dict, cikti: str) -> None:
             f'<div class="grid2">{mac_html}</div></div>'
         )
 
+    # --- haftanın maçları (TV yayın akışı) ---
+    haftanin = next((h for h in haftalar if h["no"] == aktif_hafta), None) or \
+        (haftalar[-1] if haftalar else None)
+    tv_html, tv_alt_baslik = "", ""
+    if haftanin:
+        dizi = sorted(haftanin["maclar"], key=lambda x: x["utc"])
+        tv_html = "".join(tv_karti(m) for m in dizi)
+        if dizi:
+            i0 = tr_tarih(parse_utc(dizi[0]["utc"]), saat_dahil=False)
+            i1 = tr_tarih(parse_utc(dizi[-1]["utc"]), saat_dahil=False)
+            aralik = i0 if i0 == i1 else f"{i0} – {i1}"
+            tv_alt_baslik = f'{haftanin["no"]}. Hafta · {aralik}'
+        else:
+            tv_alt_baslik = f'{haftanin["no"]}. Hafta'
+    if not tv_html:
+        tv_html = '<div class="bos">Bu hafta için maç bilgisi yok.</div>'
+
     # --- özetler: son 14 günde biten maçlar ---
     simdi_dt = parse_utc(simdi)
     ozetler = [
@@ -532,33 +1168,81 @@ def render_html(veri: dict, cikti: str) -> None:
     yaklasan_html = "".join(mac_satiri(m) for m in yaklasan[:6]) or \
         '<div class="bos">Kalan maç yok — sezon tamamlandı. 🏆</div>'
 
-    logo_html = f'<img src="{esc(lig["logo"])}" alt="lig logosu">' if lig.get("logo") else ""
     canli_rozet = ' <span class="canli">CANLI</span>' if canli_var else ""
+
+    # --- canlı skor takibi: tarayıcı 30 sn'de bir ESPN'in açık API'sinden günceller ---
+    canli_map = {}
+    for h in haftalar:
+        for m in h["maclar"]:
+            if not m.get("id") or not m.get("utc"):
+                continue
+            if abs((parse_utc(m["utc"]) - simdi_dt).total_seconds()) > 4 * 86400:
+                continue      # bugünden 4 günden uzak/eski maçlar gerekmez
+            canli_map[str(m["id"])] = {
+                "ev": m["ev"]["ad"], "dep": m["dep"]["ad"],
+                "evk": m["ev"].get("skor") or 0, "depk": m["dep"].get("skor") or 0,
+                "durum": m["durum"], "utc": m["utc"],
+            }
+    canli_json = json.dumps({"lig": lig.get("slug") or "tur.1", "maclar": canli_map},
+                            ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+    # İnadına TV markası: depoda logo dosyası varsa üst başlıkta ve altta o kullanılır,
+    # yoksa üstte lig logosu, altta yerleşik SVG amblem gösterilir
+    kok = os.path.dirname(os.path.abspath(cikti))
+    logo_dosya = next((ad for ad in ("logo.png", "logo.svg", "logo.jpg", "logo.webp",
+                                     "assets/logo.png", "assets/logo.svg")
+                       if os.path.exists(os.path.join(kok, ad))), "")
+    if logo_dosya:
+        # Logo tam genişlik, üst şerit hâlinde, ortada gösterilir; başlık sadeleşir
+        logo_seridi = (f'<div class="logo-seridi">'
+                       f'<img src="{esc(logo_dosya)}" alt="İnadına TV"></div>')
+        ust_logo_html = ""
+        ust_sinif = "ust sade"
+        marka_html = f'<span class="marka"><img src="{esc(logo_dosya)}" alt="İnadına TV"></span>'
+    else:
+        logo_seridi = ""
+        ust_sinif = "ust"
+        ust_logo_html = f'<img src="{esc(lig["logo"])}" alt="lig logosu">' if lig.get("logo") else ""
+        marka_html = ('<span class="marka">'
+                      '<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">'
+                      '<defs><linearGradient id="itvg" x1="0" y1="0" x2="1" y2="1">'
+                      '<stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#38bdf8"/>'
+                      '</linearGradient></defs>'
+                      '<rect x="2" y="2" width="36" height="36" rx="11" fill="url(#itvg)"/>'
+                      '<path d="M16.5 12.8v14.4L29 20z" fill="#0b0f14"/></svg>'
+                      '<span class="itv-ad">inadına <b>TV</b></span></span>')
     sayfa = f'''<!DOCTYPE html>
 <html lang="tr" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="{esc(lig["ad"])} fikstürü, maç özetleri ve puan durumu — Fixtoor Bot">
+<meta name="description" content="{esc(lig["ad"])} fikstürü, maç özetleri, puan durumu ve TV yayın akışı — Fixtoor">
 <title>Fixtoor · {esc(lig["ad"])} {esc(lig.get("sezon_adi", ""))}</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
 <style>{CSS}</style>
 </head>
 <body>
 <div class="kapsayici">
-<header class="ust">{logo_html}
-<div><h1>Fix<span>toor</span> ⚽ {esc(lig["ad"])}</h1>
-<div class="alt-bilgi">{esc(lig.get("sezon_adi", ""))} · Fikstür · Maç Özetleri · Puan Durumu{canli_rozet}</div>
-<div class="alt-bilgi">Son güncelleme: {esc(tr_tarih(parse_utc(simdi)))} (İstanbul) · Veri: ESPN API</div>
+{logo_seridi}
+<header class="{ust_sinif}">{ust_logo_html}
+<div><h1>Fix<span>toor</span></h1><span class="lig-etiket">⚽ {esc(lig["ad"])}</span>
+<div class="alt-bilgi">{esc(lig.get("sezon_adi", ""))} · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı{canli_rozet}</div>
+<div class="alt-bilgi">Son güncelleme: {esc(tr_tarih(parse_utc(simdi)))} (İstanbul)</div>
 </div></header>
 
 <nav class="sekmeler">
-<button class="aktif" data-sekme="ozetler">📋 Özetler</button>
+<button class="aktif" data-sekme="hafta">📺 Haftanın Maçları</button>
+<button data-sekme="ozetler">📋 Özetler</button>
 <button data-sekme="fikstur">📅 Fikstür</button>
 <button data-sekme="puan">🏆 Puan Durumu</button>
 </nav>
 
-<section class="sekme-icerik aktif" id="sekme-ozetler">
+<section class="sekme-icerik aktif" id="sekme-hafta">
+<h2>Haftanın Maçları <small style="color:var(--soluk);font-weight:400">· {esc(tv_alt_baslik)}</small></h2>
+{tv_html}
+</section>
+
+<section class="sekme-icerik" id="sekme-ozetler">
 <h2>Son Maç Özetleri</h2>
 <div class="grid2">{ozet_html}</div>
 <h2>Yaklaşan Maçlar</h2>
@@ -577,12 +1261,23 @@ def render_html(veri: dict, cikti: str) -> None:
 </section>
 
 <footer>
-Fixtoor Bot tarafından <a href="https://github.com/inadinatv/Fixtoor">inadinatv/Fixtoor</a>
-deposunda otomatik üretildi · Veriler <a href="https://www.espn.com/soccer/league/_/name/tur.1">ESPN</a>'den alınmıştır<br>
-<a href="data/fikstur.json">fikstur.json</a> · <a href="data/puan-durumu.json">puan-durumu.json</a> ·
-<a href="data/ozetler.json">ozetler.json</a>
+{marka_html}
+<div class="telif">© 2026 İnadına TV · Fixtoor</div>
 </footer>
 </div>
+
+<div class="modal" id="video-modal">
+<div class="modal-kutu">
+<div class="modal-ust"><span id="video-baslik">Maç Özeti</span>
+<span style="display:flex;gap:10px;align-items:center;flex-shrink:0">
+<a id="video-kaynak-link" href="#" target="_blank" rel="noopener"
+style="color:var(--mavi);font-size:12.5px;font-weight:600;text-decoration:none">Videoda aç ↗</a>
+<button type="button" class="modal-kapat" aria-label="Kapat">✕</button></span></div>
+<div class="modal-govde"><iframe id="video-cerceve" src="" title="Maç özeti videosu"
+allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
+</div>
+</div>
+<script>window.FIXTOOR_CANLI={canli_json};</script>
 <script>{JS}</script>
 </body>
 </html>'''
@@ -615,6 +1310,53 @@ def calistir(args) -> None:
             for t in (m["ev"], m["dep"]):
                 takimlar[t["id"]] = {"ad": t["ad"], "kisa": t["kisa"], "logo": t["logo"], "renk": t["renk"]}
 
+        # yayın kanalı bilgisi (Spor Ekranı / LiveSoccerTV + elle düzeltme dosyası)
+        kanal_harita = fetch_yayin_kanallari(maclar, args.league, data_dir)
+        for m in maclar:
+            m["kanal"] = kanal_harita.get(
+                _mac_anahtari(takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])), "")
+
+        # --- video özetleri: son 21 günün oynanmış/canlı maçları için kaynaklardan ID çek ---
+        simdi_dt = datetime.now(timezone.utc)
+        eski_videolar = video_id_cache_yukle(data_dir)
+        sinir = simdi_dt - timedelta(days=21)
+        adaylar = [m for m in maclar
+                   if m["durum"] != "pre" and m["utc"] and parse_utc(m["utc"]) >= sinir]
+        for m in adaylar[:40]:
+            eski_kayit = eski_videolar.get(m["id"], {})
+            if (eski_kayit.get("video_kaynak") == "dm" and eski_kayit.get("video_id")
+                    and "bein" in (eski_kayit.get("video_kanal") or "").casefold()
+                    and dm_video_gosteriliyor(eski_kayit["video_id"])):
+                # beIN'in resmî Dailymotion özeti zaten bulunmuş: en iyi kaynak, koru
+                m["video_id"] = eski_kayit["video_id"]
+                m["video_kanal"] = eski_kayit.get("video_kanal", "")
+                m["video_kaynak"] = "dm"
+                continue
+            mac_epoch = parse_utc(m["utc"]).timestamp() if m["utc"] else 0
+            # 1) beIN SPORTS USA resmî özeti (Dailymotion, Türkiye'de kısıtsız)
+            vid, kanal = bein_ozet_bul(m["ev"]["ad"], m["dep"]["ad"], mac_epoch)
+            if vid:
+                m["video_id"], m["video_kanal"], m["video_kaynak"] = vid, kanal, "dm"
+                log(f'video özeti (beIN resmî·DM): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
+                time.sleep(0.2)
+                continue
+            # 2) Dailymotion'da haber ajansı özeti (İHA/ajansspor, Fanatik...)
+            vid, kanal = dailymotion_video_bul(m["ev"]["ad"], m["dep"]["ad"], mac_epoch)
+            if vid:
+                m["video_id"], m["video_kanal"], m["video_kaynak"] = vid, kanal, "dm"
+                log(f'video özeti (ajans·DM): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
+                time.sleep(0.2)
+                continue
+            # 3) YouTube yedek (beIN dışı kanallar — beIN videoları TR'de kilitli)
+            vid, kanal = youtube_video_bul(m["ev"]["ad"], m["dep"]["ad"])
+            m["video_id"], m["video_kanal"] = vid, kanal
+            m["video_kaynak"] = "yt" if vid else ""
+            if vid:
+                log(f'video özeti (YouTube): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
+            time.sleep(0.3)
+        log(f"video özetleri: {sum(1 for m in maclar if m.get('video_id'))} maç "
+            f"({sum(1 for m in maclar if m.get('video_kaynak') == 'dm')} Dailymotion)")
+
         hafta_listesi = haftalara_ayir(maclar)
         haftalar = [
             {"no": i + 1, "maclar": sorted(h, key=lambda m: m["utc"])}
@@ -629,7 +1371,6 @@ def calistir(args) -> None:
         except Exception as e:  # puan durumu düşerse sayfa yine üretilsin
             log(f"UYARI: puan durumu alınamadı: {e}")
 
-        simdi_dt = datetime.now(timezone.utc)
         ozetler = [
             m for m in maclar if m["durum"] == "post"
             and m["utc"] and parse_utc(m["utc"]) >= simdi_dt - timedelta(days=14)
