@@ -5,7 +5,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -105,7 +105,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -128,7 +128,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
@@ -432,7 +432,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -494,7 +494,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -623,7 +623,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -680,15 +680,12 @@
      ],
      "sehir": "Diyarbakir",
      "stadyum": "Diyarbakir Stadyumu",
-     "utc": "2026-08-16T18:30Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "utc": "2026-08-16T18:30Z"
     },
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -783,10 +780,7 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Vodafone Park",
-     "utc": "2026-08-16T18:30Z",
-     "video_id": "xayb036",
-     "video_kanal": "beIN SPORTS USA",
-     "video_kaynak": "dm"
+     "utc": "2026-08-16T18:30Z"
     },
     {
      "dep": {
@@ -814,7 +808,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {
        "appearances": "0",
@@ -1035,7 +1029,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {
        "appearances": "0",
@@ -1123,7 +1117,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
@@ -1146,7 +1140,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -1371,7 +1365,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -1453,7 +1447,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -1633,7 +1627,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -1721,7 +1715,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -1744,7 +1738,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -1837,7 +1831,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -1930,7 +1924,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -2309,7 +2303,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -2403,7 +2397,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
@@ -2528,7 +2522,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {
        "appearances": "0",
@@ -2593,7 +2587,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -2616,7 +2610,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -2737,7 +2731,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -3284,7 +3278,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -3303,28 +3297,28 @@
       "renk": "#000000",
       "skor": "0"
      },
-     "durum": "in",
-     "durum_metin": "12'",
+     "durum": "post",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
        "foulsCommitted": "0",
-       "goalAssists": "1",
+       "goalAssists": "3",
        "possessionPct": "0",
        "shotAssists": "0",
        "shotsOnTarget": "0",
-       "totalGoals": "1",
+       "totalGoals": "3",
        "totalShots": "0",
        "wonCorners": "0"
       },
-      "kazandi": false,
+      "kazandi": true,
       "kisa": "COR",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132334.png",
       "renk": "#000000",
-      "skor": "1"
+      "skor": "3"
      },
      "goller": [
       {
@@ -3333,13 +3327,49 @@
        "oyuncu": "Alexandros Kyziridis",
        "penalti": false,
        "takim_id": "132334"
+      },
+      {
+       "dakika": "27'",
+       "kendi_kalesine": false,
+       "oyuncu": "Andrei Borza",
+       "penalti": false,
+       "takim_id": "132334"
+      },
+      {
+       "dakika": "88'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ermin Mahmic",
+       "penalti": false,
+       "takim_id": "132334"
       }
      ],
      "id": "401888385",
      "kanal": "",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "12'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "90'+4'",
+     "sari_kartlar": [
+      {
+       "dakika": "45'",
+       "kendi_kalesine": false,
+       "oyuncu": "Cengiz Ünder",
+       "penalti": false,
+       "takim_id": "132334"
+      },
+      {
+       "dakika": "45'+2'",
+       "kendi_kalesine": false,
+       "oyuncu": "David Costa",
+       "penalti": false,
+       "takim_id": "20729"
+      },
+      {
+       "dakika": "58'",
+       "kendi_kalesine": false,
+       "oyuncu": "Anil Yasar",
+       "penalti": false,
+       "takim_id": "20729"
+      }
+     ],
      "sehir": "",
      "stadyum": "Çorum Sehir Stadyumu",
      "utc": "2026-09-06T14:00Z",
@@ -3350,16 +3380,16 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
        "foulsCommitted": "0",
-       "goalAssists": "0",
+       "goalAssists": "1",
        "possessionPct": "0",
        "shotAssists": "0",
        "shotsOnTarget": "0",
-       "totalGoals": "0",
+       "totalGoals": "2",
        "totalShots": "0",
        "wonCorners": "0"
       },
@@ -3367,22 +3397,22 @@
       "kisa": "AMED",
       "logo": "",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "2"
      },
-     "durum": "in",
-     "durum_metin": "12'",
+     "durum": "post",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
        "foulsCommitted": "0",
-       "goalAssists": "0",
+       "goalAssists": "2",
        "possessionPct": "0",
        "shotAssists": "0",
        "shotsOnTarget": "0",
-       "totalGoals": "0",
+       "totalGoals": "2",
        "totalShots": "0",
        "wonCorners": "0"
       },
@@ -3390,14 +3420,93 @@
       "kisa": "KAS",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "2"
      },
-     "goller": [],
+     "goller": [
+      {
+       "dakika": "20'",
+       "kendi_kalesine": false,
+       "oyuncu": "Guven Yalcin",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "52'",
+       "kendi_kalesine": false,
+       "oyuncu": "Adrian Benedyczak",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "59'",
+       "kendi_kalesine": false,
+       "oyuncu": "Gift Orban",
+       "penalti": false,
+       "takim_id": "132335"
+      },
+      {
+       "dakika": "83'",
+       "kendi_kalesine": false,
+       "oyuncu": "Gift Orban",
+       "penalti": false,
+       "takim_id": "132335"
+      }
+     ],
      "id": "401888386",
      "kanal": "",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "12'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "90'+6'",
+     "sari_kartlar": [
+      {
+       "dakika": "58'",
+       "kendi_kalesine": false,
+       "oyuncu": "Dia Saba",
+       "penalti": false,
+       "takim_id": "132335"
+      },
+      {
+       "dakika": "76'",
+       "kendi_kalesine": false,
+       "oyuncu": "Kerem Demirbay",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "90'+1'",
+       "kendi_kalesine": false,
+       "oyuncu": "Jesurun Rak-Sakyi",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "90'+3'",
+       "kendi_kalesine": false,
+       "oyuncu": "Emi̇Rhan Boz",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "90'+4'",
+       "kendi_kalesine": false,
+       "oyuncu": "David Bates",
+       "penalti": false,
+       "takim_id": "132335"
+      },
+      {
+       "dakika": "90'+4'",
+       "kendi_kalesine": false,
+       "oyuncu": "Guven Yalcin",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "90'+5'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ali Yavuz Kol",
+       "penalti": false,
+       "takim_id": "6870"
+      }
+     ],
      "sehir": "Istanbul",
      "stadyum": "Recep Tayyip Erdogan Stadium",
      "utc": "2026-09-06T14:00Z",
@@ -3408,72 +3517,199 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "0",
+       "goalAssists": "0",
+       "possessionPct": "0",
+       "shotAssists": "0",
+       "shotsOnTarget": "0",
+       "totalGoals": "0",
+       "totalShots": "0",
+       "wonCorners": "0"
+      },
       "kazandi": false,
       "kisa": "SAM",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
       "renk": "#000000",
       "skor": "0"
      },
-     "durum": "pre",
-     "durum_metin": "Scheduled",
+     "durum": "post",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
-      "istatistik": {},
-      "kazandi": false,
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "0",
+       "goalAssists": "0",
+       "possessionPct": "0",
+       "shotAssists": "0",
+       "shotsOnTarget": "0",
+       "totalGoals": "1",
+       "totalShots": "0",
+       "wonCorners": "0"
+      },
+      "kazandi": true,
       "kisa": "KOC",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "1"
      },
-     "goller": [],
+     "goller": [
+      {
+       "dakika": "26'",
+       "kendi_kalesine": false,
+       "oyuncu": "Florian Ayé",
+       "penalti": false,
+       "takim_id": "995"
+      }
+     ],
      "id": "401888300",
      "kanal": "",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "90'+4'",
+     "sari_kartlar": [
+      {
+       "dakika": "28'",
+       "kendi_kalesine": false,
+       "oyuncu": "Massadio Haidara",
+       "penalti": false,
+       "takim_id": "995"
+      }
+     ],
      "sehir": "Kocaeli",
      "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
-     "utc": "2026-09-06T17:00Z"
+     "utc": "2026-09-06T17:00Z",
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     },
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "0",
+       "goalAssists": "0",
+       "possessionPct": "0",
+       "shotAssists": "0",
+       "shotsOnTarget": "0",
+       "totalGoals": "0",
+       "totalShots": "0",
+       "wonCorners": "0"
+      },
       "kazandi": false,
       "kisa": "GEN",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
       "renk": "#000000",
       "skor": "0"
      },
-     "durum": "pre",
-     "durum_metin": "Scheduled",
+     "durum": "post",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
-      "istatistik": {},
-      "kazandi": false,
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "0",
+       "goalAssists": "3",
+       "possessionPct": "0",
+       "shotAssists": "0",
+       "shotsOnTarget": "0",
+       "totalGoals": "5",
+       "totalShots": "0",
+       "wonCorners": "0"
+      },
+      "kazandi": true,
       "kisa": "TRAB",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
       "renk": "#5699eb",
-      "skor": "0"
+      "skor": "5"
      },
-     "goller": [],
+     "goller": [
+      {
+       "dakika": "5'",
+       "kendi_kalesine": false,
+       "oyuncu": "Paul Onuachu",
+       "penalti": false,
+       "takim_id": "997"
+      },
+      {
+       "dakika": "14'",
+       "kendi_kalesine": false,
+       "oyuncu": "Mohamed Salah",
+       "penalti": true,
+       "takim_id": "997"
+      },
+      {
+       "dakika": "22'",
+       "kendi_kalesine": false,
+       "oyuncu": "Paul Onuachu",
+       "penalti": false,
+       "takim_id": "997"
+      },
+      {
+       "dakika": "59'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ernest Muçi",
+       "penalti": false,
+       "takim_id": "997"
+      },
+      {
+       "dakika": "78'",
+       "kendi_kalesine": false,
+       "oyuncu": "Franculino Djú",
+       "penalti": false,
+       "takim_id": "997"
+      }
+     ],
      "id": "401888305",
      "kanal": "",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "90'+2'",
+     "sari_kartlar": [
+      {
+       "dakika": "3'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ousmane Diabate",
+       "penalti": false,
+       "takim_id": "996"
+      },
+      {
+       "dakika": "19'",
+       "kendi_kalesine": false,
+       "oyuncu": "Fabinho",
+       "penalti": false,
+       "takim_id": "997"
+      },
+      {
+       "dakika": "35'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ernest Muçi",
+       "penalti": false,
+       "takim_id": "997"
+      },
+      {
+       "dakika": "72'",
+       "kendi_kalesine": false,
+       "oyuncu": "Chibuike Nwaiwu",
+       "penalti": false,
+       "takim_id": "997"
+      }
+     ],
      "sehir": "Trabzon",
      "stadyum": "Papara Park",
-     "utc": "2026-09-06T17:00Z"
+     "utc": "2026-09-06T17:00Z",
+     "video_id": "xb4kl0y",
+     "video_kanal": "beIN SPORTS USA",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -3601,7 +3837,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -3623,7 +3859,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -3636,7 +3872,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -3693,7 +3929,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -3728,7 +3964,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -3741,7 +3977,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -3776,7 +4012,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -3798,7 +4034,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -3886,7 +4122,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -3921,7 +4157,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -3956,7 +4192,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -3978,7 +4214,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -4026,7 +4262,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -4048,7 +4284,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -4083,7 +4319,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -4131,7 +4367,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -4228,7 +4464,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -4311,7 +4547,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -4333,7 +4569,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -4368,7 +4604,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -4403,7 +4639,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -4416,7 +4652,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -4473,7 +4709,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -4486,7 +4722,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -4526,7 +4762,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -4561,7 +4797,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -4583,7 +4819,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -4666,7 +4902,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -4723,7 +4959,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -4736,7 +4972,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -4771,7 +5007,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -4806,7 +5042,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -4833,7 +5069,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -4903,7 +5139,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -4938,7 +5174,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -4951,7 +5187,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -5043,7 +5279,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -5078,7 +5314,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -5113,7 +5349,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -5126,7 +5362,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -5153,7 +5389,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -5166,7 +5402,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -5188,7 +5424,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -5271,7 +5507,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -5293,7 +5529,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -5341,7 +5577,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -5376,7 +5612,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -5446,7 +5682,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -5473,7 +5709,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -5508,7 +5744,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -5591,7 +5827,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -5613,7 +5849,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -5626,7 +5862,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -5648,7 +5884,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -5683,7 +5919,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -5766,7 +6002,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -5806,7 +6042,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -5863,7 +6099,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -5911,7 +6147,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -5933,7 +6169,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -5981,7 +6217,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -6016,7 +6252,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -6073,7 +6309,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -6086,7 +6322,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -6183,7 +6419,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -6218,7 +6454,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -6231,7 +6467,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -6266,7 +6502,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -6323,7 +6559,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -6358,7 +6594,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -6393,7 +6629,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -6406,7 +6642,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -6446,7 +6682,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -6468,7 +6704,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -6503,7 +6739,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -6573,7 +6809,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -6586,7 +6822,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -6656,7 +6892,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -6713,7 +6949,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -6726,7 +6962,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -6753,7 +6989,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -6823,7 +7059,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -6836,7 +7072,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -6858,7 +7094,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -6906,7 +7142,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -6928,7 +7164,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -7033,7 +7269,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -7046,7 +7282,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -7086,7 +7322,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -7178,7 +7414,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -7191,7 +7427,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -7261,7 +7497,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -7283,7 +7519,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -7331,7 +7567,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -7353,7 +7589,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -7366,7 +7602,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -7428,7 +7664,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -7476,7 +7712,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -7498,7 +7734,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -7533,7 +7769,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -7546,7 +7782,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -7568,7 +7804,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -7673,7 +7909,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -7686,7 +7922,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -7796,7 +8032,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -7818,7 +8054,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -7866,7 +8102,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -7888,7 +8124,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -7923,7 +8159,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -7971,7 +8207,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -7993,7 +8229,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -8006,7 +8242,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -8033,7 +8269,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -8046,7 +8282,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -8138,7 +8374,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -8186,7 +8422,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -8208,7 +8444,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -8243,7 +8479,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -8256,7 +8492,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -8326,7 +8562,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -8353,7 +8589,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -8436,7 +8672,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -8458,7 +8694,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -8493,7 +8729,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -8576,7 +8812,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -8611,7 +8847,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -8633,7 +8869,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -8646,7 +8882,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -8708,7 +8944,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -8721,7 +8957,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -8778,7 +9014,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -8791,7 +9027,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -8883,7 +9119,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -8896,7 +9132,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -8953,7 +9189,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -8966,7 +9202,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -8993,7 +9229,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -9028,7 +9264,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -9041,7 +9277,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -9168,7 +9404,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -9203,7 +9439,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -9216,7 +9452,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -9251,7 +9487,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -9286,7 +9522,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -9313,7 +9549,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -9348,7 +9584,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -9431,7 +9667,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -9453,7 +9689,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -9488,7 +9724,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -9536,7 +9772,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -9558,7 +9794,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -9606,7 +9842,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -9633,7 +9869,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -9646,7 +9882,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -9681,7 +9917,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -9773,7 +10009,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -9856,7 +10092,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -9891,7 +10127,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -9913,7 +10149,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -9926,7 +10162,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -9988,7 +10224,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -10023,7 +10259,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -10071,7 +10307,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -10093,7 +10329,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -10163,7 +10399,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -10198,7 +10434,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -10233,7 +10469,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -10246,7 +10482,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -10273,7 +10509,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -10286,7 +10522,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -10321,7 +10557,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -10426,7 +10662,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -10483,7 +10719,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -10496,7 +10732,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -10531,7 +10767,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -10566,7 +10802,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -10593,7 +10829,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -10628,7 +10864,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -10663,7 +10899,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -10711,7 +10947,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -10733,7 +10969,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -10746,7 +10982,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -10803,7 +11039,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -10886,7 +11122,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -10926,7 +11162,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -10983,7 +11219,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11031,7 +11267,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -11101,7 +11337,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -11123,7 +11359,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -11136,7 +11372,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -11158,7 +11394,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -11206,7 +11442,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -11233,7 +11469,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -11303,7 +11539,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -11351,7 +11587,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11373,7 +11609,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -11386,7 +11622,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -11408,7 +11644,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -11443,7 +11679,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -11526,7 +11762,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -11566,7 +11802,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -11658,7 +11894,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -11671,7 +11907,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -11693,7 +11929,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -11741,7 +11977,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -11763,7 +11999,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11776,7 +12012,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -11846,7 +12082,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -11873,7 +12109,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -11943,7 +12179,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -11956,7 +12192,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11978,7 +12214,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -11991,7 +12227,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -12083,7 +12319,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -12131,7 +12367,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -12166,7 +12402,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -12193,7 +12429,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -12206,7 +12442,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -12263,7 +12499,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -12298,7 +12534,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -12311,7 +12547,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -12381,7 +12617,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -12451,7 +12687,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -12486,7 +12722,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -12583,7 +12819,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -12596,7 +12832,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -12666,7 +12902,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -12688,7 +12924,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -12723,7 +12959,7 @@
     {
      "dep": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -12758,7 +12994,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -12793,7 +13029,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -12806,7 +13042,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -12846,7 +13082,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "WLW",
+      "form": "DWLW",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -12951,7 +13187,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DWWWW",
+      "form": "LDWWW",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -13008,7 +13244,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WWLLL",
+      "form": "WWWLL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -13021,7 +13257,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -13043,7 +13279,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LLD",
+      "form": "WLLD",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -13078,7 +13314,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "WLLDW",
+      "form": "LWLLD",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -13091,7 +13327,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Samsunspor",
-      "form": "LWDWL",
+      "form": "LLWDW",
       "id": "11429",
       "istatistik": {},
       "kazandi": false,
@@ -13126,7 +13362,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "LLWLD",
+      "form": "WLLWL",
       "id": "997",
       "istatistik": {},
       "kazandi": false,
@@ -13250,6 +13486,42 @@
    "yedigi": "4"
   },
   {
+   "attigi": "5",
+   "averaj": "+2",
+   "b": "0",
+   "form": "3-0-1",
+   "g": "3",
+   "kisa": "KOC",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
+   "m": "1",
+   "not": "Europa League qualifying",
+   "not_renk": "#B2BFD0",
+   "o": "4",
+   "puan": "9",
+   "sira": 3,
+   "takim": "Kocaelispor",
+   "takim_id": "995",
+   "yedigi": "3"
+  },
+  {
+   "attigi": "9",
+   "averaj": "+5",
+   "b": "1",
+   "form": "2-1-1",
+   "g": "2",
+   "kisa": "TRAB",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
+   "m": "1",
+   "not": "Conference League qualifying",
+   "not_renk": "#c6d1e0",
+   "o": "4",
+   "puan": "7",
+   "sira": 4,
+   "takim": "Trabzonspor",
+   "takim_id": "997",
+   "yedigi": "4"
+  },
+  {
    "attigi": "7",
    "averaj": "+2",
    "b": "1",
@@ -13258,32 +13530,32 @@
    "kisa": "AMED",
    "logo": "",
    "m": "1",
-   "not": "Europa League qualifying",
-   "not_renk": "#B2BFD0",
+   "not": "",
+   "not_renk": "",
    "o": "4",
    "puan": "7",
-   "sira": 3,
+   "sira": 5,
    "takim": "Amed SFK",
    "takim_id": "132335",
    "yedigi": "5"
   },
   {
    "attigi": "4",
-   "averaj": "+2",
+   "averaj": "-3",
    "b": "1",
-   "form": "2-1-0",
+   "form": "2-1-1",
    "g": "2",
    "kisa": "GEN",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
-   "m": "0",
-   "not": "Conference League qualifying",
-   "not_renk": "#c6d1e0",
-   "o": "3",
+   "m": "1",
+   "not": "",
+   "not_renk": "",
+   "o": "4",
    "puan": "7",
-   "sira": 4,
+   "sira": 6,
    "takim": "Genclerbirligi",
    "takim_id": "996",
-   "yedigi": "2"
+   "yedigi": "7"
   },
   {
    "attigi": "8",
@@ -13298,7 +13570,7 @@
    "not_renk": "",
    "o": "4",
    "puan": "6",
-   "sira": 5,
+   "sira": 7,
    "takim": "Fenerbahce",
    "takim_id": "436",
    "yedigi": "6"
@@ -13316,28 +13588,10 @@
    "not_renk": "",
    "o": "4",
    "puan": "6",
-   "sira": 6,
+   "sira": 8,
    "takim": "Kasimpasa",
    "takim_id": "6870",
    "yedigi": "4"
-  },
-  {
-   "attigi": "4",
-   "averaj": "+1",
-   "b": "0",
-   "form": "2-0-1",
-   "g": "2",
-   "kisa": "KOC",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
-   "m": "1",
-   "not": "",
-   "not_renk": "",
-   "o": "3",
-   "puan": "6",
-   "sira": 7,
-   "takim": "Kocaelispor",
-   "takim_id": "995",
-   "yedigi": "3"
   },
   {
    "attigi": "3",
@@ -13352,7 +13606,7 @@
    "not_renk": "",
    "o": "3",
    "puan": "6",
-   "sira": 8,
+   "sira": 9,
    "takim": "Caykur Rizespor",
    "takim_id": "7656",
    "yedigi": "3"
@@ -13370,46 +13624,10 @@
    "not_renk": "",
    "o": "4",
    "puan": "4",
-   "sira": 9,
+   "sira": 10,
    "takim": "Istanbul Basaksehir",
    "takim_id": "7914",
    "yedigi": "6"
-  },
-  {
-   "attigi": "5",
-   "averaj": "0",
-   "b": "1",
-   "form": "1-1-1",
-   "g": "1",
-   "kisa": "SAM",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
-   "m": "1",
-   "not": "",
-   "not_renk": "",
-   "o": "3",
-   "puan": "4",
-   "sira": 10,
-   "takim": "Samsunspor",
-   "takim_id": "11429",
-   "yedigi": "5"
-  },
-  {
-   "attigi": "4",
-   "averaj": "0",
-   "b": "1",
-   "form": "1-1-1",
-   "g": "1",
-   "kisa": "TRAB",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
-   "m": "1",
-   "not": "",
-   "not_renk": "",
-   "o": "3",
-   "puan": "4",
-   "sira": 11,
-   "takim": "Trabzonspor",
-   "takim_id": "997",
-   "yedigi": "4"
   },
   {
    "attigi": "3",
@@ -13424,7 +13642,7 @@
    "not_renk": "",
    "o": "3",
    "puan": "4",
-   "sira": 12,
+   "sira": 11,
    "takim": "Alanyaspor",
    "takim_id": "9078",
    "yedigi": "3"
@@ -13442,10 +13660,28 @@
    "not_renk": "",
    "o": "3",
    "puan": "4",
-   "sira": 13,
+   "sira": 12,
    "takim": "Gaziantep FK",
    "takim_id": "20070",
    "yedigi": "3"
+  },
+  {
+   "attigi": "5",
+   "averaj": "-1",
+   "b": "1",
+   "form": "1-1-2",
+   "g": "1",
+   "kisa": "SAM",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
+   "m": "2",
+   "not": "",
+   "not_renk": "",
+   "o": "4",
+   "puan": "4",
+   "sira": 13,
+   "takim": "Samsunspor",
+   "takim_id": "11429",
+   "yedigi": "6"
   },
   {
    "attigi": "7",
@@ -13648,5 +13884,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-06T17:05:41.562578+00:00"
+ "uretim": "2026-09-06T19:13:17.793681+00:00"
 }
