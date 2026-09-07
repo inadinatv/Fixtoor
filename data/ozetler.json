@@ -1,6 +1,282 @@
 [
  {
   "dep": {
+   "ad": "Alanyaspor",
+   "form": "WLWDL",
+   "id": "9078",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "0",
+    "goalAssists": "0",
+    "possessionPct": "0",
+    "shotAssists": "0",
+    "shotsOnTarget": "0",
+    "totalGoals": "1",
+    "totalShots": "0",
+    "wonCorners": "0"
+   },
+   "kazandi": true,
+   "kisa": "ALA",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
+   "renk": "#000000",
+   "skor": "1"
+  },
+  "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Caykur Rizespor",
+   "form": "LWLWD",
+   "id": "7656",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "0",
+    "goalAssists": "0",
+    "possessionPct": "0",
+    "shotAssists": "0",
+    "shotsOnTarget": "0",
+    "totalGoals": "0",
+    "totalShots": "0",
+    "wonCorners": "0"
+   },
+   "kazandi": false,
+   "kisa": "CAY",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7656.png",
+   "renk": "#000000",
+   "skor": "0"
+  },
+  "goller": [
+   {
+    "dakika": "70'",
+    "kendi_kalesine": true,
+    "oyuncu": "Zakaria Ariss",
+    "penalti": false,
+    "takim_id": "9078"
+   }
+  ],
+  "id": "401888303",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shots": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shotsOnTarget": {
+    "away": 0.0,
+    "home": 0.0
+   }
+  },
+  "kanal": "",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+4'",
+  "sari_kartlar": [
+   {
+    "dakika": "31'",
+    "kendi_kalesine": false,
+    "oyuncu": "Attila Mocsi",
+    "penalti": false,
+    "takim_id": "7656"
+   },
+   {
+    "dakika": "87'",
+    "kendi_kalesine": false,
+    "oyuncu": "Meschack Elia",
+    "penalti": false,
+    "takim_id": "9078"
+   }
+  ],
+  "sehir": "Rize",
+  "stadyum": "Estadio Caykur Didi",
+  "utc": "2026-09-07T17:00Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
+ },
+ {
+  "dep": {
+   "ad": "Gaziantep FK",
+   "form": "WLWDL",
+   "id": "20070",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "2",
+    "goalAssists": "2",
+    "possessionPct": "46.7",
+    "shotAssists": "0",
+    "shotsOnTarget": "2",
+    "totalGoals": "4",
+    "totalShots": "3",
+    "wonCorners": "1"
+   },
+   "kazandi": true,
+   "kisa": "GAZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
+   "renk": "#000000",
+   "skor": "4"
+  },
+  "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Goztepe",
+   "form": "LLLDL",
+   "id": "789",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "4",
+    "goalAssists": "1",
+    "possessionPct": "53.3",
+    "shotAssists": "0",
+    "shotsOnTarget": "0",
+    "totalGoals": "2",
+    "totalShots": "2",
+    "wonCorners": "1"
+   },
+   "kazandi": false,
+   "kisa": "GOZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
+   "renk": "#000000",
+   "skor": "2"
+  },
+  "goller": [
+   {
+    "dakika": "5'",
+    "kendi_kalesine": false,
+    "oyuncu": "Halil Dervisoglu",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "10'",
+    "kendi_kalesine": false,
+    "oyuncu": "Myenty Abena",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "34'",
+    "kendi_kalesine": false,
+    "oyuncu": "Kacper Kozlowski",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "45'+1'",
+    "kendi_kalesine": false,
+    "oyuncu": "Kacper Kozlowski",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "51'",
+    "kendi_kalesine": false,
+    "oyuncu": "Juan",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "90'+3'",
+    "kendi_kalesine": false,
+    "oyuncu": "Juan",
+    "penalti": true,
+    "takim_id": "789"
+   }
+  ],
+  "id": "401888302",
+  "istatistik": {
+   "corners": {
+    "away": 1.0,
+    "home": 1.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 2.0,
+    "home": 4.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 46.7,
+    "home": 53.3
+   },
+   "shots": {
+    "away": 3.0,
+    "home": 2.0
+   },
+   "shotsOnTarget": {
+    "away": 2.0,
+    "home": 0.0
+   }
+  },
+  "kanal": "",
+  "kirmizi_kartlar": [
+   {
+    "dakika": "72'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ogün Bayrak",
+    "penalti": false,
+    "takim_id": "789"
+   }
+  ],
+  "saat_gostergesi": "90'+4'",
+  "sari_kartlar": [
+   {
+    "dakika": "55'",
+    "kendi_kalesine": false,
+    "oyuncu": "Arda Okan Kurtulan",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "66'",
+    "kendi_kalesine": false,
+    "oyuncu": "Rhaldney",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "76'",
+    "kendi_kalesine": false,
+    "oyuncu": "Trivante Stewart",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "79'",
+    "kendi_kalesine": false,
+    "oyuncu": "Sinclair Armstrong",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "90'+1'",
+    "kendi_kalesine": false,
+    "oyuncu": "Drissa Camara",
+    "penalti": false,
+    "takim_id": "20070"
+   }
+  ],
+  "sehir": "Izmir",
+  "stadyum": "Göztepe Gürsel Aksel Stadi",
+  "utc": "2026-09-07T17:00Z",
+  "video_id": "xb56wh2",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
+ },
+ {
+  "dep": {
    "ad": "Samsunspor",
    "form": "LLWDW",
    "id": "11429",
@@ -1589,7 +1865,7 @@
  {
   "dep": {
    "ad": "Alanyaspor",
-   "form": "LWDLW",
+   "form": "WLWDL",
    "id": "9078",
    "istatistik": {
     "appearances": "0",
@@ -1731,7 +2007,7 @@
  {
   "dep": {
    "ad": "Goztepe",
-   "form": "LLDLW",
+   "form": "LLLDL",
    "id": "789",
    "istatistik": {
     "appearances": "0",
@@ -1879,7 +2155,7 @@
  {
   "dep": {
    "ad": "Caykur Rizespor",
-   "form": "WLWDL",
+   "form": "LWLWD",
    "id": "7656",
    "istatistik": {
     "appearances": "0",
@@ -1903,7 +2179,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Gaziantep FK",
-   "form": "LWDLL",
+   "form": "WLWDL",
    "id": "20070",
    "istatistik": {
     "appearances": "0",
@@ -2002,302 +2278,5 @@
   "video_id": "xb2grt6",
   "video_kanal": "Maç Özetleri",
   "video_kaynak": "dm"
- },
- {
-  "dep": {
-   "ad": "Kocaelispor",
-   "form": "WWWLL",
-   "id": "995",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "12",
-    "goalAssists": "2",
-    "possessionPct": "55.8",
-    "shotAssists": "0",
-    "shotsOnTarget": "7",
-    "totalGoals": "2",
-    "totalShots": "15",
-    "wonCorners": "4"
-   },
-   "kazandi": true,
-   "kisa": "KOC",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
-   "renk": "#000000",
-   "skor": "2"
-  },
-  "durum": "post",
-  "durum_ad": "STATUS_FULL_TIME",
-  "durum_metin": "FT",
-  "ev": {
-   "ad": "Konyaspor",
-   "form": "LLLLL",
-   "id": "7648",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "16",
-    "goalAssists": "0",
-    "possessionPct": "44.2",
-    "shotAssists": "0",
-    "shotsOnTarget": "0",
-    "totalGoals": "1",
-    "totalShots": "10",
-    "wonCorners": "1"
-   },
-   "kazandi": false,
-   "kisa": "KNY",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
-   "renk": "#288A00",
-   "skor": "1"
-  },
-  "goller": [
-   {
-    "dakika": "39'",
-    "kendi_kalesine": true,
-    "oyuncu": "Tanguy Zoukrou",
-    "penalti": false,
-    "takim_id": "7648"
-   },
-   {
-    "dakika": "72'",
-    "kendi_kalesine": false,
-    "oyuncu": "Massadio Haidara",
-    "penalti": false,
-    "takim_id": "995"
-   },
-   {
-    "dakika": "86'",
-    "kendi_kalesine": false,
-    "oyuncu": "Metehan Altunbas",
-    "penalti": false,
-    "takim_id": "995"
-   }
-  ],
-  "id": "401888308",
-  "istatistik": {
-   "corners": {
-    "away": 4.0,
-    "home": 1.0
-   },
-   "durum": "ok",
-   "fouls": {
-    "away": 12.0,
-    "home": 16.0
-   },
-   "kaynak": "summary",
-   "possession": {
-    "away": 55.8,
-    "home": 44.2
-   },
-   "shots": {
-    "away": 15.0,
-    "home": 10.0
-   },
-   "shotsOnTarget": {
-    "away": 7.0,
-    "home": 0.0
-   }
-  },
-  "kanal": "beIN Sports 1",
-  "kirmizi_kartlar": [
-   {
-    "dakika": "48'",
-    "kendi_kalesine": false,
-    "oyuncu": "Enis Bardhi",
-    "penalti": false,
-    "takim_id": "7648"
-   }
-  ],
-  "saat_gostergesi": "90'+4'",
-  "sari_kartlar": [
-   {
-    "dakika": "10'",
-    "kendi_kalesine": false,
-    "oyuncu": "Mahamadou Susoho",
-    "penalti": false,
-    "takim_id": "995"
-   },
-   {
-    "dakika": "11'",
-    "kendi_kalesine": false,
-    "oyuncu": "",
-    "penalti": false,
-    "takim_id": "995"
-   },
-   {
-    "dakika": "36'",
-    "kendi_kalesine": false,
-    "oyuncu": "Daniel Agyei",
-    "penalti": false,
-    "takim_id": "995"
-   },
-   {
-    "dakika": "37'",
-    "kendi_kalesine": false,
-    "oyuncu": "Matej Maglica",
-    "penalti": false,
-    "takim_id": "995"
-   },
-   {
-    "dakika": "73'",
-    "kendi_kalesine": false,
-    "oyuncu": "",
-    "penalti": false,
-    "takim_id": "7648"
-   },
-   {
-    "dakika": "88'",
-    "kendi_kalesine": false,
-    "oyuncu": "Rajmund Tóth",
-    "penalti": false,
-    "takim_id": "7648"
-   }
-  ],
-  "sehir": "Konya",
-  "stadyum": "Medas Konya Büyüksehir Stadyumu",
-  "utc": "2026-08-29T16:00Z",
-  "video_id": "xb2grw6",
-  "video_kanal": "Maç Özetleri",
-  "video_kaynak": "dm"
- },
- {
-  "dep": {
-   "ad": "Erzurum BB",
-   "form": "WDLLW",
-   "id": "19267",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "11",
-    "goalAssists": "0",
-    "possessionPct": "52.4",
-    "shotAssists": "0",
-    "shotsOnTarget": "4",
-    "totalGoals": "1",
-    "totalShots": "9",
-    "wonCorners": "5"
-   },
-   "kazandi": false,
-   "kisa": "ERZ",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
-   "renk": "#000000",
-   "skor": "1"
-  },
-  "durum": "post",
-  "durum_ad": "STATUS_FULL_TIME",
-  "durum_metin": "FT",
-  "ev": {
-   "ad": "Genclerbirligi",
-   "form": "LDWWW",
-   "id": "996",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "15",
-    "goalAssists": "1",
-    "possessionPct": "47.6",
-    "shotAssists": "0",
-    "shotsOnTarget": "5",
-    "totalGoals": "1",
-    "totalShots": "16",
-    "wonCorners": "3"
-   },
-   "kazandi": false,
-   "kisa": "GEN",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
-   "renk": "#000000",
-   "skor": "1"
-  },
-  "goller": [
-   {
-    "dakika": "55'",
-    "kendi_kalesine": false,
-    "oyuncu": "Eren Tozlu",
-    "penalti": false,
-    "takim_id": "19267"
-   },
-   {
-    "dakika": "66'",
-    "kendi_kalesine": false,
-    "oyuncu": "Adama Traoré",
-    "penalti": false,
-    "takim_id": "996"
-   }
-  ],
-  "id": "401888309",
-  "istatistik": {
-   "corners": {
-    "away": 5.0,
-    "home": 3.0
-   },
-   "durum": "ok",
-   "fouls": {
-    "away": 11.0,
-    "home": 15.0
-   },
-   "kaynak": "summary",
-   "possession": {
-    "away": 52.4,
-    "home": 47.6
-   },
-   "shots": {
-    "away": 9.0,
-    "home": 16.0
-   },
-   "shotsOnTarget": {
-    "away": 4.0,
-    "home": 5.0
-   }
-  },
-  "kanal": "beIN Sports 1",
-  "kirmizi_kartlar": [],
-  "saat_gostergesi": "90'+7'",
-  "sari_kartlar": [
-   {
-    "dakika": "45'+1'",
-    "kendi_kalesine": false,
-    "oyuncu": "Mustafa Yumlu",
-    "penalti": false,
-    "takim_id": "19267"
-   },
-   {
-    "dakika": "60'",
-    "kendi_kalesine": false,
-    "oyuncu": "Pedro Pereira",
-    "penalti": false,
-    "takim_id": "996"
-   },
-   {
-    "dakika": "68'",
-    "kendi_kalesine": false,
-    "oyuncu": "Ogulcan Ülgün",
-    "penalti": false,
-    "takim_id": "996"
-   },
-   {
-    "dakika": "82'",
-    "kendi_kalesine": false,
-    "oyuncu": "Elisha Owusu",
-    "penalti": false,
-    "takim_id": "19267"
-   },
-   {
-    "dakika": "90'+4'",
-    "kendi_kalesine": false,
-    "oyuncu": "Ousmane Diabate",
-    "penalti": false,
-    "takim_id": "996"
-   },
-   {
-    "dakika": "90'+6'",
-    "kendi_kalesine": false,
-    "oyuncu": "Nihad Mujakic",
-    "penalti": false,
-    "takim_id": "19267"
-   }
-  ],
-  "sehir": "Ankara",
-  "stadyum": "Eryaman Stadium",
-  "utc": "2026-08-28T18:30Z",
-  "video_id": "",
-  "video_kanal": "",
-  "video_kaynak": ""
  }
 ]
