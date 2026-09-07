@@ -22,6 +22,7 @@
    "skor": "0"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Kocaelispor",
@@ -54,6 +55,30 @@
    }
   ],
   "id": "401888300",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shots": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shotsOnTarget": {
+    "away": 0.0,
+    "home": 0.0
+   }
+  },
   "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
@@ -96,6 +121,7 @@
    "skor": "0"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Trabzonspor",
@@ -156,6 +182,30 @@
    }
   ],
   "id": "401888305",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shots": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shotsOnTarget": {
+    "away": 0.0,
+    "home": 0.0
+   }
+  },
   "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+2'",
@@ -219,6 +269,7 @@
    "skor": "0"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Çorum FK",
@@ -265,6 +316,30 @@
    }
   ],
   "id": "401888385",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shots": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shotsOnTarget": {
+    "away": 0.0,
+    "home": 0.0
+   }
+  },
   "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
@@ -321,6 +396,7 @@
    "skor": "2"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Kasimpasa",
@@ -374,6 +450,30 @@
    }
   ],
   "id": "401888386",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shots": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shotsOnTarget": {
+    "away": 0.0,
+    "home": 0.0
+   }
+  },
   "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+6'",
@@ -458,6 +558,7 @@
    "skor": "2"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Fenerbahce",
@@ -504,6 +605,30 @@
    }
   ],
   "id": "401888301",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shots": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shotsOnTarget": {
+    "away": 0.0,
+    "home": 0.0
+   }
+  },
   "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+8'",
@@ -588,6 +713,7 @@
    "skor": "0"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Erzurum BB",
@@ -620,6 +746,30 @@
    }
   ],
   "id": "401888299",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shots": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shotsOnTarget": {
+    "away": 0.0,
+    "home": 0.0
+   }
+  },
   "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
@@ -690,6 +840,7 @@
    "skor": "3"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Istanbul Basaksehir",
@@ -750,6 +901,30 @@
    }
   ],
   "id": "401888304",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shots": {
+    "away": 0.0,
+    "home": 0.0
+   },
+   "shotsOnTarget": {
+    "away": 0.0,
+    "home": 0.0
+   }
+  },
   "kanal": "",
   "kirmizi_kartlar": [
    {
@@ -842,6 +1017,7 @@
    "skor": "1"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Amed SFK",
@@ -888,6 +1064,30 @@
    }
   ],
   "id": "401888388",
+  "istatistik": {
+   "corners": {
+    "away": 5.0,
+    "home": 2.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 10.0,
+    "home": 18.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 59.9,
+    "home": 40.1
+   },
+   "shots": {
+    "away": 8.0,
+    "home": 17.0
+   },
+   "shotsOnTarget": {
+    "away": 5.0,
+    "home": 7.0
+   }
+  },
   "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+9'",
@@ -986,6 +1186,7 @@
    "skor": "2"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Besiktas",
@@ -1067,6 +1268,30 @@
    }
   ],
   "id": "401888387",
+  "istatistik": {
+   "corners": {
+    "away": 6.0,
+    "home": 8.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 11.0,
+    "home": 9.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 48.4,
+    "home": 51.6
+   },
+   "shots": {
+    "away": 11.0,
+    "home": 18.0
+   },
+   "shotsOnTarget": {
+    "away": 3.0,
+    "home": 7.0
+   }
+  },
   "kanal": "beIN Sports 2",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+3'",
@@ -1144,6 +1369,7 @@
    "skor": "1"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Istanbul Basaksehir",
@@ -1183,6 +1409,30 @@
    }
   ],
   "id": "401888310",
+  "istatistik": {
+   "corners": {
+    "away": 3.0,
+    "home": 5.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 13.0,
+    "home": 11.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 35.7,
+    "home": 64.3
+   },
+   "shots": {
+    "away": 12.0,
+    "home": 12.0
+   },
+   "shotsOnTarget": {
+    "away": 3.0,
+    "home": 2.0
+   }
+  },
   "kanal": "beIN Sports 2",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+3'",
@@ -1246,6 +1496,7 @@
    "skor": "2"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Samsunspor",
@@ -1285,6 +1536,30 @@
    }
   ],
   "id": "401888306",
+  "istatistik": {
+   "corners": {
+    "away": 6.0,
+    "home": 1.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 18.0,
+    "home": 13.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 41.8,
+    "home": 58.2
+   },
+   "shots": {
+    "away": 15.0,
+    "home": 6.0
+   },
+   "shotsOnTarget": {
+    "away": 7.0,
+    "home": 0.0
+   }
+  },
   "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
@@ -1334,6 +1609,7 @@
    "skor": "1"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Eyupspor",
@@ -1380,6 +1656,30 @@
    }
   ],
   "id": "401888311",
+  "istatistik": {
+   "corners": {
+    "away": 2.0,
+    "home": 1.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 22.0,
+    "home": 16.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 37.3,
+    "home": 62.7
+   },
+   "shots": {
+    "away": 7.0,
+    "home": 11.0
+   },
+   "shotsOnTarget": {
+    "away": 2.0,
+    "home": 4.0
+   }
+  },
   "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [
    {
@@ -1451,6 +1751,7 @@
    "skor": "2"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Galatasaray",
@@ -1511,6 +1812,30 @@
    }
   ],
   "id": "401888307",
+  "istatistik": {
+   "corners": {
+    "away": 2.0,
+    "home": 6.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 12.0,
+    "home": 5.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 33.1,
+    "home": 66.9
+   },
+   "shots": {
+    "away": 9.0,
+    "home": 34.0
+   },
+   "shotsOnTarget": {
+    "away": 4.0,
+    "home": 11.0
+   }
+  },
   "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+7'",
@@ -1574,6 +1899,7 @@
    "skor": "2"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Gaziantep FK",
@@ -1620,6 +1946,30 @@
    }
   ],
   "id": "401888312",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 8.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 17.0,
+    "home": 10.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 44.3,
+    "home": 55.7
+   },
+   "shots": {
+    "away": 10.0,
+    "home": 16.0
+   },
+   "shotsOnTarget": {
+    "away": 4.0,
+    "home": 4.0
+   }
+  },
   "kanal": "beIN Sports 2",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
@@ -1676,6 +2026,7 @@
    "skor": "2"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Konyaspor",
@@ -1722,6 +2073,30 @@
    }
   ],
   "id": "401888308",
+  "istatistik": {
+   "corners": {
+    "away": 4.0,
+    "home": 1.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 12.0,
+    "home": 16.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 55.8,
+    "home": 44.2
+   },
+   "shots": {
+    "away": 15.0,
+    "home": 10.0
+   },
+   "shotsOnTarget": {
+    "away": 7.0,
+    "home": 0.0
+   }
+  },
   "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [
    {
@@ -1807,6 +2182,7 @@
    "skor": "1"
   },
   "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
   "durum_metin": "FT",
   "ev": {
    "ad": "Genclerbirligi",
@@ -1846,6 +2222,30 @@
    }
   ],
   "id": "401888309",
+  "istatistik": {
+   "corners": {
+    "away": 5.0,
+    "home": 3.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 11.0,
+    "home": 15.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 52.4,
+    "home": 47.6
+   },
+   "shots": {
+    "away": 9.0,
+    "home": 16.0
+   },
+   "shotsOnTarget": {
+    "away": 4.0,
+    "home": 5.0
+   }
+  },
   "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+7'",
