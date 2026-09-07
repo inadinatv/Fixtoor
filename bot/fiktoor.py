@@ -25,10 +25,30 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
+_BOT_DIR = os.path.dirname(os.path.abspath(__file__))
+if _BOT_DIR not in sys.path:
+    sys.path.insert(0, _BOT_DIR)
+from istatistik import (  # noqa: E402
+    ISTATISTIK_ALANLARI,
+    ISTATISTIK_ETIKET,
+    _ist_goster_sayi,
+    _ist_sayi,
+    bar_genislikleri,
+    istatistik_bos_yapi,
+    istatistik_hepsi_bos_mu,
+    istatistik_sablon_sifir_mi,
+    istatistik_standart,
+    mac_ertelendi_mi,
+    mac_istatistik_al,
+    ozetten_rakip_istatistik,
+    takim_istatistik_yaz,
+)
+
 # ----------------------------------------------------------------------------
 # Sabitler
 # ----------------------------------------------------------------------------
 SITE_API = "https://site.api.espn.com/apis/site/v2/sports/soccer/{slug}"
+SITE_WEB_API = "https://site.web.api.espn.com/apis/site/v2/sports/soccer/{slug}"
 WEB_API = "https://site.web.api.espn.com/apis/v2/sports/soccer/{slug}"
 DM_API = "https://api.dailymotion.com/videos"
 DM_BEIN_KANAL = "x1jf30l"   # beIN SPORTS USA'nın resmî Dailymotion kanalı
@@ -43,6 +63,8 @@ AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki",
 
 HTTP_TIMEOUT = 25
 HTTP_DENE = 3
+IST_OZET_GUN = 21
+IST_ISTEK_ARALIK = 0.3
 
 LIG_ADLARI = {
     "tur.1": "Trendyol Süper Lig",
@@ -59,19 +81,51 @@ def log(msg: str) -> None:
     print(f"[fixtoor] {msg}", flush=True)
 
 
-def http_get_json(url: str) -> dict:
-    """URL'den JSON çeker; basit yeniden deneme mantığıyla."""
+def _fixtoor_debug() -> bool:
+    return os.environ.get("FIXTOOR_DEBUG", "").strip().lower() in ("1", "true", "yes")
+
+
+def http_get_json(url: str, zorunlu: bool = True, timeout: int = HTTP_TIMEOUT):
+    """URL'den JSON çeker; 404/429/5xx/boş/bozuk yanıtta çökmez.
+
+    zorunlu=False ise başarısızlıkta None döner (istatistik gibi opsiyonel uçlar).
+    """
     son_hata = None
     for deneme in range(1, HTTP_DENE + 1):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "FixtoorBot/1.0 (+github)"})
-            with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:
-                return json.loads(resp.read().decode("utf-8"))
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as e:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": "FixtoorBot/1.0 (+github)",
+                "Accept": "application/json",
+            })
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                ham = resp.read()
+                if not ham:
+                    raise json.JSONDecodeError("boş yanıt", "", 0)
+                data = json.loads(ham.decode("utf-8"))
+                if data is None:
+                    raise ValueError("null yanıt")
+                if not isinstance(data, (dict, list)):
+                    raise ValueError(f"beklenmeyen JSON tipi: {type(data).__name__}")
+                return data
+        except urllib.error.HTTPError as e:
+            son_hata = e
+            log(f"istek HTTP {e.code} ({deneme}/{HTTP_DENE}): {url}")
+            if e.code in (404, 401, 403):
+                break
+            if e.code == 429:
+                time.sleep(8 * deneme)
+                continue
+            if e.code >= 500:
+                time.sleep(2 * deneme)
+                continue
+            break
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError, ValueError) as e:
             son_hata = e
             log(f"istek başarısız ({deneme}/{HTTP_DENE}): {url} -> {e}")
             time.sleep(2 * deneme)
-    raise RuntimeError(f"API'ye ulaşılamadı: {url} ({son_hata})")
+    if zorunlu:
+        raise RuntimeError(f"API'ye ulaşılamadı: {url} ({son_hata})")
+    return None
 
 
 def esc(s) -> str:
@@ -531,10 +585,17 @@ def mac_ayristir(ev: dict) -> dict:
             "kazandi": bool(rakip.get("winner")),
             "form": rakip.get("form", ""),
         })
-        # istatistikler (oynanmış maçlarda gelir)
+        # Skorboard istatistikleri ham tutulur; gerçek değerler summary'den doldurulur.
         ist = {}
         for s in rakip.get("statistics") or []:
-            ist[s.get("name", "")] = s.get("displayValue", "")
+            if not isinstance(s, dict):
+                continue
+            ad = s.get("name") or ""
+            deger = s.get("displayValue")
+            if deger is None:
+                deger = s.get("value")
+            if ad:
+                ist[ad] = deger
         hedef["istatistik"] = ist
 
     # Maç olayları: goller ve kartlar
@@ -562,6 +623,7 @@ def mac_ayristir(ev: dict) -> dict:
         "utc": comp.get("date") or ev.get("date", ""),
         "durum": durum_tip.get("state", ""),          # pre | in | post
         "durum_metin": durum_tip.get("shortDetail") or durum_tip.get("detail") or "",
+        "durum_ad": durum_tip.get("name", ""),
         "saat_gostergesi": durum.get("displayClock", ""),
         "ev": ev_sahibi,
         "dep": deplasman,
@@ -571,6 +633,141 @@ def mac_ayristir(ev: dict) -> dict:
         "kirmizi_kartlar": kirmizi,
         "sari_kartlar": sarilar,
     }
+
+
+def fetch_mac_summary(slug: str, event_id: str, http=None):
+    """Maç bazlı ESPN summary (boxscore istatistikleri). Birincil + yedek uç."""
+    get = http or http_get_json
+    eid = urllib.parse.quote(str(event_id), safe="")
+    urls = [
+        f"{SITE_API.format(slug=slug)}/summary?event={eid}",
+        f"{SITE_WEB_API.format(slug=slug)}/summary?event={eid}",
+    ]
+    for url in urls:
+        try:
+            data = get(url, zorunlu=False, timeout=18)
+        except Exception as e:
+            log(f"UYARI: summary {event_id}: {e}")
+            data = None
+        if isinstance(data, dict) and (data.get("boxscore") is not None or data.get("header")):
+            return data
+    return None
+
+
+def istatistik_cache_yukle(data_dir: str) -> dict:
+    """Önceki koşudan summary ile dolmuş, maç id anahtarlı istatistik önbelleği."""
+    cache = {}
+    for ad in ("site-verisi.json", "fikstur.json"):
+        yol = os.path.join(data_dir, ad)
+        try:
+            with open(yol, encoding="utf-8") as f:
+                veri = json.load(f)
+        except (OSError, json.JSONDecodeError):
+            continue
+        if isinstance(veri, dict) and "haftalar" in veri:
+            haftalar = veri["haftalar"]
+        elif isinstance(veri, list):
+            haftalar = veri
+        else:
+            continue
+        for h in haftalar or []:
+            for m in (h.get("maclar") if isinstance(h, dict) else []) or []:
+                mid = str(m.get("id") or "")
+                st = m.get("istatistik")
+                if (mid and isinstance(st, dict) and st.get("kaynak") == "summary"
+                        and not istatistik_hepsi_bos_mu(st)):
+                    cache[mid] = st
+    return cache
+
+
+def mac_istatistiklerini_doldur(slug: str, maclar: list, data_dir: str) -> None:
+    """Canlı ve yakın tarihli maçlar için summary endpoint'inden istatistik çeker.
+
+    - Maç id / fixture id karışmaz; her kayıt kendi event id'siyle istenir.
+    - Scoreboard'daki 0 şablonu gerçek veri sayılmaz.
+    - İstek başarısız olursa uygulama durmaz; durum='hata'/'yok' yazılır.
+    """
+    cache = istatistik_cache_yukle(data_dir)
+    simdi = datetime.now(timezone.utc)
+    debug = _fixtoor_debug()
+    aday = []
+    for m in maclar:
+        if mac_ertelendi_mi(m.get("durum_ad"), m.get("durum_metin")):
+            m["istatistik"] = istatistik_bos_yapi(None, "yok")
+            continue
+        if m.get("durum") not in ("in", "post"):
+            m["istatistik"] = istatistik_bos_yapi(None, "yok")
+            continue
+        utc = m.get("utc")
+        try:
+            dt = parse_utc(utc) if utc else None
+        except (TypeError, ValueError):
+            dt = None
+        mid = str(m.get("id") or "")
+        if m.get("durum") == "post" and dt and dt < simdi - timedelta(days=IST_OZET_GUN):
+            eski = cache.get(mid)
+            if eski:
+                m["istatistik"] = eski
+                takim_istatistik_yaz(m, eski)
+            else:
+                m["istatistik"] = mac_istatistik_al(m)
+            continue
+        aday.append(m)
+
+    log(f"istatistik özeti çekilecek: {len(aday)} maç")
+    for m in aday:
+        mid = str(m.get("id") or "")
+        if not mid:
+            m["istatistik"] = istatistik_bos_yapi(None, "yok")
+            continue
+        if m.get("durum") == "post":
+            eski = cache.get(mid)
+            if eski and not istatistik_hepsi_bos_mu(eski):
+                m["istatistik"] = eski
+                takim_istatistik_yaz(m, eski)
+                continue
+        try:
+            data = fetch_mac_summary(slug, mid)
+        except Exception as e:
+            log(f"UYARI: istatistik {mid} alınamadı: {e}")
+            data = None
+        if debug:
+            log(f"MATCH ID: {mid}")
+            log(f"FIXTURE ID: {mid}")
+            log(f"STATUS: {m.get('durum')} {m.get('durum_metin')}")
+            if isinstance(data, dict):
+                box = data.get("boxscore") or {}
+                takimlar = box.get("teams") if isinstance(box, dict) else []
+                log(f"STATISTICS RESPONSE: teams={len(takimlar or [])}")
+            else:
+                log("STATISTICS RESPONSE: None")
+        if not data:
+            st = mac_istatistik_al({**m, "istatistik": None})
+            if istatistik_sablon_sifir_mi(st) or istatistik_hepsi_bos_mu(st):
+                st = istatistik_bos_yapi("scoreboard", "hata")
+            m["istatistik"] = st
+            log(f"istatistik {mid}: fallback {st.get('kaynak')} {st.get('durum')}")
+            time.sleep(0 if os.environ.get("FIXTOOR_TEST") else IST_ISTEK_ARALIK)
+            continue
+        ev_ham, dep_ham, meta = ozetten_rakip_istatistik(data)
+        st = istatistik_standart(ev_ham, dep_ham, kaynak="summary", durum="ok")
+        if istatistik_hepsi_bos_mu(st):
+            sb = mac_istatistik_al({**m, "istatistik": None})
+            if not istatistik_sablon_sifir_mi(sb) and not istatistik_hepsi_bos_mu(sb):
+                st = sb
+                st["kaynak"] = "scoreboard"
+                st["durum"] = "ok"
+            else:
+                st["durum"] = "yok"
+        m["istatistik"] = st
+        takim_istatistik_yaz(m, st)
+        if debug:
+            ozet = {k: st.get(k) for k in ISTATISTIK_ALANLARI}
+            log(f"NORMALIZED STATISTICS: {ozet}")
+        log(f"istatistik {mid} {m.get('ev', {}).get('ad', '')}-{m.get('dep', {}).get('ad', '')} "
+            f"{m.get('durum')} kaynak={st.get('kaynak')} durum={st.get('durum')} "
+            f"pos={st.get('possession')}")
+        time.sleep(0 if os.environ.get("FIXTOOR_TEST") else IST_ISTEK_ARALIK)
 
 
 def haftalara_ayir(maclar: list) -> list:
@@ -672,6 +869,9 @@ font-size:13.5px;color:var(--soluk)}
 .bar i{position:absolute;top:0;bottom:0;border-radius:99px}
 .bar .ev{left:0;background:var(--yesil)}
 .bar .dep{right:0;background:var(--mavi)}
+.bar.bos{opacity:.4}
+.ist-satir .deger.yok{color:var(--soluk);font-weight:600}
+.ist-durum{text-align:center;color:var(--soluk);font-size:12.5px;margin:8px 0 0;min-height:0}
 table.puan{width:100%;border-collapse:collapse;font-size:13.5px}
 table.puan th{color:var(--soluk);font-weight:600;text-align:center;padding:8px 6px;border-bottom:1px solid var(--cizgi)}
 table.puan th:first-child,table.puan td:first-child{text-align:left}
@@ -795,13 +995,104 @@ document.addEventListener('click',function(e){
 modal.addEventListener('click',function(e){if(e.target===modal)videoKapat();});
 document.querySelector('.modal-kapat').addEventListener('click',videoKapat);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')videoKapat();});
-// ---- CANLI SKOR: sayfa yenilenmeden, ziyaretçinin tarayıcısı ESPN'in
-// anahtarsız açık API'sinden skoru çeker ve kartları günceller.
-// İstek başarısız olursa sayfa sessizce statik veriyle kalır.
-var CANLI=window.FIXTOOR_CANLI||{lig:'tur.1',maclar:{}};
-if(Object.keys(CANLI.maclar).length&&window.fetch){
+// ---- CANLI SKOR + İSTATİSTİK ----
+// Skor: scoreboard, 30 sn (mac yokken 5 dk).
+// Istatistik: summary?event={id}, yalniz canli maclarda ~45 sn; bitince bir kez daha, sonra durur.
+// Veri yoksa 0 uydurulmaz. API anahtari yoktur.
+var CANLI=window.FIXTOOR_CANLI||{lig:'tur.1',maclar:{},ist:{}};
+CANLI.maclar=CANLI.maclar||{};
+CANLI.ist=CANLI.ist||{};
+var FIXTOOR_DEBUG=!!(window.FIXTOOR_DEBUG||/[?&]debug=1(?:&|$)/.test(location.search)||location.hostname==='localhost');
+function istLog(){if(!FIXTOOR_DEBUG||!window.console){return;}try{console.log.apply(console,arguments);}catch(e){}}
+if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).length)){
   var canliSayac=0;
+  var IST_ARALIK=45000;
+  var IST_STAGGER=400;
+  var istKuyruk=[],istKuyrukSet={},istBusy=false,istSon={},istInflight={},istBitti={};
+  var IST_ADLAR={
+    possession:['possessionpct','possession','ballpossession','ballpossessionpct','possessionpercentage','poss','pos'],
+    shots:['totalshots','shotstotal','shots','totalshot','shot','attempts','totalattempts'],
+    shotsOnTarget:['shotsontarget','shotsongoal','ontarget','shotstarget','sog','sot'],
+    corners:['woncorners','cornerkicks','corners','corner','cornerswon','cornerkick'],
+    fouls:['foulscommitted','fouls','totalfouls','foul']
+  };
+  function istAnahtar(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
+  function istSayi(v){
+    if(v===null||v===undefined||v===false||v==='') return null;
+    if(typeof v==='number') return isFinite(v)?v:null;
+    var s=String(v).replace('%','').replace(',','.').trim();
+    if(!s||s==='-'||s==='\u2014'||s.toLowerCase()==='n/a') return null;
+    var n=parseFloat(s); return isNaN(n)?null:n;
+  }
+  function istListeHarita(liste){
+    var out={};
+    if(!liste) return out;
+    if(Object.prototype.toString.call(liste)==='[object Object]'){
+      if(liste.splits&&liste.splits.categories){
+        (liste.splits.categories||[]).forEach(function(c){Object.assign(out,istListeHarita(c.stats||[]));});
+        return out;
+      }
+      if(liste.stats||liste.statistics) return istListeHarita(liste.stats||liste.statistics);
+      Object.keys(liste).forEach(function(k){var v=liste[k]; if(v!==null&&typeof v!=='object') out[k]=v;});
+      return out;
+    }
+    (liste||[]).forEach(function(s){
+      if(!s||typeof s!=='object') return;
+      if(s.stats||(s.statistics&&s.statistics.length)){Object.assign(out,istListeHarita(s.stats||s.statistics));return;}
+      var deger=s.displayValue; if(deger===undefined) deger=s.value;
+      [s.name,s.abbreviation,s.displayName,s.label,s.shortDisplayName].forEach(function(ad){
+        if(ad&&out[ad]===undefined) out[ad]=deger;
+      });
+    });
+    return out;
+  }
+  function istNormalizeHam(ham){
+    var idx={}; Object.keys(ham||{}).forEach(function(k){idx[istAnahtar(k)]=ham[k];});
+    var out={};
+    Object.keys(IST_ADLAR).forEach(function(hedef){
+      out[hedef]=null;
+      IST_ADLAR[hedef].some(function(a){
+        if(idx[a]!==undefined&&idx[a]!==null&&idx[a]!==''){out[hedef]=istSayi(idx[a]);return true;}
+        return false;
+      });
+    });
+    return out;
+  }
+  function istStandart(evHam,depHam){
+    var ev=istNormalizeHam(evHam),dep=istNormalizeHam(depHam),out={};
+    Object.keys(IST_ADLAR).forEach(function(k){out[k]={home:ev[k],away:dep[k]};});
+    return out;
+  }
+  function istHepsiBos(st){
+    return Object.keys(IST_ADLAR).every(function(k){
+      var c=st[k]||{}; return (c.home===null||c.home===undefined)&&(c.away===null||c.away===undefined);
+    });
+  }
+  function ozettenCift(data){
+    var header=data.header||{},comps=header.competitions||[],comp=comps[0]||{};
+    var homeId='',awayId='',evHam={},depHam={};
+    (comp.competitors||[]).forEach(function(t){
+      var tid=String(((t.team)||{}).id||t.id||'');
+      var ham=istListeHarita(t.statistics||[]);
+      if(t.homeAway==='home'){homeId=tid;evHam=ham;}else{awayId=tid;depHam=ham;}
+    });
+    ((data.boxscore||{}).teams||[]).forEach(function(t){
+      var tid=String(((t.team)||{}).id||'');
+      var ham=istListeHarita(t.statistics||[]);
+      if(!ham||!Object.keys(ham).length) return;
+      if(t.homeAway==='home'||(homeId&&tid===homeId)) evHam=ham;
+      else if(t.homeAway==='away'||(awayId&&tid===awayId)) depHam=ham;
+    });
+    var st=comp.status||{};
+    return {st:istStandart(evHam,depHam), durum:((st.type)||{}).state||'', saat:st.displayClock||'',
+            ad:((st.type)||{}).name||'', kisa:((st.type)||{}).shortDetail||''};
+  }
+  function ertelendiMi(ad){
+    var n=String(ad||'').toLowerCase();
+    return n.indexOf('postpon')>=0||n.indexOf('cancel')>=0||n.indexOf('abandon')>=0;
+  }
   function macAktifMi(m){
+    if(!m||ertelendiMi(m.durum_ad)) return false;
     return m.durum==='in'||(m.durum==='pre'&&m.utc&&Date.parse(m.utc)-Date.now()<3*3600000);
   }
   function canliRozetEkle(){
@@ -811,7 +1102,7 @@ if(Object.keys(CANLI.maclar).length&&window.fetch){
   }
   function golBildir(m,detay){
     var d=document.createElement('div');d.className='gol-bildirim';
-    d.textContent='⚽ GOL! '+m.ev+' '+m.evk+' - '+m.depk+' '+m.dep+(detay?' · '+detay:'');
+    d.textContent='⚽ GOL! '+m.ev+' '+m.evk+' - '+m.depk+' '+m.dep+(detay?' \u00b7 '+detay:'');
     document.body.appendChild(d);
     setTimeout(function(){d.classList.add('gitti');},6000);
     setTimeout(function(){d.remove();},6600);
@@ -830,9 +1121,7 @@ if(Object.keys(CANLI.maclar).length&&window.fetch){
     return '';
   }
   function macGuncelle(id,g,detay){
-    var m=CANLI.maclar[id];if(!m){return;}
-    // '_goruldu' ile ilk bakış sessiz senkronize edilir; bildirim yalnız
-    // sayfa açıkken atılan gollerde çıkar (sayfa açılmadan atılan gol sessiz işlenir)
+    var m=CANLI.maclar[id]||CANLI.ist[id];if(!m){return;}
     var gol=g.durum==='in'&&(g.evk>(m.evk||0)||g.depk>(m.depk||0))&&m._goruldu;
     document.querySelectorAll('[data-mac-id="'+id+'"]').forEach(function(k){
       if(k.classList.contains('tv-kart')){
@@ -844,7 +1133,7 @@ if(Object.keys(CANLI.maclar).length&&window.fetch){
         if(g.durum==='in'){
           if(!et){et=document.createElement('div');et.setAttribute('data-etiket','1');
                   (k.querySelector('.tv-zaman')||k).appendChild(et);}
-          et.className='durum-canli';et.style.fontSize='11px';et.textContent='CANLI · '+g.saat;
+          et.className='durum-canli';et.style.fontSize='11px';et.textContent='CANLI \u00b7 '+g.saat;
         }else if(g.durum==='post'&&et){et.className='durum-ms';et.textContent='MS';}
       }else{
         var s=k.querySelector('.skor');
@@ -854,7 +1143,7 @@ if(Object.keys(CANLI.maclar).length&&window.fetch){
         if(g.durum==='in'){
           if(!et&&hucre){et=document.createElement('span');et.setAttribute('data-etiket','1');
                          hucre.insertBefore(et,hucre.firstChild);}
-          if(et){et.className='durum-canli';et.textContent='● CANLI '+g.saat;}
+          if(et){et.className='durum-canli';et.textContent='\u25cf CANLI '+g.saat;}
         }else if(g.durum==='post'&&et){et.className='durum-ms';et.textContent='MS';}
       }
       if(gol){
@@ -864,37 +1153,177 @@ if(Object.keys(CANLI.maclar).length&&window.fetch){
         if(v){v.classList.add('pop');setTimeout(function(){v.classList.remove('pop');},700);}
       }
     });
-    if(gol){golBildir(m,detay);}
+    if(gol&&CANLI.maclar[id]){golBildir(CANLI.maclar[id],detay);}
     m.evk=g.evk;m.depk=g.depk;m.durum=g.durum;m._goruldu=true;
+    if(CANLI.maclar[id]){CANLI.maclar[id].evk=g.evk;CANLI.maclar[id].depk=g.depk;CANLI.maclar[id].durum=g.durum;CANLI.maclar[id]._goruldu=true;}
+    if(CANLI.ist[id]){CANLI.ist[id].durum=g.durum;}
+  }
+  function istYazi(v){
+    if(v===null||v===undefined||v==='') return '\u2014';
+    var n=Number(v); if(isNaN(n)) return '\u2014';
+    return (Math.abs(n-Math.round(n))<0.05)?String(Math.round(n)):n.toFixed(1);
+  }
+  function istUygula(id,st,mesaj){
+    document.querySelectorAll('[data-mac-id="'+id+'"]').forEach(function(kart){
+      var kok=kart.querySelector('[data-ist-kok]')||(kart.getAttribute&&kart.getAttribute('data-ist-kok')?kart:null);
+      if(!kok) return;
+      ['possession','shots','shotsOnTarget','corners','fouls'].forEach(function(k){
+        var row=kok.querySelector('[data-ist="'+k+'"]'); if(!row) return;
+        var c=st[k]||{}, yuzde=k==='possession';
+        var evEl=row.querySelector('[data-ist-ev]');
+        var depEl=row.querySelector('[data-ist-dep]');
+        var bar=row.querySelector('.bar');
+        var evB=bar&&bar.querySelector('.ev');
+        var depB=bar&&bar.querySelector('.dep');
+        var evBos=c.home===null||c.home===undefined;
+        var depBos=c.away===null||c.away===undefined;
+        if(evEl){evEl.textContent=evBos?'\u2014':(istYazi(c.home)+(yuzde?'%':'')); evEl.className=evBos?'deger yok':'deger';}
+        if(depEl){depEl.textContent=depBos?'\u2014':(istYazi(c.away)+(yuzde?'%':'')); depEl.className=depBos?'deger yok':'deger';}
+        if(evBos||depBos){
+          if(evB) evB.style.width='0';
+          if(depB) depB.style.width='0';
+          if(bar){if(evBos&&depBos) bar.classList.add('bos'); else bar.classList.remove('bos');}
+        }else{
+          if(bar) bar.classList.remove('bos');
+          var t=Number(c.home)+Number(c.away);
+          if(t>0){
+            var w=Math.round(Number(c.home)/t*100);
+            if(evB) evB.style.width=w+'%';
+            if(depB) depB.style.width=(100-w)+'%';
+          }else{
+            if(evB) evB.style.width='0';
+            if(depB) depB.style.width='0';
+          }
+        }
+      });
+      var msg=kok.querySelector('[data-ist-mesaj]');
+      var bos=istHepsiBos(st);
+      kok.setAttribute('data-ist-durum', bos?'yok':'ok');
+      if(msg){
+        if(mesaj){msg.textContent=mesaj; msg.style.display='block';}
+        else if(bos){msg.textContent='İstatistik verisi mevcut değil'; msg.style.display='block';}
+        else {msg.textContent=''; msg.style.display='none';}
+      }
+    });
+  }
+  function istMesaj(id,text){
+    document.querySelectorAll('[data-mac-id="'+id+'"] [data-ist-mesaj]').forEach(function(el){
+      el.textContent=text||''; el.style.display=text?'block':'none';
+    });
+  }
+  function istIste(id,opts){
+    opts=opts||{};
+    if(!id||istInflight[id]) return;
+    if(istBitti[id]&&!opts.zorla) return;
+    var m=CANLI.ist[id]||CANLI.maclar[id];
+    if(m&&ertelendiMi(m.durum_ad)) return;
+    if(m&&m.durum==='pre') return;
+    if(!opts.birKez&&m&&m.durum==='post'&&istSon[id]) return;
+    var simdi=Date.now();
+    if(!opts.birKez&&!opts.son&&istSon[id]&&simdi-istSon[id]<IST_ARALIK) return;
+    if(istKuyrukSet[id]) return;
+    istKuyrukSet[id]=1;
+    istKuyruk.push({id:id,opts:opts});
+    istKuyrukCalistir();
+  }
+  function istKuyrukCalistir(){
+    if(istBusy) return;
+    var is=istKuyruk.shift();
+    if(!is) return;
+    delete istKuyrukSet[is.id];
+    istBusy=true;
+    istCek(is.id,is.opts,function(){
+      istBusy=false;
+      if(istKuyruk.length) setTimeout(istKuyrukCalistir,IST_STAGGER);
+    });
+  }
+  function istCek(id,opts,cb){
+    istInflight[id]=1;
+    var m=CANLI.ist[id]||CANLI.maclar[id]||{};
+    if(!istSon[id]) istMesaj(id,'İstatistikler yükleniyor...');
+    var urls=[
+      'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id),
+      'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id)
+    ];
+    function dene(i){
+      if(i>=urls.length){
+        delete istInflight[id];
+        istLog('MATCH ID:',id,'STATISTICS RESPONSE: (alinamadi)');
+        istMesaj(id,'İstatistik verisi alınamadı');
+        if(opts.son||m.durum==='post') istBitti[id]=1;
+        cb&&cb();
+        return;
+      }
+      fetch(urls[i]).then(function(r){
+        if(r.status===429){istSon[id]=Date.now()+90000; throw new Error('429');}
+        if(r.status===404){istBitti[id]=1; throw new Error('404');}
+        if(!r.ok) throw new Error('http '+r.status);
+        return r.json();
+      }).then(function(data){
+        if(!data||typeof data!=='object') throw new Error('bos');
+        var parsed=ozettenCift(data);
+        var st=parsed.st;
+        istLog('MATCH ID:',id);
+        istLog('FIXTURE ID:',id);
+        istLog('STATUS:',parsed.durum||m.durum,parsed.kisa);
+        istLog('STATISTICS RESPONSE:',data.boxscore);
+        istLog('NORMALIZED STATISTICS:',st);
+        istSon[id]=Date.now();
+        delete istInflight[id];
+        if(CANLI.ist[id]) CANLI.ist[id]._st=st;
+        if(parsed.durum){
+          if(CANLI.maclar[id]) CANLI.maclar[id].durum=parsed.durum;
+          if(CANLI.ist[id]) CANLI.ist[id].durum=parsed.durum;
+        }
+        var msg=istHepsiBos(st)?'İstatistik verisi mevcut değil':'';
+        istUygula(id,st,msg);
+        if(parsed.durum==='post'||opts.son) istBitti[id]=1;
+        cb&&cb();
+      }).catch(function(){dene(i+1);});
+    }
+    dene(0);
   }
   function tazele(){
     if(document.hidden){return;}
     canliSayac++;
     var aktif=false;
     for(var id in CANLI.maclar){if(macAktifMi(CANLI.maclar[id])){aktif=true;break;}}
-    if(!aktif&&canliSayac%10!==1){return;}   // maç yokken kontrol 5 dakikada bire düşer
+    if(!aktif&&canliSayac%10!==1){return;}
     function gun(n){var x=new Date(Date.now()+n*86400000);
       return x.toISOString().slice(0,10).replace(/-/g,'');}
     var url='https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+
             '/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100';
-    fetch(url).then(function(r){return r.json();}).then(function(data){
+    fetch(url).then(function(r){if(!r.ok) throw new Error('http '+r.status);return r.json();}).then(function(data){
       (data.events||[]).forEach(function(ev){
-        var id=String(ev.id);if(!CANLI.maclar[id]){return;}
+        var id=String(ev.id);
+        if(!CANLI.maclar[id]&&!CANLI.ist[id]) return;
         var c=(ev.competitions||[])[0]||{};
         var st=c.status||ev.status||{};
+        var tip=st.type||{};
+        var state=tip.state||((CANLI.maclar[id]||CANLI.ist[id]||{}).durum);
+        if(ertelendiMi(tip.name||tip.description)){istBitti[id]=1;return;}
         var evk=0,depk=0;
         (c.competitors||[]).forEach(function(t){
-          if(t.homeAway==='home'){evk=parseInt(t.score,10)||0;}else{depk=parseInt(t.score,10)||0;}
+          var n=parseInt(t.score,10);
+          if(t.homeAway==='home'){evk=isNaN(n)?0:n;}else{depk=isNaN(n)?0:n;}
         });
-        if(((st.type||{}).state)==='in'){canliRozetEkle();}
-        macGuncelle(id,{evk:evk,depk:depk,
-                        durum:(st.type||{}).state||CANLI.maclar[id].durum,
-                        saat:st.displayClock||''},sonGolDetay(c));
+        if(state==='in') canliRozetEkle();
+        if(CANLI.maclar[id]||CANLI.ist[id]){
+          macGuncelle(id,{evk:evk,depk:depk,durum:state,
+                          saat:st.displayClock||''},sonGolDetay(c));
+        }
+        if(state==='in') istIste(id);
+        else if(state==='post'&&!istBitti[id]&&CANLI.ist[id]) istIste(id,{birKez:true,son:true});
       });
     }).catch(function(){});
   }
+  Object.keys(CANLI.ist||{}).forEach(function(id){
+    var info=CANLI.ist[id]||{};
+    if(info.durum==='in') istIste(id);
+    else if(info.durum==='post'&&info.eksik) istIste(id,{birKez:true,son:true});
+  });
   tazele();
-  setInterval(tazele,30000);   // 30 saniyede bir canlı kontrol
+  setInterval(tazele,30000);
 }
 """
 
@@ -996,26 +1425,26 @@ def mac_satiri(m: dict) -> str:
 <span>{durum_html}{" · " if durum_html and yer else ""}{esc(yer)}{kanal_cipi}</span></div></div>'''
 
 
-def istatistik_bar(baslik: str, ev_d: str, dep_d: str, yuzde: bool = False) -> str:
-    try:
-        ev_f, dep_f = float(ev_d or 0), float(dep_d or 0)
-    except ValueError:
-        ev_f, dep_f = 0.0, 0.0
-    toplam = ev_f + dep_f
-    if toplam > 0:
-        ev_w = int(round(ev_f / toplam * 100))
-        dep_w = 100 - ev_w
-    else:
-        ev_w = dep_w = 0
-    birim = "%" if yuzde else ""
-    return f'''<div class="ist-satir"><span class="deger">{esc(ev_d or 0)}{birim}</span>
-<div><div class="bar"><i class="ev" style="width:{ev_w}%"></i><i class="dep" style="width:{dep_w}%"></i></div>
+def istatistik_bar(baslik: str, ev_d, dep_d, yuzde: bool = False, anahtar: str = "") -> str:
+    """Veri yoksa '—'; gerçek 0 ise 0. Çubuk %50-%50 uydurulmaz."""
+    ev_n, dep_n = _ist_sayi(ev_d), _ist_sayi(dep_d)
+    ev_bos, dep_bos = ev_n is None, dep_n is None
+    ev_w, dep_w = bar_genislikleri(ev_n, dep_n)
+    bar_sinif = "bar bos" if ev_bos and dep_bos else "bar"
+    ev_yazi = "—" if ev_bos else (_ist_goster_sayi(ev_n) + ("%" if yuzde else ""))
+    dep_yazi = "—" if dep_bos else (_ist_goster_sayi(dep_n) + ("%" if yuzde else ""))
+    ev_sinif = "deger yok" if ev_bos else "deger"
+    dep_sinif = "deger yok" if dep_bos else "deger"
+    data = f' data-ist="{esc(anahtar)}"' if anahtar else ""
+    return f'''<div class="ist-satir"{data}><span class="{ev_sinif}" data-ist-ev="1">{esc(ev_yazi)}</span>
+<div><div class="{bar_sinif}"><i class="ev" style="width:{ev_w}%"></i><i class="dep" style="width:{dep_w}%"></i></div>
 <div class="orta">{esc(baslik)}</div></div>
-<span class="deger" style="text-align:right">{esc(dep_d or 0)}{birim}</span></div>'''
+<span class="{dep_sinif}" style="text-align:right" data-ist-dep="1">{esc(dep_yazi)}</span></div>'''
 
 
 def ozet_karti(m: dict) -> str:
     ev, dep = m["ev"], m["dep"]
+    canli = m.get("durum") == "in"
 
     def gol_listesi(takim_id: str, takim: dict) -> str:
         satirlar = []
@@ -1032,16 +1461,20 @@ def ozet_karti(m: dict) -> str:
                 satirlar.append(f'<div>🟥 {esc(k["oyuncu"])} {esc(k["dakika"])}</div>')
         return "\n".join(satirlar) or "<div style='opacity:.4'>—</div>"
 
-    ie, idp = ev.get("istatistik", {}), dep.get("istatistik", {})
-    ist_html = ""
-    if ie or idp:
-        ist_html = '<div class="ist">' + "".join([
-            istatistik_bar("Topla oynama", ie.get("possessionPct", "0"), idp.get("possessionPct", "0"), True),
-            istatistik_bar("Şut", ie.get("totalShots", "0"), idp.get("totalShots", "0")),
-            istatistik_bar("İsabetli şut", ie.get("shotsOnTarget", "0"), idp.get("shotsOnTarget", "0")),
-            istatistik_bar("Korner", ie.get("wonCorners", "0"), idp.get("wonCorners", "0")),
-            istatistik_bar("Faul", ie.get("foulsCommitted", "0"), idp.get("foulsCommitted", "0")),
-        ]) + "</div>"
+    st = mac_istatistik_al(m)
+    satirlar = []
+    for anahtar in ISTATISTIK_ALANLARI:
+        baslik, yuzde = ISTATISTIK_ETIKET[anahtar]
+        cift = st.get(anahtar) or {}
+        satirlar.append(istatistik_bar(baslik, cift.get("home"), cift.get("away"), yuzde, anahtar))
+    durum_ist = st.get("durum") or "yok"
+    if istatistik_hepsi_bos_mu(st):
+        durum_ist = "yok"
+    ist_html = (
+        f'<div class="ist" data-ist-kok="1" data-ist-durum="{esc(durum_ist)}">'
+        + "".join(satirlar)
+        + '<div class="ist-durum" data-ist-mesaj></div></div>'
+    )
 
     if m.get("video_id"):
         video_btn = (f'<button type="button" class="video-btn" '
@@ -1051,14 +1484,20 @@ def ozet_karti(m: dict) -> str:
     else:  # video bulunamadıysa YouTube aramasına düşer
         video_btn = (f'<a class="video-btn" href="{video_url(m)}" target="_blank" '
                      f'rel="noopener">▶ Video Özeti İzle</a>')
-    return f'''<div class="kart">
+    if canli:
+        durum_span = (f'<span class="durum-canli" data-etiket="1">● CANLI '
+                      f'{esc(m.get("saat_gostergesi") or m.get("durum_metin") or "")}</span>')
+    else:
+        durum_span = f'<span class="durum-ms" data-etiket="1">{esc(m.get("durum_metin") or "MS")}</span>'
+    stadyum = (" · " + esc(m["stadyum"])) if m.get("stadyum") else ""
+    return f'''<div class="kart" data-mac-id="{esc(m.get("id") or "")}">
 <div class="mac">
   {takim_logolu(ev)}
   <div class="skor">{esc(ev.get("skor") or 0)} : {esc(dep.get("skor") or 0)}</div>
   {takim_logolu(dep, dep=True)}
 </div>
 <div class="mac-alt"><span>{esc(tr_tarih(parse_utc(m["utc"])) if m["utc"] else "")}</span>
-<span class="durum-ms">{esc(m.get("durum_metin") or "MS")}{(" · " + esc(m["stadyum"])) if m.get("stadyum") else ""}</span></div>
+<span>{durum_span}{stadyum}</span></div>
 <div class="ozet-govde">
   <div>{gol_listesi(ev["id"], ev)}</div>
   <div class="dep-kolon">{gol_listesi(dep["id"], dep)}</div>
@@ -1152,13 +1591,15 @@ def render_html(veri: dict, cikti: str) -> None:
     if not tv_html:
         tv_html = '<div class="bos">Bu hafta için maç bilgisi yok.</div>'
 
-    # --- özetler: son 14 günde biten maçlar ---
+    # --- özetler: canlı maçlar + son 14 günde biten maçlar ---
     simdi_dt = parse_utc(simdi)
     ozetler = [
         m for h in haftalar for m in h["maclar"]
-        if m["durum"] == "post" and m["utc"] and parse_utc(m["utc"]) >= simdi_dt - timedelta(days=14)
+        if m["durum"] in ("post", "in") and m["utc"]
+        and parse_utc(m["utc"]) >= simdi_dt - timedelta(days=14)
     ]
-    ozetler.sort(key=lambda m: m["utc"], reverse=True)
+    ozetler.sort(key=lambda m: (0 if m["durum"] == "in" else 1,
+                                -(parse_utc(m["utc"]).timestamp() if m.get("utc") else 0)))
     ozet_html = "".join(ozet_karti(m) for m in ozetler[:16]) or \
         '<div class="bos">Son 14 günde oynanmış maç yok.</div>'
 
@@ -1170,20 +1611,30 @@ def render_html(veri: dict, cikti: str) -> None:
 
     canli_rozet = ' <span class="canli">CANLI</span>' if canli_var else ""
 
-    # --- canlı skor takibi: tarayıcı 30 sn'de bir ESPN'in açık API'sinden günceller ---
-    canli_map = {}
+    # --- canlı skor + istatistik: tarayıcı ESPN'in açık API'sinden günceller ---
+    canli_map, ist_map = {}, {}
     for h in haftalar:
         for m in h["maclar"]:
             if not m.get("id") or not m.get("utc"):
                 continue
-            if abs((parse_utc(m["utc"]) - simdi_dt).total_seconds()) > 4 * 86400:
-                continue      # bugünden 4 günden uzak/eski maçlar gerekmez
-            canli_map[str(m["id"])] = {
+            mid = str(m["id"])
+            delta = abs((parse_utc(m["utc"]) - simdi_dt).total_seconds())
+            kayit = {
                 "ev": m["ev"]["ad"], "dep": m["dep"]["ad"],
                 "evk": m["ev"].get("skor") or 0, "depk": m["dep"].get("skor") or 0,
                 "durum": m["durum"], "utc": m["utc"],
+                "ev_id": m["ev"].get("id", ""), "dep_id": m["dep"].get("id", ""),
+                "durum_ad": m.get("durum_ad") or "",
             }
-    canli_json = json.dumps({"lig": lig.get("slug") or "tur.1", "maclar": canli_map},
+            if delta <= 4 * 86400:
+                canli_map[mid] = kayit
+            if m["durum"] in ("in", "post") and delta <= 14 * 86400:
+                st = mac_istatistik_al(m)
+                ist_map[mid] = {
+                    **kayit,
+                    "eksik": istatistik_hepsi_bos_mu(st),
+                }
+    canli_json = json.dumps({"lig": lig.get("slug") or "tur.1", "maclar": canli_map, "ist": ist_map},
                             ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
     # İnadına TV markası: depoda logo dosyası varsa üst başlıkta ve altta o kullanılır,
@@ -1316,6 +1767,12 @@ def calistir(args) -> None:
             m["kanal"] = kanal_harita.get(
                 _mac_anahtari(takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])), "")
 
+        # --- maç istatistikleri: scoreboard stub'ı değil, summary endpoint'i ---
+        try:
+            mac_istatistiklerini_doldur(args.league, maclar, data_dir)
+        except Exception as e:
+            log(f"UYARI: istatistik doldurma atlandı: {e}")
+
         # --- video özetleri: son 21 günün oynanmış/canlı maçları için kaynaklardan ID çek ---
         simdi_dt = datetime.now(timezone.utc)
         eski_videolar = video_id_cache_yukle(data_dir)
@@ -1372,10 +1829,11 @@ def calistir(args) -> None:
             log(f"UYARI: puan durumu alınamadı: {e}")
 
         ozetler = [
-            m for m in maclar if m["durum"] == "post"
+            m for m in maclar if m["durum"] in ("post", "in")
             and m["utc"] and parse_utc(m["utc"]) >= simdi_dt - timedelta(days=14)
         ]
-        ozetler.sort(key=lambda m: m["utc"], reverse=True)
+        ozetler.sort(key=lambda m: (0 if m["durum"] == "in" else 1,
+                                    -(parse_utc(m["utc"]).timestamp() if m.get("utc") else 0)))
 
         veri = {
             "uretim": simdi_dt.isoformat(),
