@@ -2545,9 +2545,9 @@
      "sehir": "Konya",
      "stadyum": "Medas Konya Büyüksehir Stadyumu",
      "utc": "2026-08-29T16:00Z",
-     "video_id": "xb2grw6",
-     "video_kanal": "Maç Özetleri",
-     "video_kaynak": "dm"
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     },
     {
      "dep": {
@@ -4406,9 +4406,9 @@
      "sehir": "Kocaeli",
      "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
      "utc": "2026-09-06T17:00Z",
-     "video_id": "xb4l7iy",
-     "video_kanal": "Maç Özetleri",
-     "video_kaynak": "dm"
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     },
     {
      "dep": {
@@ -21687,5 +21687,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-09T14:38:08.511827+00:00"
+ "uretim": "2026-09-09T18:39:04.509128+00:00"
 }
