@@ -1,6 +1,126 @@
 [
  {
   "dep": {
+   "ad": "Erzurum BB",
+   "form": "WDLLW",
+   "id": "19267",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "9",
+    "goalAssists": "0",
+    "possessionPct": "27",
+    "shotAssists": "0",
+    "shotsOnTarget": "0",
+    "totalGoals": "0",
+    "totalShots": "5",
+    "wonCorners": "0"
+   },
+   "kazandi": false,
+   "kisa": "ERZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
+   "renk": "#000000",
+   "skor": "0"
+  },
+  "durum": "in",
+  "durum_ad": "STATUS_SECOND_HALF",
+  "durum_metin": "77'",
+  "ev": {
+   "ad": "Besiktas",
+   "form": "WWLLW",
+   "id": "1895",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "11",
+    "goalAssists": "2",
+    "possessionPct": "73",
+    "shotAssists": "0",
+    "shotsOnTarget": "6",
+    "totalGoals": "2",
+    "totalShots": "20",
+    "wonCorners": "10"
+   },
+   "kazandi": false,
+   "kisa": "BES",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+   "renk": "#ffffff",
+   "skor": "2"
+  },
+  "goller": [
+   {
+    "dakika": "21'",
+    "kendi_kalesine": false,
+    "oyuncu": "Emir Han Topcu",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "27'",
+    "kendi_kalesine": false,
+    "oyuncu": "Leandro Trossard",
+    "penalti": false,
+    "takim_id": "1895"
+   }
+  ],
+  "id": "401888292",
+  "istatistik": {
+   "corners": {
+    "away": 0.0,
+    "home": 10.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 9.0,
+    "home": 11.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 27.0,
+    "home": 73.0
+   },
+   "shots": {
+    "away": 5.0,
+    "home": 20.0
+   },
+   "shotsOnTarget": {
+    "away": 0.0,
+    "home": 6.0
+   }
+  },
+  "kanal": "",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "77'",
+  "sari_kartlar": [
+   {
+    "dakika": "15'",
+    "kendi_kalesine": false,
+    "oyuncu": "Orkun Kökçü",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "26'",
+    "kendi_kalesine": false,
+    "oyuncu": "Kassoum Ouattara",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "66'",
+    "kendi_kalesine": false,
+    "oyuncu": "Salih Özcan",
+    "penalti": false,
+    "takim_id": "1895"
+   }
+  ],
+  "sehir": "Istanbul",
+  "stadyum": "Vodafone Park",
+  "utc": "2026-09-11T17:00Z",
+  "video_id": "",
+  "video_kanal": "",
+  "video_kaynak": ""
+ },
+ {
+  "dep": {
    "ad": "Alanyaspor",
    "form": "WLWDL",
    "id": "9078",
@@ -2150,133 +2270,6 @@
   "utc": "2026-08-29T18:30Z",
   "video_id": "xb27vtq",
   "video_kanal": "beIN SPORTS USA",
-  "video_kaynak": "dm"
- },
- {
-  "dep": {
-   "ad": "Caykur Rizespor",
-   "form": "LWLWD",
-   "id": "7656",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "17",
-    "goalAssists": "2",
-    "possessionPct": "44.3",
-    "shotAssists": "0",
-    "shotsOnTarget": "4",
-    "totalGoals": "2",
-    "totalShots": "10",
-    "wonCorners": "0"
-   },
-   "kazandi": true,
-   "kisa": "CAY",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7656.png",
-   "renk": "#000000",
-   "skor": "2"
-  },
-  "durum": "post",
-  "durum_ad": "STATUS_FULL_TIME",
-  "durum_metin": "FT",
-  "ev": {
-   "ad": "Gaziantep FK",
-   "form": "WLWDL",
-   "id": "20070",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "10",
-    "goalAssists": "0",
-    "possessionPct": "55.7",
-    "shotAssists": "0",
-    "shotsOnTarget": "4",
-    "totalGoals": "1",
-    "totalShots": "16",
-    "wonCorners": "8"
-   },
-   "kazandi": false,
-   "kisa": "GAZ",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
-   "renk": "#000000",
-   "skor": "1"
-  },
-  "goller": [
-   {
-    "dakika": "12'",
-    "kendi_kalesine": false,
-    "oyuncu": "Emrecan Bulut",
-    "penalti": false,
-    "takim_id": "7656"
-   },
-   {
-    "dakika": "35'",
-    "kendi_kalesine": false,
-    "oyuncu": "Ali Sowe",
-    "penalti": false,
-    "takim_id": "7656"
-   },
-   {
-    "dakika": "90'",
-    "kendi_kalesine": true,
-    "oyuncu": "Zakaria Ariss",
-    "penalti": false,
-    "takim_id": "20070"
-   }
-  ],
-  "id": "401888312",
-  "istatistik": {
-   "corners": {
-    "away": 0.0,
-    "home": 8.0
-   },
-   "durum": "ok",
-   "fouls": {
-    "away": 17.0,
-    "home": 10.0
-   },
-   "kaynak": "summary",
-   "possession": {
-    "away": 44.3,
-    "home": 55.7
-   },
-   "shots": {
-    "away": 10.0,
-    "home": 16.0
-   },
-   "shotsOnTarget": {
-    "away": 4.0,
-    "home": 4.0
-   }
-  },
-  "kanal": "beIN Sports 2",
-  "kirmizi_kartlar": [],
-  "saat_gostergesi": "90'+4'",
-  "sari_kartlar": [
-   {
-    "dakika": "60'",
-    "kendi_kalesine": false,
-    "oyuncu": "Attila Mocsi",
-    "penalti": false,
-    "takim_id": "7656"
-   },
-   {
-    "dakika": "72'",
-    "kendi_kalesine": false,
-    "oyuncu": "Enver Kulasin",
-    "penalti": false,
-    "takim_id": "20070"
-   },
-   {
-    "dakika": "90'+2'",
-    "kendi_kalesine": false,
-    "oyuncu": "Dal Varesanovic",
-    "penalti": false,
-    "takim_id": "7656"
-   }
-  ],
-  "sehir": "Gaziantep",
-  "stadyum": "Gaziantep Stadium",
-  "utc": "2026-08-29T18:30Z",
-  "video_id": "xb2grt6",
-  "video_kanal": "Maç Özetleri",
   "video_kaynak": "dm"
  }
 ]
