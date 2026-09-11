@@ -4842,14 +4842,14 @@
      "id": "19267",
      "istatistik": {
       "appearances": "0",
-      "foulsCommitted": "9",
+      "foulsCommitted": "11",
       "goalAssists": "0",
-      "possessionPct": "27",
+      "possessionPct": "26.5",
       "shotAssists": "0",
       "shotsOnTarget": "0",
       "totalGoals": "0",
-      "totalShots": "5",
-      "wonCorners": "0"
+      "totalShots": "8",
+      "wonCorners": "1"
      },
      "kazandi": false,
      "kisa": "ERZ",
@@ -4868,12 +4868,12 @@
       "appearances": "0",
       "foulsCommitted": "11",
       "goalAssists": "2",
-      "possessionPct": "73",
+      "possessionPct": "73.5",
       "shotAssists": "0",
       "shotsOnTarget": "6",
       "totalGoals": "2",
-      "totalShots": "20",
-      "wonCorners": "10"
+      "totalShots": "21",
+      "wonCorners": "12"
      },
      "kazandi": false,
      "kisa": "BES",
@@ -4900,22 +4900,22 @@
     "id": "401888292",
     "istatistik": {
      "corners": {
-      "away": 0.0,
-      "home": 10.0
+      "away": 1.0,
+      "home": 12.0
      },
      "durum": "ok",
      "fouls": {
-      "away": 9.0,
+      "away": 11.0,
       "home": 11.0
      },
      "kaynak": "summary",
      "possession": {
-      "away": 27.0,
-      "home": 73.0
+      "away": 26.5,
+      "home": 73.5
      },
      "shots": {
-      "away": 5.0,
-      "home": 20.0
+      "away": 8.0,
+      "home": 21.0
      },
      "shotsOnTarget": {
       "away": 0.0,
@@ -4951,9 +4951,9 @@
     "sehir": "Istanbul",
     "stadyum": "Vodafone Park",
     "utc": "2026-09-11T17:00Z",
-    "video_id": "",
-    "video_kanal": "",
-    "video_kaynak": ""
+    "video_id": "xb6vc0u",
+    "video_kanal": "beIN SPORTS USA",
+    "video_kaynak": "dm"
    },
    {
     "dep": {
