@@ -1378,10 +1378,7 @@
      ],
      "sehir": "Rize",
      "stadyum": "Estadio Caykur Didi",
-     "utc": "2026-08-22T16:00Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "utc": "2026-08-22T16:00Z"
     },
     {
      "dep": {
@@ -1505,10 +1502,7 @@
      ],
      "sehir": "Çorum",
      "stadyum": "Çorum Sehir Stadyumu",
-     "utc": "2026-08-22T16:00Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "utc": "2026-08-22T16:00Z"
     },
     {
      "dep": {
@@ -4970,14 +4964,14 @@
       "id": "7656",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "1",
+       "foulsCommitted": "10",
        "goalAssists": "0",
-       "possessionPct": "51.9",
+       "possessionPct": "49.9",
        "shotAssists": "0",
-       "shotsOnTarget": "0",
+       "shotsOnTarget": "4",
        "totalGoals": "0",
-       "totalShots": "1",
-       "wonCorners": "0"
+       "totalShots": "9",
+       "wonCorners": "2"
       },
       "kazandi": false,
       "kisa": "CAY",
@@ -4994,14 +4988,14 @@
       "id": "20729",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "0",
+       "foulsCommitted": "13",
        "goalAssists": "0",
-       "possessionPct": "48.1",
+       "possessionPct": "50.1",
        "shotAssists": "0",
-       "shotsOnTarget": "0",
+       "shotsOnTarget": "5",
        "totalGoals": "0",
-       "totalShots": "0",
-       "wonCorners": "0"
+       "totalShots": "26",
+       "wonCorners": "8"
       },
       "kazandi": false,
       "kisa": "EYU",
@@ -5013,26 +5007,26 @@
      "id": "401888297",
      "istatistik": {
       "corners": {
-       "away": 0.0,
-       "home": 0.0
+       "away": 2.0,
+       "home": 8.0
       },
       "durum": "ok",
       "fouls": {
-       "away": 1.0,
-       "home": 0.0
+       "away": 10.0,
+       "home": 13.0
       },
       "kaynak": "summary",
       "possession": {
-       "away": 51.9,
-       "home": 48.1
+       "away": 49.9,
+       "home": 50.1
       },
       "shots": {
-       "away": 1.0,
-       "home": 0.0
+       "away": 9.0,
+       "home": 26.0
       },
       "shotsOnTarget": {
-       "away": 0.0,
-       "home": 0.0
+       "away": 4.0,
+       "home": 5.0
       }
      },
      "kanal": "",
@@ -5053,14 +5047,14 @@
       "id": "132334",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "2",
+       "foulsCommitted": "18",
        "goalAssists": "0",
-       "possessionPct": "41.8",
+       "possessionPct": "40.1",
        "shotAssists": "0",
-       "shotsOnTarget": "1",
+       "shotsOnTarget": "8",
        "totalGoals": "1",
-       "totalShots": "1",
-       "wonCorners": "0"
+       "totalShots": "12",
+       "wonCorners": "2"
       },
       "kazandi": false,
       "kisa": "COR",
@@ -5077,14 +5071,14 @@
       "id": "11429",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "2",
+       "foulsCommitted": "12",
        "goalAssists": "1",
-       "possessionPct": "58.2",
+       "possessionPct": "59.9",
        "shotAssists": "0",
-       "shotsOnTarget": "1",
+       "shotsOnTarget": "4",
        "totalGoals": "1",
-       "totalShots": "1",
-       "wonCorners": "1"
+       "totalShots": "18",
+       "wonCorners": "8"
       },
       "kazandi": false,
       "kisa": "SAM",
@@ -5111,26 +5105,26 @@
      "id": "401888383",
      "istatistik": {
       "corners": {
-       "away": 0.0,
-       "home": 1.0
+       "away": 2.0,
+       "home": 8.0
       },
       "durum": "ok",
       "fouls": {
-       "away": 2.0,
-       "home": 2.0
+       "away": 18.0,
+       "home": 12.0
       },
       "kaynak": "summary",
       "possession": {
-       "away": 41.8,
-       "home": 58.2
+       "away": 40.1,
+       "home": 59.9
       },
       "shots": {
-       "away": 1.0,
-       "home": 1.0
+       "away": 12.0,
+       "home": 18.0
       },
       "shotsOnTarget": {
-       "away": 1.0,
-       "home": 1.0
+       "away": 8.0,
+       "home": 4.0
       }
      },
      "kanal": "",
@@ -5196,7 +5190,7 @@
        "home": null
       }
      },
-     "kanal": "beIN Sports 2",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -5256,7 +5250,7 @@
        "home": null
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -5496,7 +5490,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -5561,7 +5555,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -14461,7 +14455,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -14521,7 +14515,7 @@
        "home": null
       }
      },
-     "kanal": "beIN Sports 2",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -14761,7 +14755,7 @@
        "home": null
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -15246,7 +15240,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -21432,6 +21426,24 @@
    "yedigi": "3"
   },
   {
+   "attigi": "5",
+   "averaj": "+1",
+   "b": "0",
+   "form": "3-0-2",
+   "g": "3",
+   "kisa": "CAY",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7656.png",
+   "m": "2",
+   "not": "Conference League qualifying",
+   "not_renk": "#c6d1e0",
+   "o": "5",
+   "puan": "9",
+   "sira": 4,
+   "takim": "Caykur Rizespor",
+   "takim_id": "7656",
+   "yedigi": "4"
+  },
+  {
    "attigi": "9",
    "averaj": "+5",
    "b": "1",
@@ -21440,14 +21452,32 @@
    "kisa": "TRAB",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
    "m": "1",
-   "not": "Conference League qualifying",
-   "not_renk": "#c6d1e0",
+   "not": "",
+   "not_renk": "",
    "o": "4",
    "puan": "7",
-   "sira": 4,
+   "sira": 5,
    "takim": "Trabzonspor",
    "takim_id": "997",
    "yedigi": "4"
+  },
+  {
+   "attigi": "12",
+   "averaj": "+2",
+   "b": "1",
+   "form": "2-1-2",
+   "g": "2",
+   "kisa": "COR",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132334.png",
+   "m": "2",
+   "not": "",
+   "not_renk": "",
+   "o": "5",
+   "puan": "7",
+   "sira": 6,
+   "takim": "Çorum FK",
+   "takim_id": "132334",
+   "yedigi": "10"
   },
   {
    "attigi": "7",
@@ -21462,7 +21492,7 @@
    "not_renk": "",
    "o": "4",
    "puan": "7",
-   "sira": 5,
+   "sira": 7,
    "takim": "Amed SFK",
    "takim_id": "132335",
    "yedigi": "5"
@@ -21480,7 +21510,7 @@
    "not_renk": "",
    "o": "4",
    "puan": "7",
-   "sira": 6,
+   "sira": 8,
    "takim": "Gaziantep FK",
    "takim_id": "20070",
    "yedigi": "5"
@@ -21498,7 +21528,7 @@
    "not_renk": "",
    "o": "4",
    "puan": "7",
-   "sira": 7,
+   "sira": 9,
    "takim": "Alanyaspor",
    "takim_id": "9078",
    "yedigi": "3"
@@ -21516,7 +21546,7 @@
    "not_renk": "",
    "o": "4",
    "puan": "7",
-   "sira": 8,
+   "sira": 10,
    "takim": "Genclerbirligi",
    "takim_id": "996",
    "yedigi": "7"
@@ -21534,7 +21564,7 @@
    "not_renk": "",
    "o": "4",
    "puan": "6",
-   "sira": 9,
+   "sira": 11,
    "takim": "Fenerbahce",
    "takim_id": "436",
    "yedigi": "6"
@@ -21552,27 +21582,9 @@
    "not_renk": "",
    "o": "4",
    "puan": "6",
-   "sira": 10,
+   "sira": 12,
    "takim": "Kasimpasa",
    "takim_id": "6870",
-   "yedigi": "4"
-  },
-  {
-   "attigi": "3",
-   "averaj": "-1",
-   "b": "0",
-   "form": "2-0-2",
-   "g": "2",
-   "kisa": "CAY",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7656.png",
-   "m": "2",
-   "not": "",
-   "not_renk": "",
-   "o": "4",
-   "puan": "6",
-   "sira": 11,
-   "takim": "Caykur Rizespor",
-   "takim_id": "7656",
    "yedigi": "4"
   },
   {
@@ -21588,46 +21600,28 @@
    "not_renk": "",
    "o": "4",
    "puan": "4",
-   "sira": 12,
+   "sira": 13,
    "takim": "Istanbul Basaksehir",
    "takim_id": "7914",
    "yedigi": "6"
   },
   {
-   "attigi": "5",
-   "averaj": "-1",
+   "attigi": "6",
+   "averaj": "-5",
    "b": "1",
-   "form": "1-1-2",
+   "form": "1-1-3",
    "g": "1",
    "kisa": "SAM",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
-   "m": "2",
+   "m": "3",
    "not": "",
    "not_renk": "",
-   "o": "4",
-   "puan": "4",
-   "sira": 13,
-   "takim": "Samsunspor",
-   "takim_id": "11429",
-   "yedigi": "6"
-  },
-  {
-   "attigi": "7",
-   "averaj": "-2",
-   "b": "1",
-   "form": "1-1-2",
-   "g": "1",
-   "kisa": "COR",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132334.png",
-   "m": "2",
-   "not": "",
-   "not_renk": "",
-   "o": "4",
+   "o": "5",
    "puan": "4",
    "sira": 14,
-   "takim": "Çorum FK",
-   "takim_id": "132334",
-   "yedigi": "9"
+   "takim": "Samsunspor",
+   "takim_id": "11429",
+   "yedigi": "11"
   },
   {
    "attigi": "2",
@@ -21649,21 +21643,21 @@
   },
   {
    "attigi": "2",
-   "averaj": "-4",
+   "averaj": "-6",
    "b": "0",
-   "form": "1-0-3",
+   "form": "1-0-4",
    "g": "1",
    "kisa": "EYU",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20729.png",
-   "m": "3",
+   "m": "4",
    "not": "Relegated",
    "not_renk": "#FF7F84",
-   "o": "4",
+   "o": "5",
    "puan": "3",
    "sira": 16,
    "takim": "Eyupspor",
    "takim_id": "20729",
-   "yedigi": "6"
+   "yedigi": "8"
   },
   {
    "attigi": "7",
@@ -21812,5 +21806,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-12T14:10:10.380907+00:00"
+ "uretim": "2026-09-12T17:12:24.069966+00:00"
 }

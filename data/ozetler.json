@@ -6,14 +6,14 @@
    "id": "7656",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "1",
+    "foulsCommitted": "10",
     "goalAssists": "0",
-    "possessionPct": "51.9",
+    "possessionPct": "49.9",
     "shotAssists": "0",
-    "shotsOnTarget": "0",
+    "shotsOnTarget": "4",
     "totalGoals": "0",
-    "totalShots": "1",
-    "wonCorners": "0"
+    "totalShots": "9",
+    "wonCorners": "2"
    },
    "kazandi": false,
    "kisa": "CAY",
@@ -30,14 +30,14 @@
    "id": "20729",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "0",
+    "foulsCommitted": "13",
     "goalAssists": "0",
-    "possessionPct": "48.1",
+    "possessionPct": "50.1",
     "shotAssists": "0",
-    "shotsOnTarget": "0",
+    "shotsOnTarget": "5",
     "totalGoals": "0",
-    "totalShots": "0",
-    "wonCorners": "0"
+    "totalShots": "26",
+    "wonCorners": "8"
    },
    "kazandi": false,
    "kisa": "EYU",
@@ -49,26 +49,26 @@
   "id": "401888297",
   "istatistik": {
    "corners": {
-    "away": 0.0,
-    "home": 0.0
+    "away": 2.0,
+    "home": 8.0
    },
    "durum": "ok",
    "fouls": {
-    "away": 1.0,
-    "home": 0.0
+    "away": 10.0,
+    "home": 13.0
    },
    "kaynak": "summary",
    "possession": {
-    "away": 51.9,
-    "home": 48.1
+    "away": 49.9,
+    "home": 50.1
    },
    "shots": {
-    "away": 1.0,
-    "home": 0.0
+    "away": 9.0,
+    "home": 26.0
    },
    "shotsOnTarget": {
-    "away": 0.0,
-    "home": 0.0
+    "away": 4.0,
+    "home": 5.0
    }
   },
   "kanal": "",
@@ -89,14 +89,14 @@
    "id": "132334",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "2",
+    "foulsCommitted": "18",
     "goalAssists": "0",
-    "possessionPct": "41.8",
+    "possessionPct": "40.1",
     "shotAssists": "0",
-    "shotsOnTarget": "1",
+    "shotsOnTarget": "8",
     "totalGoals": "1",
-    "totalShots": "1",
-    "wonCorners": "0"
+    "totalShots": "12",
+    "wonCorners": "2"
    },
    "kazandi": false,
    "kisa": "COR",
@@ -113,14 +113,14 @@
    "id": "11429",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "2",
+    "foulsCommitted": "12",
     "goalAssists": "1",
-    "possessionPct": "58.2",
+    "possessionPct": "59.9",
     "shotAssists": "0",
-    "shotsOnTarget": "1",
+    "shotsOnTarget": "4",
     "totalGoals": "1",
-    "totalShots": "1",
-    "wonCorners": "1"
+    "totalShots": "18",
+    "wonCorners": "8"
    },
    "kazandi": false,
    "kisa": "SAM",
@@ -147,26 +147,26 @@
   "id": "401888383",
   "istatistik": {
    "corners": {
-    "away": 0.0,
-    "home": 1.0
+    "away": 2.0,
+    "home": 8.0
    },
    "durum": "ok",
    "fouls": {
-    "away": 2.0,
-    "home": 2.0
+    "away": 18.0,
+    "home": 12.0
    },
    "kaynak": "summary",
    "possession": {
-    "away": 41.8,
-    "home": 58.2
+    "away": 40.1,
+    "home": 59.9
    },
    "shots": {
-    "away": 1.0,
-    "home": 1.0
+    "away": 12.0,
+    "home": 18.0
    },
    "shotsOnTarget": {
-    "away": 1.0,
-    "home": 1.0
+    "away": 8.0,
+    "home": 4.0
    }
   },
   "kanal": "",
