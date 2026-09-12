@@ -2,7 +2,7 @@
  {
   "dep": {
    "ad": "Erzurum BB",
-   "form": "WDLLW",
+   "form": "LWDLL",
    "id": "19267",
    "istatistik": {
     "appearances": "0",
@@ -21,12 +21,12 @@
    "renk": "#000000",
    "skor": "0"
   },
-  "durum": "in",
-  "durum_ad": "STATUS_SECOND_HALF",
-  "durum_metin": "77'",
+  "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
+  "durum_metin": "FT",
   "ev": {
    "ad": "Besiktas",
-   "form": "WWLLW",
+   "form": "WWWLL",
    "id": "1895",
    "istatistik": {
     "appearances": "0",
@@ -35,15 +35,15 @@
     "possessionPct": "73.5",
     "shotAssists": "0",
     "shotsOnTarget": "6",
-    "totalGoals": "2",
+    "totalGoals": "3",
     "totalShots": "21",
     "wonCorners": "12"
    },
-   "kazandi": false,
+   "kazandi": true,
    "kisa": "BES",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
    "renk": "#ffffff",
-   "skor": "2"
+   "skor": "3"
   },
   "goller": [
    {
@@ -57,6 +57,13 @@
     "dakika": "27'",
     "kendi_kalesine": false,
     "oyuncu": "Leandro Trossard",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "81'",
+    "kendi_kalesine": true,
+    "oyuncu": "Yakup Kırtay",
     "penalti": false,
     "takim_id": "1895"
    }
@@ -88,7 +95,7 @@
   },
   "kanal": "",
   "kirmizi_kartlar": [],
-  "saat_gostergesi": "77'",
+  "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
    {
     "dakika": "15'",
@@ -934,7 +941,7 @@
  {
   "dep": {
    "ad": "Besiktas",
-   "form": "WWLLW",
+   "form": "WWWLL",
    "id": "1895",
    "istatistik": {
     "appearances": "0",
@@ -1113,7 +1120,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Erzurum BB",
-   "form": "WDLLW",
+   "form": "LWDLL",
    "id": "19267",
    "istatistik": {
     "appearances": "0",
@@ -1586,7 +1593,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Besiktas",
-   "form": "WWLLW",
+   "form": "WWWLL",
    "id": "1895",
    "istatistik": {
     "appearances": "0",
