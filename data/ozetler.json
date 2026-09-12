@@ -2,16 +2,16 @@
  {
   "dep": {
    "ad": "Goztepe",
-   "form": "LLLDL",
+   "form": "DLLLD",
    "id": "789",
    "istatistik": {
     "appearances": "0",
     "foulsCommitted": "10",
-    "goalAssists": "0",
+    "goalAssists": "1",
     "possessionPct": "36.3",
     "shotAssists": "0",
     "shotsOnTarget": "4",
-    "totalGoals": "0",
+    "totalGoals": "2",
     "totalShots": "14",
     "wonCorners": "3"
    },
@@ -19,23 +19,23 @@
    "kisa": "GOZ",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
    "renk": "#000000",
-   "skor": "0"
+   "skor": "2"
   },
-  "durum": "in",
-  "durum_ad": "STATUS_FIRST_HALF",
-  "durum_metin": "11'",
+  "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
+  "durum_metin": "FT",
   "ev": {
    "ad": "Alanyaspor",
-   "form": "WLWDL",
+   "form": "DWLWD",
    "id": "9078",
    "istatistik": {
     "appearances": "0",
     "foulsCommitted": "8",
-    "goalAssists": "0",
+    "goalAssists": "2",
     "possessionPct": "63.7",
     "shotAssists": "0",
     "shotsOnTarget": "4",
-    "totalGoals": "0",
+    "totalGoals": "2",
     "totalShots": "20",
     "wonCorners": "9"
    },
@@ -43,9 +43,38 @@
    "kisa": "ALA",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
    "renk": "#000000",
-   "skor": "0"
+   "skor": "2"
   },
-  "goller": [],
+  "goller": [
+   {
+    "dakika": "28'",
+    "kendi_kalesine": false,
+    "oyuncu": "Rhaldney",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "63'",
+    "kendi_kalesine": false,
+    "oyuncu": "Paolo Fernandes",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "73'",
+    "kendi_kalesine": false,
+    "oyuncu": "Juan",
+    "penalti": true,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "75'",
+    "kendi_kalesine": false,
+    "oyuncu": "Gaïus Makouta",
+    "penalti": false,
+    "takim_id": "9078"
+   }
+  ],
   "id": "401888296",
   "istatistik": {
    "corners": {
@@ -73,8 +102,44 @@
   },
   "kanal": "",
   "kirmizi_kartlar": [],
-  "saat_gostergesi": "11'",
-  "sari_kartlar": [],
+  "saat_gostergesi": "90'+6'",
+  "sari_kartlar": [
+   {
+    "dakika": "22'",
+    "kendi_kalesine": false,
+    "oyuncu": "Juan",
+    "penalti": false,
+    "takim_id": "789"
+   },
+   {
+    "dakika": "65'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ianis Hagi",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "72'",
+    "kendi_kalesine": false,
+    "oyuncu": "Nuno Lima",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "81'",
+    "kendi_kalesine": false,
+    "oyuncu": "",
+    "penalti": false,
+    "takim_id": "9078"
+   },
+   {
+    "dakika": "82'",
+    "kendi_kalesine": false,
+    "oyuncu": "Arda Okan Kurtulan",
+    "penalti": false,
+    "takim_id": "789"
+   }
+  ],
   "sehir": "Antalya",
   "stadyum": "Kirbiyik Holding Stadyumu",
   "utc": "2026-09-12T17:00Z",
@@ -85,7 +150,7 @@
  {
   "dep": {
    "ad": "Trabzonspor",
-   "form": "WLLWL",
+   "form": "LWLLW",
    "id": "997",
    "istatistik": {
     "appearances": "0",
@@ -104,12 +169,12 @@
    "renk": "#5699eb",
    "skor": "0"
   },
-  "durum": "in",
-  "durum_ad": "STATUS_FIRST_HALF",
-  "durum_metin": "12'",
+  "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
+  "durum_metin": "FT",
   "ev": {
    "ad": "Konyaspor",
-   "form": "LLLLL",
+   "form": "WLLLL",
    "id": "7648",
    "istatistik": {
     "appearances": "0",
@@ -122,7 +187,7 @@
     "totalShots": "11",
     "wonCorners": "3"
    },
-   "kazandi": false,
+   "kazandi": true,
    "kisa": "KNY",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
    "renk": "#288A00",
@@ -164,8 +229,51 @@
   },
   "kanal": "",
   "kirmizi_kartlar": [],
-  "saat_gostergesi": "12'",
-  "sari_kartlar": [],
+  "saat_gostergesi": "90'+4'",
+  "sari_kartlar": [
+   {
+    "dakika": "45'+2'",
+    "kendi_kalesine": false,
+    "oyuncu": "Deniz Turuc",
+    "penalti": false,
+    "takim_id": "7648"
+   },
+   {
+    "dakika": "58'",
+    "kendi_kalesine": false,
+    "oyuncu": "Aral Simsir",
+    "penalti": false,
+    "takim_id": "997"
+   },
+   {
+    "dakika": "59'",
+    "kendi_kalesine": false,
+    "oyuncu": "Mustafa Eskihellac",
+    "penalti": false,
+    "takim_id": "997"
+   },
+   {
+    "dakika": "83'",
+    "kendi_kalesine": false,
+    "oyuncu": "André Onana",
+    "penalti": false,
+    "takim_id": "997"
+   },
+   {
+    "dakika": "85'",
+    "kendi_kalesine": false,
+    "oyuncu": "Melih Ibrahimoglu",
+    "penalti": false,
+    "takim_id": "7648"
+   },
+   {
+    "dakika": "89'",
+    "kendi_kalesine": false,
+    "oyuncu": "Chidozie Awaziem",
+    "penalti": false,
+    "takim_id": "7648"
+   }
+  ],
   "sehir": "Konya",
   "stadyum": "Medas Konya Büyüksehir Stadyumu",
   "utc": "2026-09-12T17:00Z",
@@ -579,7 +687,7 @@
  {
   "dep": {
    "ad": "Alanyaspor",
-   "form": "WLWDL",
+   "form": "DWLWD",
    "id": "9078",
    "istatistik": {
     "appearances": "0",
@@ -709,7 +817,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Goztepe",
-   "form": "LLLDL",
+   "form": "DLLLD",
    "id": "789",
    "istatistik": {
     "appearances": "0",
@@ -978,7 +1086,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Trabzonspor",
-   "form": "WLLWL",
+   "form": "LWLLW",
    "id": "997",
    "istatistik": {
     "appearances": "0",
@@ -1546,7 +1654,7 @@
  {
   "dep": {
    "ad": "Konyaspor",
-   "form": "LLLLL",
+   "form": "WLLLL",
    "id": "7648",
    "istatistik": {
     "appearances": "0",
@@ -1850,7 +1958,7 @@
  {
   "dep": {
    "ad": "Trabzonspor",
-   "form": "WLLWL",
+   "form": "LWLLW",
    "id": "997",
    "istatistik": {
     "appearances": "0",
