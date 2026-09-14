@@ -1,6 +1,139 @@
 [
  {
   "dep": {
+   "ad": "Fenerbahce",
+   "form": "DDLWW",
+   "id": "436",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "8",
+    "goalAssists": "0",
+    "possessionPct": "68.1",
+    "shotAssists": "0",
+    "shotsOnTarget": "4",
+    "totalGoals": "0",
+    "totalShots": "15",
+    "wonCorners": "6"
+   },
+   "kazandi": false,
+   "kisa": "FEN",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+   "renk": "#ffff00",
+   "skor": "0"
+  },
+  "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Gaziantep FK",
+   "form": "DWLWD",
+   "id": "20070",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "16",
+    "goalAssists": "0",
+    "possessionPct": "31.9",
+    "shotAssists": "0",
+    "shotsOnTarget": "0",
+    "totalGoals": "0",
+    "totalShots": "11",
+    "wonCorners": "6"
+   },
+   "kazandi": false,
+   "kisa": "GAZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
+   "renk": "#000000",
+   "skor": "0"
+  },
+  "goller": [],
+  "id": "401888298",
+  "istatistik": {
+   "corners": {
+    "away": 6.0,
+    "home": 6.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 8.0,
+    "home": 16.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 68.1,
+    "home": 31.9
+   },
+   "shots": {
+    "away": 15.0,
+    "home": 11.0
+   },
+   "shotsOnTarget": {
+    "away": 4.0,
+    "home": 0.0
+   }
+  },
+  "kanal": "",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+3'",
+  "sari_kartlar": [
+   {
+    "dakika": "4'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ulrich Meleke",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "83'",
+    "kendi_kalesine": false,
+    "oyuncu": "Irfan Can Kahveci",
+    "penalti": false,
+    "takim_id": "436"
+   },
+   {
+    "dakika": "83'",
+    "kendi_kalesine": false,
+    "oyuncu": "Arda Kizildag",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "83'",
+    "kendi_kalesine": false,
+    "oyuncu": "Vedat Muriqi",
+    "penalti": false,
+    "takim_id": "436"
+   },
+   {
+    "dakika": "84'",
+    "kendi_kalesine": false,
+    "oyuncu": "Myenty Abena",
+    "penalti": false,
+    "takim_id": "20070"
+   },
+   {
+    "dakika": "84'",
+    "kendi_kalesine": false,
+    "oyuncu": "Oguz Aydin",
+    "penalti": false,
+    "takim_id": "436"
+   },
+   {
+    "dakika": "90'+2'",
+    "kendi_kalesine": false,
+    "oyuncu": "Sontje Hansen",
+    "penalti": false,
+    "takim_id": "20070"
+   }
+  ],
+  "sehir": "Gaziantep",
+  "stadyum": "Gaziantep Stadium",
+  "utc": "2026-09-14T17:00Z",
+  "video_id": "xb7olju",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
+ },
+ {
+  "dep": {
    "ad": "Istanbul Basaksehir",
    "form": "LLDLW",
    "id": "7914",
@@ -1216,7 +1349,7 @@
  {
   "dep": {
    "ad": "Gaziantep FK",
-   "form": "WLWDL",
+   "form": "DWLWD",
    "id": "20070",
    "istatistik": {
     "appearances": "0",
@@ -1946,7 +2079,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Fenerbahce",
-   "form": "DLWWW",
+   "form": "DDLWW",
    "id": "436",
    "istatistik": {
     "appearances": "0",
@@ -2073,132 +2206,5 @@
   "video_id": "xb4avu6",
   "video_kanal": "beIN SPORTS USA",
   "video_kaynak": "dm"
- },
- {
-  "dep": {
-   "ad": "Konyaspor",
-   "form": "WLLLL",
-   "id": "7648",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "0",
-    "goalAssists": "0",
-    "possessionPct": "0",
-    "shotAssists": "0",
-    "shotsOnTarget": "0",
-    "totalGoals": "0",
-    "totalShots": "0",
-    "wonCorners": "0"
-   },
-   "kazandi": false,
-   "kisa": "KNY",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
-   "renk": "#288A00",
-   "skor": "0"
-  },
-  "durum": "post",
-  "durum_ad": "STATUS_FULL_TIME",
-  "durum_metin": "FT",
-  "ev": {
-   "ad": "Erzurum BB",
-   "form": "LWDLL",
-   "id": "19267",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "0",
-    "goalAssists": "1",
-    "possessionPct": "0",
-    "shotAssists": "0",
-    "shotsOnTarget": "0",
-    "totalGoals": "1",
-    "totalShots": "0",
-    "wonCorners": "0"
-   },
-   "kazandi": true,
-   "kisa": "ERZ",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
-   "renk": "#000000",
-   "skor": "1"
-  },
-  "goller": [
-   {
-    "dakika": "17'",
-    "kendi_kalesine": false,
-    "oyuncu": "Eren Tozlu",
-    "penalti": false,
-    "takim_id": "19267"
-   }
-  ],
-  "id": "401888299",
-  "istatistik": {
-   "corners": {
-    "away": 0.0,
-    "home": 0.0
-   },
-   "durum": "ok",
-   "fouls": {
-    "away": 0.0,
-    "home": 0.0
-   },
-   "kaynak": "summary",
-   "possession": {
-    "away": 0.0,
-    "home": 0.0
-   },
-   "shots": {
-    "away": 0.0,
-    "home": 0.0
-   },
-   "shotsOnTarget": {
-    "away": 0.0,
-    "home": 0.0
-   }
-  },
-  "kanal": "",
-  "kirmizi_kartlar": [],
-  "saat_gostergesi": "90'+4'",
-  "sari_kartlar": [
-   {
-    "dakika": "26'",
-    "kendi_kalesine": false,
-    "oyuncu": "Rayyan Baniya",
-    "penalti": false,
-    "takim_id": "7648"
-   },
-   {
-    "dakika": "45'+2'",
-    "kendi_kalesine": false,
-    "oyuncu": "Marko Jevtovic",
-    "penalti": false,
-    "takim_id": "7648"
-   },
-   {
-    "dakika": "45'+2'",
-    "kendi_kalesine": false,
-    "oyuncu": "Jackson Muleka",
-    "penalti": false,
-    "takim_id": "7648"
-   },
-   {
-    "dakika": "72'",
-    "kendi_kalesine": false,
-    "oyuncu": "Adil Demirbag",
-    "penalti": false,
-    "takim_id": "7648"
-   },
-   {
-    "dakika": "75'",
-    "kendi_kalesine": false,
-    "oyuncu": "Martín Rodríguez",
-    "penalti": false,
-    "takim_id": "19267"
-   }
-  ],
-  "sehir": "Erzurum",
-  "stadyum": "Erzurum Kazim Karabekir",
-  "utc": "2026-09-05T14:00Z",
-  "video_id": "",
-  "video_kanal": "",
-  "video_kaynak": ""
  }
 ]

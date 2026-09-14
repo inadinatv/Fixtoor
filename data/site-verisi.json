@@ -395,7 +395,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -509,7 +509,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -1531,7 +1531,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -1652,7 +1652,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -2218,10 +2218,7 @@
      ],
      "sehir": "Kocaeli",
      "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
-     "utc": "2026-08-24T18:30Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "utc": "2026-08-24T18:30Z"
     }
    ],
    "no": 2
@@ -2700,7 +2697,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -3072,7 +3069,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -3870,7 +3867,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -4643,7 +4640,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -5926,23 +5923,43 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "8",
+       "goalAssists": "0",
+       "possessionPct": "68.1",
+       "shotAssists": "0",
+       "shotsOnTarget": "4",
+       "totalGoals": "0",
+       "totalShots": "15",
+       "wonCorners": "6"
+      },
       "kazandi": false,
       "kisa": "FEN",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
       "renk": "#ffff00",
       "skor": "0"
      },
-     "durum": "pre",
-     "durum_ad": "STATUS_SCHEDULED",
-     "durum_metin": "Scheduled",
+     "durum": "post",
+     "durum_ad": "STATUS_FULL_TIME",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "16",
+       "goalAssists": "0",
+       "possessionPct": "31.9",
+       "shotAssists": "0",
+       "shotsOnTarget": "0",
+       "totalGoals": "0",
+       "totalShots": "11",
+       "wonCorners": "6"
+      },
       "kazandi": false,
       "kisa": "GAZ",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
@@ -5953,35 +5970,88 @@
      "id": "401888298",
      "istatistik": {
       "corners": {
-       "away": null,
-       "home": null
+       "away": 6.0,
+       "home": 6.0
       },
-      "durum": "yok",
+      "durum": "ok",
       "fouls": {
-       "away": null,
-       "home": null
+       "away": 8.0,
+       "home": 16.0
       },
-      "kaynak": null,
+      "kaynak": "summary",
       "possession": {
-       "away": null,
-       "home": null
+       "away": 68.1,
+       "home": 31.9
       },
       "shots": {
-       "away": null,
-       "home": null
+       "away": 15.0,
+       "home": 11.0
       },
       "shotsOnTarget": {
-       "away": null,
-       "home": null
+       "away": 4.0,
+       "home": 0.0
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "90'+3'",
+     "sari_kartlar": [
+      {
+       "dakika": "4'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ulrich Meleke",
+       "penalti": false,
+       "takim_id": "20070"
+      },
+      {
+       "dakika": "83'",
+       "kendi_kalesine": false,
+       "oyuncu": "Irfan Can Kahveci",
+       "penalti": false,
+       "takim_id": "436"
+      },
+      {
+       "dakika": "83'",
+       "kendi_kalesine": false,
+       "oyuncu": "Arda Kizildag",
+       "penalti": false,
+       "takim_id": "20070"
+      },
+      {
+       "dakika": "83'",
+       "kendi_kalesine": false,
+       "oyuncu": "Vedat Muriqi",
+       "penalti": false,
+       "takim_id": "436"
+      },
+      {
+       "dakika": "84'",
+       "kendi_kalesine": false,
+       "oyuncu": "Myenty Abena",
+       "penalti": false,
+       "takim_id": "20070"
+      },
+      {
+       "dakika": "84'",
+       "kendi_kalesine": false,
+       "oyuncu": "Oguz Aydin",
+       "penalti": false,
+       "takim_id": "436"
+      },
+      {
+       "dakika": "90'+2'",
+       "kendi_kalesine": false,
+       "oyuncu": "Sontje Hansen",
+       "penalti": false,
+       "takim_id": "20070"
+      }
+     ],
      "sehir": "Gaziantep",
      "stadyum": "Gaziantep Stadium",
-     "utc": "2026-09-14T17:00Z"
+     "utc": "2026-09-14T17:00Z",
+     "video_id": "xb7olju",
+     "video_kanal": "beIN SPORTS USA",
+     "video_kaynak": "dm"
     }
    ],
    "no": 5
@@ -6111,7 +6181,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -6280,7 +6350,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -6365,7 +6435,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -6656,7 +6726,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -6850,7 +6920,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -7275,7 +7345,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -7381,7 +7451,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -7866,7 +7936,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -7940,7 +8010,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -8305,7 +8375,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -8651,7 +8721,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -8896,7 +8966,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -9090,7 +9160,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -9441,7 +9511,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -9621,7 +9691,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10120,7 +10190,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10180,7 +10250,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -10651,7 +10721,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10771,7 +10841,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -11210,7 +11280,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -11270,7 +11340,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -11741,7 +11811,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -11861,7 +11931,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -12300,7 +12370,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -12360,7 +12430,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -12531,7 +12601,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -12845,7 +12915,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -13270,7 +13340,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -13496,7 +13566,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -13681,7 +13751,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -13875,7 +13945,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -14286,7 +14356,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -14480,7 +14550,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -14891,7 +14961,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -14905,7 +14975,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -14940,7 +15010,7 @@
        "home": null
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -15436,7 +15506,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -15545,7 +15615,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -15570,7 +15640,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -15861,7 +15931,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -15995,7 +16065,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -16346,7 +16416,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -16660,7 +16730,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -17011,7 +17081,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -17085,7 +17155,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -17810,7 +17880,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -17856,7 +17926,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -18115,7 +18185,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -18281,7 +18351,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -18840,7 +18910,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -18900,7 +18970,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -19071,7 +19141,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -19131,7 +19201,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -19870,7 +19940,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -19930,7 +20000,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -20221,7 +20291,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -20641,7 +20711,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -21020,7 +21090,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -21080,7 +21150,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -21251,7 +21321,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DLWWW",
+      "form": "DDLWW",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -21371,7 +21441,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "WLWDL",
+      "form": "DWLWD",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -21965,6 +22035,24 @@
    "yedigi": "4"
   },
   {
+   "attigi": "7",
+   "averaj": "+2",
+   "b": "2",
+   "form": "2-2-1",
+   "g": "2",
+   "kisa": "GAZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
+   "m": "1",
+   "not": "",
+   "not_renk": "",
+   "o": "5",
+   "puan": "8",
+   "sira": 7,
+   "takim": "Gaziantep FK",
+   "takim_id": "20070",
+   "yedigi": "5"
+  },
+  {
    "attigi": "6",
    "averaj": "+1",
    "b": "2",
@@ -21977,7 +22065,7 @@
    "not_renk": "",
    "o": "5",
    "puan": "8",
-   "sira": 7,
+   "sira": 8,
    "takim": "Alanyaspor",
    "takim_id": "9078",
    "yedigi": "5"
@@ -21995,7 +22083,7 @@
    "not_renk": "",
    "o": "5",
    "puan": "7",
-   "sira": 8,
+   "sira": 9,
    "takim": "Trabzonspor",
    "takim_id": "997",
    "yedigi": "5"
@@ -22013,28 +22101,28 @@
    "not_renk": "",
    "o": "5",
    "puan": "7",
-   "sira": 9,
+   "sira": 10,
    "takim": "Çorum FK",
    "takim_id": "132334",
    "yedigi": "10"
   },
   {
-   "attigi": "7",
+   "attigi": "8",
    "averaj": "+2",
    "b": "1",
-   "form": "2-1-1",
+   "form": "2-1-2",
    "g": "2",
-   "kisa": "GAZ",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
-   "m": "1",
+   "kisa": "FEN",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+   "m": "2",
    "not": "",
    "not_renk": "",
-   "o": "4",
+   "o": "5",
    "puan": "7",
-   "sira": 10,
-   "takim": "Gaziantep FK",
-   "takim_id": "20070",
-   "yedigi": "5"
+   "sira": 11,
+   "takim": "Fenerbahce",
+   "takim_id": "436",
+   "yedigi": "6"
   },
   {
    "attigi": "5",
@@ -22049,28 +22137,10 @@
    "not_renk": "",
    "o": "5",
    "puan": "7",
-   "sira": 11,
+   "sira": 12,
    "takim": "Genclerbirligi",
    "takim_id": "996",
    "yedigi": "9"
-  },
-  {
-   "attigi": "8",
-   "averaj": "+2",
-   "b": "0",
-   "form": "2-0-2",
-   "g": "2",
-   "kisa": "FEN",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
-   "m": "2",
-   "not": "",
-   "not_renk": "",
-   "o": "4",
-   "puan": "6",
-   "sira": 12,
-   "takim": "Fenerbahce",
-   "takim_id": "436",
-   "yedigi": "6"
   },
   {
    "attigi": "6",
@@ -22291,5 +22361,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-14T14:06:12.691663+00:00"
+ "uretim": "2026-09-14T19:23:39.846910+00:00"
 }
