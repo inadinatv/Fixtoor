@@ -5066,9 +5066,9 @@
      "sehir": "Istanbul",
      "stadyum": "Esenyurt Necmi Kadioglu Stadi",
      "utc": "2026-09-12T14:00Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "video_id": "xb7idpa",
+     "video_kanal": "Maç Özetleri",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -5792,9 +5792,9 @@
      "sehir": "Diyarbakir",
      "stadyum": "Diyarbakir Stadyumu",
      "utc": "2026-09-13T17:00Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "video_id": "xb7ib9u",
+     "video_kanal": "Maç Özetleri",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -22291,5 +22291,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-14T01:07:50.384593+00:00"
+ "uretim": "2026-09-14T06:20:17.702225+00:00"
 }
