@@ -9,6 +9,7 @@ Veri kaynağı : ESPN gizli (ücretsiz, anahtarsız) API
 Kullanım:
     python3 bot/fiktoor.py                # API'den çek, veri + HTML üret
     python3 bot/fiktoor.py --offline      # elimizdeki veriden HTML üret (ağ yoksa)
+    python3 bot/fiktoor.py --strict       # API hatasında önbelleğe dönme
     python3 bot/fiktoor.py --league eng.1 # başka lig (isteğe bağlı)
 """
 
@@ -17,7 +18,9 @@ import html as html_mod
 import json
 import os
 import re
+import socket
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.parse
@@ -62,9 +65,19 @@ GUNLER_KISA = ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"]
 AYLAR = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"]
 
 HTTP_TIMEOUT = 25
-HTTP_DENE = 3
+HTTP_DENE = 4
 IST_OZET_GUN = 21
 IST_ISTEK_ARALIK = 0.3
+
+# ESPN zaman zaman site.api hostunu GitHub Actions IP'lerine kapatıyor veya
+# kısa süreli TLS/5xx hatası veriyor. Aynı veriyi site.web hostundan da sunuyor;
+# zorunlu isteklerde iki hostu sırayla denemek botun tek noktaya bağlı kalmasını
+# engeller. SITE_API, eski kullanıcıların ve testlerin beklediği birincil uçtur.
+ESPN_API_BASELERI = (SITE_API, SITE_WEB_API)
+
+CI_GERI_DUS = os.environ.get("FIXTOOR_CI_GERI_DUS", "1").strip().lower() not in (
+    "0", "false", "no", "off"
+)
 
 LIG_ADLARI = {
     "tur.1": "Trendyol Süper Lig",
@@ -85,17 +98,121 @@ def _fixtoor_debug() -> bool:
     return os.environ.get("FIXTOOR_DEBUG", "").strip().lower() in ("1", "true", "yes")
 
 
-def http_get_json(url: str, zorunlu: bool = True, timeout: int = HTTP_TIMEOUT):
-    """URL'den JSON çeker; 404/429/5xx/boş/bozuk yanıtta çökmez.
+def _json_oku(yol: str):
+    with open(yol, encoding="utf-8") as f:
+        return json.load(f)
 
-    zorunlu=False ise başarısızlıkta None döner (istatistik gibi opsiyonel uçlar).
+
+def json_yaz_atomik(yol: str, icerik) -> None:
+    """JSON'u aynı dizinde geçici dosyaya yazıp atomik olarak yerine koyar.
+
+    GitHub Actions/runner kapanması sırasında doğrudan ``open(..., 'w')`` ile
+    yarım kalmış JSON bırakmak sonraki çalıştırmanın önbelleğini bozuyordu. Aynı
+    dizinde ``os.replace`` kullanmak okuyuculara ya eski ya da yeni dosyayı
+    gösterir; hiçbir zaman yarım dosya görünmez.
+    """
+    klasor = os.path.dirname(os.path.abspath(yol)) or "."
+    os.makedirs(klasor, exist_ok=True)
+    gecici = None
+    try:
+        fd, gecici = tempfile.mkstemp(prefix=".fixtoor-", suffix=".tmp", dir=klasor)
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(icerik, f, ensure_ascii=False, indent=1, sort_keys=True)
+            f.write("\n")
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(gecici, yol)
+        gecici = None
+    finally:
+        if gecici:
+            try:
+                os.unlink(gecici)
+            except FileNotFoundError:
+                pass
+
+
+def metin_yaz_atomik(yol: str, icerik: str) -> None:
+    """Metin çıktısını da atomik şekilde yazar."""
+    klasor = os.path.dirname(os.path.abspath(yol)) or "."
+    os.makedirs(klasor, exist_ok=True)
+    gecici = None
+    try:
+        fd, gecici = tempfile.mkstemp(prefix=".fixtoor-", suffix=".tmp", dir=klasor)
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(icerik)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(gecici, yol)
+        gecici = None
+    finally:
+        if gecici:
+            try:
+                os.unlink(gecici)
+            except FileNotFoundError:
+                pass
+
+
+def veri_gecerli_mi(veri) -> bool:
+    """Üretimden önce/önbellekten okurken temel site veri sözleşmesini kontrol eder."""
+    if not isinstance(veri, dict):
+        return False
+    if not isinstance(veri.get("lig"), dict):
+        return False
+    if not veri.get("uretim") or not isinstance(veri.get("haftalar"), list):
+        return False
+    try:
+        parse_utc(str(veri["uretim"]))
+    except (TypeError, ValueError):
+        return False
+    if not isinstance(veri.get("puan_durumu", []), list):
+        return False
+    for hafta in veri["haftalar"]:
+        if not isinstance(hafta, dict) or not isinstance(hafta.get("maclar"), list):
+            return False
+        for mac in hafta["maclar"]:
+            if not isinstance(mac, dict) or not mac.get("id") or not mac.get("utc"):
+                return False
+            try:
+                parse_utc(str(mac["utc"]))
+            except (TypeError, ValueError):
+                return False
+            if not isinstance(mac.get("ev"), dict) or not isinstance(mac.get("dep"), dict):
+                return False
+            if not mac["ev"].get("ad") or not mac["dep"].get("ad"):
+                return False
+    return True
+
+
+def site_verisi_yukle(data_dir: str):
+    """Son sağlam site-verisi.json'ı yükler; bozuk/eksik önbelleği yok sayar."""
+    yol = os.path.join(data_dir, "site-verisi.json")
+    try:
+        veri = _json_oku(yol)
+    except (OSError, json.JSONDecodeError) as e:
+        log(f"önbellek okunamadı: {yol} -> {e}")
+        return None
+    if not veri_gecerli_mi(veri):
+        log(f"önbellek geçersiz, yok sayılıyor: {yol}")
+        return None
+    return veri
+
+
+def http_get_json(url: str, zorunlu: bool = True, timeout: int = HTTP_TIMEOUT):
+    """URL'den JSON çeker; geçici ağ/API hatalarında kontrollü olarak yeniden dener.
+
+    ``zorunlu=False`` opsiyonel uçlarda None döndürür. Zorunlu uçlarda ise son
+    hatayı anlamlı bir RuntimeError olarak yükseltir. 404/401/403 gibi kalıcı
+    hatalar bekletmeden sonlandırılır; 429 ve 5xx yanıtları yeniden denenir.
     """
     son_hata = None
     for deneme in range(1, HTTP_DENE + 1):
         try:
             req = urllib.request.Request(url, headers={
-                "User-Agent": "FixtoorBot/1.0 (+github)",
-                "Accept": "application/json",
+                # Bazı CDN/WAF'ler boş veya çok genel User-Agent'ı reddediyor.
+                "User-Agent": "FixtoorBot/1.1 (+https://github.com/inadinatv/Fixtoor)",
+                "Accept": "application/json, text/plain;q=0.9, */*;q=0.8",
+                "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.7",
+                "Cache-Control": "no-cache",
             })
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 ham = resp.read()
@@ -113,19 +230,65 @@ def http_get_json(url: str, zorunlu: bool = True, timeout: int = HTTP_TIMEOUT):
             if e.code in (404, 401, 403):
                 break
             if e.code == 429:
-                time.sleep(8 * deneme)
+                # Retry-After saniye olabilir; kötü/çok uzun değerleri sınırlıyoruz.
+                try:
+                    bekle = min(max(int(e.headers.get("Retry-After", "0")), 2), 30)
+                except (TypeError, ValueError):
+                    bekle = 2 * deneme
+                if deneme < HTTP_DENE:
+                    time.sleep(bekle)
                 continue
             if e.code >= 500:
-                time.sleep(2 * deneme)
+                if deneme < HTTP_DENE:
+                    time.sleep(min(2 * deneme, 8))
                 continue
             break
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError, ValueError) as e:
+        except (urllib.error.URLError, TimeoutError, socket.timeout,
+                ConnectionError, json.JSONDecodeError, OSError, ValueError) as e:
             son_hata = e
             log(f"istek başarısız ({deneme}/{HTTP_DENE}): {url} -> {e}")
-            time.sleep(2 * deneme)
+            if deneme < HTTP_DENE:
+                time.sleep(min(2 * deneme, 8))
     if zorunlu:
         raise RuntimeError(f"API'ye ulaşılamadı: {url} ({son_hata})")
     return None
+
+
+def _espn_url(slug: str, yol: str, taban: str) -> str:
+    return f'{taban.format(slug=urllib.parse.quote(str(slug), safe="."))}/{yol.lstrip("/")}'
+
+
+def espn_json_al(slug: str, yol: str, *, timeout: int = HTTP_TIMEOUT,
+                 dogrula=None, aciklama: str = "ESPN verisi"):
+    """ESPN'in iki açık API hostunu sırayla dener.
+
+    API geçici olarak erişilemezse çağıran katman mevcut sağlam veriye geri
+    dönebilir; bu yardımcı fonksiyon tek bir host arızasının tüm işi kesmesini
+    engeller.
+    """
+    hatalar = []
+    for taban in ESPN_API_BASELERI:
+        url = _espn_url(slug, yol, taban)
+        try:
+            data = http_get_json(url, zorunlu=False, timeout=timeout)
+        except Exception as e:  # özel http mock'ları da akışı bozmasın
+            data = None
+            hatalar.append(f"{url}: {e}")
+        if data is None:
+            hatalar.append(f"{url}: boş yanıt")
+            continue
+        if dogrula is not None:
+            try:
+                uygun = bool(dogrula(data))
+            except Exception as e:
+                uygun = False
+                hatalar.append(f"{url}: doğrulama hatası: {e}")
+            if not uygun:
+                hatalar.append(f"{url}: beklenmeyen yanıt")
+                continue
+        return data
+    ayrinti = "; ".join(hatalar[-4:])
+    raise RuntimeError(f"{aciklama} alınamadı: {ayrinti}")
 
 
 def esc(s) -> str:
@@ -325,8 +488,15 @@ def video_id_cache_yukle(data_dir: str) -> dict:
 # Veri çekme
 # ----------------------------------------------------------------------------
 def fetch_lig_bilgisi(slug: str) -> dict:
-    data = http_get_json(f"{SITE_API.format(slug=slug)}/scoreboard")
+    data = espn_json_al(
+        slug,
+        "scoreboard",
+        dogrula=lambda x: isinstance(x, dict) and bool(x.get("leagues")),
+        aciklama=f"{slug} lig bilgisi",
+    )
     lig = (data.get("leagues") or [{}])[0]
+    if not isinstance(lig, dict) or not lig.get("season"):
+        raise RuntimeError(f"ESPN lig yanıtı eksik: {slug}")
     sezon = lig.get("season") or {}
     return {
         "slug": lig.get("slug", slug),
@@ -351,23 +521,61 @@ def fetch_sezon_maclar(slug: str, baslangic: str, bitis: str) -> list:
     while pencere <= d1:
         a = pencere
         b = min(pencere + timedelta(days=24), d1)
-        url = (
-            f"{SITE_API.format(slug=slug)}/scoreboard"
-            f"?dates={a.strftime('%Y%m%d')}-{b.strftime('%Y%m%d')}&limit=300"
+        data = espn_json_al(
+            slug,
+            f"scoreboard?dates={a.strftime('%Y%m%d')}-{b.strftime('%Y%m%d')}&limit=300",
+            dogrula=lambda x: isinstance(x, dict) and isinstance(x.get("events"), list),
+            aciklama=f"{a}..{b} fikstürü",
         )
-        data = http_get_json(url)
         for ev in data.get("events") or []:
-            if ev.get("id") not in gorulen:
-                gorulen.add(ev.get("id"))
-                mac_sonu.append(ev)
+            if not isinstance(ev, dict):
+                continue
+            event_id = str(ev.get("id") or "")
+            if not event_id or event_id in gorulen:
+                continue
+            gorulen.add(event_id)
+            mac_sonu.append(ev)
         log(f"pencere {a}..{b}: toplam {len(mac_sonu)} maç")
         pencere = b + timedelta(days=1)
+    if not mac_sonu:
+        raise RuntimeError(f"{slug} sezon fikstürü boş döndü; mevcut veri korunacak")
     return mac_sonu
 
 
 def fetch_puan_durumu(slug: str, sezon_yili) -> list:
-    url = f"{WEB_API.format(slug=slug)}/standings?season={sezon_yili}"
-    data = http_get_json(url)
+    """Puan durumunu web API'den, gerekirse site API'sinden alır."""
+    yol = f"standings?season={urllib.parse.quote(str(sezon_yili or ''), safe='')}"
+    data = None
+    hatalar = []
+
+    def standings_yaniti_mi(aday) -> bool:
+        if not isinstance(aday, dict) or not isinstance(aday.get("children"), list):
+            return False
+        return any(
+            isinstance(c, dict)
+            and isinstance((c.get("standings") or {}).get("entries"), list)
+            and bool((c.get("standings") or {}).get("entries"))
+            for c in aday["children"]
+        )
+
+    # Standings için ayrı web v2 uç noktası kullanılır; v2 boş/erişilmezse
+    # site v2 yedeği denenir. ESPN'in bazı yanıtları HTTP 200 ile boş dönebilir;
+    # bu yüzden children/entries yapısını ayrıca doğruluyoruz.
+    standings_bases = (WEB_API, SITE_API, SITE_WEB_API)
+    for taban in standings_bases:
+        url = f'{taban.format(slug=urllib.parse.quote(str(slug), safe="."))}/{yol}'
+        try:
+            aday = http_get_json(url, zorunlu=False, timeout=HTTP_TIMEOUT)
+        except Exception as e:
+            aday = None
+            hatalar.append(f"{url}: {e}")
+        if standings_yaniti_mi(aday):
+            data = aday
+            break
+        hatalar.append(url)
+    if data is None:
+        raise RuntimeError(f"puan durumu alınamadı: {', '.join(hatalar[-3:])}")
+
     satirlar = []
     for cocuk in data.get("children") or []:
         for ent in cocuk.get("standings", {}).get("entries") or []:
@@ -460,19 +668,29 @@ def kanal_norm(ad: str) -> str:
 
 
 def http_get_text(url: str) -> str:
-    """URL'den HTML metni çeker (basit yeniden deneme ile)."""
+    """URL'den HTML metni çeker (geçici hatalarda kontrollü yeniden deneme ile)."""
     son_hata = None
     for deneme in range(1, HTTP_DENE + 1):
         try:
             req = urllib.request.Request(url, headers={
-                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) Fixtoor/1.0 (+github)",
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) Fixtoor/1.1 (+github)",
+                "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.8",
                 "Accept-Language": "tr,en;q=0.8",
+                "Cache-Control": "no-cache",
             })
             with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as resp:
                 return resp.read().decode("utf-8", errors="replace")
-        except (urllib.error.URLError, TimeoutError, OSError) as e:
+        except urllib.error.HTTPError as e:
             son_hata = e
-            time.sleep(2 * deneme)
+            if e.code in (401, 403, 404):
+                break
+            if deneme < HTTP_DENE:
+                time.sleep(min(2 * deneme, 8))
+        except (urllib.error.URLError, TimeoutError, socket.timeout,
+                ConnectionError, OSError) as e:
+            son_hata = e
+            if deneme < HTTP_DENE:
+                time.sleep(min(2 * deneme, 8))
     raise RuntimeError(f"sayfaya ulaşılamadı: {url} ({son_hata})")
 
 
@@ -1732,64 +1950,89 @@ allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
 <script>{JS}</script>
 </body>
 </html>'''
-    with open(cikti, "w", encoding="utf-8") as f:
-        f.write(sayfa)
+    metin_yaz_atomik(cikti, sayfa)
     log(f"HTML yazıldı: {cikti} ({len(sayfa) / 1024:.0f} KB)")
 
 
 # ----------------------------------------------------------------------------
 # Ana akış
 # ----------------------------------------------------------------------------
-def calistir(args) -> None:
-    data_dir = args.data_dir
-    os.makedirs(data_dir, exist_ok=True)
+def _veri_yeni_uret(args, data_dir: str, eski_veri=None) -> dict:
+    """API'den yeni, tutarlı bir site veri paketi üretir.
 
-    if args.offline:
-        log("offline mod: mevcut verilerden HTML üretiliyor")
-        with open(os.path.join(data_dir, "site-verisi.json"), encoding="utf-8") as f:
-            veri = json.load(f)
-    else:
-        lig = fetch_lig_bilgisi(args.league)
-        log(f"lig: {lig['api_adi']} — sezon {lig['sezon_adi']}")
-        olaylar = fetch_sezon_maclar(args.league, lig["baslangic"], lig["bitis"])
-        maclar = [mac_ayristir(ev) for ev in olaylar]
-        log(f"toplam {len(maclar)} maç ayrıştırıldı")
+    Bu fonksiyonun sonunda bütün veriler hazırlanır; dosyalar ancak tüm zorunlu
+    adımlar bittikten sonra atomik olarak yazılır. Böylece tek bir API arızası
+    eski çalışan paketi yarım bırakmaz.
+    """
+    lig = fetch_lig_bilgisi(args.league)
+    log(f"lig: {lig['api_adi']} — sezon {lig['sezon_adi']}")
+    olaylar = fetch_sezon_maclar(args.league, lig["baslangic"], lig["bitis"])
+    maclar = [mac_ayristir(ev) for ev in olaylar]
+    maclar = [
+        m for m in maclar
+        if m.get("id") and m.get("utc")
+        and m.get("ev", {}).get("ad") and m.get("dep", {}).get("ad")
+    ]
+    if not maclar:
+        raise RuntimeError("ESPN yanıtından geçerli maç ayrıştırılamadı")
+    log(f"toplam {len(maclar)} maç ayrıştırıldı")
 
-        # takım kaydı
-        takimlar = {}
-        for m in maclar:
-            for t in (m["ev"], m["dep"]):
-                takimlar[t["id"]] = {"ad": t["ad"], "kisa": t["kisa"], "logo": t["logo"], "renk": t["renk"]}
+    # Takım kaydı
+    takimlar = {}
+    for m in maclar:
+        for t in (m["ev"], m["dep"]):
+            if t.get("id"):
+                takimlar[t["id"]] = {
+                    "ad": t.get("ad", ""), "kisa": t.get("kisa", ""),
+                    "logo": t.get("logo", ""), "renk": t.get("renk", "#353a40"),
+                }
 
-        # yayın kanalı bilgisi (Spor Ekranı / LiveSoccerTV + elle düzeltme dosyası)
-        kanal_harita = fetch_yayin_kanallari(maclar, args.league, data_dir)
-        for m in maclar:
-            m["kanal"] = kanal_harita.get(
-                _mac_anahtari(takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])), "")
+    # Yayın kanalı bilgisi (kaynaklardan biri düşerse diğerleriyle devam eder).
+    kanal_harita = fetch_yayin_kanallari(maclar, args.league, data_dir)
+    for m in maclar:
+        m["kanal"] = kanal_harita.get(
+            _mac_anahtari(takim_norm(m["ev"]["ad"]), takim_norm(m["dep"]["ad"])), "")
 
-        # --- maç istatistikleri: scoreboard stub'ı değil, summary endpoint'i ---
+    # Maç istatistikleri: scoreboard stub'ı değil, summary endpoint'i.
+    try:
+        mac_istatistiklerini_doldur(args.league, maclar, data_dir)
+    except Exception as e:
+        log(f"UYARI: istatistik doldurma atlandı: {e}")
+
+    # Son maç özetleri için video ID'leri. Eski geçerli ID'ler korunur; bu hem
+    # üçüncü parti arama yükünü hem de geçici Dailymotion/YouTube arızalarını azaltır.
+    simdi_dt = datetime.now(timezone.utc)
+    eski_videolar = video_id_cache_yukle(data_dir)
+    sinir = simdi_dt - timedelta(days=21)
+    adaylar = []
+    for m in maclar:
         try:
-            mac_istatistiklerini_doldur(args.league, maclar, data_dir)
-        except Exception as e:
-            log(f"UYARI: istatistik doldurma atlandı: {e}")
+            dt = parse_utc(m.get("utc") or "")
+        except (TypeError, ValueError):
+            continue
+        if m.get("durum") != "pre" and dt >= sinir:
+            adaylar.append(m)
 
-        # --- video özetleri: son 21 günün oynanmış/canlı maçları için kaynaklardan ID çek ---
-        simdi_dt = datetime.now(timezone.utc)
-        eski_videolar = video_id_cache_yukle(data_dir)
-        sinir = simdi_dt - timedelta(days=21)
-        adaylar = [m for m in maclar
-                   if m["durum"] != "pre" and m["utc"] and parse_utc(m["utc"]) >= sinir]
-        for m in adaylar[:40]:
+    for m in adaylar[:40]:
+        try:
             eski_kayit = eski_videolar.get(m["id"], {})
-            if (eski_kayit.get("video_kaynak") == "dm" and eski_kayit.get("video_id")
-                    and "bein" in (eski_kayit.get("video_kanal") or "").casefold()
-                    and dm_video_gosteriliyor(eski_kayit["video_id"])):
-                # beIN'in resmî Dailymotion özeti zaten bulunmuş: en iyi kaynak, koru
-                m["video_id"] = eski_kayit["video_id"]
+            eski_id = eski_kayit.get("video_id")
+            eski_kaynak = eski_kayit.get("video_kaynak") or ""
+            if eski_id and eski_kaynak == "dm":
+                # Silinmiş/geoblock olmuş Dailymotion kaydı varsa yeniden ara.
+                if dm_video_gosteriliyor(eski_id):
+                    m["video_id"] = eski_id
+                    m["video_kanal"] = eski_kayit.get("video_kanal", "")
+                    m["video_kaynak"] = "dm"
+                    continue
+            elif eski_id and eski_kaynak == "yt":
+                # YouTube için API doğrulaması yok; çalışan eski ID'yi koru.
+                m["video_id"] = eski_id
                 m["video_kanal"] = eski_kayit.get("video_kanal", "")
-                m["video_kaynak"] = "dm"
+                m["video_kaynak"] = "yt"
                 continue
-            mac_epoch = parse_utc(m["utc"]).timestamp() if m["utc"] else 0
+
+            mac_epoch = parse_utc(m["utc"]).timestamp()
             # 1) beIN SPORTS USA resmî özeti (Dailymotion, Türkiye'de kısıtsız)
             vid, kanal = bein_ozet_bul(m["ev"]["ad"], m["dep"]["ad"], mac_epoch)
             if vid:
@@ -1797,63 +2040,98 @@ def calistir(args) -> None:
                 log(f'video özeti (beIN resmî·DM): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
                 time.sleep(0.2)
                 continue
-            # 2) Dailymotion'da haber ajansı özeti (İHA/ajansspor, Fanatik...)
+            # 2) Dailymotion'da haber ajansı özeti
             vid, kanal = dailymotion_video_bul(m["ev"]["ad"], m["dep"]["ad"], mac_epoch)
             if vid:
                 m["video_id"], m["video_kanal"], m["video_kaynak"] = vid, kanal, "dm"
                 log(f'video özeti (ajans·DM): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
                 time.sleep(0.2)
                 continue
-            # 3) YouTube yedek (beIN dışı kanallar — beIN videoları TR'de kilitli)
+            # 3) YouTube yedek (beIN dışı kanallar)
             vid, kanal = youtube_video_bul(m["ev"]["ad"], m["dep"]["ad"])
             m["video_id"], m["video_kanal"] = vid, kanal
             m["video_kaynak"] = "yt" if vid else ""
             if vid:
                 log(f'video özeti (YouTube): {m["ev"]["ad"]} - {m["dep"]["ad"]} ({kanal})')
             time.sleep(0.3)
-        log(f"video özetleri: {sum(1 for m in maclar if m.get('video_id'))} maç "
-            f"({sum(1 for m in maclar if m.get('video_kaynak') == 'dm')} Dailymotion)")
+        except Exception as e:
+            # Video üçüncü parti ve opsiyoneldir; bir maçın video hatası tüm
+            # fikstür güncellemesini durdurmamalı.
+            log(f"UYARI: video özeti atlandı ({m.get('id')}): {e}")
+    log(f"video özetleri: {sum(1 for m in maclar if m.get('video_id'))} maç "
+        f"({sum(1 for m in maclar if m.get('video_kaynak') == 'dm')} Dailymotion)")
 
-        hafta_listesi = haftalara_ayir(maclar)
-        haftalar = [
-            {"no": i + 1, "maclar": sorted(h, key=lambda m: m["utc"])}
-            for i, h in enumerate(hafta_listesi)
-        ]
-        log(f"{len(haftalar)} hafta oluşturuldu")
+    hafta_listesi = haftalara_ayir(maclar)
+    haftalar = [
+        {"no": i + 1, "maclar": sorted(h, key=lambda m: m["utc"])}
+        for i, h in enumerate(hafta_listesi)
+    ]
+    log(f"{len(haftalar)} hafta oluşturuldu")
 
-        puan = []
+    puan = []
+    try:
+        puan = fetch_puan_durumu(args.league, lig["sezon_yili"])
+        if not puan:
+            raise RuntimeError("puan durumu boş döndü")
+        log(f"puan durumu: {len(puan)} takım")
+    except Exception as e:
+        # Puan API'si bağımsızdır. Yeni paket bozulmasın; aynı ligdeki son
+        # sağlam tabloyu koru, o da yoksa boş tabloyla devam et.
+        eski_puan = (eski_veri or {}).get("puan_durumu") if isinstance(eski_veri, dict) else None
+        puan = eski_puan if isinstance(eski_puan, list) else []
+        log(f"UYARI: puan durumu alınamadı: {e}; önbellek korunuyor")
+
+    ozetler = [
+        m for m in maclar if m["durum"] in ("post", "in")
+        and m["utc"] and parse_utc(m["utc"]) >= simdi_dt - timedelta(days=14)
+    ]
+    ozetler.sort(key=lambda m: (0 if m["durum"] == "in" else 1,
+                                -(parse_utc(m["utc"]).timestamp() if m.get("utc") else 0)))
+
+    veri = {
+        "uretim": simdi_dt.isoformat(),
+        "lig": lig,
+        "takimlar": takimlar,
+        "haftalar": [{"no": h["no"], "maclar": h["maclar"]} for h in haftalar],
+        "puan_durumu": puan,
+    }
+    if not veri_gecerli_mi(veri):
+        raise RuntimeError("yeni veri paketi doğrulamadan geçemedi; eski veri korunacak")
+
+    # Dosyaları en son, atomik olarak yaz.
+    json_yaz_atomik(os.path.join(data_dir, "site-verisi.json"), veri)
+    json_yaz_atomik(os.path.join(data_dir, "fikstur.json"), veri["haftalar"])
+    json_yaz_atomik(os.path.join(data_dir, "puan-durumu.json"), puan)
+    json_yaz_atomik(os.path.join(data_dir, "ozetler.json"), ozetler[:16])
+    json_yaz_atomik(os.path.join(data_dir, "takimlar.json"), takimlar)
+    log(f"veri dosyaları yazıldı: {data_dir}/")
+    return veri
+
+
+def calistir(args) -> None:
+    data_dir = args.data_dir
+    os.makedirs(data_dir, exist_ok=True)
+    eski_veri = site_verisi_yukle(data_dir)
+
+    if args.offline:
+        log("offline mod: mevcut verilerden HTML üretiliyor")
+        if eski_veri is None:
+            raise RuntimeError("offline mod için geçerli data/site-verisi.json bulunamadı")
+        veri = eski_veri
+    else:
+        # Başka bir lig istenirken Süper Lig önbelleğini yanlışlıkla göstermeyelim.
+        if eski_veri and (eski_veri.get("lig", {}).get("slug") or args.league) != args.league:
+            eski_veri = None
         try:
-            puan = fetch_puan_durumu(args.league, lig["sezon_yili"])
-            log(f"puan durumu: {len(puan)} takım")
-        except Exception as e:  # puan durumu düşerse sayfa yine üretilsin
-            log(f"UYARI: puan durumu alınamadı: {e}")
-
-        ozetler = [
-            m for m in maclar if m["durum"] in ("post", "in")
-            and m["utc"] and parse_utc(m["utc"]) >= simdi_dt - timedelta(days=14)
-        ]
-        ozetler.sort(key=lambda m: (0 if m["durum"] == "in" else 1,
-                                    -(parse_utc(m["utc"]).timestamp() if m.get("utc") else 0)))
-
-        veri = {
-            "uretim": simdi_dt.isoformat(),
-            "lig": lig,
-            "takimlar": takimlar,
-            "haftalar": [{"no": h["no"], "maclar": h["maclar"]} for h in haftalar],
-            "puan_durumu": puan,
-        }
-
-        # --- veri dosyaları ---
-        def yazdir(ad, icerik):
-            yol = os.path.join(data_dir, ad)
-            with open(yol, "w", encoding="utf-8") as f:
-                json.dump(icerik, f, ensure_ascii=False, indent=1, sort_keys=True)
-        yazdir("site-verisi.json", veri)
-        yazdir("fikstur.json", veri["haftalar"])
-        yazdir("puan-durumu.json", puan)
-        yazdir("ozetler.json", ozetler[:16])
-        yazdir("takimlar.json", takimlar)
-        log(f"veri dosyaları yazıldı: {data_dir}/")
+            veri = _veri_yeni_uret(args, data_dir, eski_veri)
+        except Exception as e:
+            strict = bool(getattr(args, "strict", False))
+            if strict or not CI_GERI_DUS or eski_veri is None:
+                log(f"HATA: çevrim içi güncelleme başarısız: {e}")
+                raise
+            log(f"UYARI: çevrim içi güncelleme başarısız: {e}")
+            log("Son sağlam veri korunuyor; bir sonraki zamanlanmış çalıştırmada tekrar denenecek.")
+            veri = eski_veri
 
     render_html(veri, args.out)
     log("tamam ✅")
@@ -1865,6 +2143,11 @@ def main() -> None:
     p.add_argument("--data-dir", default="data", help="veri dosyalarının dizini")
     p.add_argument("--out", default="index.html", help="çıktı HTML dosyası")
     p.add_argument("--offline", action="store_true", help="ağ olmadan, mevcut veriden HTML üret")
+    p.add_argument(
+        "--strict",
+        action="store_true",
+        help="API hatasında son sağlam veriye dönmek yerine işlemi başarısız bitir",
+    )
     calistir(p.parse_args())
 
 

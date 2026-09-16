@@ -16,9 +16,21 @@ ESPN API ──▶ bot/fiktoor.py ──▶ data/*.json + index.html ──▶ G
    - **Puan durumu** tablosunu çeker (avrupa / küme bölgeleri renkli)
    - Bunları `data/*.json` olarak kaydeder ve `index.html` sayfasını üretir
 2. **`.github/workflows/bot.yml`** — GitHub Actions iş akışı:
-   - Günde 6 kez otomatik çalışır (maç günlerinde skorlar kendiliğinden düşer)
+   - Her saat otomatik çalışır (maç günlerinde skorlar kendiliğinden düşer)
+   - Kod testlerini ve üretilen veri paketini doğrular
    - Yeni veriyi depoya işler (`🤖 Fixtoor veri güncellemesi` commit'leri)
    - Sayfayı **GitHub Pages**'e yayınlar
+   - ESPN geçici olarak erişilemezse son sağlam paketi korur ve bir sonraki çalıştırmada yeniden dener
+
+> Gerçek Actions dosyası `.github/workflows/bot.yml` altındadır. `kurulum/bot.yml`
+> aynı dosyanın güncel bir kopyasıdır; GitHub Actions'ın çalışması için dosyanın
+> `.github/workflows/` altında bulunması gerekir.
+
+Botun son çalışmasını **Actions → Fixtoor Bot** bölümünden kontrol edebilirsin.
+Bir API arızasında botun mutlaka hata vermesini istiyorsan yerelde `--strict`
+parametresini kullanabilirsin; normal otomatik çalıştırma mevcut veriyi koruyarak
+başarılı şekilde tamamlanır. Dosya yazımları da atomiktir; yarım kalmış JSON
+önbelleği oluşturulmaz.
 3. **Canlı site:** <https://inadinatv.github.io/Fixtoor/> *(PR main'e birleştirildikten sonra)*
 
 ## Sayfada ne var?
@@ -39,6 +51,9 @@ python3 bot/fiktoor.py
 
 # Ağ olmadan, eldeki son veriden HTML üret
 python3 bot/fiktoor.py --offline
+
+# API geçici olarak düşerse önbelleğe dönme; hatayı görünür biçimde al
+python3 bot/fiktoor.py --strict
 
 # Başka bir lig (ör. TFF 1. Lig, Premier Lig)
 python3 bot/fiktoor.py --league tur.2

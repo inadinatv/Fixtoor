@@ -2,9 +2,12 @@
 # -*- coding: utf-8 -*-
 """İstatistik normalizasyonu ve 0 / 'veri yok' ayrımı testleri."""
 
+import json
 import os
 import sys
+import tempfile
 import unittest
+from types import SimpleNamespace
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -367,6 +370,100 @@ class HttpHataYol(unittest.TestCase):
             fiktoor.http_get_json = eski
         self.assertIn("istatistik", maclar[0])
         self.assertTrue(ist.istatistik_hepsi_bos_mu(maclar[0]["istatistik"]))
+
+
+class BotGuvenilirlik(unittest.TestCase):
+    def test_espn_ikincil_host_denenir(self):
+        cagrilar = []
+        eski = fiktoor.http_get_json
+
+        def fake_http(url, zorunlu=False, timeout=25):
+            cagrilar.append(url)
+            if "site.api.espn.com" in url:
+                return None
+            return {
+                "leagues": [{
+                    "slug": "tur.1",
+                    "name": "Turkish Super Lig",
+                    "season": {
+                        "year": 2026,
+                        "displayName": "2026-27 Turkish Super Lig",
+                        "startDate": "2026-07-01T04:00Z",
+                        "endDate": "2027-07-01T03:59Z",
+                    },
+                }]
+            }
+
+        try:
+            fiktoor.http_get_json = fake_http  # type: ignore
+            lig = fiktoor.fetch_lig_bilgisi("tur.1")
+        finally:
+            fiktoor.http_get_json = eski
+        self.assertEqual(lig["sezon_yili"], 2026)
+        self.assertEqual(len(cagrilar), 2)
+        self.assertIn("site.web.api.espn.com", cagrilar[1])
+
+    def test_atomik_json_yazimi(self):
+        with tempfile.TemporaryDirectory() as td:
+            yol = os.path.join(td, "veri.json")
+            fiktoor.json_yaz_atomik(yol, {"ok": True, "deger": "çalışıyor"})
+            with open(yol, encoding="utf-8") as f:
+                self.assertEqual(json.load(f)["ok"], True)
+            self.assertEqual(
+                [ad for ad in os.listdir(td) if ad.endswith(".tmp")], []
+            )
+
+    def test_gecerli_onbellek_api_hatasinda_kullanilir(self):
+        cache = {
+            "uretim": "2026-09-16T12:00:00+00:00",
+            "lig": {"slug": "tur.1", "ad": "Trendyol Süper Lig"},
+            "takimlar": {},
+            "haftalar": [{
+                "no": 1,
+                "maclar": [{
+                    "id": "1",
+                    "utc": "2026-09-01T17:00:00Z",
+                    "durum": "post",
+                    "ev": {"id": "10", "ad": "Ev"},
+                    "dep": {"id": "20", "ad": "Dep"},
+                }],
+            }],
+            "puan_durumu": [],
+        }
+        with tempfile.TemporaryDirectory() as td:
+            fiktoor.json_yaz_atomik(os.path.join(td, "site-verisi.json"), cache)
+            eski_uret = fiktoor._veri_yeni_uret
+            eski_render = fiktoor.render_html
+            gorulen = []
+            try:
+                def patlayan_uret(*args, **kwargs):
+                    raise RuntimeError("ESPN kapalı")
+
+                fiktoor._veri_yeni_uret = patlayan_uret  # type: ignore
+                fiktoor.render_html = lambda veri, out: gorulen.append(veri)  # type: ignore
+                fiktoor.calistir(SimpleNamespace(
+                    data_dir=td, out=os.path.join(td, "index.html"),
+                    league="tur.1", offline=False, strict=False,
+                ))
+            finally:
+                fiktoor._veri_yeni_uret = eski_uret
+                fiktoor.render_html = eski_render
+            self.assertEqual(gorulen, [cache])
+
+    def test_strict_api_hatasini_gizlemez(self):
+        eski_uret = fiktoor._veri_yeni_uret
+        try:
+            fiktoor._veri_yeni_uret = lambda *args, **kwargs: (_ for _ in ()).throw(
+                RuntimeError("ESPN kapalı")
+            )  # type: ignore
+            with tempfile.TemporaryDirectory() as td:
+                with self.assertRaises(RuntimeError):
+                    fiktoor.calistir(SimpleNamespace(
+                        data_dir=td, out=os.path.join(td, "index.html"),
+                        league="tur.1", offline=False, strict=True,
+                    ))
+        finally:
+            fiktoor._veri_yeni_uret = eski_uret
 
 
 if __name__ == "__main__":
