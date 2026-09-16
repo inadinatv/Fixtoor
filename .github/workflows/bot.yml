@@ -1,7 +1,7 @@
 name: Fixtoor Bot
 
 # Bot çalışma tetikleyicileri:
-#  - schedule : saatlik otomatik veri güncellemesi
+#  - schedule : her saat otomatik veri güncellemesi
 #  - workflow_dispatch : Actions sekmesinden elle çalıştırma
 #  - push (main) : kod değişince sayfayı yeniden yayınlama
 on:
@@ -13,11 +13,15 @@ on:
     paths-ignore:
       - "README.md"
 
+# Botun ürettiği data/*.json ve index.html dosyalarını main'e geri yazabilmesi
+# için contents yazma izni gerekir. Pages izinleri de aynı çalıştırmada yayın
+# yapılabilmesi için burada tutulur.
 permissions:
   contents: write
   pages: write
   id-token: write
 
+# Aynı anda iki bot çalışıp birbirinin commit'ini ezmesin.
 concurrency:
   group: fixtoor-bot
   cancel-in-progress: false
@@ -26,23 +30,59 @@ jobs:
   bot:
     name: Veri çek ve HTML üret
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
     steps:
       - name: Depoyu al
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
 
       - name: Python kur
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      - name: Bot testlerini çalıştır
+        run: python -m unittest discover -s bot -p 'test_*.py' -v
+
       - name: Fixtoor botunu çalıştır
+        env:
+          # ESPN/Dailymotion geçici olarak çalışmazsa son sağlam veri korunur.
+          FIXTOOR_CI_GERI_DUS: "1"
+          PYTHONUNBUFFERED: "1"
         run: python bot/fiktoor.py
+
+      - name: Üretilen paketi doğrula
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(
+              Path("data/site-verisi.json").read_text(encoding="utf-8")
+          )
+
+          assert data.get("uretim"), "uretim alanı yok"
+          assert data.get("lig", {}).get("slug"), "lig bilgisi yok"
+          assert isinstance(data.get("haftalar"), list), "haftalar listesi yok"
+          assert Path("index.html").stat().st_size > 1000, \
+              "index.html boş veya eksik"
+
+          print(
+              f"Doğrulandı: {len(data['haftalar'])} hafta, "
+              f"{sum(len(h.get('maclar', [])) for h in data['haftalar'])} maç"
+          )
+          PY
 
       - name: Değişiklikleri işle ve gönder
         run: |
-          git config user.name  "fixtoor-bot"
+          git config user.name "fixtoor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add index.html data/
+
           if git diff --cached --quiet; then
             echo "Yeni veri yok, commit atlanıyor."
           else
@@ -55,10 +95,17 @@ jobs:
           mkdir -p _site
           cp index.html _site/
           cp -r data _site/data
+
           for f in logo.png logo.svg logo.jpg logo.webp; do
-            if [ -f "$f" ]; then cp "$f" _site/; fi
+            if [ -f "$f" ]; then
+              cp "$f" _site/
+            fi
           done
-          if [ -d assets ]; then cp -r assets _site/assets; fi
+
+          if [ -d assets ]; then
+            cp -r assets _site/assets
+          fi
+
       - name: Sayfayı GitHub Pages'e yükle
         uses: actions/upload-pages-artifact@v3
         with:
@@ -69,10 +116,14 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: bot
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.yayinla.outputs.page_url }}
+
     steps:
       - name: Yayınla
         id: yayinla
         uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
