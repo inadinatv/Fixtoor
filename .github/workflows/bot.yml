@@ -1,36 +1,61 @@
 name: Fixtoor Bot
 
-# Bot çalışma tetikleyicileri:
-#  - schedule : her saat otomatik veri güncellemesi
-#  - workflow_dispatch : Actions sekmesinden elle çalıştırma
-#  - push (main) : kod değişince sayfayı yeniden yayınlama
+# Canlı skor döngüsü beş dakikada bir çalışır. GitHub Actions yoğunlukta
+# birkaç dakika gecikebilir; sayfanın açık olduğu tarayıcı ayrıca canlı maçta
+# yaklaşık 15 saniyede ESPN'i kontrol eder.
+#
+# Tam senkronizasyon daha ağırdır (sezon fikstürü, puan durumu, istatistik,
+# yayın kanalı ve video araması) ve altı saatte bir çalışır.
 on:
   schedule:
-    - cron: "17 * * * *"
+    - cron: "*/5 * * * *"
+    - cron: "23 */6 * * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Çalışma modu"
+        type: choice
+        required: true
+        default: live
+        options:
+          - live
+          - full
+      strict:
+        description: "API hatasında işi başarısız say"
+        type: boolean
+        required: true
+        default: false
   push:
     branches: [main]
     paths-ignore:
       - "README.md"
+      - "data/**"
+      - "index.html"
 
-# Botun ürettiği data/*.json ve index.html dosyalarını main'e geri yazabilmesi
-# için contents yazma izni gerekir. Pages izinleri de aynı çalıştırmada yayın
-# yapılabilmesi için burada tutulur.
+# Botun ürettiği paketleri main'e geri yazabilmesi ve Pages'e gönderebilmesi
+# için gerekli izinler.
 permissions:
   contents: write
   pages: write
   id-token: write
 
-# Aynı anda iki bot çalışıp birbirinin commit'ini ezmesin.
+# Aynı veri paketi üzerinde iki çalışma yarışmasın. Bekleyen cron çalışması,
+# devam eden güncellemenin arkasında sıraya girer; yarım veri yayınlanmaz.
 concurrency:
   group: fixtoor-bot
   cancel-in-progress: false
+
+env:
+  PYTHONUNBUFFERED: "1"
+  FIXTOOR_CI_GERI_DUS: "1"
 
 jobs:
   bot:
     name: Veri çek ve HTML üret
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    outputs:
+      changed: ${{ steps.degisiklik.outputs.changed }}
 
     steps:
       - name: Depoyu al
@@ -47,12 +72,51 @@ jobs:
       - name: Bot testlerini çalıştır
         run: python -m unittest discover -s bot -p 'test_*.py' -v
 
+      - name: Çalışma modunu seç
+        id: mod
+        shell: bash
+        run: |
+          mode="full"
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" && "${{ github.event.schedule }}" == "*/5 * * * *" ]]; then
+            mode="live"
+          elif [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            mode="${{ inputs.mode }}"
+          fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "Fixtoor çalışma modu: $mode"
+
       - name: Fixtoor botunu çalıştır
         env:
-          # ESPN/Dailymotion geçici olarak çalışmazsa son sağlam veri korunur.
-          FIXTOOR_CI_GERI_DUS: "1"
-          PYTHONUNBUFFERED: "1"
-        run: python bot/fiktoor.py
+          FIXTOOR_STRICT: ${{ inputs.strict || 'false' }}
+        run: |
+          if [[ "${{ steps.mod.outputs.mode }}" == "live" ]]; then
+            if [[ "$FIXTOOR_STRICT" == "true" ]]; then
+              python bot/fiktoor.py --live --strict
+            else
+              python bot/fiktoor.py --live
+            fi
+          else
+            if [[ "$FIXTOOR_STRICT" == "true" ]]; then
+              python bot/fiktoor.py --strict
+            else
+              python bot/fiktoor.py
+            fi
+          fi
+
+      - name: Değişiklik var mı
+        id: degisiklik
+        shell: bash
+        run: |
+          # Cron çalışmasında veri aynıysa Pages dağıtımı da atlanır. Push veya
+          # elle çalıştırmada ise paket yeniden hazırlanarak kod/logo değişikliği
+          # kaybolmaz.
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" ]] && \
+             git diff --quiet -- index.html data/ && \
+             [[ -z "$(git ls-files --others --exclude-standard index.html data/)" ]]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Üretilen paketi doğrula
         run: |
@@ -60,19 +124,18 @@ jobs:
           import json
           from pathlib import Path
 
-          data = json.loads(
-              Path("data/site-verisi.json").read_text(encoding="utf-8")
-          )
-
-          assert data.get("uretim"), "uretim alanı yok"
-          assert data.get("lig", {}).get("slug"), "lig bilgisi yok"
-          assert isinstance(data.get("haftalar"), list), "haftalar listesi yok"
-          assert Path("index.html").stat().st_size > 1000, \
-              "index.html boş veya eksik"
-
+          site = json.loads(Path("data/site-verisi.json").read_text(encoding="utf-8"))
+          live = json.loads(Path("data/canli.json").read_text(encoding="utf-8"))
+          assert site.get("uretim"), "uretim alanı yok"
+          assert site.get("lig", {}).get("slug"), "lig bilgisi yok"
+          assert isinstance(site.get("haftalar"), list), "haftalar listesi yok"
+          assert isinstance(live.get("maclar"), dict), "canli.json geçersiz"
+          assert isinstance(live.get("ist"), dict), "canli istatistik paketi yok"
+          assert Path("index.html").stat().st_size > 1000, "index.html boş/eksik"
           print(
-              f"Doğrulandı: {len(data['haftalar'])} hafta, "
-              f"{sum(len(h.get('maclar', [])) for h in data['haftalar'])} maç"
+              f"Doğrulandı: {len(site['haftalar'])} hafta, "
+              f"{sum(len(h.get('maclar', [])) for h in site['haftalar'])} maç, "
+              f"{len(live['maclar'])} canlı pencere kaydı"
           )
           PY
 
@@ -80,47 +143,40 @@ jobs:
         run: |
           git config user.name "fixtoor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           git add index.html data/
 
           if git diff --cached --quiet; then
-            echo "Yeni veri yok, commit atlanıyor."
+            echo "Veri değişmedi, commit atlanıyor."
           else
             git commit -m "🤖 Fixtoor veri güncellemesi — $(date -u +'%Y-%m-%d %H:%M UTC') [skip ci]"
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
 
       - name: Sayfa paketini hazırla
+        if: steps.degisiklik.outputs.changed == 'true'
         run: |
           mkdir -p _site
           cp index.html _site/
           cp -r data _site/data
-
           for f in logo.png logo.svg logo.jpg logo.webp; do
-            if [ -f "$f" ]; then
-              cp "$f" _site/
-            fi
+            if [ -f "$f" ]; then cp "$f" _site/; fi
           done
-
-          if [ -d assets ]; then
-            cp -r assets _site/assets
-          fi
+          if [ -d assets ]; then cp -r assets _site/assets; fi
 
       - name: Sayfayı GitHub Pages'e yükle
+        if: steps.degisiklik.outputs.changed == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
   deploy:
     name: GitHub Pages'e yayınla
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && needs.bot.outputs.changed == 'true'
     needs: bot
     runs-on: ubuntu-latest
-
     environment:
       name: github-pages
       url: ${{ steps.yayinla.outputs.page_url }}
-
     steps:
       - name: Yayınla
         id: yayinla
