@@ -10,10 +10,12 @@ Kullanım:
     python3 bot/fiktoor.py                # API'den çek, veri + HTML üret
     python3 bot/fiktoor.py --offline      # elimizdeki veriden HTML üret (ağ yoksa)
     python3 bot/fiktoor.py --strict       # API hatasında önbelleğe dönme
+    python3 bot/fiktoor.py --live         # yalnızca yakın maçları sık yenile
     python3 bot/fiktoor.py --league eng.1 # başka lig (isteğe bağlı)
 """
 
 import argparse
+import copy
 import html as html_mod
 import json
 import os
@@ -69,6 +71,14 @@ HTTP_DENE = 4
 IST_OZET_GUN = 21
 IST_ISTEK_ARALIK = 0.3
 
+# Hızlı çalışma modu yalnızca bugünün çevresindeki küçük pencereyi çeker. Tam
+# sezon senkronizasyonu pahalı olduğu için bunu ayrı tutmak, beş dakikalık canlı
+# çalıştırmaların ESPN'i gereksiz yere yormamasını sağlar.
+CANLI_GUN_GERI = 2
+CANLI_GUN_ILERI = 2
+CANLI_YAKIN_POST_GUN = 2
+CANLI_DOSYA = "canli.json"
+
 # ESPN zaman zaman site.api hostunu GitHub Actions IP'lerine kapatıyor veya
 # kısa süreli TLS/5xx hatası veriyor. Aynı veriyi site.web hostundan da sunuyor;
 # zorunlu isteklerde iki hostu sırayla denemek botun tek noktaya bağlı kalmasını
@@ -122,6 +132,12 @@ def json_yaz_atomik(yol: str, icerik) -> None:
             f.flush()
             os.fsync(f.fileno())
         os.replace(gecici, yol)
+        # mkstemp güvenlik gereği 0600 açar; herkese açık Pages çıktılarının
+        # normal okunabilir dosya iznine sahip olmasını sağla.
+        try:
+            os.chmod(yol, 0o644)
+        except OSError:
+            pass
         gecici = None
     finally:
         if gecici:
@@ -143,6 +159,12 @@ def metin_yaz_atomik(yol: str, icerik: str) -> None:
             f.flush()
             os.fsync(f.fileno())
         os.replace(gecici, yol)
+        # mkstemp güvenlik gereği 0600 açar; herkese açık Pages çıktılarının
+        # normal okunabilir dosya iznine sahip olmasını sağla.
+        try:
+            os.chmod(yol, 0o644)
+        except OSError:
+            pass
         gecici = None
     finally:
         if gecici:
@@ -893,13 +915,18 @@ def istatistik_cache_yukle(data_dir: str) -> dict:
                 mid = str(m.get("id") or "")
                 st = m.get("istatistik")
                 if (mid and isinstance(st, dict) and st.get("kaynak") == "summary"
-                        and not istatistik_hepsi_bos_mu(st)):
+                        and not istatistik_hepsi_bos_mu(st)
+                        and not istatistik_sablon_sifir_mi(st)):
                     cache[mid] = st
     return cache
 
 
-def mac_istatistiklerini_doldur(slug: str, maclar: list, data_dir: str) -> None:
+def mac_istatistiklerini_doldur(slug: str, maclar: list, data_dir: str,
+                               sadece=None) -> None:
     """Canlı ve yakın tarihli maçlar için summary endpoint'inden istatistik çeker.
+
+    ``sadece`` verilirse hızlı canlı modda yalnızca o event id'leri sorgulanır;
+    tam senkronizasyonda varsayılan ``None`` bütün uygun maçları işler.
 
     - Maç id / fixture id karışmaz; her kayıt kendi event id'siyle istenir.
     - Scoreboard'daki 0 şablonu gerçek veri sayılmaz.
@@ -908,8 +935,12 @@ def mac_istatistiklerini_doldur(slug: str, maclar: list, data_dir: str) -> None:
     cache = istatistik_cache_yukle(data_dir)
     simdi = datetime.now(timezone.utc)
     debug = _fixtoor_debug()
+    hedef_ids = None if sadece is None else {str(x) for x in sadece}
     aday = []
     for m in maclar:
+        mid = str(m.get("id") or "")
+        if hedef_ids is not None and mid not in hedef_ids:
+            continue
         if mac_ertelendi_mi(m.get("durum_ad"), m.get("durum_metin")):
             m["istatistik"] = istatistik_bos_yapi(None, "yok")
             continue
@@ -924,7 +955,7 @@ def mac_istatistiklerini_doldur(slug: str, maclar: list, data_dir: str) -> None:
         mid = str(m.get("id") or "")
         if m.get("durum") == "post" and dt and dt < simdi - timedelta(days=IST_OZET_GUN):
             eski = cache.get(mid)
-            if eski:
+            if eski and not istatistik_sablon_sifir_mi(eski):
                 m["istatistik"] = eski
                 takim_istatistik_yaz(m, eski)
             else:
@@ -940,7 +971,8 @@ def mac_istatistiklerini_doldur(slug: str, maclar: list, data_dir: str) -> None:
             continue
         if m.get("durum") == "post":
             eski = cache.get(mid)
-            if eski and not istatistik_hepsi_bos_mu(eski):
+            if (eski and not istatistik_hepsi_bos_mu(eski)
+                    and not istatistik_sablon_sifir_mi(eski)):
                 m["istatistik"] = eski
                 takim_istatistik_yaz(m, eski)
                 continue
@@ -969,14 +1001,14 @@ def mac_istatistiklerini_doldur(slug: str, maclar: list, data_dir: str) -> None:
             continue
         ev_ham, dep_ham, meta = ozetten_rakip_istatistik(data)
         st = istatistik_standart(ev_ham, dep_ham, kaynak="summary", durum="ok")
-        if istatistik_hepsi_bos_mu(st):
+        if istatistik_hepsi_bos_mu(st) or istatistik_sablon_sifir_mi(st):
             sb = mac_istatistik_al({**m, "istatistik": None})
             if not istatistik_sablon_sifir_mi(sb) and not istatistik_hepsi_bos_mu(sb):
                 st = sb
                 st["kaynak"] = "scoreboard"
                 st["durum"] = "ok"
             else:
-                st["durum"] = "yok"
+                st = istatistik_bos_yapi("summary", "yok")
         m["istatistik"] = st
         takim_istatistik_yaz(m, st)
         if debug:
@@ -1003,6 +1035,256 @@ def haftalara_ayir(maclar: list) -> list:
     if mevcut:
         haftalar.append(mevcut)
     return haftalar
+
+
+def maclari_duzlestir(veri: dict) -> list:
+    """Site paketindeki hafta sarmalını tek maç listesine açar."""
+    if not isinstance(veri, dict):
+        return []
+    sonuc = []
+    for hafta in veri.get("haftalar") or []:
+        if not isinstance(hafta, dict):
+            continue
+        sonuc.extend(m for m in (hafta.get("maclar") or []) if isinstance(m, dict))
+    return sonuc
+
+
+def _mac_imzasi(mac: dict) -> str:
+    """Bir maçın sıralamadan bağımsız karşılaştırma imzası."""
+    return json.dumps(mac, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def _deger_var_mi(deger) -> bool:
+    return deger not in (None, "", [], {})
+
+
+def mac_eski_veriyle_birlestir(eski: dict, yeni: dict) -> dict:
+    """Scoreboard'dan gelen kısa kaydı mevcut zengin kayıtla birleştirir.
+
+    Hızlı scoreboard yanıtı; video, yayın kanalı ve daha önce alınmış summary
+    istatistiklerini taşımaz. Bunları kaybetmemek canlı yenilemenin temelidir.
+    ESPN yeni değer gönderirse skor/durum gibi alanlarda yeni kayıt önceliklidir;
+    yalnızca eksik alanlar önbellekten tamamlanır.
+    """
+    if not isinstance(eski, dict):
+        return yeni
+    sonuc = copy.deepcopy(yeni)
+    for taraf in ("ev", "dep"):
+        eski_takim = eski.get(taraf) or {}
+        yeni_takim = sonuc.get(taraf) or {}
+        for anahtar, deger in eski_takim.items():
+            if anahtar not in yeni_takim or not _deger_var_mi(yeni_takim.get(anahtar)):
+                yeni_takim[anahtar] = copy.deepcopy(deger)
+        sonuc[taraf] = yeni_takim
+
+    # Bunlar scoreboard endpoint'inde bulunmaz; her hızlı çalıştırmada korunur.
+    for anahtar in ("kanal", "video_id", "video_kanal", "video_kaynak"):
+        if anahtar in eski and _deger_var_mi(eski.get(anahtar)):
+            sonuc[anahtar] = copy.deepcopy(eski[anahtar])
+
+    eski_ist = eski.get("istatistik")
+    yeni_ist = sonuc.get("istatistik")
+    if (isinstance(eski_ist, dict) and
+            (eski_ist.get("kaynak") == "summary" or not _deger_var_mi(yeni_ist))):
+        sonuc["istatistik"] = copy.deepcopy(eski_ist)
+    return sonuc
+
+
+def fetch_canli_maclar(slug: str, simdi: datetime | None = None) -> list:
+    """Yalnızca bugünün çevresindeki scoreboard penceresini çeker.
+
+    Tam sezonu tekrar indirmeyen bu uç, GitHub Actions'ın beş dakikalık canlı
+    çalıştırması için tasarlanmıştır. Boş ama biçimsel olarak doğru yanıt geçerli
+    kabul edilir; API'nin gerçekten ulaşılmaz olması ise çağırana bildirilir.
+    """
+    simdi = simdi or datetime.now(timezone.utc)
+    baslangic = (simdi.date() - timedelta(days=CANLI_GUN_GERI)).strftime("%Y%m%d")
+    bitis = (simdi.date() + timedelta(days=CANLI_GUN_ILERI)).strftime("%Y%m%d")
+    data = espn_json_al(
+        slug,
+        f"scoreboard?dates={baslangic}-{bitis}&limit=100",
+        timeout=18,
+        dogrula=lambda x: isinstance(x, dict) and isinstance(x.get("events"), list),
+        aciklama=f"{slug} canlı skorları",
+    )
+    return [
+        mac_ayristir(event)
+        for event in data.get("events") or []
+        if isinstance(event, dict)
+    ]
+
+
+def ozetleri_hazirla(maclar: list, simdi: datetime, gun: int = 14) -> list:
+    """HTML ve ozetler.json için ortak, deterministik maç özeti listesi."""
+    ozetler = []
+    for mac in maclar:
+        if mac.get("durum") not in ("post", "in") or not mac.get("utc"):
+            continue
+        try:
+            tarih = parse_utc(mac["utc"])
+        except (TypeError, ValueError):
+            continue
+        if tarih >= simdi - timedelta(days=gun):
+            ozetler.append(mac)
+    ozetler.sort(key=lambda m: (
+        0 if m.get("durum") == "in" else 1,
+        -(parse_utc(m["utc"]).timestamp() if m.get("utc") else 0),
+    ))
+    return ozetler
+
+
+def canli_verisi_uret(veri: dict, simdi: datetime | None = None) -> dict:
+    """Tarayıcı ve ``data/canli.json`` için küçük canlı veri paketi üretir."""
+    simdi = simdi or parse_utc(veri["uretim"])
+    canli_map, ist_map = {}, {}
+    for mac in maclari_duzlestir(veri):
+        if not mac.get("id") or not mac.get("utc"):
+            continue
+        try:
+            delta = abs((parse_utc(mac["utc"]) - simdi).total_seconds())
+        except (TypeError, ValueError):
+            continue
+        mid = str(mac["id"])
+        kayit = {
+            "ev": (mac.get("ev") or {}).get("ad", ""),
+            "dep": (mac.get("dep") or {}).get("ad", ""),
+            "evk": (mac.get("ev") or {}).get("skor") or 0,
+            "depk": (mac.get("dep") or {}).get("skor") or 0,
+            "durum": mac.get("durum", ""),
+            "durum_metin": mac.get("durum_metin", ""),
+            "saat": mac.get("saat_gostergesi", ""),
+            "utc": mac["utc"],
+            "ev_id": (mac.get("ev") or {}).get("id", ""),
+            "dep_id": (mac.get("dep") or {}).get("id", ""),
+            "durum_ad": mac.get("durum_ad") or "",
+        }
+        if delta <= 4 * 86400:
+            canli_map[mid] = kayit
+        if mac.get("durum") in ("in", "post") and delta <= 14 * 86400:
+            st = mac_istatistik_al(mac)
+            ist_map[mid] = {
+                **kayit,
+                "eksik": (
+                    istatistik_hepsi_bos_mu(st)
+                    or istatistik_sablon_sifir_mi(st)
+                ),
+                # Fallback ile yüklenen sayılar, doğrudan API erişimi olmayan
+                # tarayıcılarda da aynı maç özetinin görünmesini sağlar.
+                "st": {k: st.get(k) for k in ISTATISTIK_ALANLARI},
+            }
+    return {
+        "uretim": veri.get("uretim", ""),
+        "lig": (veri.get("lig") or {}).get("slug") or "tur.1",
+        "maclar": canli_map,
+        "ist": ist_map,
+    }
+
+
+def veri_paketini_yaz(data_dir: str, veri: dict) -> None:
+    """Site paketinin bütün türevlerini atomik olarak aynı güncellemeyle yazar."""
+    simdi = parse_utc(veri["uretim"])
+    maclar = maclari_duzlestir(veri)
+    ozetler = ozetleri_hazirla(maclar, simdi)
+    json_yaz_atomik(os.path.join(data_dir, "site-verisi.json"), veri)
+    json_yaz_atomik(os.path.join(data_dir, "fikstur.json"), veri["haftalar"])
+    json_yaz_atomik(os.path.join(data_dir, "puan-durumu.json"), veri.get("puan_durumu") or [])
+    json_yaz_atomik(os.path.join(data_dir, "ozetler.json"), ozetler[:16])
+    json_yaz_atomik(os.path.join(data_dir, "takimlar.json"), veri.get("takimlar") or {})
+    json_yaz_atomik(os.path.join(data_dir, CANLI_DOSYA), canli_verisi_uret(veri, simdi))
+    log(f"veri dosyaları yazıldı: {data_dir}/")
+
+
+def canli_veri_guncelle(slug: str, data_dir: str, eski_veri: dict,
+                        simdi: datetime | None = None) -> tuple:
+    """Mevcut paketi yalnızca son scoreboard değişiklikleriyle yeniler.
+
+    Dönüş değeri ``(veri, degisti)`` biçimindedir. Değişiklik yoksa üretim
+    zaman damgası ilerletilmez; böylece Actions her beş dakikada boş commit
+    atmaz. API geçici olarak kapalıysa hata yükselir ve eski paket korunur.
+    """
+    if not veri_gecerli_mi(eski_veri):
+        raise RuntimeError("canlı mod için geçerli site-verisi.json gerekli")
+    simdi = simdi or datetime.now(timezone.utc)
+    eski_maclar = maclari_duzlestir(eski_veri)
+    eski_harita = {str(m.get("id")): m for m in eski_maclar if m.get("id")}
+    gelenler = fetch_canli_maclar(slug, simdi)
+
+    yeni_harita = {mid: copy.deepcopy(mac) for mid, mac in eski_harita.items()}
+    for gelen in gelenler:
+        mid = str(gelen.get("id") or "")
+        if not mid or not gelen.get("utc"):
+            continue
+        if gelen.get("ev", {}).get("ad") and gelen.get("dep", {}).get("ad"):
+            yeni_harita[mid] = mac_eski_veriyle_birlestir(eski_harita.get(mid), gelen)
+
+    tum_maclar = list(yeni_harita.values())
+    tum_maclar.sort(key=lambda m: m.get("utc", ""))
+    hedef_ids = set()
+    for mac in tum_maclar:
+        durum = mac.get("durum")
+        if durum == "in":
+            hedef_ids.add(str(mac.get("id")))
+            continue
+        if durum != "post":
+            continue
+        try:
+            tarih = parse_utc(mac.get("utc", ""))
+        except (TypeError, ValueError):
+            continue
+        if tarih < simdi - timedelta(days=CANLI_YAKIN_POST_GUN):
+            continue
+        st = mac.get("istatistik")
+        if (not isinstance(st, dict) or st.get("kaynak") != "summary"
+                or istatistik_hepsi_bos_mu(st)
+                or istatistik_sablon_sifir_mi(st)):
+            hedef_ids.add(str(mac.get("id")))
+
+    if hedef_ids:
+        # Sadece canlı/yeni biten maçları sorgula; eski 21 günlük maçların
+        # summary endpoint'leri beş dakikalık çalıştırmada tekrar edilmez.
+        mac_istatistiklerini_doldur(slug, tum_maclar, data_dir, sadece=hedef_ids)
+
+    takimlar = copy.deepcopy(eski_veri.get("takimlar") or {})
+    for mac in tum_maclar:
+        for takim in (mac.get("ev") or {}, mac.get("dep") or {}):
+            tid = str(takim.get("id") or "")
+            if tid:
+                takimlar[tid] = {
+                    "ad": takim.get("ad", ""),
+                    "kisa": takim.get("kisa", ""),
+                    "logo": takim.get("logo", ""),
+                    "renk": takim.get("renk", "#353a40"),
+                }
+
+    hafta_listesi = haftalara_ayir(tum_maclar)
+    haftalar = [
+        {"no": i + 1, "maclar": sorted(hafta, key=lambda m: m.get("utc", ""))}
+        for i, hafta in enumerate(hafta_listesi)
+    ]
+    yeni_veri = copy.deepcopy(eski_veri)
+    yeni_veri["takimlar"] = takimlar
+    yeni_veri["haftalar"] = haftalar
+
+    eski_yapi = {
+        "lig": eski_veri.get("lig"),
+        "takimlar": eski_veri.get("takimlar"),
+        "haftalar": eski_veri.get("haftalar"),
+        "puan_durumu": eski_veri.get("puan_durumu"),
+    }
+    yeni_yapi = {
+        "lig": yeni_veri.get("lig"),
+        "takimlar": yeni_veri.get("takimlar"),
+        "haftalar": yeni_veri.get("haftalar"),
+        "puan_durumu": yeni_veri.get("puan_durumu"),
+    }
+    degisti = _mac_imzasi(eski_yapi) != _mac_imzasi(yeni_yapi)
+    if not degisti:
+        return eski_veri, False
+
+    yeni_veri["uretim"] = simdi.isoformat()
+    if not veri_gecerli_mi(yeni_veri):
+        raise RuntimeError("canlı güncelleme doğrulamadan geçemedi")
+    return yeni_veri, True
 
 
 # ----------------------------------------------------------------------------
@@ -1214,8 +1496,8 @@ modal.addEventListener('click',function(e){if(e.target===modal)videoKapat();});
 document.querySelector('.modal-kapat').addEventListener('click',videoKapat);
 document.addEventListener('keydown',function(e){if(e.key==='Escape')videoKapat();});
 // ---- CANLI SKOR + İSTATİSTİK ----
-// Skor: scoreboard, 30 sn (mac yokken 5 dk).
-// Istatistik: summary?event={id}, yalniz canli maclarda ~45 sn; bitince bir kez daha, sonra durur.
+// Skor: canlı pencere açıkken yaklaşık 15 sn; yakın maç yokken 2 dk.
+// Istatistik: summary?event={id}; botun same-origin snapshot'ı varsa önce onu kullanır.
 // Veri yoksa 0 uydurulmaz. API anahtari yoktur.
 var CANLI=window.FIXTOOR_CANLI||{lig:'tur.1',maclar:{},ist:{}};
 CANLI.maclar=CANLI.maclar||{};
@@ -1284,6 +1566,12 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
   function istHepsiBos(st){
     return Object.keys(IST_ADLAR).every(function(k){
       var c=st[k]||{}; return (c.home===null||c.home===undefined)&&(c.away===null||c.away===undefined);
+    });
+  }
+  function istSablonSifir(st){
+    return Object.keys(IST_ADLAR).every(function(k){
+      var c=st[k]||{};
+      return [c.home,c.away].every(function(v){return v===null||v===undefined||Number(v)===0;});
     });
   }
   function ozettenCift(data){
@@ -1382,12 +1670,13 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
     return (Math.abs(n-Math.round(n))<0.05)?String(Math.round(n)):n.toFixed(1);
   }
   function istUygula(id,st,mesaj){
+    var kullan=istSablonSifir(st)?{}:(st||{});
     document.querySelectorAll('[data-mac-id="'+id+'"]').forEach(function(kart){
       var kok=kart.querySelector('[data-ist-kok]')||(kart.getAttribute&&kart.getAttribute('data-ist-kok')?kart:null);
       if(!kok) return;
       ['possession','shots','shotsOnTarget','corners','fouls'].forEach(function(k){
         var row=kok.querySelector('[data-ist="'+k+'"]'); if(!row) return;
-        var c=st[k]||{}, yuzde=k==='possession';
+        var c=kullan[k]||{}, yuzde=k==='possession';
         var evEl=row.querySelector('[data-ist-ev]');
         var depEl=row.querySelector('[data-ist-dep]');
         var bar=row.querySelector('.bar');
@@ -1415,7 +1704,7 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
         }
       });
       var msg=kok.querySelector('[data-ist-mesaj]');
-      var bos=istHepsiBos(st);
+      var bos=istHepsiBos(kullan)||istSablonSifir(st);
       kok.setAttribute('data-ist-durum', bos?'yok':'ok');
       if(msg){
         if(mesaj){msg.textContent=mesaj; msg.style.display='block';}
@@ -1436,6 +1725,15 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
     var m=CANLI.ist[id]||CANLI.maclar[id];
     if(m&&ertelendiMi(m.durum_ad)) return;
     if(m&&m.durum==='pre') return;
+    // Botun aynı-origin canlı paketinde istatistik varsa tekrar summary
+    // çağrısı yapma; bu hem hızlıdır hem de tarayıcı başına gereksiz yükü keser.
+    var cached=m&&(m._st||m.st);
+    if(m&&m.durum!=='in'&&cached&&!istHepsiBos(cached)&&!istSablonSifir(cached)){
+      m._st=cached;
+      istUygula(id,cached,'');
+      if(m.durum==='post'||opts.son) istBitti[id]=1;
+      return;
+    }
     if(!opts.birKez&&m&&m.durum==='post'&&istSon[id]) return;
     var simdi=Date.now();
     if(!opts.birKez&&!opts.son&&istSon[id]&&simdi-istSon[id]<IST_ARALIK) return;
@@ -1467,9 +1765,26 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
       if(i>=urls.length){
         delete istInflight[id];
         istLog('MATCH ID:',id,'STATISTICS RESPONSE: (alinamadi)');
-        istMesaj(id,'İstatistik verisi alınamadı');
-        if(opts.son||m.durum==='post') istBitti[id]=1;
-        cb&&cb();
+        // Summary CORS/WAF yüzünden açılmazsa aynı-origin atomik snapshot'taki
+        // son güvenilir değerleri göster. Böylece scoreboard ve istatistik
+        // erişimleri birbirinden bağımsız yedeklenir.
+        fetch('data/canli.json?ts='+Date.now(),{cache:'no-store'})
+          .then(function(r){if(!r.ok) throw new Error('canli.json '+r.status);return r.json();})
+          .then(function(data){
+            var bilgi=(data.ist||{})[id];
+            if(!bilgi||!bilgi.st) throw new Error('istatistik snapshot yok');
+            snapshotUygula(data);
+            if(CANLI.ist[id]){
+              CANLI.ist[id]._st=bilgi.st;
+              CANLI.ist[id].st=bilgi.st;
+            }
+            istSon[id]=Date.now();
+          })
+          .catch(function(){istMesaj(id,'İstatistik verisi alınamadı');})
+          .then(function(){
+            if(opts.son||m.durum==='post') istBitti[id]=1;
+            cb&&cb();
+          });
         return;
       }
       fetch(urls[i]).then(function(r){
@@ -1493,7 +1808,7 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
           if(CANLI.maclar[id]) CANLI.maclar[id].durum=parsed.durum;
           if(CANLI.ist[id]) CANLI.ist[id].durum=parsed.durum;
         }
-        var msg=istHepsiBos(st)?'İstatistik verisi mevcut değil':'';
+        var msg=(istHepsiBos(st)||istSablonSifir(st))?'İstatistik verisi mevcut değil':'';
         istUygula(id,st,msg);
         if(parsed.durum==='post'||opts.son) istBitti[id]=1;
         cb&&cb();
@@ -1501,39 +1816,95 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
     }
     dene(0);
   }
-  function tazele(){
-    if(document.hidden){return;}
-    canliSayac++;
-    var aktif=false;
-    for(var id in CANLI.maclar){if(macAktifMi(CANLI.maclar[id])){aktif=true;break;}}
-    if(!aktif&&canliSayac%10!==1){return;}
-    function gun(n){var x=new Date(Date.now()+n*86400000);
-      return x.toISOString().slice(0,10).replace(/-/g,'');}
-    var url='https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+
-            '/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100';
-    fetch(url).then(function(r){if(!r.ok) throw new Error('http '+r.status);return r.json();}).then(function(data){
-      (data.events||[]).forEach(function(ev){
-        var id=String(ev.id);
-        if(!CANLI.maclar[id]&&!CANLI.ist[id]) return;
-        var c=(ev.competitions||[])[0]||{};
-        var st=c.status||ev.status||{};
-        var tip=st.type||{};
-        var state=tip.state||((CANLI.maclar[id]||CANLI.ist[id]||{}).durum);
-        if(ertelendiMi(tip.name||tip.description)){istBitti[id]=1;return;}
-        var evk=0,depk=0;
-        (c.competitors||[]).forEach(function(t){
-          var n=parseInt(t.score,10);
-          if(t.homeAway==='home'){evk=isNaN(n)?0:n;}else{depk=isNaN(n)?0:n;}
-        });
-        if(state==='in') canliRozetEkle();
-        if(CANLI.maclar[id]||CANLI.ist[id]){
-          macGuncelle(id,{evk:evk,depk:depk,durum:state,
-                          saat:st.displayClock||''},sonGolDetay(c));
+  // Önce ESPN'in anlık endpoint'i denenir. Tarayıcı CORS/WAF nedeniyle
+  // erişemiyorsa botun aynı-origin, atomik olarak ürettiği data/canli.json
+  // devreye girer. Böylece site yalnızca tek bir erişim yoluna bağlı kalmaz.
+  var SKOR_API_BASELERI=[
+    'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig,
+    'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig
+  ];
+  function jsonDene(urls,i){
+    i=i||0;
+    if(i>=urls.length) return Promise.reject(new Error('tum API adresleri basarisiz'));
+    return fetch(urls[i],{cache:'no-store',headers:{'Accept':'application/json'}})
+      .then(function(r){if(!r.ok) throw new Error('http '+r.status);return r.json();})
+      .catch(function(){return jsonDene(urls,i+1);});
+  }
+  function snapshotUygula(data){
+    if(!data||typeof data!=='object') return;
+    var maclar=data.maclar||{};
+    Object.keys(maclar).forEach(function(id){
+      var bilgi=maclar[id];
+      if(!CANLI.maclar[id]&&!CANLI.ist[id]) return;
+      macGuncelle(id,{
+        evk:Number(bilgi.evk)||0,
+        depk:Number(bilgi.depk)||0,
+        durum:bilgi.durum||((CANLI.maclar[id]||CANLI.ist[id]||{}).durum),
+        saat:bilgi.saat||bilgi.durum_metin||''
+      },'');
+    });
+    var ist=data.ist||{};
+    Object.keys(ist).forEach(function(id){
+      var bilgi=ist[id]||{};
+      if(bilgi.st){
+        if(CANLI.ist[id]){
+          CANLI.ist[id]._st=bilgi.st;
+          CANLI.ist[id].st=bilgi.st;
         }
-        if(state==='in') istIste(id);
-        else if(state==='post'&&!istBitti[id]&&CANLI.ist[id]) istIste(id,{birKez:true,son:true});
+        istUygula(id,bilgi.st,
+          (istHepsiBos(bilgi.st)||istSablonSifir(bilgi.st))
+            ?'İstatistik verisi mevcut değil':'');
+      }
+    });
+  }
+  function skorYanitiUygula(data){
+    if(!data||!Array.isArray(data.events)) throw new Error('gecersiz scoreboard');
+    data.events.forEach(function(ev){
+      var id=String(ev.id||'');
+      if(!id||(!CANLI.maclar[id]&&!CANLI.ist[id])) return;
+      var c=(ev.competitions||[])[0]||{};
+      var st=c.status||ev.status||{};
+      var tip=st.type||{};
+      var state=tip.state||((CANLI.maclar[id]||CANLI.ist[id]||{}).durum);
+      if(ertelendiMi(tip.name||tip.description||tip.shortDetail)){istBitti[id]=1;return;}
+      var evk=0,depk=0;
+      (c.competitors||[]).forEach(function(t){
+        var n=parseInt(t.score,10);
+        if(t.homeAway==='home'){evk=isNaN(n)?0:n;}else{depk=isNaN(n)?0:n;}
       });
-    }).catch(function(){});
+      if(state==='in') canliRozetEkle();
+      macGuncelle(id,{evk:evk,depk:depk,durum:state,
+                      saat:st.displayClock||tip.shortDetail||''},sonGolDetay(c));
+      if(state==='in') istIste(id);
+      else if(state==='post'&&!istBitti[id]&&CANLI.ist[id]) istIste(id,{birKez:true,son:true});
+    });
+  }
+  function gun(n){
+    var x=new Date(Date.now()+n*86400000);
+    return x.toISOString().slice(0,10).replace(/-/g,'');
+  }
+  function yakinMacVarMi(){
+    for(var id in CANLI.maclar){
+      if(macAktifMi(CANLI.maclar[id])) return true;
+    }
+    return false;
+  }
+  function tazele(){
+    if(document.hidden) return;
+    canliSayac++;
+    var aktif=yakinMacVarMi();
+    // Yakın maç yoksa her çağrıda ESPN'e yüklenme; maç saatine yaklaşınca
+    // macAktifMi otomatik olarak hızlı döngüyü devreye sokar.
+    if(!aktif&&canliSayac%4!==1) return;
+    var url=SKOR_API_BASELERI[0]+'/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100';
+    jsonDene([url,SKOR_API_BASELERI[1]+'/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100'])
+      .then(skorYanitiUygula)
+      .catch(function(){
+        return fetch('data/canli.json?ts='+Date.now(),{cache:'no-store'})
+          .then(function(r){if(!r.ok) throw new Error('canli.json '+r.status);return r.json();})
+          .then(snapshotUygula)
+          .catch(function(){});
+      });
   }
   Object.keys(CANLI.ist||{}).forEach(function(id){
     var info=CANLI.ist[id]||{};
@@ -1541,7 +1912,10 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
     else if(info.durum==='post'&&info.eksik) istIste(id,{birKez:true,son:true});
   });
   tazele();
-  setInterval(tazele,30000);
+  (function donguPlanla(){
+    var bekle=yakinMacVarMi()?15000:120000;
+    setTimeout(function(){tazele();donguPlanla();},bekle);
+  })();
 }
 """
 
@@ -1829,31 +2203,13 @@ def render_html(veri: dict, cikti: str) -> None:
 
     canli_rozet = ' <span class="canli">CANLI</span>' if canli_var else ""
 
-    # --- canlı skor + istatistik: tarayıcı ESPN'in açık API'sinden günceller ---
-    canli_map, ist_map = {}, {}
-    for h in haftalar:
-        for m in h["maclar"]:
-            if not m.get("id") or not m.get("utc"):
-                continue
-            mid = str(m["id"])
-            delta = abs((parse_utc(m["utc"]) - simdi_dt).total_seconds())
-            kayit = {
-                "ev": m["ev"]["ad"], "dep": m["dep"]["ad"],
-                "evk": m["ev"].get("skor") or 0, "depk": m["dep"].get("skor") or 0,
-                "durum": m["durum"], "utc": m["utc"],
-                "ev_id": m["ev"].get("id", ""), "dep_id": m["dep"].get("id", ""),
-                "durum_ad": m.get("durum_ad") or "",
-            }
-            if delta <= 4 * 86400:
-                canli_map[mid] = kayit
-            if m["durum"] in ("in", "post") and delta <= 14 * 86400:
-                st = mac_istatistik_al(m)
-                ist_map[mid] = {
-                    **kayit,
-                    "eksik": istatistik_hepsi_bos_mu(st),
-                }
-    canli_json = json.dumps({"lig": lig.get("slug") or "tur.1", "maclar": canli_map, "ist": ist_map},
-                            ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    # --- canlı skor + istatistik: tarayıcı önce ESPN'i, gerekirse aynı-origin
+    # data/canli.json yedeğini kullanır. Aynı küçük paket HTML içine de gömülür.
+    canli_json = json.dumps(
+        canli_verisi_uret(veri, simdi_dt),
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).replace("</", "<\\/")
 
     # İnadına TV markası: depoda logo dosyası varsa üst başlıkta ve altta o kullanılır,
     # yoksa üstte lig logosu, altta yerleşik SVG amblem gösterilir
@@ -2081,13 +2437,6 @@ def _veri_yeni_uret(args, data_dir: str, eski_veri=None) -> dict:
         puan = eski_puan if isinstance(eski_puan, list) else []
         log(f"UYARI: puan durumu alınamadı: {e}; önbellek korunuyor")
 
-    ozetler = [
-        m for m in maclar if m["durum"] in ("post", "in")
-        and m["utc"] and parse_utc(m["utc"]) >= simdi_dt - timedelta(days=14)
-    ]
-    ozetler.sort(key=lambda m: (0 if m["durum"] == "in" else 1,
-                                -(parse_utc(m["utc"]).timestamp() if m.get("utc") else 0)))
-
     veri = {
         "uretim": simdi_dt.isoformat(),
         "lig": lig,
@@ -2098,13 +2447,8 @@ def _veri_yeni_uret(args, data_dir: str, eski_veri=None) -> dict:
     if not veri_gecerli_mi(veri):
         raise RuntimeError("yeni veri paketi doğrulamadan geçemedi; eski veri korunacak")
 
-    # Dosyaları en son, atomik olarak yaz.
-    json_yaz_atomik(os.path.join(data_dir, "site-verisi.json"), veri)
-    json_yaz_atomik(os.path.join(data_dir, "fikstur.json"), veri["haftalar"])
-    json_yaz_atomik(os.path.join(data_dir, "puan-durumu.json"), puan)
-    json_yaz_atomik(os.path.join(data_dir, "ozetler.json"), ozetler[:16])
-    json_yaz_atomik(os.path.join(data_dir, "takimlar.json"), takimlar)
-    log(f"veri dosyaları yazıldı: {data_dir}/")
+    # Dosyaları en son, atomik olarak aynı paket halinde yaz.
+    veri_paketini_yaz(data_dir, veri)
     return veri
 
 
@@ -2112,27 +2456,67 @@ def calistir(args) -> None:
     data_dir = args.data_dir
     os.makedirs(data_dir, exist_ok=True)
     eski_veri = site_verisi_yukle(data_dir)
+    strict = bool(getattr(args, "strict", False))
+    live = bool(getattr(args, "live", False))
 
     if args.offline:
         log("offline mod: mevcut verilerden HTML üretiliyor")
         if eski_veri is None:
             raise RuntimeError("offline mod için geçerli data/site-verisi.json bulunamadı")
         veri = eski_veri
+        # canli.json türetilmiş, küçük bir çıktı olduğu için ağ olmadan da
+        # mevcut paketten yeniden oluşturulabilsin.
+        json_yaz_atomik(
+            os.path.join(data_dir, CANLI_DOSYA),
+            canli_verisi_uret(veri),
+        )
     else:
         # Başka bir lig istenirken Süper Lig önbelleğini yanlışlıkla göstermeyelim.
         if eski_veri and (eski_veri.get("lig", {}).get("slug") or args.league) != args.league:
             eski_veri = None
-        try:
-            veri = _veri_yeni_uret(args, data_dir, eski_veri)
-        except Exception as e:
-            strict = bool(getattr(args, "strict", False))
-            if strict or not CI_GERI_DUS or eski_veri is None:
-                log(f"HATA: çevrim içi güncelleme başarısız: {e}")
-                raise
-            log(f"UYARI: çevrim içi güncelleme başarısız: {e}")
-            log("Son sağlam veri korunuyor; bir sonraki zamanlanmış çalıştırmada tekrar denenecek.")
-            veri = eski_veri
 
+        if live:
+            log("canlı mod: yalnızca son scoreboard penceresi yenileniyor")
+            try:
+                if eski_veri is None:
+                    raise RuntimeError("canlı mod için önce tam senkronizasyon gerekir")
+                veri, degisti = canli_veri_guncelle(args.league, data_dir, eski_veri)
+            except Exception as e:
+                if strict or not CI_GERI_DUS or eski_veri is None:
+                    log(f"HATA: canlı güncelleme başarısız: {e}")
+                    raise
+                log(f"UYARI: canlı güncelleme başarısız: {e}")
+                log("Son sağlam canlı paket korunuyor; sonraki beş dakikalık çalıştırma yeniden deneyecek.")
+                veri, degisti = eski_veri, False
+            if not degisti:
+                # İlk kurulumda index/canli uçları yoksa üret; normal Actions
+                # koşusunda hiçbir veri değişmemişse boş commit oluşturma.
+                if not os.path.exists(os.path.join(data_dir, CANLI_DOSYA)):
+                    json_yaz_atomik(
+                        os.path.join(data_dir, CANLI_DOSYA),
+                        canli_verisi_uret(veri),
+                    )
+                if not os.path.exists(args.out):
+                    render_html(veri, args.out)
+                log("canlı veri değişmedi; commit atlanıyor ✅")
+                return
+            veri_paketini_yaz(data_dir, veri)
+        else:
+            try:
+                veri = _veri_yeni_uret(args, data_dir, eski_veri)
+            except Exception as e:
+                if strict or not CI_GERI_DUS or eski_veri is None:
+                    log(f"HATA: çevrim içi güncelleme başarısız: {e}")
+                    raise
+                log(f"UYARI: çevrim içi güncelleme başarısız: {e}")
+                log("Son sağlam veri korunuyor; bir sonraki zamanlanmış çalıştırmada tekrar denenecek.")
+                veri = eski_veri
+
+    # Eski bir checkout'tan yükseltme yapılıyorsa türetilmiş canlı uç da
+    # oluşturulsun; sonraki hızlı çalıştırma artık bunu kullanabilir.
+    canli_yol = os.path.join(data_dir, CANLI_DOSYA)
+    if not os.path.exists(canli_yol):
+        json_yaz_atomik(canli_yol, canli_verisi_uret(veri))
     render_html(veri, args.out)
     log("tamam ✅")
 
@@ -2143,6 +2527,11 @@ def main() -> None:
     p.add_argument("--data-dir", default="data", help="veri dosyalarının dizini")
     p.add_argument("--out", default="index.html", help="çıktı HTML dosyası")
     p.add_argument("--offline", action="store_true", help="ağ olmadan, mevcut veriden HTML üret")
+    p.add_argument(
+        "--live",
+        action="store_true",
+        help="yalnızca bugünün çevresindeki maçları sık aralıklarla yenile; tam sezon çekme",
+    )
     p.add_argument(
         "--strict",
         action="store_true",
