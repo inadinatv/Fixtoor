@@ -217,6 +217,14 @@ class SifirVeYok(unittest.TestCase):
         self.assertEqual(al["shotsOnTarget"]["away"], 7.0)
         self.assertEqual(al["durum"], "ok")
 
+    def test_summary_tamamen_sifir_stub_sayilir(self):
+        st = ist.istatistik_bos_yapi("summary", "ok")
+        for alan in ist.ISTATISTIK_ALANLARI:
+            st[alan] = {"home": 0.0, "away": 0.0}
+        sonuc = ist.mac_istatistik_al({"istatistik": st})
+        self.assertTrue(ist.istatistik_hepsi_bos_mu(sonuc))
+        self.assertEqual(sonuc["durum"], "yok")
+
     def test_kismi_istatistik(self):
         st = ist.istatistik_standart(
             {"possessionPct": "60", "totalShots": "8"},
@@ -464,6 +472,91 @@ class BotGuvenilirlik(unittest.TestCase):
                     ))
         finally:
             fiktoor._veri_yeni_uret = eski_uret
+
+
+class CanliYenileme(unittest.TestCase):
+    def _paket(self):
+        mac = {
+            "id": "live-1",
+            "utc": "2026-09-19T17:00:00Z",
+            "durum": "pre",
+            "durum_metin": "Scheduled",
+            "durum_ad": "STATUS_SCHEDULED",
+            "saat_gostergesi": "",
+            "ev": {"id": "1", "ad": "Ev", "kisa": "EV", "logo": "", "skor": "0",
+                   "istatistik": {}},
+            "dep": {"id": "2", "ad": "Dep", "kisa": "DEP", "logo": "", "skor": "0",
+                    "istatistik": {}},
+            "stadyum": "Test",
+            "sehir": "",
+            "goller": [], "kirmizi_kartlar": [], "sari_kartlar": [],
+            "kanal": "beIN Sports 1",
+        }
+        return {
+            "uretim": "2026-09-19T16:00:00+00:00",
+            "lig": {"slug": "tur.1", "ad": "Lig"},
+            "takimlar": {
+                "1": {"ad": "Ev", "kisa": "EV", "logo": "", "renk": "#353a40"},
+                "2": {"ad": "Dep", "kisa": "DEP", "logo": "", "renk": "#353a40"},
+            },
+            "haftalar": [{"no": 1, "maclar": [mac]}],
+            "puan_durumu": [],
+        }
+
+    def test_canli_skor_degisimini_birlestirir_ve_kanali_korur(self):
+        eski = self._paket()
+        yeni = fiktoor.copy.deepcopy(eski)
+        yeni["haftalar"][0]["maclar"][0]["durum"] = "in"
+        yeni["haftalar"][0]["maclar"][0]["durum_metin"] = "1H"
+        yeni["haftalar"][0]["maclar"][0]["saat_gostergesi"] = "23'"
+        yeni["haftalar"][0]["maclar"][0]["ev"]["skor"] = "1"
+        yeni["haftalar"][0]["maclar"][0]["dep"]["skor"] = "0"
+        eski_fetch = fiktoor.fetch_canli_maclar
+        eski_stats = fiktoor.mac_istatistiklerini_doldur
+        try:
+            fiktoor.fetch_canli_maclar = lambda slug, simdi=None: [yeni["haftalar"][0]["maclar"][0]]
+            fiktoor.mac_istatistiklerini_doldur = lambda *args, **kwargs: None
+            sonuc, degisti = fiktoor.canli_veri_guncelle(
+                "tur.1", "/tmp", eski,
+                simdi=fiktoor.parse_utc("2026-09-19T16:05:00Z"),
+            )
+        finally:
+            fiktoor.fetch_canli_maclar = eski_fetch
+            fiktoor.mac_istatistiklerini_doldur = eski_stats
+        mac = sonuc["haftalar"][0]["maclar"][0]
+        self.assertTrue(degisti)
+        self.assertEqual(mac["durum"], "in")
+        self.assertEqual(mac["ev"]["skor"], "1")
+        self.assertEqual(mac["kanal"], "beIN Sports 1")
+        self.assertEqual(sonuc["uretim"], "2026-09-19T16:05:00+00:00")
+
+    def test_degisiklik_yoksa_zaman_damgasi_ilerlemez(self):
+        eski = self._paket()
+        eski_fetch = fiktoor.fetch_canli_maclar
+        eski_stats = fiktoor.mac_istatistiklerini_doldur
+        try:
+            fiktoor.fetch_canli_maclar = lambda slug, simdi=None: []
+            fiktoor.mac_istatistiklerini_doldur = lambda *args, **kwargs: None
+            sonuc, degisti = fiktoor.canli_veri_guncelle(
+                "tur.1", "/tmp", eski,
+                simdi=fiktoor.parse_utc("2026-09-19T16:05:00Z"),
+            )
+        finally:
+            fiktoor.fetch_canli_maclar = eski_fetch
+            fiktoor.mac_istatistiklerini_doldur = eski_stats
+        self.assertFalse(degisti)
+        self.assertEqual(sonuc["uretim"], eski["uretim"])
+
+    def test_canli_json_uretilir(self):
+        with tempfile.TemporaryDirectory() as td:
+            veri = self._paket()
+            fiktoor.veri_paketini_yaz(td, veri)
+            yol = os.path.join(td, "canli.json")
+            self.assertTrue(os.path.exists(yol))
+            with open(yol, encoding="utf-8") as f:
+                canli = json.load(f)
+            self.assertIn("maclar", canli)
+            self.assertIn("live-1", canli["maclar"])
 
 
 if __name__ == "__main__":

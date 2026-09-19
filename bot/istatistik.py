@@ -192,7 +192,12 @@ def istatistik_hepsi_bos_mu(st: Optional[dict]) -> bool:
 
 
 def istatistik_sablon_sifir_mi(st: Optional[dict]) -> bool:
-    """Scoreboard 'stub': bütün alanlar 0 veya boş — gerçek maç istatistiği değil."""
+    """Bütün istatistik alanları 0 veya boşsa veri stub'ıdır.
+
+    ESPN bazen hem scoreboard hem de summary yanıtında istatistik alanlarını
+    sıfırlarla doldurur. Gerçek 0 değerleri, başka en az bir alan doluysa
+    korunur; tüm paket sıfırsa bunu "veri yok" olarak işaretleriz.
+    """
     if not isinstance(st, dict):
         return True
     for k in ISTATISTIK_ALANLARI:
@@ -285,8 +290,9 @@ def _cift_oku(cift: Any) -> dict:
 def mac_istatistik_al(m: Optional[dict]) -> dict:
     """Maç sözlüğünden standart istatistik üretir.
 
-    Scoreboard'dan gelen 0-0-0-0-0 şablonunu gerçek veri saymaz (durum='yok').
-    Summary kaynağındaki gerçek 0 değerleri korunur.
+    Bütün alanlardan oluşan 0-0-0-0-0 şablonunu gerçek veri saymaz
+    (durum='yok'). Başka bir alan doluyken gelen gerçek 0 değerleri korunur;
+    örneğin şutun 0 olması diğer dolu metrikleri silmez.
     """
     m = m or {}
     st = m.get("istatistik")
@@ -295,7 +301,7 @@ def mac_istatistik_al(m: Optional[dict]) -> dict:
         for k in ISTATISTIK_ALANLARI:
             out[k] = _cift_oku(st.get(k))
         kaynak = out.get("kaynak")
-        if kaynak != "summary" and istatistik_sablon_sifir_mi(out):
+        if istatistik_sablon_sifir_mi(out):
             return istatistik_bos_yapi(kaynak, "yok")
         if istatistik_hepsi_bos_mu(out):
             out["durum"] = "yok"
