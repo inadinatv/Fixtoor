@@ -1,11 +1,10 @@
 name: Fixtoor Bot
 
-# Canlı skor döngüsü beş dakikada bir çalışır. GitHub Actions yoğunlukta
-# birkaç dakika gecikebilir; sayfanın açık olduğu tarayıcı ayrıca canlı maçta
-# yaklaşık 15 saniyede ESPN'i kontrol eder.
-#
-# Tam senkronizasyon daha ağırdır (sezon fikstürü, puan durumu, istatistik,
-# yayın kanalı ve video araması) ve altı saatte bir çalışır.
+# Canlı skor döngüsü beş dakikada bir çalışır. GitHub Actions yoğunlukta bu
+# cron'u pratikte birkaç saatte bir tetikleyebiliyor; bu yüzden tazeliği cron'a
+# değil BOT'A emanet ediyoruz: paket eşikten (FIXTOOR_TAM_ESIK_SAAT) eskiyse
+# bot canlı modu kendiliğinden tam senkronizasyona yükseltir. Sayfa açıkken
+# tarayıcı ayrıca kendi canlı motorunu çalıştırır (5-60 sn).
 on:
   schedule:
     - cron: "*/5 * * * *"
@@ -32,15 +31,11 @@ on:
       - "data/**"
       - "index.html"
 
-# Botun ürettiği paketleri main'e geri yazabilmesi ve Pages'e gönderebilmesi
-# için gerekli izinler.
 permissions:
   contents: write
   pages: write
   id-token: write
 
-# Aynı veri paketi üzerinde iki çalışma yarışmasın. Bekleyen cron çalışması,
-# devam eden güncellemenin arkasında sıraya girer; yarım veri yayınlanmaz.
 concurrency:
   group: fixtoor-bot
   cancel-in-progress: false
@@ -48,6 +43,8 @@ concurrency:
 env:
   PYTHONUNBUFFERED: "1"
   FIXTOOR_CI_GERI_DUS: "1"
+  # Canlı mod, paket bu eşikten eskiyse tam senkronizasyona yükseltilir.
+  FIXTOOR_TAM_ESIK_SAAT: "6"
 
 jobs:
   bot:
@@ -77,7 +74,7 @@ jobs:
         shell: bash
         run: |
           mode="full"
-          if [[ "$GITHUB_EVENT_NAME" == "schedule" && "${{ github.event.schedule }}" == "*/5 * * * *" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
             mode="live"
           elif [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
             mode="${{ inputs.mode }}"
@@ -86,9 +83,11 @@ jobs:
           echo "Fixtoor çalışma modu: $mode"
 
       - name: Fixtoor botunu çalıştır
+        id: bot
         env:
           FIXTOOR_STRICT: ${{ inputs.strict || 'false' }}
         run: |
+          set -o pipefail
           if [[ "${{ steps.mod.outputs.mode }}" == "live" ]]; then
             if [[ "$FIXTOOR_STRICT" == "true" ]]; then
               python bot/fiktoor.py --live --strict
@@ -103,13 +102,63 @@ jobs:
             fi
           fi
 
+      - name: Veri tazeliğini denetle
+        id: tazelik
+        shell: bash
+        run: |
+          python - <<'PY' | tee /tmp/tazelik.txt
+          import json, os, sys
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          esik = float(os.environ.get("FIXTOOR_TAM_ESIK_SAAT", "6"))
+          yol = Path("data/site-verisi.json")
+          try:
+              uretim = datetime.fromisoformat(json.loads(yol.read_text(encoding="utf-8"))["uretim"])
+          except Exception as e:
+              print(f"::error title=Fixtoor verisi okunamadı::data/site-verisi.json çözümlenemedi: {e}")
+              print("durum=HATA")
+              sys.exit(0)
+          if uretim.tzinfo is None:
+              uretim = uretim.replace(tzinfo=timezone.utc)
+          yas = (datetime.now(timezone.utc) - uretim).total_seconds() / 3600.0
+          print(f"uretim={uretim.isoformat()}")
+          print(f"yas_saat={yas:.2f}")
+          print(f"esik_saat={esik:g}")
+          if yas > esik:
+              print(f"::warning title=Fixtoor verisi bayat::{yas:.1f} saat önce üretildi "
+                    f"(eşik {esik:g} saat). ESPN erişimini kontrol et: data/tani.json")
+              print("durum=BAYAT")
+          else:
+              print("durum=TAZE")
+          PY
+          {
+            echo "### Fixtoor veri tazeliği"
+            echo '```'
+            grep -v '^::' /tmp/tazelik.txt || true
+            echo '```'
+            if [ -f data/tani.json ]; then
+              echo "### Ağ tanısı (son başarısız deneme)"
+              echo '```'
+              python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("data/tani.json").read_text(encoding="utf-8"))
+          print("üretim:", r.get("uretim"), "| neden:", r.get("neden", ""))
+          print("çalışan kaynaklar:", ", ".join(r.get("calisan_kaynaklar") or []) or "YOK")
+          print("çıkış IP:", r.get("cikis_ip", ""))
+          for t in r.get("testler", []):
+              ek = t.get("hata") or (f"[waf:{t['waf']}]" if t.get("waf") else "")
+              print(f"  {t.get('hedef')}/{t.get('ua')} -> {t.get('durum')} {t.get('ms', 0)}ms {ek}")
+          PY
+              echo '```'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Değişiklik var mı
         id: degisiklik
         shell: bash
         run: |
-          # Cron çalışmasında veri aynıysa Pages dağıtımı da atlanır. Push veya
-          # elle çalıştırmada ise paket yeniden hazırlanarak kod/logo değişikliği
-          # kaybolmaz.
           if [[ "$GITHUB_EVENT_NAME" == "schedule" ]] && \
              git diff --quiet -- index.html data/ && \
              [[ -z "$(git ls-files --others --exclude-standard index.html data/)" ]]; then
@@ -131,11 +180,16 @@ jobs:
           assert isinstance(site.get("haftalar"), list), "haftalar listesi yok"
           assert isinstance(live.get("maclar"), dict), "canli.json geçersiz"
           assert isinstance(live.get("ist"), dict), "canli istatistik paketi yok"
-          assert Path("index.html").stat().st_size > 1000, "index.html boş/eksik"
+          assert isinstance(live.get("takvim"), list), "canli.json takvim listesi yok"
+          assert live.get("sezon"), "canli.json sezon yılı yok"
+          html_metin = Path("index.html").read_text(encoding="utf-8")
+          assert len(html_metin) > 1000, "index.html boş/eksik"
+          assert "CANLI MOTOR" in html_metin, "index.html canlı motoru içermiyor"
           print(
               f"Doğrulandı: {len(site['haftalar'])} hafta, "
               f"{sum(len(h.get('maclar', [])) for h in site['haftalar'])} maç, "
-              f"{len(live['maclar'])} canlı pencere kaydı"
+              f"{len(live['maclar'])} canlı pencere kaydı, "
+              f"{len(live.get('takvim') or [])} takvim günü"
           )
           PY
 
@@ -144,7 +198,6 @@ jobs:
           git config user.name "fixtoor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html data/
-
           if git diff --cached --quiet; then
             echo "Veri değişmedi, commit atlanıyor."
           else
