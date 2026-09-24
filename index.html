@@ -160,6 +160,46 @@ max-width:92vw;text-align:center;animation:golgelsin .35s ease}
 .kart.parla{border-color:var(--yesil);box-shadow:0 0 0 3px rgba(34,197,94,.28),0 12px 26px rgba(0,0,0,.35)}
 @keyframes skorpop{0%{transform:scale(1)}45%{transform:scale(1.16)}100%{transform:scale(1)}}
 .pop{animation:skorpop .6s ease}
+/* --- canlı motor: durum çubuğu + anlık maç paneli --- */
+.canli-cubuk{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 4px;
+padding:9px 14px;border-radius:12px;font-size:12.5px;font-weight:600;
+background:linear-gradient(180deg,rgba(34,197,94,.09),rgba(56,189,248,.05));
+border:1px solid rgba(34,197,94,.28);color:var(--metin)}
+.canli-cubuk[data-durum="beklemede"]{border-color:var(--cizgi);
+background:linear-gradient(180deg,rgba(139,152,169,.09),transparent)}
+.canli-cubuk[data-durum="hata"]{border-color:rgba(239,68,68,.4);
+background:linear-gradient(180deg,rgba(239,68,68,.12),transparent)}
+.canli-cubuk[data-durum="canli"]{border-color:rgba(239,68,68,.55);
+background:linear-gradient(180deg,rgba(239,68,68,.14),rgba(34,197,94,.06))}
+.nokta-canli{width:9px;height:9px;border-radius:50%;background:var(--soluk);flex-shrink:0}
+.canli-cubuk[data-durum="canli"] .nokta-canli{background:var(--kirmizi);animation:nabiz 1.2s infinite}
+.canli-cubuk[data-durum="tamam"] .nokta-canli{background:var(--yesil)}
+.canli-cubuk[data-durum="hata"] .nokta-canli{background:var(--sari)}
+.canli-sag{margin-left:auto;display:flex;align-items:center;gap:8px}
+.canli-kaynak{color:var(--soluk);font-weight:600;font-size:11.5px}
+.canli-yenile{background:var(--kart2);border:1px solid var(--cizgi);color:var(--metin);
+border-radius:9px;padding:4px 10px;font-size:11.5px;font-weight:700;cursor:pointer;
+font-family:inherit;transition:border-color .15s,transform .15s}
+.canli-yenile:hover{border-color:#3b4c61;transform:translateY(-1px)}
+.canli-yenile:disabled{opacity:.5;cursor:default;transform:none}
+#canli-panel{display:grid;gap:10px;margin:10px 0 4px}
+#canli-panel:empty{display:none}
+.canli-baslik{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;
+letter-spacing:.4px;color:var(--soluk);text-transform:uppercase;margin-top:4px}
+.canli-kart{background:linear-gradient(180deg,rgba(239,68,68,.1),var(--kart));
+border:1px solid rgba(239,68,68,.35);border-radius:14px;padding:12px 14px;
+box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.canli-kart .mac{grid-template-columns:1fr auto 1fr}
+.canli-kart .sure{font-size:12px;font-weight:800;color:var(--kirmizi);text-align:center;
+margin-top:2px;letter-spacing:.3px}
+.canli-kart.bekleyen{background:linear-gradient(180deg,rgba(56,189,248,.08),var(--kart));
+border-color:rgba(56,189,248,.28)}
+.canli-kart.bekleyen .sure{color:var(--mavi)}
+.puan-not{color:var(--soluk);font-size:11.5px;margin-top:8px;text-align:right;min-height:0}
+tbody#puan-govde tr.guncellendi td{animation:puanfla .9s ease}
+@keyframes puanfla{0%{background:rgba(34,197,94,.22)}100%{background:transparent}}
+.bayat-uyari{margin:10px 0;padding:10px 14px;border-radius:12px;font-size:12.5px;
+background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.35);color:#fde68a}
 </style>
 </head>
 <body>
@@ -168,8 +208,19 @@ max-width:92vw;text-align:center;animation:golgelsin .35s ease}
 <header class="ust sade">
 <div><h1>Fix<span>toor</span></h1><span class="lig-etiket">⚽ Trendyol Süper Lig</span>
 <div class="alt-bilgi">2026-27 Turkish Super Lig · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı</div>
-<div class="alt-bilgi">Son güncelleme: Sal, 15 Eyl 16:35 (İstanbul)</div>
+<div class="alt-bilgi" id="son-guncelleme" data-uretim="2026-09-15T13:35:33.843870+00:00">Son güncelleme: Sal, 15 Eyl 16:35 (İstanbul)</div>
 </div></header>
+
+<div class="canli-cubuk" id="canli-cubuk" hidden>
+<span class="nokta-canli" id="canli-nokta"></span>
+<span id="canli-mesaj">Canlı veri bağlanıyor…</span>
+<span class="canli-sag">
+<span id="canli-kaynak" class="canli-kaynak"></span>
+<button type="button" id="canli-yenile" class="canli-yenile" title="Şimdi yenile">⟳ Yenile</button>
+</span>
+</div>
+
+<div id="canli-panel"></div>
 
 <nav class="sekmeler">
 <button class="aktif" data-sekme="hafta">📺 Haftanın Maçları</button>
@@ -2601,61 +2652,62 @@ max-width:92vw;text-align:center;animation:golgelsin .35s ease}
 <h2>Puan Durumu</h2>
 <div class="kart" style="overflow-x:auto"><table class="puan">
 <thead><tr><th>Takım</th><th>O</th><th>G</th><th>B</th><th>M</th><th>A</th><th>Y</th>
-<th>AV</th><th>P</th><th></th></tr></thead><tbody><tr><td><span class="takim-hucre"><span class="nokta" style="background:#81D6AC"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/432.png" alt="" loading="lazy">Galatasaray</span></td>
+<th>AV</th><th>P</th><th></th></tr></thead><tbody id="puan-govde"><tr data-takim-id="432"><td><span class="takim-hucre"><span class="nokta" style="background:#81D6AC"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/432.png" alt="" loading="lazy">Galatasaray</span></td>
 <td>5</td><td>4</td><td>1</td><td>0</td>
 <td>13</td><td>6</td><td>+7</td>
-<td class="puan">13</td><td style="color:var(--soluk)">Şampiyonlar Ligi</td></tr><tr><td><span class="takim-hucre"><span class="nokta" style="background:#B5E7CE"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1895.png" alt="" loading="lazy">Besiktas</span></td>
+<td class="puan">13</td><td style="color:var(--soluk)">Şampiyonlar Ligi</td></tr><tr data-takim-id="1895"><td><span class="takim-hucre"><span class="nokta" style="background:#B5E7CE"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1895.png" alt="" loading="lazy">Besiktas</span></td>
 <td>5</td><td>4</td><td>0</td><td>1</td>
 <td>12</td><td>4</td><td>+8</td>
-<td class="puan">12</td><td style="color:var(--soluk)">ŞL eleme</td></tr><tr><td><span class="takim-hucre"><span class="nokta" style="background:#B2BFD0"></span><span class="rozet" style="width:22px;height:22px;font-size:10px">AME</span>Amed SFK</span></td>
+<td class="puan">12</td><td style="color:var(--soluk)">ŞL eleme</td></tr><tr data-takim-id="132335"><td><span class="takim-hucre"><span class="nokta" style="background:#B2BFD0"></span><span class="rozet" style="width:22px;height:22px;font-size:10px">AME</span>Amed SFK</span></td>
 <td>5</td><td>3</td><td>1</td><td>1</td>
 <td>12</td><td>5</td><td>+7</td>
-<td class="puan">10</td><td style="color:var(--soluk)">AVL eleme</td></tr><tr><td><span class="takim-hucre"><span class="nokta" style="background:#c6d1e0"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6870.png" alt="" loading="lazy">Kasimpasa</span></td>
+<td class="puan">10</td><td style="color:var(--soluk)">AVL eleme</td></tr><tr data-takim-id="6870"><td><span class="takim-hucre"><span class="nokta" style="background:#c6d1e0"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6870.png" alt="" loading="lazy">Kasimpasa</span></td>
 <td>5</td><td>2</td><td>3</td><td>0</td>
 <td>7</td><td>5</td><td>+2</td>
-<td class="puan">9</td><td style="color:var(--soluk)">Konferans Ligi eleme</td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/995.png" alt="" loading="lazy">Kocaelispor</span></td>
+<td class="puan">9</td><td style="color:var(--soluk)">Konferans Ligi eleme</td></tr><tr data-takim-id="995"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/995.png" alt="" loading="lazy">Kocaelispor</span></td>
 <td>5</td><td>3</td><td>0</td><td>2</td>
 <td>5</td><td>4</td><td>+1</td>
-<td class="puan">9</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7656.png" alt="" loading="lazy">Caykur Rizespor</span></td>
+<td class="puan">9</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="7656"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7656.png" alt="" loading="lazy">Caykur Rizespor</span></td>
 <td>5</td><td>3</td><td>0</td><td>2</td>
 <td>5</td><td>4</td><td>+1</td>
-<td class="puan">9</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20070.png" alt="" loading="lazy">Gaziantep FK</span></td>
+<td class="puan">9</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="20070"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20070.png" alt="" loading="lazy">Gaziantep FK</span></td>
 <td>5</td><td>2</td><td>2</td><td>1</td>
 <td>7</td><td>5</td><td>+2</td>
-<td class="puan">8</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9078.png" alt="" loading="lazy">Alanyaspor</span></td>
+<td class="puan">8</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="9078"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9078.png" alt="" loading="lazy">Alanyaspor</span></td>
 <td>5</td><td>2</td><td>2</td><td>1</td>
 <td>6</td><td>5</td><td>+1</td>
-<td class="puan">8</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/997.png" alt="" loading="lazy">Trabzonspor</span></td>
+<td class="puan">8</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="997"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/997.png" alt="" loading="lazy">Trabzonspor</span></td>
 <td>5</td><td>2</td><td>1</td><td>2</td>
 <td>9</td><td>5</td><td>+4</td>
-<td class="puan">7</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/132334.png" alt="" loading="lazy">Çorum FK</span></td>
+<td class="puan">7</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="132334"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/132334.png" alt="" loading="lazy">Çorum FK</span></td>
 <td>5</td><td>2</td><td>1</td><td>2</td>
 <td>12</td><td>10</td><td>+2</td>
-<td class="puan">7</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/436.png" alt="" loading="lazy">Fenerbahce</span></td>
+<td class="puan">7</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="436"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/436.png" alt="" loading="lazy">Fenerbahce</span></td>
 <td>5</td><td>2</td><td>1</td><td>2</td>
 <td>8</td><td>6</td><td>+2</td>
-<td class="puan">7</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/996.png" alt="" loading="lazy">Genclerbirligi</span></td>
+<td class="puan">7</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="996"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/996.png" alt="" loading="lazy">Genclerbirligi</span></td>
 <td>5</td><td>2</td><td>1</td><td>2</td>
 <td>5</td><td>9</td><td>-4</td>
-<td class="puan">7</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7914.png" alt="" loading="lazy">Istanbul Basaksehir</span></td>
+<td class="puan">7</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="7914"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7914.png" alt="" loading="lazy">Istanbul Basaksehir</span></td>
 <td>5</td><td>1</td><td>1</td><td>3</td>
 <td>6</td><td>11</td><td>-5</td>
-<td class="puan">4</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/11429.png" alt="" loading="lazy">Samsunspor</span></td>
+<td class="puan">4</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="11429"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/11429.png" alt="" loading="lazy">Samsunspor</span></td>
 <td>5</td><td>1</td><td>1</td><td>3</td>
 <td>6</td><td>11</td><td>-5</td>
-<td class="puan">4</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/19267.png" alt="" loading="lazy">Erzurum BB</span></td>
+<td class="puan">4</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="19267"><td><span class="takim-hucre"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/19267.png" alt="" loading="lazy">Erzurum BB</span></td>
 <td>5</td><td>1</td><td>1</td><td>3</td>
 <td>2</td><td>11</td><td>-9</td>
-<td class="puan">4</td><td style="color:var(--soluk)"></td></tr><tr><td><span class="takim-hucre"><span class="nokta" style="background:#FF7F84"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7648.png" alt="" loading="lazy">Konyaspor</span></td>
+<td class="puan">4</td><td style="color:var(--soluk)"></td></tr><tr data-takim-id="7648"><td><span class="takim-hucre"><span class="nokta" style="background:#FF7F84"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7648.png" alt="" loading="lazy">Konyaspor</span></td>
 <td>5</td><td>1</td><td>0</td><td>4</td>
 <td>4</td><td>8</td><td>-4</td>
-<td class="puan">3</td><td style="color:var(--soluk)">Küme düşme hattı</td></tr><tr><td><span class="takim-hucre"><span class="nokta" style="background:#FF7F84"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20729.png" alt="" loading="lazy">Eyupspor</span></td>
+<td class="puan">3</td><td style="color:var(--soluk)">Küme düşme hattı</td></tr><tr data-takim-id="20729"><td><span class="takim-hucre"><span class="nokta" style="background:#FF7F84"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20729.png" alt="" loading="lazy">Eyupspor</span></td>
 <td>5</td><td>1</td><td>0</td><td>4</td>
 <td>2</td><td>8</td><td>-6</td>
-<td class="puan">3</td><td style="color:var(--soluk)">Küme düşme hattı</td></tr><tr><td><span class="takim-hucre"><span class="nokta" style="background:#FF7F84"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/789.png" alt="" loading="lazy">Goztepe</span></td>
+<td class="puan">3</td><td style="color:var(--soluk)">Küme düşme hattı</td></tr><tr data-takim-id="789"><td><span class="takim-hucre"><span class="nokta" style="background:#FF7F84"></span><img src="https://a.espncdn.com/i/teamlogos/soccer/500/789.png" alt="" loading="lazy">Goztepe</span></td>
 <td>5</td><td>0</td><td>2</td><td>3</td>
 <td>9</td><td>13</td><td>-4</td>
-<td class="puan">2</td><td style="color:var(--soluk)">Küme düşme hattı</td></tr></tbody></table></div>
+<td class="puan">2</td><td style="color:var(--soluk)">Küme düşme hattı</td></tr></tbody></table>
+<div class="puan-not" id="puan-durum-notu"></div></div>
 </section>
 
 <footer>
@@ -2675,7 +2727,7 @@ style="color:var(--mavi);font-size:12.5px;font-weight:600;text-decoration:none">
 allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>
 </div>
 </div>
-<script>window.FIXTOOR_CANLI={"uretim":"2026-09-15T13:35:33.843870+00:00","lig":"tur.1","maclar":{"401888292":{"ev":"Besiktas","dep":"Erzurum BB","evk":"3","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-11T17:00Z","ev_id":"1895","dep_id":"19267","durum_ad":"STATUS_FULL_TIME"},"401888297":{"ev":"Eyupspor","dep":"Caykur Rizespor","evk":"0","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-12T14:00Z","ev_id":"20729","dep_id":"7656","durum_ad":"STATUS_FULL_TIME"},"401888383":{"ev":"Samsunspor","dep":"Çorum FK","evk":"1","depk":"5","durum":"post","durum_metin":"FT","saat":"90'+3'","utc":"2026-09-12T14:00Z","ev_id":"11429","dep_id":"132334","durum_ad":"STATUS_FULL_TIME"},"401888296":{"ev":"Alanyaspor","dep":"Goztepe","evk":"2","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-12T17:00Z","ev_id":"9078","dep_id":"789","durum_ad":"STATUS_FULL_TIME"},"401888294":{"ev":"Konyaspor","dep":"Trabzonspor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-12T17:00Z","ev_id":"7648","dep_id":"997","durum_ad":"STATUS_FULL_TIME"},"401888295":{"ev":"Genclerbirligi","dep":"Kasimpasa","evk":"1","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-13T14:00Z","ev_id":"996","dep_id":"6870","durum_ad":"STATUS_FULL_TIME"},"401888384":{"ev":"Amed SFK","dep":"Istanbul Basaksehir","evk":"5","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+2'","utc":"2026-09-13T17:00Z","ev_id":"132335","dep_id":"7914","durum_ad":"STATUS_FULL_TIME"},"401888293":{"ev":"Galatasaray","dep":"Kocaelispor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-13T17:00Z","ev_id":"432","dep_id":"995","durum_ad":"STATUS_FULL_TIME"},"401888298":{"ev":"Gaziantep FK","dep":"Fenerbahce","evk":"0","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+3'","utc":"2026-09-14T17:00Z","ev_id":"20070","dep_id":"436","durum_ad":"STATUS_FULL_TIME"},"401888290":{"ev":"Kasimpasa","dep":"Konyaspor","evk":"0","depk":"0","durum":"pre","durum_metin":"Scheduled","saat":"0'","utc":"2026-09-18T17:00Z","ev_id":"6870","dep_id":"7648","durum_ad":"STATUS_SCHEDULED"}},"ist":{"401888304":{"ev":"Istanbul Basaksehir","dep":"Galatasaray","evk":"2","depk":"3","durum":"post","durum_metin":"FT","saat":"90'+7'","utc":"2026-09-04T17:00Z","ev_id":"7914","dep_id":"432","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888299":{"ev":"Erzurum BB","dep":"Konyaspor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-05T14:00Z","ev_id":"19267","dep_id":"7648","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888301":{"ev":"Fenerbahce","dep":"Besiktas","evk":"1","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+8'","utc":"2026-09-05T17:00Z","ev_id":"436","dep_id":"1895","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888385":{"ev":"Çorum FK","dep":"Eyupspor","evk":"3","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-06T14:00Z","ev_id":"132334","dep_id":"20729","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888386":{"ev":"Kasimpasa","dep":"Amed SFK","evk":"2","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-06T14:00Z","ev_id":"6870","dep_id":"132335","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888300":{"ev":"Kocaelispor","dep":"Samsunspor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-06T17:00Z","ev_id":"995","dep_id":"11429","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888305":{"ev":"Trabzonspor","dep":"Genclerbirligi","evk":"5","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+2'","utc":"2026-09-06T17:00Z","ev_id":"997","dep_id":"996","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888303":{"ev":"Caykur Rizespor","dep":"Alanyaspor","evk":"0","depk":"1","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-07T17:00Z","ev_id":"7656","dep_id":"9078","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888302":{"ev":"Goztepe","dep":"Gaziantep FK","evk":"2","depk":"4","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-07T17:00Z","ev_id":"789","dep_id":"20070","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":53.3,"away":46.7},"shots":{"home":2.0,"away":3.0},"shotsOnTarget":{"home":0.0,"away":2.0},"corners":{"home":1.0,"away":1.0},"fouls":{"home":4.0,"away":2.0}}},"401888292":{"ev":"Besiktas","dep":"Erzurum BB","evk":"3","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-11T17:00Z","ev_id":"1895","dep_id":"19267","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":73.5,"away":26.5},"shots":{"home":21.0,"away":8.0},"shotsOnTarget":{"home":6.0,"away":0.0},"corners":{"home":12.0,"away":1.0},"fouls":{"home":11.0,"away":11.0}}},"401888297":{"ev":"Eyupspor","dep":"Caykur Rizespor","evk":"0","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-12T14:00Z","ev_id":"20729","dep_id":"7656","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":50.1,"away":49.9},"shots":{"home":26.0,"away":9.0},"shotsOnTarget":{"home":5.0,"away":4.0},"corners":{"home":8.0,"away":2.0},"fouls":{"home":13.0,"away":10.0}}},"401888383":{"ev":"Samsunspor","dep":"Çorum FK","evk":"1","depk":"5","durum":"post","durum_metin":"FT","saat":"90'+3'","utc":"2026-09-12T14:00Z","ev_id":"11429","dep_id":"132334","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":59.9,"away":40.1},"shots":{"home":18.0,"away":12.0},"shotsOnTarget":{"home":4.0,"away":8.0},"corners":{"home":8.0,"away":2.0},"fouls":{"home":12.0,"away":18.0}}},"401888296":{"ev":"Alanyaspor","dep":"Goztepe","evk":"2","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-12T17:00Z","ev_id":"9078","dep_id":"789","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":63.7,"away":36.3},"shots":{"home":20.0,"away":14.0},"shotsOnTarget":{"home":4.0,"away":4.0},"corners":{"home":9.0,"away":3.0},"fouls":{"home":8.0,"away":10.0}}},"401888294":{"ev":"Konyaspor","dep":"Trabzonspor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-12T17:00Z","ev_id":"7648","dep_id":"997","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":28.6,"away":71.4},"shots":{"home":11.0,"away":15.0},"shotsOnTarget":{"home":5.0,"away":4.0},"corners":{"home":3.0,"away":7.0},"fouls":{"home":16.0,"away":9.0}}},"401888295":{"ev":"Genclerbirligi","dep":"Kasimpasa","evk":"1","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-13T14:00Z","ev_id":"996","dep_id":"6870","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":41.8,"away":58.2},"shots":{"home":15.0,"away":16.0},"shotsOnTarget":{"home":5.0,"away":3.0},"corners":{"home":8.0,"away":9.0},"fouls":{"home":18.0,"away":14.0}}},"401888384":{"ev":"Amed SFK","dep":"Istanbul Basaksehir","evk":"5","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+2'","utc":"2026-09-13T17:00Z","ev_id":"132335","dep_id":"7914","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":43.3,"away":56.7},"shots":{"home":22.0,"away":7.0},"shotsOnTarget":{"home":6.0,"away":1.0},"corners":{"home":3.0,"away":3.0},"fouls":{"home":9.0,"away":9.0}}},"401888293":{"ev":"Galatasaray","dep":"Kocaelispor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-13T17:00Z","ev_id":"432","dep_id":"995","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":60.6,"away":39.4},"shots":{"home":28.0,"away":12.0},"shotsOnTarget":{"home":9.0,"away":1.0},"corners":{"home":16.0,"away":3.0},"fouls":{"home":13.0,"away":10.0}}},"401888298":{"ev":"Gaziantep FK","dep":"Fenerbahce","evk":"0","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+3'","utc":"2026-09-14T17:00Z","ev_id":"20070","dep_id":"436","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":31.9,"away":68.1},"shots":{"home":11.0,"away":15.0},"shotsOnTarget":{"home":0.0,"away":4.0},"corners":{"home":6.0,"away":6.0},"fouls":{"home":16.0,"away":8.0}}}}};</script>
+<script>window.FIXTOOR_CANLI={"uretim":"2026-09-15T13:35:33.843870+00:00","lig":"tur.1","sezon":2026,"sezon_adi":"2026-27 Turkish Super Lig","sezon_baslangic":"2026-07-01T04:00Z","sezon_bitis":"2027-07-01T03:59Z","takvim":["2026-08-14","2026-08-15","2026-08-16","2026-08-17","2026-08-21","2026-08-22","2026-08-23","2026-08-24","2026-08-28","2026-08-29","2026-08-30","2026-08-31","2026-09-04","2026-09-05","2026-09-06","2026-09-07","2026-09-11","2026-09-12","2026-09-13","2026-09-14","2026-09-18","2026-09-19","2026-09-20","2026-10-09","2026-10-10","2026-10-11","2026-10-12","2026-10-16","2026-10-17","2026-10-18","2026-10-19","2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-06","2026-11-07","2026-11-08","2026-11-21","2026-11-22","2026-11-23","2026-11-27","2026-11-28","2026-11-29","2026-11-30","2026-12-04","2026-12-05","2026-12-06","2026-12-07","2026-12-11","2026-12-12","2026-12-13","2026-12-14","2026-12-18","2026-12-19","2026-12-20","2026-12-21","2027-01-17","2027-01-24","2027-01-31","2027-02-07","2027-02-14","2027-02-21","2027-02-28","2027-03-07","2027-03-14","2027-03-21","2027-04-04","2027-04-11","2027-04-18","2027-04-25","2027-05-02","2027-05-09","2027-05-16","2027-05-23"],"maclar":{"401888292":{"ev":"Besiktas","dep":"Erzurum BB","evk":"3","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-11T17:00Z","ev_id":"1895","dep_id":"19267","durum_ad":"STATUS_FULL_TIME"},"401888297":{"ev":"Eyupspor","dep":"Caykur Rizespor","evk":"0","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-12T14:00Z","ev_id":"20729","dep_id":"7656","durum_ad":"STATUS_FULL_TIME"},"401888383":{"ev":"Samsunspor","dep":"Çorum FK","evk":"1","depk":"5","durum":"post","durum_metin":"FT","saat":"90'+3'","utc":"2026-09-12T14:00Z","ev_id":"11429","dep_id":"132334","durum_ad":"STATUS_FULL_TIME"},"401888296":{"ev":"Alanyaspor","dep":"Goztepe","evk":"2","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-12T17:00Z","ev_id":"9078","dep_id":"789","durum_ad":"STATUS_FULL_TIME"},"401888294":{"ev":"Konyaspor","dep":"Trabzonspor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-12T17:00Z","ev_id":"7648","dep_id":"997","durum_ad":"STATUS_FULL_TIME"},"401888295":{"ev":"Genclerbirligi","dep":"Kasimpasa","evk":"1","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-13T14:00Z","ev_id":"996","dep_id":"6870","durum_ad":"STATUS_FULL_TIME"},"401888384":{"ev":"Amed SFK","dep":"Istanbul Basaksehir","evk":"5","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+2'","utc":"2026-09-13T17:00Z","ev_id":"132335","dep_id":"7914","durum_ad":"STATUS_FULL_TIME"},"401888293":{"ev":"Galatasaray","dep":"Kocaelispor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-13T17:00Z","ev_id":"432","dep_id":"995","durum_ad":"STATUS_FULL_TIME"},"401888298":{"ev":"Gaziantep FK","dep":"Fenerbahce","evk":"0","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+3'","utc":"2026-09-14T17:00Z","ev_id":"20070","dep_id":"436","durum_ad":"STATUS_FULL_TIME"},"401888290":{"ev":"Kasimpasa","dep":"Konyaspor","evk":"0","depk":"0","durum":"pre","durum_metin":"Scheduled","saat":"0'","utc":"2026-09-18T17:00Z","ev_id":"6870","dep_id":"7648","durum_ad":"STATUS_SCHEDULED"}},"ist":{"401888304":{"ev":"Istanbul Basaksehir","dep":"Galatasaray","evk":"2","depk":"3","durum":"post","durum_metin":"FT","saat":"90'+7'","utc":"2026-09-04T17:00Z","ev_id":"7914","dep_id":"432","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888299":{"ev":"Erzurum BB","dep":"Konyaspor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-05T14:00Z","ev_id":"19267","dep_id":"7648","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888301":{"ev":"Fenerbahce","dep":"Besiktas","evk":"1","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+8'","utc":"2026-09-05T17:00Z","ev_id":"436","dep_id":"1895","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888385":{"ev":"Çorum FK","dep":"Eyupspor","evk":"3","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-06T14:00Z","ev_id":"132334","dep_id":"20729","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888386":{"ev":"Kasimpasa","dep":"Amed SFK","evk":"2","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-06T14:00Z","ev_id":"6870","dep_id":"132335","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888300":{"ev":"Kocaelispor","dep":"Samsunspor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-06T17:00Z","ev_id":"995","dep_id":"11429","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888305":{"ev":"Trabzonspor","dep":"Genclerbirligi","evk":"5","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+2'","utc":"2026-09-06T17:00Z","ev_id":"997","dep_id":"996","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888303":{"ev":"Caykur Rizespor","dep":"Alanyaspor","evk":"0","depk":"1","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-07T17:00Z","ev_id":"7656","dep_id":"9078","durum_ad":"STATUS_FULL_TIME","eksik":true,"st":{"possession":{"home":null,"away":null},"shots":{"home":null,"away":null},"shotsOnTarget":{"home":null,"away":null},"corners":{"home":null,"away":null},"fouls":{"home":null,"away":null}}},"401888302":{"ev":"Goztepe","dep":"Gaziantep FK","evk":"2","depk":"4","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-07T17:00Z","ev_id":"789","dep_id":"20070","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":53.3,"away":46.7},"shots":{"home":2.0,"away":3.0},"shotsOnTarget":{"home":0.0,"away":2.0},"corners":{"home":1.0,"away":1.0},"fouls":{"home":4.0,"away":2.0}}},"401888292":{"ev":"Besiktas","dep":"Erzurum BB","evk":"3","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-11T17:00Z","ev_id":"1895","dep_id":"19267","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":73.5,"away":26.5},"shots":{"home":21.0,"away":8.0},"shotsOnTarget":{"home":6.0,"away":0.0},"corners":{"home":12.0,"away":1.0},"fouls":{"home":11.0,"away":11.0}}},"401888297":{"ev":"Eyupspor","dep":"Caykur Rizespor","evk":"0","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-12T14:00Z","ev_id":"20729","dep_id":"7656","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":50.1,"away":49.9},"shots":{"home":26.0,"away":9.0},"shotsOnTarget":{"home":5.0,"away":4.0},"corners":{"home":8.0,"away":2.0},"fouls":{"home":13.0,"away":10.0}}},"401888383":{"ev":"Samsunspor","dep":"Çorum FK","evk":"1","depk":"5","durum":"post","durum_metin":"FT","saat":"90'+3'","utc":"2026-09-12T14:00Z","ev_id":"11429","dep_id":"132334","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":59.9,"away":40.1},"shots":{"home":18.0,"away":12.0},"shotsOnTarget":{"home":4.0,"away":8.0},"corners":{"home":8.0,"away":2.0},"fouls":{"home":12.0,"away":18.0}}},"401888296":{"ev":"Alanyaspor","dep":"Goztepe","evk":"2","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-12T17:00Z","ev_id":"9078","dep_id":"789","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":63.7,"away":36.3},"shots":{"home":20.0,"away":14.0},"shotsOnTarget":{"home":4.0,"away":4.0},"corners":{"home":9.0,"away":3.0},"fouls":{"home":8.0,"away":10.0}}},"401888294":{"ev":"Konyaspor","dep":"Trabzonspor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-12T17:00Z","ev_id":"7648","dep_id":"997","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":28.6,"away":71.4},"shots":{"home":11.0,"away":15.0},"shotsOnTarget":{"home":5.0,"away":4.0},"corners":{"home":3.0,"away":7.0},"fouls":{"home":16.0,"away":9.0}}},"401888295":{"ev":"Genclerbirligi","dep":"Kasimpasa","evk":"1","depk":"2","durum":"post","durum_metin":"FT","saat":"90'+6'","utc":"2026-09-13T14:00Z","ev_id":"996","dep_id":"6870","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":41.8,"away":58.2},"shots":{"home":15.0,"away":16.0},"shotsOnTarget":{"home":5.0,"away":3.0},"corners":{"home":8.0,"away":9.0},"fouls":{"home":18.0,"away":14.0}}},"401888384":{"ev":"Amed SFK","dep":"Istanbul Basaksehir","evk":"5","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+2'","utc":"2026-09-13T17:00Z","ev_id":"132335","dep_id":"7914","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":43.3,"away":56.7},"shots":{"home":22.0,"away":7.0},"shotsOnTarget":{"home":6.0,"away":1.0},"corners":{"home":3.0,"away":3.0},"fouls":{"home":9.0,"away":9.0}}},"401888293":{"ev":"Galatasaray","dep":"Kocaelispor","evk":"1","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+4'","utc":"2026-09-13T17:00Z","ev_id":"432","dep_id":"995","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":60.6,"away":39.4},"shots":{"home":28.0,"away":12.0},"shotsOnTarget":{"home":9.0,"away":1.0},"corners":{"home":16.0,"away":3.0},"fouls":{"home":13.0,"away":10.0}}},"401888298":{"ev":"Gaziantep FK","dep":"Fenerbahce","evk":"0","depk":"0","durum":"post","durum_metin":"FT","saat":"90'+3'","utc":"2026-09-14T17:00Z","ev_id":"20070","dep_id":"436","durum_ad":"STATUS_FULL_TIME","eksik":false,"st":{"possession":{"home":31.9,"away":68.1},"shots":{"home":11.0,"away":15.0},"shotsOnTarget":{"home":0.0,"away":4.0},"corners":{"home":6.0,"away":6.0},"fouls":{"home":16.0,"away":8.0}}}}};</script>
 <script>
 document.documentElement.classList.add('js');
 // Sekmeler
@@ -2734,7 +2786,7 @@ CANLI.maclar=CANLI.maclar||{};
 CANLI.ist=CANLI.ist||{};
 var FIXTOOR_DEBUG=!!(window.FIXTOOR_DEBUG||/[?&]debug=1(?:&|$)/.test(location.search)||location.hostname==='localhost');
 function istLog(){if(!FIXTOOR_DEBUG||!window.console){return;}try{console.log.apply(console,arguments);}catch(e){}}
-if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).length)){
+if(window.fetch){
   var canliSayac=0;
   var IST_ARALIK=45000;
   var IST_STAGGER=400;
@@ -2988,8 +3040,8 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
     var m=CANLI.ist[id]||CANLI.maclar[id]||{};
     if(!istSon[id]) istMesaj(id,'İstatistikler yükleniyor...');
     var urls=[
-      'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id),
-      'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id)
+      'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id),
+      'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id)
     ];
     function dene(i){
       if(i>=urls.length){
@@ -3046,20 +3098,173 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
     }
     dene(0);
   }
-  // Önce ESPN'in anlık endpoint'i denenir. Tarayıcı CORS/WAF nedeniyle
-  // erişemiyorsa botun aynı-origin, atomik olarak ürettiği data/canli.json
-  // devreye girer. Böylece site yalnızca tek bir erişim yoluna bağlı kalmaz.
-  var SKOR_API_BASELERI=[
-    'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig,
-    'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig
+  // ========================== CANLI MOTOR ==========================
+  // Statik paket (bot'un ürettiği data/*.json ve sayfaya gömülü snapshot)
+  // yalnızca İLK ÇİZİM'dir. Sayfanın gerçek canlılığı tarayıcıdan ESPN'e
+  // doğrudan bağlanarak sağlanır; böylece skorlar, GitHub Actions'ın ne sıklıkta
+  // çalıştığından bağımsız olarak saniyeler içinde yenilenir.
+  //
+  // Kaynak sırası bilinçlidir:
+  //   1. site.web.api.espn.com — espn.com'un kendi ön yüzünün çağırdığı host;
+  //      tarayıcılara Access-Control-Allow-Origin: * ile açıktır.
+  //   2. site.api.espn.com     — Akamai önünde; tarayıcı ve özel User-Agent'ları
+  //      403 "Access Denied" ile reddedebildiği için yedek olarak denenir.
+  //   3. data/canli.json       — aynı-origin atomik snapshot (çevrimdışı yedek).
+  //
+  // Motoru biçimlendiren iki gerçek arıza:
+  //   • ESPN'in "dates=A-B" ARALIK sorgusu 2026-09'dan beri HTTP 200 gövdesinde
+  //     {"code":400,"message":"Failed to get events endpoint."} döndürüyor. Tek
+  //     gün sorgusu ("dates=YYYYMMDD") çalışıyor; bu yüzden gün gün çekiliyor.
+  //   • Cross-origin isteğe Accept dahil HİÇBİR özel başlık eklenmiyor: özel
+  //     başlık CORS ön uçuşu (OPTIONS) tetikler ve ESPN OPTIONS'ı 403'ler.
+  var KAYNAKLAR=[
+    {ad:'site.web',base:'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig},
+    {ad:'site.api',base:'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig}
   ];
-  function jsonDene(urls,i){
-    i=i||0;
-    if(i>=urls.length) return Promise.reject(new Error('tum API adresleri basarisiz'));
-    return fetch(urls[i],{cache:'no-store',headers:{'Accept':'application/json'}})
-      .then(function(r){if(!r.ok) throw new Error('http '+r.status);return r.json();})
-      .catch(function(){return jsonDene(urls,i+1);});
+  var PUAN_KAYNAKLARI=[
+    'https://site.web.api.espn.com/apis/v2/sports/soccer/'+CANLI.lig+'/standings',
+    'https://site.api.espn.com/apis/v2/sports/soccer/'+CANLI.lig+'/standings',
+    'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/standings'
+  ];
+  var ZAMAN_ASIMI=9000;
+  var HIZ_CANLI=5000, HIZ_YAKIN=15000, HIZ_BOS=60000, HIZ_HATA=120000;
+  var GENIS_ARALIK=180000;              // fikstür+puan geniş katmanı: 3 dk
+  var aktifKaynak='', sonBasari=0, sonHata='', ardisikHata=0;
+  var canliKayitlar={};                 // id -> ağdan gelen güncel maç kaydı
+  var panelImza='';                     // son çizilen panelin imzası (titremeyi önler)
+  var DEPO_ANAHTAR='fixtoor:v2:'+(CANLI.lig||'tur.1');
+  var NOT_TR={'Champions League':'Şampiyonlar Ligi','Champions League qualifying':'ŞL eleme',
+    'Europa League':'Avrupa Ligi','Europa League qualifying':'AVL eleme',
+    'Europa Conference League qualifying':'Konferans Ligi eleme',
+    'Conference League qualifying':'Konferans Ligi eleme','Relegation':'Küme düşme hattı',
+    'Relegated':'Küme düşme hattı','Champions':'Şampiyon'};
+
+  function kacHtml(s){
+    return String(s===null||s===undefined?'':s).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});
   }
+  function tarihCevir(utc,uzun){
+    var d=new Date(utc); if(isNaN(d.getTime())) return '';
+    try{
+      return d.toLocaleString('tr-TR',uzun
+        ? {weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Istanbul'}
+        : {hour:'2-digit',minute:'2-digit',timeZone:'Europe/Istanbul'});
+    }catch(e){ return uzun?d.toDateString():d.toTimeString().slice(0,5); }
+  }
+  function zamanAsimli(url){
+    var ctrl=(typeof AbortController!=='undefined')?new AbortController():null;
+    var opt={cache:'no-store',credentials:'omit',mode:'cors'};
+    if(ctrl) opt.signal=ctrl.signal;
+    var saat=setTimeout(function(){if(ctrl)ctrl.abort();},ZAMAN_ASIMI);
+    return fetch(url,opt).then(function(r){
+      clearTimeout(saat);
+      if(!r.ok) throw new Error('http '+r.status);
+      return r.json();
+    },function(e){ clearTimeout(saat); throw e; });
+  }
+  function espnHataGovdesi(d){
+    return !!d&&typeof d==='object'&&d.code!==undefined&&Number(d.code)>=400&&!!d.message;
+  }
+  function kaynakSirasi(){
+    var once=[],sonra=[];
+    KAYNAKLAR.forEach(function(k){ (k.ad===aktifKaynak?once:sonra).push(k); });
+    return once.concat(sonra);
+  }
+  function kaynakGetir(yol){
+    var s=kaynakSirasi(),i=0;
+    function dene(){
+      if(i>=s.length) return Promise.reject(new Error('kaynaklar tükendi'));
+      var k=s[i++];
+      return zamanAsimli(k.base+'/'+yol).then(function(d){
+        if(!d||typeof d!=='object') throw new Error('boş gövde');
+        if(espnHataGovdesi(d)) throw new Error(String(d.message||('kod '+d.code)));
+        if(k.ad!==aktifKaynak){ aktifKaynak=k.ad; istLog('kaynak:',k.ad); }
+        return d;
+      }).catch(function(e){ sonHata=k.ad+': '+(e&&e.message?e.message:e); return dene(); });
+    }
+    return dene();
+  }
+  function gunNo(t){ return new Date(t).toISOString().slice(0,10).replace(/-/g,''); }
+  function gunDizisi(geri,ileri){
+    var simdi=Date.now(),out=[];
+    for(var n=-geri;n<=ileri;n++) out.push(gunNo(simdi+n*86400000));
+    return out;
+  }
+  function takvimGunleri(geri,ileri){
+    // Lig takvimi maç günlerini birebir verir; boş günleri istemek gereksiz.
+    var k=(CANLI.takvim||[]).map(function(g){return String(g).slice(0,10).replace(/-/g,'');})
+      .filter(function(g){return /^\d{8}$/.test(g);});
+    if(!k.length) return gunDizisi(geri,ileri);
+    var alt=gunNo(Date.now()-geri*86400000), ust=gunNo(Date.now()+ileri*86400000);
+    var sec=k.filter(function(g){return g>=alt&&g<=ust;});
+    if(!sec.length) return gunDizisi(0,0);
+    return sec;
+  }
+  function gunlukCek(gunler){
+    // Günler paralel çekilir; tek günün arızası diğerlerini düşürmez.
+    var basarili=0;
+    return Promise.all(gunler.map(function(g){
+      return kaynakGetir('scoreboard?dates='+g+'&limit=100').then(function(d){
+        basarili++;
+        return Array.isArray(d.events)?d.events:[];
+      },function(){ return []; });
+    })).then(function(listeler){
+      var gorulen={},out=[];
+      listeler.forEach(function(l){ l.forEach(function(ev){
+        var id=String((ev&&ev.id)||''); if(!id||gorulen[id]) return;
+        gorulen[id]=1; out.push(ev);
+      });});
+      return {events:out,basarili:basarili,toplam:gunler.length};
+    });
+  }
+  function eventKayit(ev){
+    var c=(ev.competitions||[])[0]||{};
+    var st=c.status||ev.status||{};
+    var tip=st.type||{};
+    var evT={id:'',ad:'',kisa:'',logo:'',skor:null,kazandi:false};
+    var depT={id:'',ad:'',kisa:'',logo:'',skor:null,kazandi:false};
+    (c.competitors||[]).forEach(function(t){
+      var tm=t.team||{};
+      var n=parseInt(t.score,10);
+      var k={id:String(tm.id||''),ad:tm.displayName||tm.shortDisplayName||tm.name||'',
+             kisa:tm.abbreviation||'',logo:tm.logo||'',
+             skor:isNaN(n)?null:n,kazandi:!!t.winner};
+      if(t.homeAway==='home') evT=k; else depT=k;
+    });
+    return {id:String(ev.id||''),utc:c.date||ev.date||'',durum:tip.state||'',
+            durum_metin:tip.shortDetail||tip.detail||'',durum_ad:tip.name||'',
+            saat:st.displayClock||'',ev:evT,dep:depT,
+            stadyum:(c.venue||{}).fullName||'',
+            sehir:(((c.venue||{}).address)||{}).city||'',
+            detay:c.details||[]};
+  }
+  function kayitlariIsle(events){
+    var canliVar=false;
+    events.forEach(function(ev){
+      var m=eventKayit(ev);
+      if(!m.id||!m.utc) return;
+      canliKayitlar[m.id]=m;
+      // Snapshot'ta olmayan maçlar da canlı panele düşsün diye kaydedilir.
+      if(!CANLI.maclar[m.id]&&!CANLI.ist[m.id]){
+        CANLI.maclar[m.id]={ev:m.ev.ad,dep:m.dep.ad,evk:m.ev.skor||0,depk:m.dep.skor||0,
+          durum:m.durum,durum_metin:m.durum_metin,saat:m.saat,utc:m.utc,
+          ev_id:m.ev.id,dep_id:m.dep.id,durum_ad:m.durum_ad};
+      }else{
+        var h=CANLI.maclar[m.id]||CANLI.ist[m.id];
+        if(h){ h.durum=m.durum||h.durum; h.durum_ad=m.durum_ad||h.durum_ad;
+               h.saat=m.saat||h.saat; h.utc=m.utc||h.utc;
+               if(m.ev.ad){h.ev=m.ev.ad;} if(m.dep.ad){h.dep=m.dep.ad;} }
+      }
+      if(ertelendiMi(m.durum_ad)) return;
+      if(m.durum==='in') canliVar=true;
+      macGuncelle(m.id,{evk:(m.ev.skor===null?0:m.ev.skor),depk:(m.dep.skor===null?0:m.dep.skor),
+        durum:m.durum,saat:m.saat||m.durum_metin||''},sonGolDetay(c0(ev)));
+      if(m.durum==='in') istIste(m.id);
+      else if(m.durum==='post'&&!istBitti[m.id]&&CANLI.ist[m.id]) istIste(m.id,{birKez:true,son:true});
+    });
+    return canliVar;
+  }
+  function c0(ev){ return ((ev.competitions||[])[0])||{}; }
   function snapshotUygula(data){
     if(!data||typeof data!=='object') return;
     var maclar=data.maclar||{};
@@ -3087,64 +3292,325 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
       }
     });
   }
-  function skorYanitiUygula(data){
-    if(!data||!Array.isArray(data.events)) throw new Error('gecersiz scoreboard');
-    data.events.forEach(function(ev){
-      var id=String(ev.id||'');
-      if(!id||(!CANLI.maclar[id]&&!CANLI.ist[id])) return;
-      var c=(ev.competitions||[])[0]||{};
-      var st=c.status||ev.status||{};
-      var tip=st.type||{};
-      var state=tip.state||((CANLI.maclar[id]||CANLI.ist[id]||{}).durum);
-      if(ertelendiMi(tip.name||tip.description||tip.shortDetail)){istBitti[id]=1;return;}
-      var evk=0,depk=0;
-      (c.competitors||[]).forEach(function(t){
-        var n=parseInt(t.score,10);
-        if(t.homeAway==='home'){evk=isNaN(n)?0:n;}else{depk=isNaN(n)?0:n;}
-      });
-      if(state==='in') canliRozetEkle();
-      macGuncelle(id,{evk:evk,depk:depk,durum:state,
-                      saat:st.displayClock||tip.shortDetail||''},sonGolDetay(c));
-      if(state==='in') istIste(id);
-      else if(state==='post'&&!istBitti[id]&&CANLI.ist[id]) istIste(id,{birKez:true,son:true});
-    });
+  // --- canlı panel: o an oynanan / bugün oynanacak maçlar ---
+  // Statik sayfada satırı olmayan maçlar bile burada görünür; yani bot paketi
+  // bayat kalsa da kullanıcı güncel maçları görür.
+  function panelKart(m){
+    var canli=m.durum==='in', bitti=m.durum==='post';
+    var skor=(canli||bitti)
+      ? '<div class="skor">'+kacHtml(m.ev.skor===null?0:m.ev.skor)+' : '+kacHtml(m.dep.skor===null?0:m.dep.skor)+'</div>'
+      : '<div class="skor onaylanmadi">'+kacHtml(tarihCevir(m.utc,false))+'</div>';
+    function taraf(t,dep){
+      var g=t.logo?'<img src="'+kacHtml(t.logo)+'" alt="" loading="lazy">'
+                 :'<span class="rozet">'+kacHtml((t.kisa||'?').slice(0,3))+'</span>';
+      return '<div class="takim'+(dep?' dep':'')+'">'+g+'<span class="isim">'+kacHtml(t.ad||'?')+'</span></div>';
+    }
+    var ust=canli?('● CANLI'):bitti?(m.durum_metin||'MS'):(tarihCevir(m.utc,true));
+    var sure=canli?('<div class="sure">'+kacHtml(m.saat||'')+'</div>'):'';
+    return '<div class="kart canli-kart'+(canli?'':' bekleyen')+'" data-mac-id="'+kacHtml(m.id)+'">'
+      +'<div class="mac">'+taraf(m.ev,false)+skor+taraf(m.dep,true)+'</div>'+sure
+      +'<div class="mac-alt"><span>'+kacHtml(ust)+'</span><span>'
+      +kacHtml([m.stadyum,m.sehir].filter(Boolean).join(' · '))+'</span></div></div>';
   }
-  function gun(n){
-    var x=new Date(Date.now()+n*86400000);
-    return x.toISOString().slice(0,10).replace(/-/g,'');
+  function panelCiz(){
+    var kok=document.getElementById('canli-panel');
+    if(!kok) return;
+    var simdi=Date.now(),liste=[];
+    Object.keys(canliKayitlar).forEach(function(id){
+      var m=canliKayitlar[id];
+      if(!m.utc||!m.ev.ad||ertelendiMi(m.durum_ad)) return;
+      var t=Date.parse(m.utc); if(isNaN(t)) return;
+      var fark=t-simdi;
+      // canlı maçlar + 3 saat içinde başlayacaklar + son 4 saatte bitenler
+      if(m.durum==='in'||(m.durum==='pre'&&fark<3*3600000&&fark>-6*3600000)
+         ||(m.durum==='post'&&fark>-4*3600000)) liste.push({m:m,t:t});
+    });
+    liste.sort(function(a,b){
+      var ac=(a.m.durum==='in'?0:1)-(b.m.durum==='in'?0:1);
+      return ac!==0?ac:a.t-b.t;
+    });
+    if(!liste.length){ kok.innerHTML=''; panelImza=''; return; }
+    var canliSay=liste.filter(function(x){return x.m.durum==='in';}).length;
+    var baslik=canliSay
+      ? '<div class="canli-baslik"><span class="canli">CANLI</span> '+canliSay+' maç oynanıyor</div>'
+      : '<div class="canli-baslik">Günün maçları</div>';
+    var govde=baslik+'<div class="grid2">'+liste.slice(0,10).map(function(x){
+      return panelKart(x.m);}).join('')+'</div>';
+    // Panel her turda yeniden çizilirse CSS animasyonları baştan başlar ve
+    // sayfa titrer. İçerik gerçekten değişmediyse DOM'a dokunulmaz.
+    if(govde===panelImza) return;
+    panelImza=govde;
+    kok.innerHTML=govde;
+  }
+  // --- durum çubuğu: kaynak, son güncelleme, geri sayım ---
+  function durumGoster(durum,mesaj){
+    var cubuk=document.getElementById('canli-cubuk');
+    if(!cubuk) return;
+    cubuk.hidden=false;
+    if(durum) cubuk.setAttribute('data-durum',durum);
+    var m=document.getElementById('canli-mesaj');
+    if(m&&mesaj!==undefined) m.textContent=mesaj;
+    var k=document.getElementById('canli-kaynak');
+    if(k) k.textContent=aktifKaynak?('kaynak: '+aktifKaynak):'';
+  }
+  function goreliZaman(ms){
+    var s=Math.max(0,Math.round(ms/1000));
+    if(s<60) return s+' sn önce';
+    var d=Math.round(s/60);
+    if(d<60) return d+' dk önce';
+    var h=Math.round(d/60);
+    if(h<48) return h+' saat önce';
+    return Math.round(h/24)+' gün önce';
+  }
+  function satirTazele(){
+    var el=document.getElementById('son-guncelleme');
+    if(!el) return;
+    var kaynakZaman=sonBasari||0;
+    var uretim=el.getAttribute('data-uretim');
+    var paketZaman=uretim?Date.parse(uretim):NaN;
+    var baz=Math.max(kaynakZaman,isNaN(paketZaman)?0:paketZaman);
+    var agdan=!!kaynakZaman;
+    el.textContent='Son güncelleme: '+(baz?goreliZaman(Date.now()-baz):'bilinmiyor')
+      +(agdan?' · tarayıcıdan canlı':' · statik paket')
+      +' · '+(CANLI.sezon_adi||'')+' (İstanbul)';
+  }
+  // --- puan durumu: ağdan tazele ---
+  function puanSatiri(e){
+    var ist={};
+    (e.stats||[]).forEach(function(s){ ist[s.name]=s.displayValue!==undefined?s.displayValue:s.value; });
+    var t=e.team||{};
+    var logo='';
+    (t.logos||[]).forEach(function(l){ if(!logo&&l.href) logo=l.href; });
+    var not=(e.note||{}).description||'';
+    var renk=(e.note||{}).color||'';
+    var isaret=not?'<span class="nokta" style="background:'+kacHtml(renk||'#555')+'"></span>':'';
+    var g=logo?'<img src="'+kacHtml(logo)+'" alt="" loading="lazy">'
+              :'<span class="rozet" style="width:22px;height:22px;font-size:10px">'
+                +kacHtml(String(t.abbreviation||'').slice(0,3))+'</span>';
+    return '<tr data-takim-id="'+kacHtml(t.id||'')+'"><td><span class="takim-hucre">'
+      +isaret+g+kacHtml(t.displayName||'')+'</span></td>'
+      +'<td>'+kacHtml(ist.gamesPlayed||'0')+'</td><td>'+kacHtml(ist.wins||'0')+'</td>'
+      +'<td>'+kacHtml(ist.ties||'0')+'</td><td>'+kacHtml(ist.losses||'0')+'</td>'
+      +'<td>'+kacHtml(ist.pointsFor||'0')+'</td><td>'+kacHtml(ist.pointsAgainst||'0')+'</td>'
+      +'<td>'+kacHtml(ist.pointDifferential||'0')+'</td>'
+      +'<td class="puan">'+kacHtml(ist.points||'0')+'</td>'
+      +'<td style="color:var(--soluk)">'+kacHtml(NOT_TR[not]||not||'')+'</td></tr>';
+  }
+  function puanCiz(data){
+    var govde=document.getElementById('puan-govde');
+    if(!govde||!data||!Array.isArray(data.children)) return false;
+    var satirlar=[];
+    data.children.forEach(function(c){
+      var entries=((c.standings||{}).entries)||[];
+      entries.forEach(function(e){ satirlar.push(e); });
+    });
+    if(!satirlar.length) return false;
+    satirlar.sort(function(a,b){
+      function sira(e){
+        var r=0; (e.stats||[]).forEach(function(s){ if(s.name==='rank') r=Number(s.displayValue||s.value||0); });
+        return r;
+      }
+      return sira(a)-sira(b);
+    });
+    govde.innerHTML=satirlar.map(puanSatiri).join('');
+    govde.classList.add('guncellendi');
+    setTimeout(function(){govde.classList.remove('guncellendi');},1000);
+    var notEl=document.getElementById('puan-durum-notu');
+    if(notEl) notEl.textContent='Canlı puan durumu · az önce yenilendi';
+    return true;
+  }
+  function puanCek(){
+    var sezon=CANLI.sezon?('season='+encodeURIComponent(CANLI.sezon)):'';
+    var i=0;
+    function dene(){
+      if(i>=PUAN_KAYNAKLARI.length) return Promise.reject(new Error('puan durumu alınamadı'));
+      var url=PUAN_KAYNAKLARI[i++]+(sezon?'?'+sezon:'');
+      return zamanAsimli(url).then(function(d){
+        if(espnHataGovdesi(d)) throw new Error(String(d.message||'hata gövdesi'));
+        return d;
+      }).catch(dene);
+    }
+    return dene();
+  }
+  // --- yerel depo: yeniden yüklemede anında taze görünen veri ---
+  function depoYaz(){
+    try{
+      var paket={t:Date.now(),kaynak:aktifKaynak,maclar:canliKayitlar};
+      window.localStorage.setItem(DEPO_ANAHTAR,JSON.stringify(paket));
+    }catch(e){}
+  }
+  function depoOku(){
+    try{
+      var ham=window.localStorage.getItem(DEPO_ANAHTAR);
+      if(!ham) return null;
+      var paket=JSON.parse(ham);
+      if(!paket||!paket.maclar) return null;
+      // 24 saatten eski depoyu taze veri sayma
+      if(Date.now()-Number(paket.t||0)>86400000) return null;
+      return paket;
+    }catch(e){ return null; }
   }
   function yakinMacVarMi(){
-    for(var id in CANLI.maclar){
-      if(macAktifMi(CANLI.maclar[id])) return true;
+    var simdi=Date.now();
+    var idler={};
+    Object.keys(canliKayitlar).forEach(function(k){idler[k]=1;});
+    Object.keys(CANLI.maclar).forEach(function(k){idler[k]=1;});
+    for(var id in idler){
+      var m=canliKayitlar[id]||CANLI.maclar[id];
+      if(!m) continue;
+      if(m.durum==='in'&&!ertelendiMi(m.durum_ad)) return true;
+      var t=Date.parse(m.utc); 
+      if(!isNaN(t)&&t-simdi<3*3600000&&t-simdi>-3*3600000) return true;
     }
     return false;
   }
-  function tazele(){
-    if(document.hidden) return;
-    canliSayac++;
-    var aktif=yakinMacVarMi();
-    // Yakın maç yoksa her çağrıda ESPN'e yüklenme; maç saatine yaklaşınca
-    // macAktifMi otomatik olarak hızlı döngüyü devreye sokar.
-    if(!aktif&&canliSayac%4!==1) return;
-    var url=SKOR_API_BASELERI[0]+'/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100';
-    jsonDene([url,SKOR_API_BASELERI[1]+'/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100'])
-      .then(skorYanitiUygula)
-      .catch(function(){
-        return fetch('data/canli.json?ts='+Date.now(),{cache:'no-store'})
-          .then(function(r){if(!r.ok) throw new Error('canli.json '+r.status);return r.json();})
-          .then(snapshotUygula)
-          .catch(function(){});
-      });
+  function hizliKatman(){
+    // Bugün ±1 gün; aralık sorgusu bozuk olduğu için gün gün paralel.
+    return gunlukCek(takvimGunleri(1,1)).then(function(r){
+      if(!r.basarili) throw new Error('hiçbir maç günü okunamadı');
+      ardisikHata=0; sonBasari=Date.now(); sonHata='';
+      var canli=kayitlariIsle(r.events);
+      if(canli) canliRozetEkle();
+      panelCiz(); depoYaz();
+      durumGoster(canli?'canli':'tamam', canli
+        ? 'Canlı maç izleniyor · '+r.events.length+' maç · '+tarihCevir(new Date().toISOString(),false)+'de yenilendi'
+        : 'Bağlı · '+r.basarili+'/'+r.toplam+' maç günü okundu · '+r.events.length+' maç');
+      satirTazele();
+      return canli;
+    });
   }
-  Object.keys(CANLI.ist||{}).forEach(function(id){
-    var info=CANLI.ist[id]||{};
-    if(info.durum==='in') istIste(id);
-    else if(info.durum==='post'&&info.eksik) istIste(id,{birKez:true,son:true});
+  function genisKatman(){
+    // Son 14 gün + önümüzdeki 45 gün: sonuçlar, fikstür ve saat değişiklikleri.
+    var gunler=takvimGunleri(14,45);
+    var parcalar=[],i=0,ES=4;
+    function next(){
+      if(i>=gunler.length) return Promise.all(parcalar);
+      var dilim=gunler.slice(i,i+ES); i+=ES;
+      parcalar.push(gunlukCek(dilim));
+      return next();
+    }
+    return next().then(function(sonuclar){
+      var events=[],basarili=0,toplam=0;
+      sonuclar.forEach(function(s){ events=events.concat(s.events); basarili+=s.basarili; toplam+=s.toplam; });
+      if(!basarili) throw new Error('geniş katman okunamadı');
+      kayitlariIsle(events);
+      panelCiz(); depoYaz(); satirTazele();
+      return puanCek().then(puanCiz,function(){ return false; })
+        .then(function(){ return {events:events.length,basarili:basarili,toplam:toplam}; });
+    });
+  }
+  function yedekSnapshot(){
+    return fetch('data/canli.json?ts='+Date.now(),{cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw new Error('canli.json '+r.status); return r.json(); })
+      .then(snapshotUygula)
+      .catch(function(){});
+  }
+  function hataDurumu(mesaj){
+    ardisikHata++;
+    durumGoster('hata',mesaj||('Canlı kaynak okunamadı · '+(sonHata||'ağ hatası')));
+    satirTazele();
+  }
+  var mesgul=false;
+  function tur(zorla){
+    if(mesgul) return Promise.resolve();
+    if(document.hidden&&!zorla) return Promise.resolve();
+    mesgul=true;
+    var btn=document.getElementById('canli-yenile');
+    if(btn) btn.disabled=true;
+    durumGoster('beklemede','Yenileniyor…');
+    return hizliKatman()
+      .catch(function(e){ hataDurumu('Canlı skor alınamadı · '+(sonHata||(e&&e.message)||'')); return yedekSnapshot(); })
+      .then(function(){ mesgul=false; if(btn) btn.disabled=false; });
+  }
+  function genisTur(){
+    if(document.hidden) return Promise.resolve();
+    return genisKatman().catch(function(e){
+      istLog('geniş katman hatası:',e);
+      return yedekSnapshot();
+    });
+  }
+  // --- zamanlama: canlı maçta 5 sn, yakın maçta 15 sn, boşta 60 sn ---
+  var sonrakiTur=0;
+  function beklemeSuresi(){
+    if(ardisikHata>2) return HIZ_HATA;
+    var simdi=Date.now(),enYakin=Infinity,canli=false;
+    Object.keys(canliKayitlar).forEach(function(id){
+      var m=canliKayitlar[id];
+      if(!m||!m.utc) return;
+      if(m.durum==='in'&&!ertelendiMi(m.durum_ad)) canli=true;
+      var t=Date.parse(m.utc); if(!isNaN(t)) enYakin=Math.min(enYakin,Math.abs(t-simdi));
+    });
+    if(canli) return HIZ_CANLI;
+    if(enYakin<3*3600000) return HIZ_YAKIN;
+    return HIZ_BOS;
+  }
+  function geriSayim(){
+    var cubuk=document.getElementById('canli-cubuk');
+    if(!cubuk||cubuk.hidden) return;
+    var k=document.getElementById('canli-kaynak');
+    if(!k) return;
+    var kalan=Math.max(0,Math.round((sonrakiTur-Date.now())/1000));
+    k.textContent=(aktifKaynak?('kaynak: '+aktifKaynak+' · '):'')
+      +(document.hidden?'sekme arka planda':'sonraki: '+kalan+' sn');
+  }
+  (function dongu(){
+    var bekle=beklemeSuresi();
+    sonrakiTur=Date.now()+bekle;
+    setTimeout(function(){
+      if(!document.hidden) tur().then(function(){ dongu(); });
+      else dongu();
+    },bekle);
+  })();
+  setInterval(function(){ geriSayim(); satirTazele(); },1000);
+  (function genisDongu(){
+    setTimeout(function(){
+      genisTur().then(function(){
+        satirTazele();
+        genisDongu();
+      });
+    },GENIS_ARALIK);
+  })();
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden){ tur(true); genisTur(); }
   });
-  tazele();
-  (function donguPlanla(){
-    var bekle=yakinMacVarMi()?15000:120000;
-    setTimeout(function(){tazele();donguPlanla();},bekle);
+  window.addEventListener('online',function(){ tur(true); });
+  var btn=document.getElementById('canli-yenile');
+  if(btn) btn.addEventListener('click',function(){ tur(true); genisTur(); });
+
+  // --- açılış: önce yerel depo (anında), sonra ağ ---
+  (function baslat(){
+    var depo=depoOku();
+    if(depo){
+      Object.keys(depo.maclar||{}).forEach(function(id){ canliKayitlar[id]=depo.maclar[id]; });
+      aktifKaynak=depo.kaynak||'';
+      sonBasari=Number(depo.t)||0;
+      kayitlariIsle([]);
+      Object.keys(canliKayitlar).forEach(function(id){
+        var m=canliKayitlar[id];
+        macGuncelle(id,{evk:(m.ev.skor===null?0:m.ev.skor),depk:(m.dep.skor===null?0:m.dep.skor),
+          durum:m.durum,saat:m.saat||m.durum_metin||''},'');
+      });
+      panelCiz();
+      durumGoster('beklemede','Önbellekten yüklendi · '+goreliZaman(Date.now()-sonBasari)+' · ağdan tazeleniyor');
+    }
+    var paketEl=document.getElementById('son-guncelleme');
+    var paket=paketEl?Date.parse(paketEl.getAttribute('data-uretim')||''):NaN;
+    if(!isNaN(paket)&&Date.now()-paket>6*3600000){
+      var uyari=document.createElement('div');
+      uyari.className='bayat-uyari';
+      uyari.textContent='Statik veri paketi '+goreliZaman(Date.now()-paket)+' güncellendi. '
+        +'Sayfa açıkken fikstür, skor ve puan durumu tarayıcıdan canlı çekiliyor…';
+      var cubuk=document.getElementById('canli-cubuk');
+      if(cubuk&&cubuk.parentNode) cubuk.parentNode.insertBefore(uyari,cubuk);
+    }
+    satirTazele();
+    Object.keys(CANLI.ist||{}).forEach(function(id){
+      var info=CANLI.ist[id]||{};
+      if(info.durum==='in') istIste(id);
+      else if(info.durum==='post'&&info.eksik) istIste(id,{birKez:true,son:true});
+    });
+    tur(true);
+    genisTur();
   })();
 }
 </script>

@@ -1,11 +1,14 @@
 name: Fixtoor Bot
 
-# Canlı skor döngüsü beş dakikada bir çalışır. GitHub Actions yoğunlukta
-# birkaç dakika gecikebilir; sayfanın açık olduğu tarayıcı ayrıca canlı maçta
-# yaklaşık 15 saniyede ESPN'i kontrol eder.
+# Canlı skor döngüsü beş dakikada bir çalışır. GitHub Actions yoğunlukta bu
+# cron'u pratikte birkaç saatte bir tetikleyebiliyor; bu yüzden tazeliği cron'a
+# değil BOT'A emanet ediyoruz: paket eşikten (FIXTOOR_TAM_ESIK_SAAT) eskiyse
+# bot canlı modu kendiliğinden tam senkronizasyona yükseltir. Sayfa açıkken
+# tarayıcı ayrıca kendi canlı motorunu çalıştırır (5-60 sn).
 #
-# Tam senkronizasyon daha ağırdır (sezon fikstürü, puan durumu, istatistik,
-# yayın kanalı ve video araması) ve altı saatte bir çalışır.
+# NOT: Bu dosya `.github/workflows/bot.yml`'in güncel kopyasıdır. GitHub
+# Actions'ın çalışması için dosyanın `.github/workflows/` altında bulunması
+# gerekir; değişiklikleri oraya da taşı.
 on:
   schedule:
     - cron: "*/5 * * * *"
@@ -48,6 +51,9 @@ concurrency:
 env:
   PYTHONUNBUFFERED: "1"
   FIXTOOR_CI_GERI_DUS: "1"
+  # Canlı mod, paket bu eşikten eskiyse tam senkronizasyona yükseltilir.
+  # 6 saatlik cron hiç tetiklenmese bile site bayat kalmaz.
+  FIXTOOR_TAM_ESIK_SAAT: "6"
 
 jobs:
   bot:
@@ -76,8 +82,11 @@ jobs:
         id: mod
         shell: bash
         run: |
+          # Zamanlanmış çalışmalarda mod kararı botta: cron "live" çağırır, bot
+          # paket bayatsa tam senkronizasyona kendisi yükseltir. Böylece 6 saatlik
+          # cron'un hiç tetiklenmemesi siteyi bayat bırakmaz.
           mode="full"
-          if [[ "$GITHUB_EVENT_NAME" == "schedule" && "${{ github.event.schedule }}" == "*/5 * * * *" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
             mode="live"
           elif [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
             mode="${{ inputs.mode }}"
@@ -86,9 +95,11 @@ jobs:
           echo "Fixtoor çalışma modu: $mode"
 
       - name: Fixtoor botunu çalıştır
+        id: bot
         env:
           FIXTOOR_STRICT: ${{ inputs.strict || 'false' }}
         run: |
+          set -o pipefail
           if [[ "${{ steps.mod.outputs.mode }}" == "live" ]]; then
             if [[ "$FIXTOOR_STRICT" == "true" ]]; then
               python bot/fiktoor.py --live --strict
@@ -102,6 +113,64 @@ jobs:
               python bot/fiktoor.py
             fi
           fi
+
+      - name: Veri tazeliğini denetle
+        id: tazelik
+        shell: bash
+        run: |
+          # Sessiz başarısızlık en tehlikeli arızadır: iş "yeşil" görünürken site
+          # günlerce eski veride kalabilir. Bu adım paketi gerçekten ölçer ve
+          # bayatsa Actions arayüzünde görünür bir uyarı (annotation) üretir.
+          python - <<'PY' | tee /tmp/tazelik.txt
+          import json, os, sys
+          from datetime import datetime, timedelta, timezone
+          from pathlib import Path
+
+          esik = float(os.environ.get("FIXTOOR_TAM_ESIK_SAAT", "6"))
+          yol = Path("data/site-verisi.json")
+          try:
+              uretim = datetime.fromisoformat(json.loads(yol.read_text(encoding="utf-8"))["uretim"])
+          except Exception as e:
+              print(f"hata=okunamadi yas=99999 ::error title=Fixtoor verisi okunamadı::"
+                    f"data/site-verisi.json çözümlenemedi: {e}")
+              print("durum=HATA")
+              sys.exit(0)
+          if uretim.tzinfo is None:
+              uretim = uretim.replace(tzinfo=timezone.utc)
+          yas = (datetime.now(timezone.utc) - uretim).total_seconds() / 3600.0
+          print(f"uretim={uretim.isoformat()}")
+          print(f"yas_saat={yas:.2f}")
+          print(f"esik_saat={esik:g}")
+          if yas > esik:
+              print(f"::warning title=Fixtoor verisi bayat::{yas:.1f} saat önce üretildi "
+                    f"(eşik {esik:g} saat). ESPN erişimini kontrol et: data/tani.json")
+              print("durum=BAYAT")
+          else:
+              print("durum=TAZE")
+          PY
+          {
+            echo "### Fixtoor veri tazeliği"
+            echo '```'
+            cat /tmp/tazelik.txt | grep -v '^::' || true
+            echo '```'
+            if [ -f data/tani.json ]; then
+              echo "### Ağ tanısı (son başarısız deneme)"
+              echo '```'
+              python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("data/tani.json").read_text(encoding="utf-8"))
+          print("üretim:", r.get("uretim"), "| neden:", r.get("neden", ""))
+          print("çalışan kaynaklar:", ", ".join(r.get("calisan_kaynaklar") or []) or "YOK")
+          print("çıkış IP:", r.get("cikis_ip", ""))
+          for t in r.get("testler", []):
+              durum = t.get("durum")
+              ek = t.get("hata") or (f"[waf:{t['waf']}]" if t.get("waf") else "")
+              print(f"  {t.get('hedef')}/{t.get('ua')} -> {durum} {t.get('ms', 0)}ms {ek}")
+          PY
+              echo '```'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Değişiklik var mı
         id: degisiklik
@@ -131,11 +200,19 @@ jobs:
           assert isinstance(site.get("haftalar"), list), "haftalar listesi yok"
           assert isinstance(live.get("maclar"), dict), "canli.json geçersiz"
           assert isinstance(live.get("ist"), dict), "canli istatistik paketi yok"
+          # Tarayıcıdaki canlı motorun kendi başına doğru istekleri kurabilmesi
+          # için sezon ve maç günü takvimi pakette bulunmalı.
+          assert isinstance(live.get("takvim"), list), "canli.json takvim listesi yok"
+          assert live.get("sezon"), "canli.json sezon yılı yok"
+          html_metin = Path("index.html").read_text(encoding="utf-8")
           assert Path("index.html").stat().st_size > 1000, "index.html boş/eksik"
+          assert "CANLI MOTOR" in html_metin, "index.html canlı motoru içermiyor"
+          assert "dates=A-B" not in html_metin, "aralık sorgusu kalıntısı var"
           print(
               f"Doğrulandı: {len(site['haftalar'])} hafta, "
               f"{sum(len(h.get('maclar', [])) for h in site['haftalar'])} maç, "
-              f"{len(live['maclar'])} canlı pencere kaydı"
+              f"{len(live['maclar'])} canlı pencere kaydı, "
+              f"{len(live.get('takvim') or [])} takvim günü"
           )
           PY
 
