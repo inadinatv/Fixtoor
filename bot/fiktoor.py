@@ -33,6 +33,7 @@ from zoneinfo import ZoneInfo
 _BOT_DIR = os.path.dirname(os.path.abspath(__file__))
 if _BOT_DIR not in sys.path:
     sys.path.insert(0, _BOT_DIR)
+import tani as tani_mod  # noqa: E402
 from istatistik import (  # noqa: E402
     ISTATISTIK_ALANLARI,
     ISTATISTIK_ETIKET,
@@ -2452,12 +2453,43 @@ def _veri_yeni_uret(args, data_dir: str, eski_veri=None) -> dict:
     return veri
 
 
+def kaynak_tanisi(data_dir: str, slug: str, kapsam: str = "hizli",
+                  neden: str = "") -> dict:
+    """Veri kaynağı arızasında nedenini ölçüp ``data/tani.json`` dosyasına yazar.
+
+    Sessiz geri düşme (fallback) sorunu gizlediği için her başarısız canlı/tam
+    çalıştırma artık somut bir kanıt bırakır: hangi host, hangi User-Agent,
+    hangi HTTP durumu, hangi WAF imzası. Rapor küçük ve yayına uygundur;
+    sayfadaki durum rozeti de bunu okuyabilir.
+    """
+    if os.environ.get("FIXTOOR_TANI", "1").strip().lower() in ("0", "false", "no", "off"):
+        return {}
+    try:
+        rapor = tani_mod.ag_tanisi(slug, kapsam=kapsam)
+        rapor["neden"] = neden
+        yol = tani_mod.tani_yaz(data_dir, rapor)
+        log(f"ağ tanısı yazıldı: {yol} (çalışan kaynak: "
+            f"{', '.join(rapor.get('calisan_kaynaklar') or []) or 'YOK'})")
+        for satir in tani_mod.ozet_satir(rapor).split("; "):
+            log(f"  tani| {satir}")
+        return rapor
+    except Exception as e:  # noqa: BLE001 - tanı aracı işi asla düşürmemeli
+        log(f"UYARI: ağ tanısı üretilemedi: {e}")
+        return {}
+
+
 def calistir(args) -> None:
     data_dir = args.data_dir
     os.makedirs(data_dir, exist_ok=True)
     eski_veri = site_verisi_yukle(data_dir)
     strict = bool(getattr(args, "strict", False))
     live = bool(getattr(args, "live", False))
+
+    if getattr(args, "tani", False):
+        rapor = kaynak_tanisi(data_dir, args.league, kapsam="tam", neden="manuel --tani")
+        if not rapor:
+            raise RuntimeError("ağ tanısı üretilemedi")
+        return
 
     if args.offline:
         log("offline mod: mevcut verilerden HTML üretiliyor")
@@ -2484,9 +2516,11 @@ def calistir(args) -> None:
             except Exception as e:
                 if strict or not CI_GERI_DUS or eski_veri is None:
                     log(f"HATA: canlı güncelleme başarısız: {e}")
+                    kaynak_tanisi(data_dir, args.league, "hizli", f"canlı mod: {e}")
                     raise
                 log(f"UYARI: canlı güncelleme başarısız: {e}")
                 log("Son sağlam canlı paket korunuyor; sonraki beş dakikalık çalıştırma yeniden deneyecek.")
+                kaynak_tanisi(data_dir, args.league, "hizli", f"canlı mod: {e}")
                 veri, degisti = eski_veri, False
             if not degisti:
                 # İlk kurulumda index/canli uçları yoksa üret; normal Actions
@@ -2507,9 +2541,11 @@ def calistir(args) -> None:
             except Exception as e:
                 if strict or not CI_GERI_DUS or eski_veri is None:
                     log(f"HATA: çevrim içi güncelleme başarısız: {e}")
+                    kaynak_tanisi(data_dir, args.league, "tam", f"tam senkron: {e}")
                     raise
                 log(f"UYARI: çevrim içi güncelleme başarısız: {e}")
                 log("Son sağlam veri korunuyor; bir sonraki zamanlanmış çalıştırmada tekrar denenecek.")
+                kaynak_tanisi(data_dir, args.league, "tam", f"tam senkron: {e}")
                 veri = eski_veri
 
     # Eski bir checkout'tan yükseltme yapılıyorsa türetilmiş canlı uç da
@@ -2536,6 +2572,11 @@ def main() -> None:
         "--strict",
         action="store_true",
         help="API hatasında son sağlam veriye dönmek yerine işlemi başarısız bitir",
+    )
+    p.add_argument(
+        "--tani",
+        action="store_true",
+        help="veri kaynaklarının erişilebilirliğini ölç ve data/tani.json'a yaz",
     )
     calistir(p.parse_args())
 
