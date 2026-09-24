@@ -33,6 +33,7 @@ from zoneinfo import ZoneInfo
 _BOT_DIR = os.path.dirname(os.path.abspath(__file__))
 if _BOT_DIR not in sys.path:
     sys.path.insert(0, _BOT_DIR)
+import tani as tani_mod  # noqa: E402
 from istatistik import (  # noqa: E402
     ISTATISTIK_ALANLARI,
     ISTATISTIK_ETIKET,
@@ -84,6 +85,31 @@ CANLI_DOSYA = "canli.json"
 # zorunlu isteklerde iki hostu sırayla denemek botun tek noktaya bağlı kalmasını
 # engeller. SITE_API, eski kullanıcıların ve testlerin beklediği birincil uçtur.
 ESPN_API_BASELERI = (SITE_API, SITE_WEB_API)
+
+# 2026-09-15'ten itibaren gözlenen gerçek arıza: site.api.espn.com Akamai
+# önünde ve özel User-Agent'lara 403 "Access Denied" dönüyor; site.web ise
+# tarayıcı kimliğine açık. Bu yüzden tek bir UA'ya sabitlenmek yerine istekler
+# UA havuzundan denenir ve çalışan kombinasyon bellek tutulur.
+ESPN_UA_HAVUZU = (
+    ("curl", "curl/8.5.0"),
+    ("requests", "python-requests/2.32.3"),
+    ("okhttp", "okhttp/4.12.0"),
+    ("chrome", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+               "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"),
+    ("fixtoor", "FixtoorBot/1.2 (+https://github.com/inadinatv/Fixtoor)"),
+)
+# Çalışan (host, UA) ikilisini hatırlar; sezon taramasında 78 isteği tek tek
+# yeniden keşfetmek yerine ilk başarılı kombinasyon tekrar kullanılır.
+_ESPN_CALISAN_STRATEJI = None
+
+# ESPN'in "dates=A-B" aralık sorgusu 2026-09 itibarıyla HTTP 200 gövdesinde
+# {"code":400,"message":"Failed to get events endpoint."} döndürüyor. Tek gün
+# sorgusu ("dates=YYYYMMDD") sorunsuz çalışıyor; bu yüzden sezon taraması
+# gün gün yapılır. Aşağıdaki iki uç aralığı yeniden desteklerse otomatik
+# olarak tercih edilir.
+ESPN_ARALIK_DESTEKLIYOR = None   # None = bilinmiyor, True/False = ölçüldü
+TAM_TARAMA_GUN_GECME = 0.12      # günler arası kibar bekleme (saniye)
+TAM_ESIK_SAAT = float(os.environ.get("FIXTOOR_TAM_ESIK_SAAT", "6"))
 
 CI_GERI_DUS = os.environ.get("FIXTOOR_CI_GERI_DUS", "1").strip().lower() not in (
     "0", "false", "no", "off"
@@ -205,6 +231,19 @@ def veri_gecerli_mi(veri) -> bool:
     return True
 
 
+def veri_yasi_saat(veri) -> float | None:
+    """Önbellekteki paketin yaşını saat olarak döndürür (okunamazsa None)."""
+    if not isinstance(veri, dict) or not veri.get("uretim"):
+        return None
+    try:
+        uretim = parse_utc(str(veri["uretim"]))
+    except (TypeError, ValueError):
+        return None
+    if uretim.tzinfo is None:
+        uretim = uretim.replace(tzinfo=timezone.utc)
+    return max(0.0, (datetime.now(timezone.utc) - uretim).total_seconds() / 3600.0)
+
+
 def site_verisi_yukle(data_dir: str):
     """Son sağlam site-verisi.json'ı yükler; bozuk/eksik önbelleği yok sayar."""
     yol = os.path.join(data_dir, "site-verisi.json")
@@ -219,58 +258,127 @@ def site_verisi_yukle(data_dir: str):
     return veri
 
 
-def http_get_json(url: str, zorunlu: bool = True, timeout: int = HTTP_TIMEOUT):
+def espn_hata_govdesi_mi(data) -> bool:
+    """ESPN'in "HTTP 200 ama aslında hata" gövdelerini yakalar.
+
+    Aralık sorgusu bozulduğunda sunucu 200 dönüp gövdeye
+    ``{"code":400,"message":"Failed to get events endpoint."}`` yazıyor. Bunu
+    geçerli yanıt sanmak, botun sessizce hiçbir veri güncellememesine yol açtı.
+    """
+    if not isinstance(data, dict):
+        return False
+    kod = data.get("code")
+    mesaj = data.get("message")
+    if isinstance(kod, int) and kod >= 400 and mesaj:
+        return True
+    if isinstance(kod, str) and kod.isdigit() and int(kod) >= 400 and mesaj:
+        return True
+    return False
+
+
+# Son başarılı istekte kullanılan User-Agent. Yeni istekler buna öncelik verir;
+# WAF kimliği yeniden reddederse havuzun kalanı sırayla denenir.
+_HTTP_UA_BELLEK = {"ua": ESPN_UA_HAVUZU[0][1], "ad": ESPN_UA_HAVUZU[0][0]}
+
+
+def _ua_sirasi() -> list:
+    """Denenecek (User-Agent, etiket) listesi — bellekteki önce."""
+    ilk = _HTTP_UA_BELLEK["ua"]
+    sirali = [(ilk, _HTTP_UA_BELLEK["ad"])]
+    sirali += [(ua, ad) for ad, ua in ESPN_UA_HAVUZU if ua != ilk]
+    return sirali
+
+
+def http_get_json(url: str, zorunlu: bool = True, timeout: int = HTTP_TIMEOUT,
+                  ua: str = ""):
     """URL'den JSON çeker; geçici ağ/API hatalarında kontrollü olarak yeniden dener.
 
     ``zorunlu=False`` opsiyonel uçlarda None döndürür. Zorunlu uçlarda ise son
-    hatayı anlamlı bir RuntimeError olarak yükseltir. 404/401/403 gibi kalıcı
-    hatalar bekletmeden sonlandırılır; 429 ve 5xx yanıtları yeniden denenir.
+    hatayı anlamlı bir RuntimeError olarak yükseltir.
+
+    Üç farklı arıza tipi üç farklı tepki ister:
+
+    * **403/406 (WAF)** — ESPN'in CDN'i User-Agent'a bakarak karar veriyor.
+      Aynı kimlikle bekleyip yeniden denemek anlamsız; hemen havuzdaki başka
+      bir User-Agent denenir. Çalışan kimlik bellekte tutulur, böylece sezon
+      taramasındaki onlarca istek tek tek keşif yapmaz.
+    * **429/5xx/ağ hatası** — geçici; artan beklemeyle yeniden denenir.
+    * **404/401** — kalıcı; hiç bekletmeden sonlandırılır.
+
+    Ayrıca ESPN bozuk sorgularda HTTP 200 içinde ``{"code":400,...}`` gövdesi
+    döndürüyor; bu "başarılı istek" gibi görünür ama veri taşımaz, dolayısıyla
+    hata sayılır (:func:`espn_hata_govdesi_mi`).
     """
     son_hata = None
-    for deneme in range(1, HTTP_DENE + 1):
-        try:
-            req = urllib.request.Request(url, headers={
-                # Bazı CDN/WAF'ler boş veya çok genel User-Agent'ı reddediyor.
-                "User-Agent": "FixtoorBot/1.1 (+https://github.com/inadinatv/Fixtoor)",
-                "Accept": "application/json, text/plain;q=0.9, */*;q=0.8",
-                "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.7",
-                "Cache-Control": "no-cache",
-            })
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
-                ham = resp.read()
-                if not ham:
-                    raise json.JSONDecodeError("boş yanıt", "", 0)
-                data = json.loads(ham.decode("utf-8"))
+    waf_deneme = 0
+    adaylar = [(ua, "özel")] if ua else _ua_sirasi()
+    for ua_deger, ua_ad in adaylar:
+        basliklar = {
+            "User-Agent": ua_deger,
+            "Accept": "application/json, text/plain;q=0.9, */*;q=0.8",
+            "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.7",
+            "Cache-Control": "no-cache",
+        }
+        kalici = False
+        for deneme in range(1, HTTP_DENE + 1):
+            try:
+                req = urllib.request.Request(url, headers=basliklar)
+                with urllib.request.urlopen(req, timeout=timeout) as resp:
+                    ham = resp.read()
+                    if not ham:
+                        raise json.JSONDecodeError("boş yanıt", "", 0)
+                    data = json.loads(ham.decode("utf-8"))
                 if data is None:
                     raise ValueError("null yanıt")
                 if not isinstance(data, (dict, list)):
                     raise ValueError(f"beklenmeyen JSON tipi: {type(data).__name__}")
+                if espn_hata_govdesi_mi(data):
+                    # 200 döndü ama gövde hata: aynı kimlikle tekrar denemenin
+                    # anlamı yok, sıradaki host/UA'ya geç.
+                    son_hata = ValueError(
+                        f"HTTP 200 ama hata gövdesi: {data.get('message')}")
+                    log(f"istek reddedildi ({ua_ad}): {url} -> {son_hata}")
+                    kalici = True
+                    break
+                if ua_ad != _HTTP_UA_BELLEK["ad"]:
+                    log(f"çalışan istemci kimliği: {ua_ad}")
+                _HTTP_UA_BELLEK["ua"], _HTTP_UA_BELLEK["ad"] = ua_deger, ua_ad
                 return data
-        except urllib.error.HTTPError as e:
-            son_hata = e
-            log(f"istek HTTP {e.code} ({deneme}/{HTTP_DENE}): {url}")
-            if e.code in (404, 401, 403):
+            except urllib.error.HTTPError as e:
+                son_hata = e
+                if e.code in (403, 406):
+                    waf_deneme += 1
+                    log(f"istek WAF engeli HTTP {e.code} ({ua_ad}): {url}")
+                    break          # sıradaki User-Agent'i dene
+                log(f"istek HTTP {e.code} ({deneme}/{HTTP_DENE}): {url}")
+                if e.code in (404, 401):
+                    kalici = True
+                    break
+                if e.code == 429:
+                    # Retry-After saniye olabilir; kötü/çok uzun değerleri sınırlıyoruz.
+                    try:
+                        bekle = min(max(int(e.headers.get("Retry-After", "0")), 2), 30)
+                    except (TypeError, ValueError):
+                        bekle = 2 * deneme
+                    if deneme < HTTP_DENE:
+                        time.sleep(bekle)
+                    continue
+                if e.code >= 500:
+                    if deneme < HTTP_DENE:
+                        time.sleep(min(2 * deneme, 8))
+                    continue
+                kalici = True
                 break
-            if e.code == 429:
-                # Retry-After saniye olabilir; kötü/çok uzun değerleri sınırlıyoruz.
-                try:
-                    bekle = min(max(int(e.headers.get("Retry-After", "0")), 2), 30)
-                except (TypeError, ValueError):
-                    bekle = 2 * deneme
-                if deneme < HTTP_DENE:
-                    time.sleep(bekle)
-                continue
-            if e.code >= 500:
+            except (urllib.error.URLError, TimeoutError, socket.timeout,
+                    ConnectionError, json.JSONDecodeError, OSError, ValueError) as e:
+                son_hata = e
+                log(f"istek başarısız ({deneme}/{HTTP_DENE}): {url} -> {e}")
                 if deneme < HTTP_DENE:
                     time.sleep(min(2 * deneme, 8))
-                continue
+        if kalici:
             break
-        except (urllib.error.URLError, TimeoutError, socket.timeout,
-                ConnectionError, json.JSONDecodeError, OSError, ValueError) as e:
-            son_hata = e
-            log(f"istek başarısız ({deneme}/{HTTP_DENE}): {url} -> {e}")
-            if deneme < HTTP_DENE:
-                time.sleep(min(2 * deneme, 8))
+    if waf_deneme and _fixtoor_debug():
+        log(f"WAF: {waf_deneme} User-Agent denendi, hiçbiri geçmedi: {url}")
     if zorunlu:
         raise RuntimeError(f"API'ye ulaşılamadı: {url} ({son_hata})")
     return None
@@ -280,16 +388,37 @@ def _espn_url(slug: str, yol: str, taban: str) -> str:
     return f'{taban.format(slug=urllib.parse.quote(str(slug), safe="."))}/{yol.lstrip("/")}'
 
 
+# Çalışan ESPN hostu. site.api (Akamai) ve site.web farklı kimlik kurallarına
+# sahip; hangisinin geçtiği zamana göre değişebildiği için sıra sabitlenmez.
+_ESPN_HOST_BELLEK = {"taban": None}
+
+
+def _host_sirasi() -> tuple:
+    if _ESPN_HOST_BELLEK["taban"] in ESPN_API_BASELERI:
+        ilk = _ESPN_HOST_BELLEK["taban"]
+        return (ilk,) + tuple(t for t in ESPN_API_BASELERI if t != ilk)
+    return ESPN_API_BASELERI
+
+
+def _host_hatirla(taban: str) -> None:
+    if _ESPN_HOST_BELLEK["taban"] != taban:
+        if _ESPN_HOST_BELLEK["taban"] is not None and _fixtoor_debug():
+            log(f"çalışan ESPN hostu: {taban}")
+        _ESPN_HOST_BELLEK["taban"] = taban
+
+
 def espn_json_al(slug: str, yol: str, *, timeout: int = HTTP_TIMEOUT,
                  dogrula=None, aciklama: str = "ESPN verisi"):
-    """ESPN'in iki açık API hostunu sırayla dener.
+    """ESPN'in açık API hostlarını sırayla dener.
 
     API geçici olarak erişilemezse çağıran katman mevcut sağlam veriye geri
     dönebilir; bu yardımcı fonksiyon tek bir host arızasının tüm işi kesmesini
-    engeller.
+    engeller. Başarılı olan host bellekte tutulur ve sonraki isteklerde önce
+    denenir — sezon taraması gün gün onlarca istek yaptığı için bu, hem
+    hızlandırır hem de ESPN'e gereksiz yük bindirmez.
     """
     hatalar = []
-    for taban in ESPN_API_BASELERI:
+    for taban in _host_sirasi():
         url = _espn_url(slug, yol, taban)
         try:
             data = http_get_json(url, zorunlu=False, timeout=timeout)
@@ -298,6 +427,9 @@ def espn_json_al(slug: str, yol: str, *, timeout: int = HTTP_TIMEOUT,
             hatalar.append(f"{url}: {e}")
         if data is None:
             hatalar.append(f"{url}: boş yanıt")
+            continue
+        if espn_hata_govdesi_mi(data):
+            hatalar.append(f"{url}: {data.get('message')}")
             continue
         if dogrula is not None:
             try:
@@ -308,6 +440,7 @@ def espn_json_al(slug: str, yol: str, *, timeout: int = HTTP_TIMEOUT,
             if not uygun:
                 hatalar.append(f"{url}: beklenmeyen yanıt")
                 continue
+        _host_hatirla(taban)
         return data
     ayrinti = "; ".join(hatalar[-4:])
     raise RuntimeError(f"{aciklama} alınamadı: {ayrinti}")
@@ -533,23 +666,86 @@ def fetch_lig_bilgisi(slug: str) -> dict:
     }
 
 
-def fetch_sezon_maclar(slug: str, baslangic: str, bitis: str) -> list:
-    """Sezonun tamamını 25 günlük pencereler halinde çekip tek listede birleştirir."""
-    mac_sonu = []
-    gorulen = set()
-    d0 = parse_utc(baslangic).date() if baslangic else datetime.now(timezone.utc).date()
-    d1 = parse_utc(bitis).date() if bitis else d0 + timedelta(days=300)
-    pencere = d0
-    while pencere <= d1:
-        a = pencere
-        b = min(pencere + timedelta(days=24), d1)
+def fetch_gun_maclar(slug: str, gun: str) -> list:
+    """Tek bir maç gününün (``YYYYMMDD``) olaylarını çeker.
+
+    ESPN'in ``dates=A-B`` **aralık** sorgusu 2026-09-15'ten beri HTTP 200
+    gövdesinde ``{"code":400,"message":"Failed to get events endpoint."}``
+    döndürüyor. Bot bu gövdeyi "başarılı ama boş" sanmadığı için artık istek
+    doğrudan reddedilmiş sayılıyor. Tek gün sorgusu (``dates=YYYYMMDD``)
+    sorunsuz çalıştığından sezon taraması gün gün yapılır.
+    """
+    data = espn_json_al(
+        slug,
+        f"scoreboard?dates={gun}&limit=100",
+        dogrula=lambda x: isinstance(x, dict) and isinstance(x.get("events"), list),
+        aciklama=f"{gun} maç günü",
+    )
+    return [ev for ev in data.get("events") or [] if isinstance(ev, dict)]
+
+
+def _aralik_maclar(slug: str, a, b):
+    """Aralık sorgusunu dener; desteklenmiyorsa kalıcı olarak kapatır.
+
+    ESPN aralıkları yeniden desteklemeye başlarsa tam senkronizasyon 78 istek
+    yerine 13 istekle biter. Desteklenmediği ölçüldüğünde bir daha denenmez.
+    """
+    global ESPN_ARALIK_DESTEKLIYOR
+    if ESPN_ARALIK_DESTEKLIYOR is False:
+        return None
+    try:
         data = espn_json_al(
             slug,
             f"scoreboard?dates={a.strftime('%Y%m%d')}-{b.strftime('%Y%m%d')}&limit=300",
             dogrula=lambda x: isinstance(x, dict) and isinstance(x.get("events"), list),
-            aciklama=f"{a}..{b} fikstürü",
+            aciklama=f"{a}..{b} fikstürü (aralık)",
         )
-        for ev in data.get("events") or []:
+    except RuntimeError as e:
+        ESPN_ARALIK_DESTEKLIYOR = False
+        log(f"aralık sorgusu reddedildi, gün gün taranacak: {e}")
+        return None
+    if ESPN_ARALIK_DESTEKLIYOR is not True:
+        log("aralık sorgusu çalışıyor; hızlı tarama modu etkin")
+    ESPN_ARALIK_DESTEKLIYOR = True
+    return [ev for ev in data.get("events") or [] if isinstance(ev, dict)]
+
+
+def sezon_gunleri(baslangic: str, bitis: str, takvim=None) -> list:
+    """Taranacak gün listesi: varsa lig takvimi (maç günleri), yoksa her gün.
+
+    ESPN lig yanıtındaki ``calendar`` alanı sezonun maç günlerini birebir
+    verir (``calendarIsWhitelist=true``). Yıl boyu 365 gün istemek yerine
+    yalnızca bu ~78 günü istemek hem hızlı hem de nazik.
+    """
+    d0 = parse_utc(baslangic).date() if baslangic else datetime.now(timezone.utc).date()
+    d1 = parse_utc(bitis).date() if bitis else d0 + timedelta(days=300)
+    if d1 < d0:
+        d0, d1 = d1, d0
+    gunler = []
+    for gun in takvim or []:
+        try:
+            d = datetime.strptime(str(gun)[:10], "%Y-%m-%d").date()
+        except (TypeError, ValueError):
+            continue
+        if d0 <= d <= d1:
+            gunler.append(d)
+    if gunler:
+        return sorted(set(gunler))
+    gunler, d = [], d0
+    while d <= d1:
+        gunler.append(d)
+        d += timedelta(days=1)
+    return gunler
+
+
+def fetch_sezon_maclar(slug: str, baslangic: str, bitis: str, takvim=None) -> list:
+    """Sezonun tamamını çeker: aralık sorgusu çalışıyorsa 25 günlük pencereler,
+    çalışmıyorsa (2026-09 itibarıyla durum bu) lig takvimindeki günler tek tek."""
+    mac_sonu = []
+    gorulen = set()
+
+    def ekle(olaylar):
+        for ev in olaylar:
             if not isinstance(ev, dict):
                 continue
             event_id = str(ev.get("id") or "")
@@ -557,8 +753,38 @@ def fetch_sezon_maclar(slug: str, baslangic: str, bitis: str) -> list:
                 continue
             gorulen.add(event_id)
             mac_sonu.append(ev)
+
+    d0 = parse_utc(baslangic).date() if baslangic else datetime.now(timezone.utc).date()
+    d1 = parse_utc(bitis).date() if bitis else d0 + timedelta(days=300)
+
+    # 1) Önce aralık pencereleri denenir (ESPN düzeltirse tek seferde biter).
+    pencere = d0
+    while pencere <= d1 and ESPN_ARALIK_DESTEKLIYOR is not False:
+        a = pencere
+        b = min(pencere + timedelta(days=24), d1)
+        olaylar = _aralik_maclar(slug, a, b)
+        if olaylar is None:
+            break
+        ekle(olaylar)
         log(f"pencere {a}..{b}: toplam {len(mac_sonu)} maç")
         pencere = b + timedelta(days=1)
+
+    # 2) Aralık reddedildiyse gün gün tara (takvim varsa yalnızca maç günleri).
+    if ESPN_ARALIK_DESTEKLIYOR is False:
+        gunler = sezon_gunleri(baslangic, bitis, takvim)
+        log(f"gün gün tarama: {len(gunler)} maç günü")
+        for i, gun in enumerate(gunler, 1):
+            try:
+                ekle(fetch_gun_maclar(slug, gun.strftime("%Y%m%d")))
+            except RuntimeError as e:
+                # Tek günün arızası tüm sezonu düşürmesin; eksik günü bir
+                # sonraki tam senkronizasyon tamamlar.
+                log(f"UYARI: {gun} atlandı: {e}")
+            if i % 10 == 0 or i == len(gunler):
+                log(f"gün {i}/{len(gunler)}: toplam {len(mac_sonu)} maç")
+            if TAM_TARAMA_GUN_GECME and not os.environ.get("FIXTOOR_TEST"):
+                time.sleep(TAM_TARAMA_GUN_GECME)
+
     if not mac_sonu:
         raise RuntimeError(f"{slug} sezon fikstürü boş döndü; mevcut veri korunacak")
     return mac_sonu
@@ -1091,27 +1317,36 @@ def mac_eski_veriyle_birlestir(eski: dict, yeni: dict) -> dict:
 
 
 def fetch_canli_maclar(slug: str, simdi: datetime | None = None) -> list:
-    """Yalnızca bugünün çevresindeki scoreboard penceresini çeker.
+    """Yalnızca bugünün çevresindeki maç günlerini çeker.
 
-    Tam sezonu tekrar indirmeyen bu uç, GitHub Actions'ın beş dakikalık canlı
-    çalıştırması için tasarlanmıştır. Boş ama biçimsel olarak doğru yanıt geçerli
-    kabul edilir; API'nin gerçekten ulaşılmaz olması ise çağırana bildirilir.
+    Tam sezonu tekrar indirmeyen bu uç, GitHub Actions'ın sık canlı
+    çalıştırması için tasarlanmıştır. ESPN'in aralık sorgusu bozuk olduğu için
+    pencere gün gün (varsayılan 5 istek) taranır; aralık yeniden çalışırsa tek
+    isteğe düşer. Boş ama biçimsel olarak doğru yanıt geçerli kabul edilir;
+    API'nin gerçekten ulaşılmaz olması ise çağırana bildirilir.
     """
     simdi = simdi or datetime.now(timezone.utc)
-    baslangic = (simdi.date() - timedelta(days=CANLI_GUN_GERI)).strftime("%Y%m%d")
-    bitis = (simdi.date() + timedelta(days=CANLI_GUN_ILERI)).strftime("%Y%m%d")
-    data = espn_json_al(
-        slug,
-        f"scoreboard?dates={baslangic}-{bitis}&limit=100",
-        timeout=18,
-        dogrula=lambda x: isinstance(x, dict) and isinstance(x.get("events"), list),
-        aciklama=f"{slug} canlı skorları",
-    )
-    return [
-        mac_ayristir(event)
-        for event in data.get("events") or []
-        if isinstance(event, dict)
-    ]
+    a = simdi.date() - timedelta(days=CANLI_GUN_GERI)
+    b = simdi.date() + timedelta(days=CANLI_GUN_ILERI)
+
+    olaylar = _aralik_maclar(slug, a, b)
+    if olaylar is None:
+        olaylar = []
+        gun = a
+        hatalar = []
+        while gun <= b:
+            try:
+                olaylar.extend(fetch_gun_maclar(slug, gun.strftime("%Y%m%d")))
+            except RuntimeError as e:
+                hatalar.append(f"{gun}: {e}")
+            gun += timedelta(days=1)
+        if hatalar and not olaylar:
+            # Hiçbir gün okunamadıysa bu bir API arızasıdır; sessizce "maç yok"
+            # demek canlı modun bozulduğunu gizler.
+            raise RuntimeError(f"{slug} canlı skorları alınamadı: {'; '.join(hatalar[-2:])}")
+        if hatalar:
+            log(f"UYARI: canlı pencerede {len(hatalar)} gün okunamadı")
+    return [mac_ayristir(event) for event in olaylar if isinstance(event, dict)]
 
 
 def ozetleri_hazirla(maclar: list, simdi: datetime, gun: int = 14) -> list:
@@ -1175,6 +1410,14 @@ def canli_verisi_uret(veri: dict, simdi: datetime | None = None) -> dict:
     return {
         "uretim": veri.get("uretim", ""),
         "lig": (veri.get("lig") or {}).get("slug") or "tur.1",
+        # Tarayıcıdaki canlı motorun kendi başına doğru istekleri kurabilmesi
+        # için sezon ve maç günü takvimi de pakete eklenir. Böylece sayfa,
+        # statik paket bayat olsa bile hangi günlerde maç olduğunu bilir.
+        "sezon": (veri.get("lig") or {}).get("sezon_yili"),
+        "sezon_adi": (veri.get("lig") or {}).get("sezon_adi", ""),
+        "sezon_baslangic": (veri.get("lig") or {}).get("baslangic", ""),
+        "sezon_bitis": (veri.get("lig") or {}).get("bitis", ""),
+        "takvim": (veri.get("lig") or {}).get("takvim") or [],
         "maclar": canli_map,
         "ist": ist_map,
     }
@@ -1444,6 +1687,46 @@ max-width:92vw;text-align:center;animation:golgelsin .35s ease}
 .kart.parla{border-color:var(--yesil);box-shadow:0 0 0 3px rgba(34,197,94,.28),0 12px 26px rgba(0,0,0,.35)}
 @keyframes skorpop{0%{transform:scale(1)}45%{transform:scale(1.16)}100%{transform:scale(1)}}
 .pop{animation:skorpop .6s ease}
+/* --- canlı motor: durum çubuğu + anlık maç paneli --- */
+.canli-cubuk{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 4px;
+padding:9px 14px;border-radius:12px;font-size:12.5px;font-weight:600;
+background:linear-gradient(180deg,rgba(34,197,94,.09),rgba(56,189,248,.05));
+border:1px solid rgba(34,197,94,.28);color:var(--metin)}
+.canli-cubuk[data-durum="beklemede"]{border-color:var(--cizgi);
+background:linear-gradient(180deg,rgba(139,152,169,.09),transparent)}
+.canli-cubuk[data-durum="hata"]{border-color:rgba(239,68,68,.4);
+background:linear-gradient(180deg,rgba(239,68,68,.12),transparent)}
+.canli-cubuk[data-durum="canli"]{border-color:rgba(239,68,68,.55);
+background:linear-gradient(180deg,rgba(239,68,68,.14),rgba(34,197,94,.06))}
+.nokta-canli{width:9px;height:9px;border-radius:50%;background:var(--soluk);flex-shrink:0}
+.canli-cubuk[data-durum="canli"] .nokta-canli{background:var(--kirmizi);animation:nabiz 1.2s infinite}
+.canli-cubuk[data-durum="tamam"] .nokta-canli{background:var(--yesil)}
+.canli-cubuk[data-durum="hata"] .nokta-canli{background:var(--sari)}
+.canli-sag{margin-left:auto;display:flex;align-items:center;gap:8px}
+.canli-kaynak{color:var(--soluk);font-weight:600;font-size:11.5px}
+.canli-yenile{background:var(--kart2);border:1px solid var(--cizgi);color:var(--metin);
+border-radius:9px;padding:4px 10px;font-size:11.5px;font-weight:700;cursor:pointer;
+font-family:inherit;transition:border-color .15s,transform .15s}
+.canli-yenile:hover{border-color:#3b4c61;transform:translateY(-1px)}
+.canli-yenile:disabled{opacity:.5;cursor:default;transform:none}
+#canli-panel{display:grid;gap:10px;margin:10px 0 4px}
+#canli-panel:empty{display:none}
+.canli-baslik{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;
+letter-spacing:.4px;color:var(--soluk);text-transform:uppercase;margin-top:4px}
+.canli-kart{background:linear-gradient(180deg,rgba(239,68,68,.1),var(--kart));
+border:1px solid rgba(239,68,68,.35);border-radius:14px;padding:12px 14px;
+box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.canli-kart .mac{grid-template-columns:1fr auto 1fr}
+.canli-kart .sure{font-size:12px;font-weight:800;color:var(--kirmizi);text-align:center;
+margin-top:2px;letter-spacing:.3px}
+.canli-kart.bekleyen{background:linear-gradient(180deg,rgba(56,189,248,.08),var(--kart));
+border-color:rgba(56,189,248,.28)}
+.canli-kart.bekleyen .sure{color:var(--mavi)}
+.puan-not{color:var(--soluk);font-size:11.5px;margin-top:8px;text-align:right;min-height:0}
+tbody#puan-govde tr.guncellendi td{animation:puanfla .9s ease}
+@keyframes puanfla{0%{background:rgba(34,197,94,.22)}100%{background:transparent}}
+.bayat-uyari{margin:10px 0;padding:10px 14px;border-radius:12px;font-size:12.5px;
+background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.35);color:#fde68a}
 """
 
 JS = """
@@ -1504,7 +1787,7 @@ CANLI.maclar=CANLI.maclar||{};
 CANLI.ist=CANLI.ist||{};
 var FIXTOOR_DEBUG=!!(window.FIXTOOR_DEBUG||/[?&]debug=1(?:&|$)/.test(location.search)||location.hostname==='localhost');
 function istLog(){if(!FIXTOOR_DEBUG||!window.console){return;}try{console.log.apply(console,arguments);}catch(e){}}
-if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).length)){
+if(window.fetch){
   var canliSayac=0;
   var IST_ARALIK=45000;
   var IST_STAGGER=400;
@@ -1758,8 +2041,8 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
     var m=CANLI.ist[id]||CANLI.maclar[id]||{};
     if(!istSon[id]) istMesaj(id,'İstatistikler yükleniyor...');
     var urls=[
-      'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id),
-      'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id)
+      'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id),
+      'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/summary?event='+encodeURIComponent(id)
     ];
     function dene(i){
       if(i>=urls.length){
@@ -1816,20 +2099,173 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
     }
     dene(0);
   }
-  // Önce ESPN'in anlık endpoint'i denenir. Tarayıcı CORS/WAF nedeniyle
-  // erişemiyorsa botun aynı-origin, atomik olarak ürettiği data/canli.json
-  // devreye girer. Böylece site yalnızca tek bir erişim yoluna bağlı kalmaz.
-  var SKOR_API_BASELERI=[
-    'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig,
-    'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig
+  // ========================== CANLI MOTOR ==========================
+  // Statik paket (bot'un ürettiği data/*.json ve sayfaya gömülü snapshot)
+  // yalnızca İLK ÇİZİM'dir. Sayfanın gerçek canlılığı tarayıcıdan ESPN'e
+  // doğrudan bağlanarak sağlanır; böylece skorlar, GitHub Actions'ın ne sıklıkta
+  // çalıştığından bağımsız olarak saniyeler içinde yenilenir.
+  //
+  // Kaynak sırası bilinçlidir:
+  //   1. site.web.api.espn.com — espn.com'un kendi ön yüzünün çağırdığı host;
+  //      tarayıcılara Access-Control-Allow-Origin: * ile açıktır.
+  //   2. site.api.espn.com     — Akamai önünde; tarayıcı ve özel User-Agent'ları
+  //      403 "Access Denied" ile reddedebildiği için yedek olarak denenir.
+  //   3. data/canli.json       — aynı-origin atomik snapshot (çevrimdışı yedek).
+  //
+  // Motoru biçimlendiren iki gerçek arıza:
+  //   • ESPN'in "dates=A-B" ARALIK sorgusu 2026-09'dan beri HTTP 200 gövdesinde
+  //     {"code":400,"message":"Failed to get events endpoint."} döndürüyor. Tek
+  //     gün sorgusu ("dates=YYYYMMDD") çalışıyor; bu yüzden gün gün çekiliyor.
+  //   • Cross-origin isteğe Accept dahil HİÇBİR özel başlık eklenmiyor: özel
+  //     başlık CORS ön uçuşu (OPTIONS) tetikler ve ESPN OPTIONS'ı 403'ler.
+  var KAYNAKLAR=[
+    {ad:'site.web',base:'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig},
+    {ad:'site.api',base:'https://site.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig}
   ];
-  function jsonDene(urls,i){
-    i=i||0;
-    if(i>=urls.length) return Promise.reject(new Error('tum API adresleri basarisiz'));
-    return fetch(urls[i],{cache:'no-store',headers:{'Accept':'application/json'}})
-      .then(function(r){if(!r.ok) throw new Error('http '+r.status);return r.json();})
-      .catch(function(){return jsonDene(urls,i+1);});
+  var PUAN_KAYNAKLARI=[
+    'https://site.web.api.espn.com/apis/v2/sports/soccer/'+CANLI.lig+'/standings',
+    'https://site.api.espn.com/apis/v2/sports/soccer/'+CANLI.lig+'/standings',
+    'https://site.web.api.espn.com/apis/site/v2/sports/soccer/'+CANLI.lig+'/standings'
+  ];
+  var ZAMAN_ASIMI=9000;
+  var HIZ_CANLI=5000, HIZ_YAKIN=15000, HIZ_BOS=60000, HIZ_HATA=120000;
+  var GENIS_ARALIK=180000;              // fikstür+puan geniş katmanı: 3 dk
+  var aktifKaynak='', sonBasari=0, sonHata='', ardisikHata=0;
+  var canliKayitlar={};                 // id -> ağdan gelen güncel maç kaydı
+  var panelImza='';                     // son çizilen panelin imzası (titremeyi önler)
+  var DEPO_ANAHTAR='fixtoor:v2:'+(CANLI.lig||'tur.1');
+  var NOT_TR={'Champions League':'Şampiyonlar Ligi','Champions League qualifying':'ŞL eleme',
+    'Europa League':'Avrupa Ligi','Europa League qualifying':'AVL eleme',
+    'Europa Conference League qualifying':'Konferans Ligi eleme',
+    'Conference League qualifying':'Konferans Ligi eleme','Relegation':'Küme düşme hattı',
+    'Relegated':'Küme düşme hattı','Champions':'Şampiyon'};
+
+  function kacHtml(s){
+    return String(s===null||s===undefined?'':s).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});
   }
+  function tarihCevir(utc,uzun){
+    var d=new Date(utc); if(isNaN(d.getTime())) return '';
+    try{
+      return d.toLocaleString('tr-TR',uzun
+        ? {weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Istanbul'}
+        : {hour:'2-digit',minute:'2-digit',timeZone:'Europe/Istanbul'});
+    }catch(e){ return uzun?d.toDateString():d.toTimeString().slice(0,5); }
+  }
+  function zamanAsimli(url){
+    var ctrl=(typeof AbortController!=='undefined')?new AbortController():null;
+    var opt={cache:'no-store',credentials:'omit',mode:'cors'};
+    if(ctrl) opt.signal=ctrl.signal;
+    var saat=setTimeout(function(){if(ctrl)ctrl.abort();},ZAMAN_ASIMI);
+    return fetch(url,opt).then(function(r){
+      clearTimeout(saat);
+      if(!r.ok) throw new Error('http '+r.status);
+      return r.json();
+    },function(e){ clearTimeout(saat); throw e; });
+  }
+  function espnHataGovdesi(d){
+    return !!d&&typeof d==='object'&&d.code!==undefined&&Number(d.code)>=400&&!!d.message;
+  }
+  function kaynakSirasi(){
+    var once=[],sonra=[];
+    KAYNAKLAR.forEach(function(k){ (k.ad===aktifKaynak?once:sonra).push(k); });
+    return once.concat(sonra);
+  }
+  function kaynakGetir(yol){
+    var s=kaynakSirasi(),i=0;
+    function dene(){
+      if(i>=s.length) return Promise.reject(new Error('kaynaklar tükendi'));
+      var k=s[i++];
+      return zamanAsimli(k.base+'/'+yol).then(function(d){
+        if(!d||typeof d!=='object') throw new Error('boş gövde');
+        if(espnHataGovdesi(d)) throw new Error(String(d.message||('kod '+d.code)));
+        if(k.ad!==aktifKaynak){ aktifKaynak=k.ad; istLog('kaynak:',k.ad); }
+        return d;
+      }).catch(function(e){ sonHata=k.ad+': '+(e&&e.message?e.message:e); return dene(); });
+    }
+    return dene();
+  }
+  function gunNo(t){ return new Date(t).toISOString().slice(0,10).replace(/-/g,''); }
+  function gunDizisi(geri,ileri){
+    var simdi=Date.now(),out=[];
+    for(var n=-geri;n<=ileri;n++) out.push(gunNo(simdi+n*86400000));
+    return out;
+  }
+  function takvimGunleri(geri,ileri){
+    // Lig takvimi maç günlerini birebir verir; boş günleri istemek gereksiz.
+    var k=(CANLI.takvim||[]).map(function(g){return String(g).slice(0,10).replace(/-/g,'');})
+      .filter(function(g){return /^\d{8}$/.test(g);});
+    if(!k.length) return gunDizisi(geri,ileri);
+    var alt=gunNo(Date.now()-geri*86400000), ust=gunNo(Date.now()+ileri*86400000);
+    var sec=k.filter(function(g){return g>=alt&&g<=ust;});
+    if(!sec.length) return gunDizisi(0,0);
+    return sec;
+  }
+  function gunlukCek(gunler){
+    // Günler paralel çekilir; tek günün arızası diğerlerini düşürmez.
+    var basarili=0;
+    return Promise.all(gunler.map(function(g){
+      return kaynakGetir('scoreboard?dates='+g+'&limit=100').then(function(d){
+        basarili++;
+        return Array.isArray(d.events)?d.events:[];
+      },function(){ return []; });
+    })).then(function(listeler){
+      var gorulen={},out=[];
+      listeler.forEach(function(l){ l.forEach(function(ev){
+        var id=String((ev&&ev.id)||''); if(!id||gorulen[id]) return;
+        gorulen[id]=1; out.push(ev);
+      });});
+      return {events:out,basarili:basarili,toplam:gunler.length};
+    });
+  }
+  function eventKayit(ev){
+    var c=(ev.competitions||[])[0]||{};
+    var st=c.status||ev.status||{};
+    var tip=st.type||{};
+    var evT={id:'',ad:'',kisa:'',logo:'',skor:null,kazandi:false};
+    var depT={id:'',ad:'',kisa:'',logo:'',skor:null,kazandi:false};
+    (c.competitors||[]).forEach(function(t){
+      var tm=t.team||{};
+      var n=parseInt(t.score,10);
+      var k={id:String(tm.id||''),ad:tm.displayName||tm.shortDisplayName||tm.name||'',
+             kisa:tm.abbreviation||'',logo:tm.logo||'',
+             skor:isNaN(n)?null:n,kazandi:!!t.winner};
+      if(t.homeAway==='home') evT=k; else depT=k;
+    });
+    return {id:String(ev.id||''),utc:c.date||ev.date||'',durum:tip.state||'',
+            durum_metin:tip.shortDetail||tip.detail||'',durum_ad:tip.name||'',
+            saat:st.displayClock||'',ev:evT,dep:depT,
+            stadyum:(c.venue||{}).fullName||'',
+            sehir:(((c.venue||{}).address)||{}).city||'',
+            detay:c.details||[]};
+  }
+  function kayitlariIsle(events){
+    var canliVar=false;
+    events.forEach(function(ev){
+      var m=eventKayit(ev);
+      if(!m.id||!m.utc) return;
+      canliKayitlar[m.id]=m;
+      // Snapshot'ta olmayan maçlar da canlı panele düşsün diye kaydedilir.
+      if(!CANLI.maclar[m.id]&&!CANLI.ist[m.id]){
+        CANLI.maclar[m.id]={ev:m.ev.ad,dep:m.dep.ad,evk:m.ev.skor||0,depk:m.dep.skor||0,
+          durum:m.durum,durum_metin:m.durum_metin,saat:m.saat,utc:m.utc,
+          ev_id:m.ev.id,dep_id:m.dep.id,durum_ad:m.durum_ad};
+      }else{
+        var h=CANLI.maclar[m.id]||CANLI.ist[m.id];
+        if(h){ h.durum=m.durum||h.durum; h.durum_ad=m.durum_ad||h.durum_ad;
+               h.saat=m.saat||h.saat; h.utc=m.utc||h.utc;
+               if(m.ev.ad){h.ev=m.ev.ad;} if(m.dep.ad){h.dep=m.dep.ad;} }
+      }
+      if(ertelendiMi(m.durum_ad)) return;
+      if(m.durum==='in') canliVar=true;
+      macGuncelle(m.id,{evk:(m.ev.skor===null?0:m.ev.skor),depk:(m.dep.skor===null?0:m.dep.skor),
+        durum:m.durum,saat:m.saat||m.durum_metin||''},sonGolDetay(c0(ev)));
+      if(m.durum==='in') istIste(m.id);
+      else if(m.durum==='post'&&!istBitti[m.id]&&CANLI.ist[m.id]) istIste(m.id,{birKez:true,son:true});
+    });
+    return canliVar;
+  }
+  function c0(ev){ return ((ev.competitions||[])[0])||{}; }
   function snapshotUygula(data){
     if(!data||typeof data!=='object') return;
     var maclar=data.maclar||{};
@@ -1857,64 +2293,325 @@ if(window.fetch&&(Object.keys(CANLI.maclar).length||Object.keys(CANLI.ist).lengt
       }
     });
   }
-  function skorYanitiUygula(data){
-    if(!data||!Array.isArray(data.events)) throw new Error('gecersiz scoreboard');
-    data.events.forEach(function(ev){
-      var id=String(ev.id||'');
-      if(!id||(!CANLI.maclar[id]&&!CANLI.ist[id])) return;
-      var c=(ev.competitions||[])[0]||{};
-      var st=c.status||ev.status||{};
-      var tip=st.type||{};
-      var state=tip.state||((CANLI.maclar[id]||CANLI.ist[id]||{}).durum);
-      if(ertelendiMi(tip.name||tip.description||tip.shortDetail)){istBitti[id]=1;return;}
-      var evk=0,depk=0;
-      (c.competitors||[]).forEach(function(t){
-        var n=parseInt(t.score,10);
-        if(t.homeAway==='home'){evk=isNaN(n)?0:n;}else{depk=isNaN(n)?0:n;}
-      });
-      if(state==='in') canliRozetEkle();
-      macGuncelle(id,{evk:evk,depk:depk,durum:state,
-                      saat:st.displayClock||tip.shortDetail||''},sonGolDetay(c));
-      if(state==='in') istIste(id);
-      else if(state==='post'&&!istBitti[id]&&CANLI.ist[id]) istIste(id,{birKez:true,son:true});
-    });
+  // --- canlı panel: o an oynanan / bugün oynanacak maçlar ---
+  // Statik sayfada satırı olmayan maçlar bile burada görünür; yani bot paketi
+  // bayat kalsa da kullanıcı güncel maçları görür.
+  function panelKart(m){
+    var canli=m.durum==='in', bitti=m.durum==='post';
+    var skor=(canli||bitti)
+      ? '<div class="skor">'+kacHtml(m.ev.skor===null?0:m.ev.skor)+' : '+kacHtml(m.dep.skor===null?0:m.dep.skor)+'</div>'
+      : '<div class="skor onaylanmadi">'+kacHtml(tarihCevir(m.utc,false))+'</div>';
+    function taraf(t,dep){
+      var g=t.logo?'<img src="'+kacHtml(t.logo)+'" alt="" loading="lazy">'
+                 :'<span class="rozet">'+kacHtml((t.kisa||'?').slice(0,3))+'</span>';
+      return '<div class="takim'+(dep?' dep':'')+'">'+g+'<span class="isim">'+kacHtml(t.ad||'?')+'</span></div>';
+    }
+    var ust=canli?('● CANLI'):bitti?(m.durum_metin||'MS'):(tarihCevir(m.utc,true));
+    var sure=canli?('<div class="sure">'+kacHtml(m.saat||'')+'</div>'):'';
+    return '<div class="kart canli-kart'+(canli?'':' bekleyen')+'" data-mac-id="'+kacHtml(m.id)+'">'
+      +'<div class="mac">'+taraf(m.ev,false)+skor+taraf(m.dep,true)+'</div>'+sure
+      +'<div class="mac-alt"><span>'+kacHtml(ust)+'</span><span>'
+      +kacHtml([m.stadyum,m.sehir].filter(Boolean).join(' · '))+'</span></div></div>';
   }
-  function gun(n){
-    var x=new Date(Date.now()+n*86400000);
-    return x.toISOString().slice(0,10).replace(/-/g,'');
+  function panelCiz(){
+    var kok=document.getElementById('canli-panel');
+    if(!kok) return;
+    var simdi=Date.now(),liste=[];
+    Object.keys(canliKayitlar).forEach(function(id){
+      var m=canliKayitlar[id];
+      if(!m.utc||!m.ev.ad||ertelendiMi(m.durum_ad)) return;
+      var t=Date.parse(m.utc); if(isNaN(t)) return;
+      var fark=t-simdi;
+      // canlı maçlar + 3 saat içinde başlayacaklar + son 4 saatte bitenler
+      if(m.durum==='in'||(m.durum==='pre'&&fark<3*3600000&&fark>-6*3600000)
+         ||(m.durum==='post'&&fark>-4*3600000)) liste.push({m:m,t:t});
+    });
+    liste.sort(function(a,b){
+      var ac=(a.m.durum==='in'?0:1)-(b.m.durum==='in'?0:1);
+      return ac!==0?ac:a.t-b.t;
+    });
+    if(!liste.length){ kok.innerHTML=''; panelImza=''; return; }
+    var canliSay=liste.filter(function(x){return x.m.durum==='in';}).length;
+    var baslik=canliSay
+      ? '<div class="canli-baslik"><span class="canli">CANLI</span> '+canliSay+' maç oynanıyor</div>'
+      : '<div class="canli-baslik">Günün maçları</div>';
+    var govde=baslik+'<div class="grid2">'+liste.slice(0,10).map(function(x){
+      return panelKart(x.m);}).join('')+'</div>';
+    // Panel her turda yeniden çizilirse CSS animasyonları baştan başlar ve
+    // sayfa titrer. İçerik gerçekten değişmediyse DOM'a dokunulmaz.
+    if(govde===panelImza) return;
+    panelImza=govde;
+    kok.innerHTML=govde;
+  }
+  // --- durum çubuğu: kaynak, son güncelleme, geri sayım ---
+  function durumGoster(durum,mesaj){
+    var cubuk=document.getElementById('canli-cubuk');
+    if(!cubuk) return;
+    cubuk.hidden=false;
+    if(durum) cubuk.setAttribute('data-durum',durum);
+    var m=document.getElementById('canli-mesaj');
+    if(m&&mesaj!==undefined) m.textContent=mesaj;
+    var k=document.getElementById('canli-kaynak');
+    if(k) k.textContent=aktifKaynak?('kaynak: '+aktifKaynak):'';
+  }
+  function goreliZaman(ms){
+    var s=Math.max(0,Math.round(ms/1000));
+    if(s<60) return s+' sn önce';
+    var d=Math.round(s/60);
+    if(d<60) return d+' dk önce';
+    var h=Math.round(d/60);
+    if(h<48) return h+' saat önce';
+    return Math.round(h/24)+' gün önce';
+  }
+  function satirTazele(){
+    var el=document.getElementById('son-guncelleme');
+    if(!el) return;
+    var kaynakZaman=sonBasari||0;
+    var uretim=el.getAttribute('data-uretim');
+    var paketZaman=uretim?Date.parse(uretim):NaN;
+    var baz=Math.max(kaynakZaman,isNaN(paketZaman)?0:paketZaman);
+    var agdan=!!kaynakZaman;
+    el.textContent='Son güncelleme: '+(baz?goreliZaman(Date.now()-baz):'bilinmiyor')
+      +(agdan?' · tarayıcıdan canlı':' · statik paket')
+      +' · '+(CANLI.sezon_adi||'')+' (İstanbul)';
+  }
+  // --- puan durumu: ağdan tazele ---
+  function puanSatiri(e){
+    var ist={};
+    (e.stats||[]).forEach(function(s){ ist[s.name]=s.displayValue!==undefined?s.displayValue:s.value; });
+    var t=e.team||{};
+    var logo='';
+    (t.logos||[]).forEach(function(l){ if(!logo&&l.href) logo=l.href; });
+    var not=(e.note||{}).description||'';
+    var renk=(e.note||{}).color||'';
+    var isaret=not?'<span class="nokta" style="background:'+kacHtml(renk||'#555')+'"></span>':'';
+    var g=logo?'<img src="'+kacHtml(logo)+'" alt="" loading="lazy">'
+              :'<span class="rozet" style="width:22px;height:22px;font-size:10px">'
+                +kacHtml(String(t.abbreviation||'').slice(0,3))+'</span>';
+    return '<tr data-takim-id="'+kacHtml(t.id||'')+'"><td><span class="takim-hucre">'
+      +isaret+g+kacHtml(t.displayName||'')+'</span></td>'
+      +'<td>'+kacHtml(ist.gamesPlayed||'0')+'</td><td>'+kacHtml(ist.wins||'0')+'</td>'
+      +'<td>'+kacHtml(ist.ties||'0')+'</td><td>'+kacHtml(ist.losses||'0')+'</td>'
+      +'<td>'+kacHtml(ist.pointsFor||'0')+'</td><td>'+kacHtml(ist.pointsAgainst||'0')+'</td>'
+      +'<td>'+kacHtml(ist.pointDifferential||'0')+'</td>'
+      +'<td class="puan">'+kacHtml(ist.points||'0')+'</td>'
+      +'<td style="color:var(--soluk)">'+kacHtml(NOT_TR[not]||not||'')+'</td></tr>';
+  }
+  function puanCiz(data){
+    var govde=document.getElementById('puan-govde');
+    if(!govde||!data||!Array.isArray(data.children)) return false;
+    var satirlar=[];
+    data.children.forEach(function(c){
+      var entries=((c.standings||{}).entries)||[];
+      entries.forEach(function(e){ satirlar.push(e); });
+    });
+    if(!satirlar.length) return false;
+    satirlar.sort(function(a,b){
+      function sira(e){
+        var r=0; (e.stats||[]).forEach(function(s){ if(s.name==='rank') r=Number(s.displayValue||s.value||0); });
+        return r;
+      }
+      return sira(a)-sira(b);
+    });
+    govde.innerHTML=satirlar.map(puanSatiri).join('');
+    govde.classList.add('guncellendi');
+    setTimeout(function(){govde.classList.remove('guncellendi');},1000);
+    var notEl=document.getElementById('puan-durum-notu');
+    if(notEl) notEl.textContent='Canlı puan durumu · az önce yenilendi';
+    return true;
+  }
+  function puanCek(){
+    var sezon=CANLI.sezon?('season='+encodeURIComponent(CANLI.sezon)):'';
+    var i=0;
+    function dene(){
+      if(i>=PUAN_KAYNAKLARI.length) return Promise.reject(new Error('puan durumu alınamadı'));
+      var url=PUAN_KAYNAKLARI[i++]+(sezon?'?'+sezon:'');
+      return zamanAsimli(url).then(function(d){
+        if(espnHataGovdesi(d)) throw new Error(String(d.message||'hata gövdesi'));
+        return d;
+      }).catch(dene);
+    }
+    return dene();
+  }
+  // --- yerel depo: yeniden yüklemede anında taze görünen veri ---
+  function depoYaz(){
+    try{
+      var paket={t:Date.now(),kaynak:aktifKaynak,maclar:canliKayitlar};
+      window.localStorage.setItem(DEPO_ANAHTAR,JSON.stringify(paket));
+    }catch(e){}
+  }
+  function depoOku(){
+    try{
+      var ham=window.localStorage.getItem(DEPO_ANAHTAR);
+      if(!ham) return null;
+      var paket=JSON.parse(ham);
+      if(!paket||!paket.maclar) return null;
+      // 24 saatten eski depoyu taze veri sayma
+      if(Date.now()-Number(paket.t||0)>86400000) return null;
+      return paket;
+    }catch(e){ return null; }
   }
   function yakinMacVarMi(){
-    for(var id in CANLI.maclar){
-      if(macAktifMi(CANLI.maclar[id])) return true;
+    var simdi=Date.now();
+    var idler={};
+    Object.keys(canliKayitlar).forEach(function(k){idler[k]=1;});
+    Object.keys(CANLI.maclar).forEach(function(k){idler[k]=1;});
+    for(var id in idler){
+      var m=canliKayitlar[id]||CANLI.maclar[id];
+      if(!m) continue;
+      if(m.durum==='in'&&!ertelendiMi(m.durum_ad)) return true;
+      var t=Date.parse(m.utc); 
+      if(!isNaN(t)&&t-simdi<3*3600000&&t-simdi>-3*3600000) return true;
     }
     return false;
   }
-  function tazele(){
-    if(document.hidden) return;
-    canliSayac++;
-    var aktif=yakinMacVarMi();
-    // Yakın maç yoksa her çağrıda ESPN'e yüklenme; maç saatine yaklaşınca
-    // macAktifMi otomatik olarak hızlı döngüyü devreye sokar.
-    if(!aktif&&canliSayac%4!==1) return;
-    var url=SKOR_API_BASELERI[0]+'/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100';
-    jsonDene([url,SKOR_API_BASELERI[1]+'/scoreboard?dates='+gun(-2)+'-'+gun(2)+'&limit=100'])
-      .then(skorYanitiUygula)
-      .catch(function(){
-        return fetch('data/canli.json?ts='+Date.now(),{cache:'no-store'})
-          .then(function(r){if(!r.ok) throw new Error('canli.json '+r.status);return r.json();})
-          .then(snapshotUygula)
-          .catch(function(){});
-      });
+  function hizliKatman(){
+    // Bugün ±1 gün; aralık sorgusu bozuk olduğu için gün gün paralel.
+    return gunlukCek(takvimGunleri(1,1)).then(function(r){
+      if(!r.basarili) throw new Error('hiçbir maç günü okunamadı');
+      ardisikHata=0; sonBasari=Date.now(); sonHata='';
+      var canli=kayitlariIsle(r.events);
+      if(canli) canliRozetEkle();
+      panelCiz(); depoYaz();
+      durumGoster(canli?'canli':'tamam', canli
+        ? 'Canlı maç izleniyor · '+r.events.length+' maç · '+tarihCevir(new Date().toISOString(),false)+'de yenilendi'
+        : 'Bağlı · '+r.basarili+'/'+r.toplam+' maç günü okundu · '+r.events.length+' maç');
+      satirTazele();
+      return canli;
+    });
   }
-  Object.keys(CANLI.ist||{}).forEach(function(id){
-    var info=CANLI.ist[id]||{};
-    if(info.durum==='in') istIste(id);
-    else if(info.durum==='post'&&info.eksik) istIste(id,{birKez:true,son:true});
+  function genisKatman(){
+    // Son 14 gün + önümüzdeki 45 gün: sonuçlar, fikstür ve saat değişiklikleri.
+    var gunler=takvimGunleri(14,45);
+    var parcalar=[],i=0,ES=4;
+    function next(){
+      if(i>=gunler.length) return Promise.all(parcalar);
+      var dilim=gunler.slice(i,i+ES); i+=ES;
+      parcalar.push(gunlukCek(dilim));
+      return next();
+    }
+    return next().then(function(sonuclar){
+      var events=[],basarili=0,toplam=0;
+      sonuclar.forEach(function(s){ events=events.concat(s.events); basarili+=s.basarili; toplam+=s.toplam; });
+      if(!basarili) throw new Error('geniş katman okunamadı');
+      kayitlariIsle(events);
+      panelCiz(); depoYaz(); satirTazele();
+      return puanCek().then(puanCiz,function(){ return false; })
+        .then(function(){ return {events:events.length,basarili:basarili,toplam:toplam}; });
+    });
+  }
+  function yedekSnapshot(){
+    return fetch('data/canli.json?ts='+Date.now(),{cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw new Error('canli.json '+r.status); return r.json(); })
+      .then(snapshotUygula)
+      .catch(function(){});
+  }
+  function hataDurumu(mesaj){
+    ardisikHata++;
+    durumGoster('hata',mesaj||('Canlı kaynak okunamadı · '+(sonHata||'ağ hatası')));
+    satirTazele();
+  }
+  var mesgul=false;
+  function tur(zorla){
+    if(mesgul) return Promise.resolve();
+    if(document.hidden&&!zorla) return Promise.resolve();
+    mesgul=true;
+    var btn=document.getElementById('canli-yenile');
+    if(btn) btn.disabled=true;
+    durumGoster('beklemede','Yenileniyor…');
+    return hizliKatman()
+      .catch(function(e){ hataDurumu('Canlı skor alınamadı · '+(sonHata||(e&&e.message)||'')); return yedekSnapshot(); })
+      .then(function(){ mesgul=false; if(btn) btn.disabled=false; });
+  }
+  function genisTur(){
+    if(document.hidden) return Promise.resolve();
+    return genisKatman().catch(function(e){
+      istLog('geniş katman hatası:',e);
+      return yedekSnapshot();
+    });
+  }
+  // --- zamanlama: canlı maçta 5 sn, yakın maçta 15 sn, boşta 60 sn ---
+  var sonrakiTur=0;
+  function beklemeSuresi(){
+    if(ardisikHata>2) return HIZ_HATA;
+    var simdi=Date.now(),enYakin=Infinity,canli=false;
+    Object.keys(canliKayitlar).forEach(function(id){
+      var m=canliKayitlar[id];
+      if(!m||!m.utc) return;
+      if(m.durum==='in'&&!ertelendiMi(m.durum_ad)) canli=true;
+      var t=Date.parse(m.utc); if(!isNaN(t)) enYakin=Math.min(enYakin,Math.abs(t-simdi));
+    });
+    if(canli) return HIZ_CANLI;
+    if(enYakin<3*3600000) return HIZ_YAKIN;
+    return HIZ_BOS;
+  }
+  function geriSayim(){
+    var cubuk=document.getElementById('canli-cubuk');
+    if(!cubuk||cubuk.hidden) return;
+    var k=document.getElementById('canli-kaynak');
+    if(!k) return;
+    var kalan=Math.max(0,Math.round((sonrakiTur-Date.now())/1000));
+    k.textContent=(aktifKaynak?('kaynak: '+aktifKaynak+' · '):'')
+      +(document.hidden?'sekme arka planda':'sonraki: '+kalan+' sn');
+  }
+  (function dongu(){
+    var bekle=beklemeSuresi();
+    sonrakiTur=Date.now()+bekle;
+    setTimeout(function(){
+      if(!document.hidden) tur().then(function(){ dongu(); });
+      else dongu();
+    },bekle);
+  })();
+  setInterval(function(){ geriSayim(); satirTazele(); },1000);
+  (function genisDongu(){
+    setTimeout(function(){
+      genisTur().then(function(){
+        satirTazele();
+        genisDongu();
+      });
+    },GENIS_ARALIK);
+  })();
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden){ tur(true); genisTur(); }
   });
-  tazele();
-  (function donguPlanla(){
-    var bekle=yakinMacVarMi()?15000:120000;
-    setTimeout(function(){tazele();donguPlanla();},bekle);
+  window.addEventListener('online',function(){ tur(true); });
+  var btn=document.getElementById('canli-yenile');
+  if(btn) btn.addEventListener('click',function(){ tur(true); genisTur(); });
+
+  // --- açılış: önce yerel depo (anında), sonra ağ ---
+  (function baslat(){
+    var depo=depoOku();
+    if(depo){
+      Object.keys(depo.maclar||{}).forEach(function(id){ canliKayitlar[id]=depo.maclar[id]; });
+      aktifKaynak=depo.kaynak||'';
+      sonBasari=Number(depo.t)||0;
+      kayitlariIsle([]);
+      Object.keys(canliKayitlar).forEach(function(id){
+        var m=canliKayitlar[id];
+        macGuncelle(id,{evk:(m.ev.skor===null?0:m.ev.skor),depk:(m.dep.skor===null?0:m.dep.skor),
+          durum:m.durum,saat:m.saat||m.durum_metin||''},'');
+      });
+      panelCiz();
+      durumGoster('beklemede','Önbellekten yüklendi · '+goreliZaman(Date.now()-sonBasari)+' · ağdan tazeleniyor');
+    }
+    var paketEl=document.getElementById('son-guncelleme');
+    var paket=paketEl?Date.parse(paketEl.getAttribute('data-uretim')||''):NaN;
+    if(!isNaN(paket)&&Date.now()-paket>6*3600000){
+      var uyari=document.createElement('div');
+      uyari.className='bayat-uyari';
+      uyari.textContent='Statik veri paketi '+goreliZaman(Date.now()-paket)+' güncellendi. '
+        +'Sayfa açıkken fikstür, skor ve puan durumu tarayıcıdan canlı çekiliyor…';
+      var cubuk=document.getElementById('canli-cubuk');
+      if(cubuk&&cubuk.parentNode) cubuk.parentNode.insertBefore(uyari,cubuk);
+    }
+    satirTazele();
+    Object.keys(CANLI.ist||{}).forEach(function(id){
+      var info=CANLI.ist[id]||{};
+      if(info.durum==='in') istIste(id);
+      else if(info.durum==='post'&&info.eksik) istIste(id,{birKez:true,son:true});
+    });
+    tur(true);
+    genisTur();
   })();
 }
 """
@@ -2123,13 +2820,14 @@ def puan_tablosu(satirlar: list) -> str:
             logo = f'<span class="rozet" style="width:22px;height:22px;font-size:10px">{esc(s["kisa"][:3])}</span>'
         not_tr = NOT_TR.get(s["not"], s["not"])
         isaret = f'<span class="nokta" style="background:{esc(s["not_renk"] or "#555")}"></span>' if s["not"] else ""
-        govde.append(f'''<tr><td><span class="takim-hucre">{isaret}{logo}{esc(s["takim"])}</span></td>
+        govde.append(f'''<tr data-takim-id="{esc(s["takim_id"])}"><td><span class="takim-hucre">{isaret}{logo}{esc(s["takim"])}</span></td>
 <td>{esc(s["o"])}</td><td>{esc(s["g"])}</td><td>{esc(s["b"])}</td><td>{esc(s["m"])}</td>
 <td>{esc(s["attigi"])}</td><td>{esc(s["yedigi"])}</td><td>{esc(s["averaj"])}</td>
 <td class="puan">{esc(s["puan"])}</td><td style="color:var(--soluk)">{esc(not_tr)}</td></tr>''')
     return f'''<div class="kart" style="overflow-x:auto"><table class="puan">
 <thead><tr><th>Takım</th><th>O</th><th>G</th><th>B</th><th>M</th><th>A</th><th>Y</th>
-<th>AV</th><th>P</th><th></th></tr></thead><tbody>{"".join(govde)}</tbody></table></div>'''
+<th>AV</th><th>P</th><th></th></tr></thead><tbody id="puan-govde">{"".join(govde)}</tbody></table>
+<div class="puan-not" id="puan-durum-notu"></div></div>'''
 
 
 def render_html(veri: dict, cikti: str) -> None:
@@ -2252,8 +2950,19 @@ def render_html(veri: dict, cikti: str) -> None:
 <header class="{ust_sinif}">{ust_logo_html}
 <div><h1>Fix<span>toor</span></h1><span class="lig-etiket">⚽ {esc(lig["ad"])}</span>
 <div class="alt-bilgi">{esc(lig.get("sezon_adi", ""))} · Fikstür · Maç Özetleri · Puan Durumu · Yayın Akışı{canli_rozet}</div>
-<div class="alt-bilgi">Son güncelleme: {esc(tr_tarih(parse_utc(simdi)))} (İstanbul)</div>
+<div class="alt-bilgi" id="son-guncelleme" data-uretim="{esc(simdi)}">Son güncelleme: {esc(tr_tarih(parse_utc(simdi)))} (İstanbul)</div>
 </div></header>
+
+<div class="canli-cubuk" id="canli-cubuk" hidden>
+<span class="nokta-canli" id="canli-nokta"></span>
+<span id="canli-mesaj">Canlı veri bağlanıyor…</span>
+<span class="canli-sag">
+<span id="canli-kaynak" class="canli-kaynak"></span>
+<button type="button" id="canli-yenile" class="canli-yenile" title="Şimdi yenile">⟳ Yenile</button>
+</span>
+</div>
+
+<div id="canli-panel"></div>
 
 <nav class="sekmeler">
 <button class="aktif" data-sekme="hafta">📺 Haftanın Maçları</button>
@@ -2322,7 +3031,9 @@ def _veri_yeni_uret(args, data_dir: str, eski_veri=None) -> dict:
     """
     lig = fetch_lig_bilgisi(args.league)
     log(f"lig: {lig['api_adi']} — sezon {lig['sezon_adi']}")
-    olaylar = fetch_sezon_maclar(args.league, lig["baslangic"], lig["bitis"])
+    log(f"lig takvimi: {len(lig.get('takvim') or [])} maç günü")
+    olaylar = fetch_sezon_maclar(args.league, lig["baslangic"], lig["bitis"],
+                                 lig.get("takvim"))
     maclar = [mac_ayristir(ev) for ev in olaylar]
     maclar = [
         m for m in maclar
@@ -2452,12 +3163,46 @@ def _veri_yeni_uret(args, data_dir: str, eski_veri=None) -> dict:
     return veri
 
 
+def kaynak_tanisi(data_dir: str, slug: str, kapsam: str = "hizli",
+                  neden: str = "") -> dict:
+    """Veri kaynağı arızasında nedenini ölçüp ``data/tani.json`` dosyasına yazar.
+
+    Sessiz geri düşme (fallback) sorunu gizlediği için her başarısız canlı/tam
+    çalıştırma artık somut bir kanıt bırakır: hangi host, hangi User-Agent,
+    hangi HTTP durumu, hangi WAF imzası. Rapor küçük ve yayına uygundur;
+    sayfadaki durum rozeti de bunu okuyabilir.
+    """
+    if os.environ.get("FIXTOOR_TANI", "1").strip().lower() in ("0", "false", "no", "off"):
+        return {}
+    if os.environ.get("FIXTOOR_TEST"):
+        # Testlerde ağ taraması yapılmaz; birim testler hızlı ve çevrimdışı kalır.
+        return {}
+    try:
+        rapor = tani_mod.ag_tanisi(slug, kapsam=kapsam)
+        rapor["neden"] = neden
+        yol = tani_mod.tani_yaz(data_dir, rapor)
+        log(f"ağ tanısı yazıldı: {yol} (çalışan kaynak: "
+            f"{', '.join(rapor.get('calisan_kaynaklar') or []) or 'YOK'})")
+        for satir in tani_mod.ozet_satir(rapor).split("; "):
+            log(f"  tani| {satir}")
+        return rapor
+    except Exception as e:  # noqa: BLE001 - tanı aracı işi asla düşürmemeli
+        log(f"UYARI: ağ tanısı üretilemedi: {e}")
+        return {}
+
+
 def calistir(args) -> None:
     data_dir = args.data_dir
     os.makedirs(data_dir, exist_ok=True)
     eski_veri = site_verisi_yukle(data_dir)
     strict = bool(getattr(args, "strict", False))
     live = bool(getattr(args, "live", False))
+
+    if getattr(args, "tani", False):
+        rapor = kaynak_tanisi(data_dir, args.league, kapsam="tam", neden="manuel --tani")
+        if not rapor:
+            raise RuntimeError("ağ tanısı üretilemedi")
+        return
 
     if args.offline:
         log("offline mod: mevcut verilerden HTML üretiliyor")
@@ -2476,6 +3221,21 @@ def calistir(args) -> None:
             eski_veri = None
 
         if live:
+            # GitHub Actions cron'u beş dakikada bir istese de pratikte birkaç
+            # saatte bir tetikleniyor ve altı saatlik tam senkronizasyon cron'u
+            # hiç çalışmayabiliyor. Bu yüzden canlı mod kendi kendini onarır:
+            # paket eşikten eskiyse tam senkronizasyona yükseltilir. Aksi halde
+            # site günlerce eski veride kalıyordu.
+            yas = veri_yasi_saat(eski_veri)
+            if yas is not None and yas > TAM_ESIK_SAAT:
+                log(f"canlı mod atlandı: paket {yas:.1f} saat eski "
+                    f"(eşik {TAM_ESIK_SAAT:g} saat) → tam senkronizasyon")
+                live = False
+            elif yas is None:
+                log("canlı mod atlandı: paket yaşı okunamadı → tam senkronizasyon")
+                live = False
+
+        if live:
             log("canlı mod: yalnızca son scoreboard penceresi yenileniyor")
             try:
                 if eski_veri is None:
@@ -2484,9 +3244,11 @@ def calistir(args) -> None:
             except Exception as e:
                 if strict or not CI_GERI_DUS or eski_veri is None:
                     log(f"HATA: canlı güncelleme başarısız: {e}")
+                    kaynak_tanisi(data_dir, args.league, "hizli", f"canlı mod: {e}")
                     raise
                 log(f"UYARI: canlı güncelleme başarısız: {e}")
                 log("Son sağlam canlı paket korunuyor; sonraki beş dakikalık çalıştırma yeniden deneyecek.")
+                kaynak_tanisi(data_dir, args.league, "hizli", f"canlı mod: {e}")
                 veri, degisti = eski_veri, False
             if not degisti:
                 # İlk kurulumda index/canli uçları yoksa üret; normal Actions
@@ -2507,9 +3269,11 @@ def calistir(args) -> None:
             except Exception as e:
                 if strict or not CI_GERI_DUS or eski_veri is None:
                     log(f"HATA: çevrim içi güncelleme başarısız: {e}")
+                    kaynak_tanisi(data_dir, args.league, "tam", f"tam senkron: {e}")
                     raise
                 log(f"UYARI: çevrim içi güncelleme başarısız: {e}")
                 log("Son sağlam veri korunuyor; bir sonraki zamanlanmış çalıştırmada tekrar denenecek.")
+                kaynak_tanisi(data_dir, args.league, "tam", f"tam senkron: {e}")
                 veri = eski_veri
 
     # Eski bir checkout'tan yükseltme yapılıyorsa türetilmiş canlı uç da
@@ -2536,6 +3300,11 @@ def main() -> None:
         "--strict",
         action="store_true",
         help="API hatasında son sağlam veriye dönmek yerine işlemi başarısız bitir",
+    )
+    p.add_argument(
+        "--tani",
+        action="store_true",
+        help="veri kaynaklarının erişilebilirliğini ölç ve data/tani.json'a yaz",
     )
     calistir(p.parse_args())
 

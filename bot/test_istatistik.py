@@ -11,6 +11,11 @@ from types import SimpleNamespace
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+# Testler çevrimdışı ve hızlı kalmalı: ağ tanısı taraması ve istatistik
+# istekleri arasındaki nezaket beklemeleri test ortamında atlanır.
+os.environ.setdefault("FIXTOOR_TEST", "1")
+os.environ.setdefault("FIXTOOR_TANI", "0")
+
 import istatistik as ist  # noqa: E402
 import fiktoor  # noqa: E402
 
@@ -557,6 +562,261 @@ class CanliYenileme(unittest.TestCase):
                 canli = json.load(f)
             self.assertIn("maclar", canli)
             self.assertIn("live-1", canli["maclar"])
+
+
+class CanliVeriKaynagiTestleri(unittest.TestCase):
+    """2026-09'da siteyi 9 gün bayat bırakan gerçek arızaların regresyon testleri.
+
+    Ölçülen kök nedenler:
+      1. ESPN ``dates=A-B`` aralık sorgusu HTTP 200 gövdesinde
+         ``{"code":400,"message":"Failed to get events endpoint."}`` döndürüyor.
+      2. ``site.api.espn.com`` (Akamai) bazı User-Agent'ları 403 ile reddediyor.
+      3. Canlı mod bayat paketi yenilemeden koruyordu; tam senkronizasyon
+         cron'u hiç tetiklenmediğinde site günlerce eski kalıyordu.
+    """
+
+    def test_hata_govdesi_taninir(self):
+        self.assertTrue(fiktoor.espn_hata_govdesi_mi(
+            {"code": 400, "message": "Failed to get events endpoint."}))
+        self.assertTrue(fiktoor.espn_hata_govdesi_mi(
+            {"code": "500", "message": "iç hata"}))
+        self.assertFalse(fiktoor.espn_hata_govdesi_mi({"events": []}))
+        self.assertFalse(fiktoor.espn_hata_govdesi_mi({"code": 200, "message": "ok"}))
+        self.assertFalse(fiktoor.espn_hata_govdesi_mi([1, 2, 3]))
+
+    def test_hata_govdesi_host_degistirir(self):
+        """200 içinde hata gövdesi 'başarılı istek' sayılmamalı."""
+        cagrilar = []
+        eski = fiktoor.http_get_json
+
+        def fake(url, zorunlu=True, timeout=25, ua=""):
+            cagrilar.append(url)
+            if "site.api.espn.com" in url:
+                return {"code": 400, "message": "Failed to get events endpoint."}
+            return {"events": [{"id": "1"}], "leagues": [{"slug": "tur.1"}]}
+
+        try:
+            fiktoor.http_get_json = fake
+            veri = fiktoor.espn_json_al(
+                "tur.1", "scoreboard?dates=20260924",
+                dogrula=lambda x: isinstance(x.get("events"), list))
+        finally:
+            fiktoor.http_get_json = eski
+            fiktoor._ESPN_HOST_BELLEK["taban"] = None
+        self.assertEqual(len(veri["events"]), 1)
+        self.assertEqual(len(cagrilar), 2)
+        self.assertIn("site.web.api.espn.com", cagrilar[1])
+
+    def test_calisan_host_hatirlanir(self):
+        eski = fiktoor.http_get_json
+        fiktoor._ESPN_HOST_BELLEK["taban"] = None
+
+        def fake(url, zorunlu=True, timeout=25, ua=""):
+            return {"events": []}
+
+        try:
+            fiktoor.http_get_json = fake
+            fiktoor.espn_json_al("tur.1", "scoreboard",
+                                 dogrula=lambda x: isinstance(x.get("events"), list))
+            self.assertEqual(fiktoor._ESPN_HOST_BELLEK["taban"], fiktoor.SITE_API)
+            fiktoor._ESPN_HOST_BELLEK["taban"] = fiktoor.SITE_WEB_API
+            self.assertEqual(fiktoor._host_sirasi()[0], fiktoor.SITE_WEB_API)
+        finally:
+            fiktoor.http_get_json = eski
+            fiktoor._ESPN_HOST_BELLEK["taban"] = None
+
+    def test_waf_403_user_agent_rotasyonu(self):
+        """403 kalıcı sayılmamalı; havuzdaki başka User-Agent denenmeli."""
+        gorulen_ua = []
+        eski_urlopen = fiktoor.urllib.request.urlopen
+        eski_bellek = dict(fiktoor._HTTP_UA_BELLEK)
+
+        class Yanit:
+            status = 200
+            headers = {}
+
+            def read(self):
+                return b'{"events": []}'
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+        def fake_urlopen(req, timeout=None):
+            gorulen_ua.append(req.get_header("User-agent"))
+            if len(gorulen_ua) < 3:
+                raise fiktoor.urllib.error.HTTPError(
+                    req.full_url, 403, "Forbidden", {}, None)
+            return Yanit()
+
+        try:
+            fiktoor.urllib.request.urlopen = fake_urlopen
+            veri = fiktoor.http_get_json("https://site.api.espn.com/x", zorunlu=False)
+        finally:
+            fiktoor.urllib.request.urlopen = eski_urlopen
+            fiktoor._HTTP_UA_BELLEK.update(**eski_bellek)
+        self.assertEqual(veri, {"events": []})
+        self.assertEqual(len(gorulen_ua), 3)
+        self.assertEqual(len(set(gorulen_ua)), 3, "aynı UA tekrar denendi")
+
+    def test_kalici_404_icin_ua_donusumu_yapilmaz(self):
+        gorulen = []
+        eski_urlopen = fiktoor.urllib.request.urlopen
+
+        def fake_urlopen(req, timeout=None):
+            gorulen.append(req.get_header("User-agent"))
+            raise fiktoor.urllib.error.HTTPError(req.full_url, 404, "Not Found", {}, None)
+
+        try:
+            fiktoor.urllib.request.urlopen = fake_urlopen
+            veri = fiktoor.http_get_json("https://site.api.espn.com/yok", zorunlu=False)
+        finally:
+            fiktoor.urllib.request.urlopen = eski_urlopen
+        self.assertIsNone(veri)
+        self.assertEqual(len(gorulen), 1)
+
+    def test_canli_pencere_gun_gun_cekilir(self):
+        """Canlı mod aralık sorgusu kullanmamalı; gün gün istek atmalı."""
+        yollar = []
+        eski = fiktoor.espn_json_al
+
+        def fake(slug, yol, **kw):
+            yollar.append(yol)
+            return {"events": [{"id": "e1", "date": "2026-09-24T17:00Z",
+                                "competitions": [{"date": "2026-09-24T17:00Z",
+                                                  "status": {"type": {"state": "pre"}},
+                                                  "competitors": []}]}]}
+
+        try:
+            fiktoor.espn_json_al = fake
+            fiktoor.ESPN_ARALIK_DESTEKLIYOR = False   # aralık bozuk senaryosu
+            maclar = fiktoor.fetch_canli_maclar(
+                "tur.1", fiktoor.parse_utc("2026-09-24T12:00:00Z"))
+        finally:
+            fiktoor.espn_json_al = eski
+            fiktoor.ESPN_ARALIK_DESTEKLIYOR = None
+        beklenen = fiktoor.CANLI_GUN_GERI + fiktoor.CANLI_GUN_ILERI + 1
+        self.assertEqual(len(yollar), beklenen)
+        import re
+        for yol in yollar:
+            self.assertRegex(yol, r"^scoreboard\?dates=\d{8}(&|$)")
+            self.assertNotRegex(yol, r"dates=\d{8}-\d{8}")
+        self.assertEqual(len(maclar), beklenen)
+
+    def test_aralik_calisiyorsa_tek_istek_yeter(self):
+        yollar = []
+        eski = fiktoor.espn_json_al
+
+        def fake(slug, yol, **kw):
+            yollar.append(yol)
+            return {"events": []}
+
+        try:
+            fiktoor.espn_json_al = fake
+            fiktoor.ESPN_ARALIK_DESTEKLIYOR = None
+            fiktoor.fetch_canli_maclar("tur.1", fiktoor.parse_utc("2026-09-24T12:00:00Z"))
+        finally:
+            fiktoor.espn_json_al = eski
+            fiktoor.ESPN_ARALIK_DESTEKLIYOR = None
+        self.assertEqual(len(yollar), 1)
+        self.assertIn("dates=20260922-20260926", yollar[0])
+
+    def test_aralik_bozulursa_gun_modeuna_duser(self):
+        yollar = []
+        eski = fiktoor.espn_json_al
+
+        def fake(slug, yol, **kw):
+            yollar.append(yol)
+            if "-" in yol.split("dates=")[-1].split("&")[0]:
+                raise RuntimeError("Failed to get events endpoint.")
+            return {"events": []}
+
+        try:
+            fiktoor.espn_json_al = fake
+            fiktoor.ESPN_ARALIK_DESTEKLIYOR = None
+            fiktoor.fetch_canli_maclar("tur.1", fiktoor.parse_utc("2026-09-24T12:00:00Z"))
+            self.assertFalse(fiktoor.ESPN_ARALIK_DESTEKLIYOR)
+        finally:
+            fiktoor.espn_json_al = eski
+            fiktoor.ESPN_ARALIK_DESTEKLIYOR = None
+        self.assertEqual(len(yollar), 6)   # 1 aralık denemesi + 5 gün
+
+    def test_sezon_gunleri_takvimden_suzulur(self):
+        takvim = ["2026-09-20", "2026-09-24", "2026-10-09", "2027-05-23"]
+        gunler = fiktoor.sezon_gunleri("2026-09-01T00:00Z", "2026-10-31T00:00Z", takvim)
+        self.assertEqual([g.isoformat() for g in gunler], ["2026-09-20", "2026-09-24", "2026-10-09"])
+        # Takvim yoksa her gün taranır
+        gunler = fiktoor.sezon_gunleri("2026-09-01T00:00Z", "2026-09-05T00:00Z", None)
+        self.assertEqual(len(gunler), 5)
+
+    def test_paket_yasi_ve_bayat_esigi(self):
+        simdi = fiktoor.datetime.now(fiktoor.timezone.utc)
+        taze = {"uretim": simdi.isoformat()}
+        eski = {"uretim": (simdi - fiktoor.timedelta(hours=9)).isoformat()}
+        self.assertLess(fiktoor.veri_yasi_saat(taze), 0.01)
+        self.assertAlmostEqual(fiktoor.veri_yasi_saat(eski), 9.0, delta=0.05)
+        self.assertIsNone(fiktoor.veri_yasi_saat({"uretim": "bozuk"}))
+        self.assertIsNone(fiktoor.veri_yasi_saat(None))
+        self.assertGreater(fiktoor.veri_yasi_saat(eski), fiktoor.TAM_ESIK_SAAT)
+
+    def test_bayat_paket_canli_modu_tam_senkrona_yukseltir(self):
+        """Canlı mod, paket eşikten eskiyse tam senkronizasyona geçmeli."""
+        with tempfile.TemporaryDirectory() as td:
+            veri = CanliYenileme()._paket()
+            eski_zaman = fiktoor.datetime.now(fiktoor.timezone.utc) - fiktoor.timedelta(hours=12)
+            veri["uretim"] = eski_zaman.isoformat()
+            veri["lig"] = {"slug": "tur.1", "ad": "Trendyol Süper Lig", "sezon_yili": 2026}
+            fiktoor.veri_paketini_yaz(td, veri)
+            # yazım üretim damgasını değiştirmez; dosyadaki paketi elle bayatla
+            yol = os.path.join(td, "site-verisi.json")
+            with open(yol, encoding="utf-8") as f:
+                paket = json.load(f)
+            paket["uretim"] = eski_zaman.isoformat()
+            with open(yol, "w", encoding="utf-8") as f:
+                json.dump(paket, f, ensure_ascii=False)
+
+            cagrilar = []
+            eski_canli = fiktoor.canli_veri_guncelle
+            eski_tam = fiktoor._veri_yeni_uret
+            try:
+                fiktoor.canli_veri_guncelle = lambda *a, **k: cagrilar.append("canli") or (veri, False)
+                fiktoor._veri_yeni_uret = lambda *a, **k: cagrilar.append("tam") or veri
+                fiktoor.calistir(SimpleNamespace(
+                    league="tur.1", data_dir=td, out=os.path.join(td, "index.html"),
+                    offline=False, live=True, strict=False, tani=False))
+            finally:
+                fiktoor.canli_veri_guncelle = eski_canli
+                fiktoor._veri_yeni_uret = eski_tam
+            self.assertEqual(cagrilar, ["tam"])
+
+    def test_taze_paket_canli_modda_kalir(self):
+        with tempfile.TemporaryDirectory() as td:
+            veri = CanliYenileme()._paket()
+            veri["lig"] = {"slug": "tur.1", "ad": "Trendyol Süper Lig", "sezon_yili": 2026}
+            veri["uretim"] = fiktoor.datetime.now(fiktoor.timezone.utc).isoformat()
+            fiktoor.veri_paketini_yaz(td, veri)
+            yol = os.path.join(td, "site-verisi.json")
+            with open(yol, encoding="utf-8") as f:
+                paket = json.load(f)
+            paket["uretim"] = veri["uretim"]
+            with open(yol, "w", encoding="utf-8") as f:
+                json.dump(paket, f, ensure_ascii=False)
+
+            cagrilar = []
+            eski_canli = fiktoor.canli_veri_guncelle
+            eski_tam = fiktoor._veri_yeni_uret
+            try:
+                fiktoor.canli_veri_guncelle = lambda *a, **k: cagrilar.append("canli") or (veri, False)
+                fiktoor._veri_yeni_uret = lambda *a, **k: cagrilar.append("tam") or veri
+                fiktoor.calistir(SimpleNamespace(
+                    league="tur.1", data_dir=td, out=os.path.join(td, "index.html"),
+                    offline=False, live=True, strict=False, tani=False))
+            finally:
+                fiktoor.canli_veri_guncelle = eski_canli
+                fiktoor._veri_yeni_uret = eski_tam
+            self.assertEqual(cagrilar, ["canli"])
 
 
 if __name__ == "__main__":
