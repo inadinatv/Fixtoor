@@ -252,42 +252,6 @@
    },
    "utc": "2026-09-19T17:00Z"
   },
-  "401888292": {
-   "dep": "Erzurum BB",
-   "dep_id": "19267",
-   "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Besiktas",
-   "ev_id": "1895",
-   "evk": "3",
-   "saat": "90'+4'",
-   "st": {
-    "corners": {
-     "away": 1.0,
-     "home": 12.0
-    },
-    "fouls": {
-     "away": 11.0,
-     "home": 11.0
-    },
-    "possession": {
-     "away": 26.5,
-     "home": 73.5
-    },
-    "shots": {
-     "away": 8.0,
-     "home": 21.0
-    },
-    "shotsOnTarget": {
-     "away": 0.0,
-     "home": 6.0
-    }
-   },
-   "utc": "2026-09-11T17:00Z"
-  },
   "401888293": {
    "dep": "Kocaelispor",
    "dep_id": "995",
@@ -736,5 +700,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-09-25T11:57:54.345142+00:00"
+ "uretim": "2026-09-25T20:30:43.846259+00:00"
 }
