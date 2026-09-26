@@ -3805,10 +3805,7 @@
      ],
      "sehir": "Erzurum",
      "stadyum": "Erzurum Kazim Karabekir",
-     "utc": "2026-09-05T14:00Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "utc": "2026-09-05T14:00Z"
     },
     {
      "dep": {
@@ -3960,10 +3957,7 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Şükrü Saracoğlu Stadium",
-     "utc": "2026-09-05T17:00Z",
-     "video_id": "xb4avu6",
-     "video_kanal": "beIN SPORTS USA",
-     "video_kaynak": "dm"
+     "utc": "2026-09-05T17:00Z"
     },
     {
      "dep": {
@@ -23180,5 +23174,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-26T11:32:23.548567+00:00"
+ "uretim": "2026-09-26T18:33:23.777680+00:00"
 }

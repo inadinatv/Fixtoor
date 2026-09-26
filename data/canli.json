@@ -288,42 +288,6 @@
    },
    "utc": "2026-09-13T17:00Z"
   },
-  "401888294": {
-   "dep": "Trabzonspor",
-   "dep_id": "997",
-   "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Konyaspor",
-   "ev_id": "7648",
-   "evk": "1",
-   "saat": "90'+4'",
-   "st": {
-    "corners": {
-     "away": 7.0,
-     "home": 3.0
-    },
-    "fouls": {
-     "away": 9.0,
-     "home": 16.0
-    },
-    "possession": {
-     "away": 71.4,
-     "home": 28.6
-    },
-    "shots": {
-     "away": 15.0,
-     "home": 11.0
-    },
-    "shotsOnTarget": {
-     "away": 4.0,
-     "home": 5.0
-    }
-   },
-   "utc": "2026-09-12T17:00Z"
-  },
   "401888295": {
    "dep": "Kasimpasa",
    "dep_id": "6870",
@@ -359,78 +323,6 @@
     }
    },
    "utc": "2026-09-13T14:00Z"
-  },
-  "401888296": {
-   "dep": "Goztepe",
-   "dep_id": "789",
-   "depk": "2",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Alanyaspor",
-   "ev_id": "9078",
-   "evk": "2",
-   "saat": "90'+6'",
-   "st": {
-    "corners": {
-     "away": 3.0,
-     "home": 9.0
-    },
-    "fouls": {
-     "away": 10.0,
-     "home": 8.0
-    },
-    "possession": {
-     "away": 36.3,
-     "home": 63.7
-    },
-    "shots": {
-     "away": 14.0,
-     "home": 20.0
-    },
-    "shotsOnTarget": {
-     "away": 4.0,
-     "home": 4.0
-    }
-   },
-   "utc": "2026-09-12T17:00Z"
-  },
-  "401888297": {
-   "dep": "Caykur Rizespor",
-   "dep_id": "7656",
-   "depk": "2",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Eyupspor",
-   "ev_id": "20729",
-   "evk": "0",
-   "saat": "90'+6'",
-   "st": {
-    "corners": {
-     "away": 2.0,
-     "home": 8.0
-    },
-    "fouls": {
-     "away": 10.0,
-     "home": 13.0
-    },
-    "possession": {
-     "away": 49.9,
-     "home": 50.1
-    },
-    "shots": {
-     "away": 9.0,
-     "home": 26.0
-    },
-    "shotsOnTarget": {
-     "away": 4.0,
-     "home": 5.0
-    }
-   },
-   "utc": "2026-09-12T14:00Z"
   },
   "401888298": {
    "dep": "Fenerbahce",
@@ -539,42 +431,6 @@
     }
    },
    "utc": "2026-09-20T17:00Z"
-  },
-  "401888383": {
-   "dep": "Çorum FK",
-   "dep_id": "132334",
-   "depk": "5",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Samsunspor",
-   "ev_id": "11429",
-   "evk": "1",
-   "saat": "90'+3'",
-   "st": {
-    "corners": {
-     "away": 2.0,
-     "home": 8.0
-    },
-    "fouls": {
-     "away": 18.0,
-     "home": 12.0
-    },
-    "possession": {
-     "away": 40.1,
-     "home": 59.9
-    },
-    "shots": {
-     "away": 12.0,
-     "home": 18.0
-    },
-    "shotsOnTarget": {
-     "away": 8.0,
-     "home": 4.0
-    }
-   },
-   "utc": "2026-09-12T14:00Z"
   },
   "401888384": {
    "dep": "Istanbul Basaksehir",
@@ -700,5 +556,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-09-26T11:32:23.548567+00:00"
+ "uretim": "2026-09-26T18:33:23.777680+00:00"
 }
