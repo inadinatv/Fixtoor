@@ -252,78 +252,6 @@
    },
    "utc": "2026-09-19T17:00Z"
   },
-  "401888293": {
-   "dep": "Kocaelispor",
-   "dep_id": "995",
-   "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Galatasaray",
-   "ev_id": "432",
-   "evk": "1",
-   "saat": "90'+4'",
-   "st": {
-    "corners": {
-     "away": 3.0,
-     "home": 16.0
-    },
-    "fouls": {
-     "away": 10.0,
-     "home": 13.0
-    },
-    "possession": {
-     "away": 39.4,
-     "home": 60.6
-    },
-    "shots": {
-     "away": 12.0,
-     "home": 28.0
-    },
-    "shotsOnTarget": {
-     "away": 1.0,
-     "home": 9.0
-    }
-   },
-   "utc": "2026-09-13T17:00Z"
-  },
-  "401888295": {
-   "dep": "Kasimpasa",
-   "dep_id": "6870",
-   "depk": "2",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Genclerbirligi",
-   "ev_id": "996",
-   "evk": "1",
-   "saat": "90'+6'",
-   "st": {
-    "corners": {
-     "away": 9.0,
-     "home": 8.0
-    },
-    "fouls": {
-     "away": 14.0,
-     "home": 18.0
-    },
-    "possession": {
-     "away": 58.2,
-     "home": 41.8
-    },
-    "shots": {
-     "away": 16.0,
-     "home": 15.0
-    },
-    "shotsOnTarget": {
-     "away": 3.0,
-     "home": 5.0
-    }
-   },
-   "utc": "2026-09-13T14:00Z"
-  },
   "401888298": {
    "dep": "Fenerbahce",
    "dep_id": "436",
@@ -431,42 +359,6 @@
     }
    },
    "utc": "2026-09-20T17:00Z"
-  },
-  "401888384": {
-   "dep": "Istanbul Basaksehir",
-   "dep_id": "7914",
-   "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Amed SFK",
-   "ev_id": "132335",
-   "evk": "5",
-   "saat": "90'+2'",
-   "st": {
-    "corners": {
-     "away": 3.0,
-     "home": 3.0
-    },
-    "fouls": {
-     "away": 9.0,
-     "home": 9.0
-    },
-    "possession": {
-     "away": 56.7,
-     "home": 43.3
-    },
-    "shots": {
-     "away": 7.0,
-     "home": 22.0
-    },
-    "shotsOnTarget": {
-     "away": 1.0,
-     "home": 6.0
-    }
-   },
-   "utc": "2026-09-13T17:00Z"
   }
  },
  "lig": "tur.1",
@@ -556,5 +448,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-09-27T12:10:44.924104+00:00"
+ "uretim": "2026-09-27T20:22:12.278480+00:00"
 }
