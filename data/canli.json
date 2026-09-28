@@ -252,42 +252,6 @@
    },
    "utc": "2026-09-19T17:00Z"
   },
-  "401888298": {
-   "dep": "Fenerbahce",
-   "dep_id": "436",
-   "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Gaziantep FK",
-   "ev_id": "20070",
-   "evk": "0",
-   "saat": "90'+3'",
-   "st": {
-    "corners": {
-     "away": 6.0,
-     "home": 6.0
-    },
-    "fouls": {
-     "away": 8.0,
-     "home": 16.0
-    },
-    "possession": {
-     "away": 68.1,
-     "home": 31.9
-    },
-    "shots": {
-     "away": 15.0,
-     "home": 11.0
-    },
-    "shotsOnTarget": {
-     "away": 4.0,
-     "home": 0.0
-    }
-   },
-   "utc": "2026-09-14T17:00Z"
-  },
   "401888381": {
    "dep": "Alanyaspor",
    "dep_id": "9078",
@@ -448,5 +412,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-09-28T14:07:32.464025+00:00"
+ "uretim": "2026-09-28T21:25:23.408176+00:00"
 }

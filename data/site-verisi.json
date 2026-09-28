@@ -4584,10 +4584,7 @@
      ],
      "sehir": "Rize",
      "stadyum": "Estadio Caykur Didi",
-     "utc": "2026-09-07T17:00Z",
-     "video_id": "xb57i2i",
-     "video_kanal": "Maç Özetleri",
-     "video_kaynak": "dm"
+     "utc": "2026-09-07T17:00Z"
     },
     {
      "dep": {
@@ -4754,10 +4751,7 @@
      ],
      "sehir": "Izmir",
      "stadyum": "Göztepe Gürsel Aksel Stadi",
-     "utc": "2026-09-07T17:00Z",
-     "video_id": "xb56wh2",
-     "video_kanal": "beIN SPORTS USA",
-     "video_kaynak": "dm"
+     "utc": "2026-09-07T17:00Z"
     }
    ],
    "no": 4
@@ -23162,5 +23156,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-28T14:07:32.464025+00:00"
+ "uretim": "2026-09-28T21:25:23.408176+00:00"
 }
