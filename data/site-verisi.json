@@ -2580,7 +2580,7 @@
       {
        "dakika": "55'",
        "kendi_kalesine": false,
-       "oyuncu": "Gabriel Gomes",
+       "oyuncu": "Gabriel Sara",
        "penalti": false,
        "takim_id": "432"
       },
@@ -3587,7 +3587,7 @@
       {
        "dakika": "90'",
        "kendi_kalesine": false,
-       "oyuncu": "Gabriel Gomes",
+       "oyuncu": "Gabriel Sara",
        "penalti": false,
        "takim_id": "432"
       }
@@ -23156,5 +23156,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-09-29T22:22:14.593428+00:00"
+ "uretim": "2026-09-30T05:40:54.747690+00:00"
 }
