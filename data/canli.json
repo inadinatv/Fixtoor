@@ -180,42 +180,6 @@
    },
    "utc": "2026-09-19T17:00Z"
   },
-  "401888290": {
-   "dep": "Konyaspor",
-   "dep_id": "7648",
-   "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Kasimpasa",
-   "ev_id": "6870",
-   "evk": "0",
-   "saat": "90'+4'",
-   "st": {
-    "corners": {
-     "away": 4.0,
-     "home": 6.0
-    },
-    "fouls": {
-     "away": 16.0,
-     "home": 17.0
-    },
-    "possession": {
-     "away": 52.8,
-     "home": 47.2
-    },
-    "shots": {
-     "away": 11.0,
-     "home": 13.0
-    },
-    "shotsOnTarget": {
-     "away": 4.0,
-     "home": 2.0
-    }
-   },
-   "utc": "2026-09-18T17:00Z"
-  },
   "401888291": {
    "dep": "Galatasaray",
    "dep_id": "432",
@@ -412,5 +376,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-02T15:05:09.424512+00:00"
+ "uretim": "2026-10-02T22:19:39.987928+00:00"
 }
