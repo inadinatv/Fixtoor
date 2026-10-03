@@ -5004,10 +5004,7 @@
     ],
     "sehir": "Istanbul",
     "stadyum": "Esenyurt Necmi Kadioglu Stadi",
-    "utc": "2026-09-12T14:00Z",
-    "video_id": "xb7idpa",
-    "video_kanal": "Maç Özetleri",
-    "video_kaynak": "dm"
+    "utc": "2026-09-12T14:00Z"
    },
    {
     "dep": {
@@ -5152,10 +5149,7 @@
     ],
     "sehir": "Samsun",
     "stadyum": "Samsun 19 Mayis Stadium",
-    "utc": "2026-09-12T14:00Z",
-    "video_id": "",
-    "video_kanal": "",
-    "video_kaynak": ""
+    "utc": "2026-09-12T14:00Z"
    },
    {
     "dep": {
@@ -5300,10 +5294,7 @@
     ],
     "sehir": "Antalya",
     "stadyum": "Kirbiyik Holding Stadyumu",
-    "utc": "2026-09-12T17:00Z",
-    "video_id": "xb76b3m",
-    "video_kanal": "Maç Özetleri",
-    "video_kaynak": "dm"
+    "utc": "2026-09-12T17:00Z"
    },
    {
     "dep": {
@@ -5434,10 +5425,7 @@
     ],
     "sehir": "Konya",
     "stadyum": "Medas Konya Büyüksehir Stadyumu",
-    "utc": "2026-09-12T17:00Z",
-    "video_id": "xb74eti",
-    "video_kanal": "beIN SPORTS USA",
-    "video_kaynak": "dm"
+    "utc": "2026-09-12T17:00Z"
    },
    {
     "dep": {
@@ -7478,7 +7466,7 @@
       "home": null
      }
     },
-    "kanal": "Digiturk Play",
+    "kanal": "beIN Sports 2",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -7538,7 +7526,7 @@
       "home": null
      }
     },
-    "kanal": "Digiturk Play",
+    "kanal": "beIN Sports 2",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -7658,7 +7646,7 @@
       "home": null
      }
     },
-    "kanal": "Digiturk Play",
+    "kanal": "beIN Sports 1",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -16683,7 +16671,7 @@
       "home": null
      }
     },
-    "kanal": "Digiturk Play",
+    "kanal": "beIN Sports 2",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -16803,7 +16791,7 @@
       "home": null
      }
     },
-    "kanal": "Digiturk Play",
+    "kanal": "beIN Sports 2",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -16863,7 +16851,7 @@
       "home": null
      }
     },
-    "kanal": "Digiturk Play",
+    "kanal": "beIN Sports 1",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
