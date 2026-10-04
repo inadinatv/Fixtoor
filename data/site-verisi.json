@@ -5578,10 +5578,7 @@
      ],
      "sehir": "Ankara",
      "stadyum": "Eryaman Stadium",
-     "utc": "2026-09-13T14:00Z",
-     "video_id": "xb7ev3u",
-     "video_kanal": "Maç Özetleri",
-     "video_kaynak": "dm"
+     "utc": "2026-09-13T14:00Z"
     },
     {
      "dep": {
@@ -5719,10 +5716,7 @@
      ],
      "sehir": "Diyarbakir",
      "stadyum": "Diyarbakir Stadyumu",
-     "utc": "2026-09-13T17:00Z",
-     "video_id": "xb7ib9u",
-     "video_kanal": "Maç Özetleri",
-     "video_kaynak": "dm"
+     "utc": "2026-09-13T17:00Z"
     },
     {
      "dep": {
@@ -5846,10 +5840,7 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "RAMS Park",
-     "utc": "2026-09-13T17:00Z",
-     "video_id": "xb7eyky",
-     "video_kanal": "beIN SPORTS USA",
-     "video_kaynak": "dm"
+     "utc": "2026-09-13T17:00Z"
     },
     {
      "dep": {
@@ -23141,5 +23132,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-04T12:30:07.098593+00:00"
+ "uretim": "2026-10-04T20:26:28.701115+00:00"
 }
