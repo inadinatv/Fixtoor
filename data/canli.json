@@ -1,7 +1,21 @@
 {
  "ist": {},
  "lig": "tur.1",
- "maclar": {},
+ "maclar": {
+  "401888280": {
+   "dep": "Kasimpasa",
+   "dep_id": "6870",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Galatasaray",
+   "ev_id": "432",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-09T17:00Z"
+  }
+ },
  "sezon": 2026,
  "sezon_adi": "2026-27 Turkish Super Lig",
  "sezon_baslangic": "2026-07-01T04:00Z",
@@ -87,5 +101,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-05T14:53:11.677042+00:00"
+ "uretim": "2026-10-05T23:21:25.391475+00:00"
 }
