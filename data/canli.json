@@ -2,6 +2,19 @@
  "ist": {},
  "lig": "tur.1",
  "maclar": {
+  "401888278": {
+   "dep": "Trabzonspor",
+   "dep_id": "997",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Samsunspor",
+   "ev_id": "11429",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-10T13:00Z"
+  },
   "401888280": {
    "dep": "Kasimpasa",
    "dep_id": "6870",
@@ -14,6 +27,45 @@
    "evk": "0",
    "saat": "0'",
    "utc": "2026-10-09T17:00Z"
+  },
+  "401888282": {
+   "dep": "Fenerbahce",
+   "dep_id": "436",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Caykur Rizespor",
+   "ev_id": "7656",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-10T16:00Z"
+  },
+  "401888283": {
+   "dep": "Erzurum BB",
+   "dep_id": "19267",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Alanyaspor",
+   "ev_id": "9078",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-10T13:00Z"
+  },
+  "401888379": {
+   "dep": "Amed SFK",
+   "dep_id": "132335",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Genclerbirligi",
+   "ev_id": "996",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-10T10:30Z"
   }
  },
  "sezon": 2026,
@@ -101,5 +153,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-06T06:30:05.071579+00:00"
+ "uretim": "2026-10-06T16:45:50.107797+00:00"
 }
