@@ -28,6 +28,19 @@
    "saat": "0'",
    "utc": "2026-10-09T17:00Z"
   },
+  "401888281": {
+   "dep": "Istanbul Basaksehir",
+   "dep_id": "7914",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Konyaspor",
+   "ev_id": "7648",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-11T10:30Z"
+  },
   "401888282": {
    "dep": "Fenerbahce",
    "dep_id": "436",
@@ -66,6 +79,19 @@
    "evk": "0",
    "saat": "0'",
    "utc": "2026-10-10T10:30Z"
+  },
+  "401888380": {
+   "dep": "Çorum FK",
+   "dep_id": "132334",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Gaziantep FK",
+   "ev_id": "20070",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-11T13:00Z"
   }
  },
  "sezon": 2026,
@@ -153,5 +179,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-07T00:45:59.947157+00:00"
+ "uretim": "2026-10-07T13:34:20.391081+00:00"
 }
