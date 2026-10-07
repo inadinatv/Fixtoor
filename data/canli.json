@@ -15,6 +15,19 @@
    "saat": "0'",
    "utc": "2026-10-10T13:00Z"
   },
+  "401888279": {
+   "dep": "Kocaelispor",
+   "dep_id": "995",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Besiktas",
+   "ev_id": "1895",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-11T16:00Z"
+  },
   "401888280": {
    "dep": "Kasimpasa",
    "dep_id": "6870",
@@ -179,5 +192,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-07T13:34:20.391081+00:00"
+ "uretim": "2026-10-07T19:35:39.498578+00:00"
 }
