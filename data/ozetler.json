@@ -1,1 +1,165 @@
-[]
+[
+ {
+  "dep": {
+   "ad": "Kasimpasa",
+   "form": "DDWDD",
+   "id": "6870",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "15",
+    "goalAssists": "0",
+    "possessionPct": "36.7",
+    "shotAssists": "0",
+    "shotsOnTarget": "3",
+    "totalGoals": "1",
+    "totalShots": "9",
+    "wonCorners": "1"
+   },
+   "kazandi": false,
+   "kisa": "KAS",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
+   "renk": "#000000",
+   "skor": "1"
+  },
+  "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Galatasaray",
+   "form": "DLWLW",
+   "id": "432",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "12",
+    "goalAssists": "2",
+    "possessionPct": "63.3",
+    "shotAssists": "0",
+    "shotsOnTarget": "11",
+    "totalGoals": "3",
+    "totalShots": "25",
+    "wonCorners": "8"
+   },
+   "kazandi": true,
+   "kisa": "GAL",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
+   "renk": "#aa0031",
+   "skor": "3"
+  },
+  "goller": [
+   {
+    "dakika": "45'",
+    "kendi_kalesine": false,
+    "oyuncu": "Abdülkerim Bardakçi",
+    "penalti": false,
+    "takim_id": "432"
+   },
+   {
+    "dakika": "68'",
+    "kendi_kalesine": false,
+    "oyuncu": "Jesurun Rak-Sakyi",
+    "penalti": false,
+    "takim_id": "6870"
+   },
+   {
+    "dakika": "90'",
+    "kendi_kalesine": false,
+    "oyuncu": "Baris Alper Yilmaz",
+    "penalti": false,
+    "takim_id": "432"
+   },
+   {
+    "dakika": "90'+6'",
+    "kendi_kalesine": false,
+    "oyuncu": "Mario Lemina",
+    "penalti": false,
+    "takim_id": "432"
+   }
+  ],
+  "id": "401888280",
+  "istatistik": {
+   "corners": {
+    "away": 1.0,
+    "home": 8.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 15.0,
+    "home": 12.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 36.7,
+    "home": 63.3
+   },
+   "shots": {
+    "away": 9.0,
+    "home": 25.0
+   },
+   "shotsOnTarget": {
+    "away": 3.0,
+    "home": 11.0
+   }
+  },
+  "kanal": "",
+  "kirmizi_kartlar": [
+   {
+    "dakika": "65'",
+    "kendi_kalesine": false,
+    "oyuncu": "Lucas Torreira",
+    "penalti": false,
+    "takim_id": "432"
+   }
+  ],
+  "saat_gostergesi": "90'+7'",
+  "sari_kartlar": [
+   {
+    "dakika": "3'",
+    "kendi_kalesine": false,
+    "oyuncu": "Rafael Leão",
+    "penalti": false,
+    "takim_id": "432"
+   },
+   {
+    "dakika": "24'",
+    "kendi_kalesine": false,
+    "oyuncu": "Elson Mendes Da Silva",
+    "penalti": false,
+    "takim_id": "6870"
+   },
+   {
+    "dakika": "28'",
+    "kendi_kalesine": false,
+    "oyuncu": "Kerem Demirbay",
+    "penalti": false,
+    "takim_id": "6870"
+   },
+   {
+    "dakika": "40'",
+    "kendi_kalesine": false,
+    "oyuncu": "Davinson Sánchez",
+    "penalti": false,
+    "takim_id": "432"
+   },
+   {
+    "dakika": "51'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ali Yavuz Kol",
+    "penalti": false,
+    "takim_id": "6870"
+   },
+   {
+    "dakika": "56'",
+    "kendi_kalesine": false,
+    "oyuncu": "Andri Fannar Baldursson",
+    "penalti": false,
+    "takim_id": "6870"
+   }
+  ],
+  "sehir": "Istanbul",
+  "stadyum": "RAMS Park",
+  "utc": "2026-10-09T17:00Z",
+  "video_id": "xbkftte",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
+ }
+]

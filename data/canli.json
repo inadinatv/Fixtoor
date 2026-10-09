@@ -1,5 +1,42 @@
 {
- "ist": {},
+ "ist": {
+  "401888280": {
+   "dep": "Kasimpasa",
+   "dep_id": "6870",
+   "depk": "1",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
+   "eksik": false,
+   "ev": "Galatasaray",
+   "ev_id": "432",
+   "evk": "3",
+   "saat": "90'+7'",
+   "st": {
+    "corners": {
+     "away": 1.0,
+     "home": 8.0
+    },
+    "fouls": {
+     "away": 15.0,
+     "home": 12.0
+    },
+    "possession": {
+     "away": 36.7,
+     "home": 63.3
+    },
+    "shots": {
+     "away": 9.0,
+     "home": 25.0
+    },
+    "shotsOnTarget": {
+     "away": 3.0,
+     "home": 11.0
+    }
+   },
+   "utc": "2026-10-09T17:00Z"
+  }
+ },
  "lig": "tur.1",
  "maclar": {
   "401888278": {
@@ -31,14 +68,14 @@
   "401888280": {
    "dep": "Kasimpasa",
    "dep_id": "6870",
-   "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "depk": "1",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Galatasaray",
    "ev_id": "432",
-   "evk": "0",
-   "saat": "0'",
+   "evk": "3",
+   "saat": "90'+7'",
    "utc": "2026-10-09T17:00Z"
   },
   "401888281": {
@@ -205,5 +242,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-09T13:25:34.920102+00:00"
+ "uretim": "2026-10-09T20:21:46.216326+00:00"
 }

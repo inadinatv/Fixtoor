@@ -29,7 +29,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -154,7 +154,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
@@ -1156,7 +1156,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -1383,7 +1383,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
@@ -2543,7 +2543,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -2927,7 +2927,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
@@ -3512,7 +3512,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -4110,7 +4110,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
@@ -5431,7 +5431,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
@@ -5745,7 +5745,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -6004,7 +6004,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
@@ -6112,10 +6112,7 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Recep Tayyip Erdogan Stadium",
-     "utc": "2026-09-18T17:00Z",
-     "video_id": "xb9pjf2",
-     "video_kanal": "beIN SPORTS USA",
-     "video_kaynak": "dm"
+     "utc": "2026-09-18T17:00Z"
     },
     {
      "dep": {
@@ -6515,7 +6512,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -7346,62 +7343,165 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "15",
+       "goalAssists": "0",
+       "possessionPct": "36.7",
+       "shotAssists": "0",
+       "shotsOnTarget": "3",
+       "totalGoals": "1",
+       "totalShots": "9",
+       "wonCorners": "1"
+      },
       "kazandi": false,
       "kisa": "KAS",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "1"
      },
-     "durum": "pre",
-     "durum_ad": "STATUS_SCHEDULED",
-     "durum_metin": "Scheduled",
+     "durum": "post",
+     "durum_ad": "STATUS_FULL_TIME",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
-      "istatistik": {},
-      "kazandi": false,
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "12",
+       "goalAssists": "2",
+       "possessionPct": "63.3",
+       "shotAssists": "0",
+       "shotsOnTarget": "11",
+       "totalGoals": "3",
+       "totalShots": "25",
+       "wonCorners": "8"
+      },
+      "kazandi": true,
       "kisa": "GAL",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
       "renk": "#aa0031",
-      "skor": "0"
+      "skor": "3"
      },
-     "goller": [],
+     "goller": [
+      {
+       "dakika": "45'",
+       "kendi_kalesine": false,
+       "oyuncu": "Abdülkerim Bardakçi",
+       "penalti": false,
+       "takim_id": "432"
+      },
+      {
+       "dakika": "68'",
+       "kendi_kalesine": false,
+       "oyuncu": "Jesurun Rak-Sakyi",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "90'",
+       "kendi_kalesine": false,
+       "oyuncu": "Baris Alper Yilmaz",
+       "penalti": false,
+       "takim_id": "432"
+      },
+      {
+       "dakika": "90'+6'",
+       "kendi_kalesine": false,
+       "oyuncu": "Mario Lemina",
+       "penalti": false,
+       "takim_id": "432"
+      }
+     ],
      "id": "401888280",
      "istatistik": {
       "corners": {
-       "away": null,
-       "home": null
+       "away": 1.0,
+       "home": 8.0
       },
-      "durum": "yok",
+      "durum": "ok",
       "fouls": {
-       "away": null,
-       "home": null
+       "away": 15.0,
+       "home": 12.0
       },
-      "kaynak": null,
+      "kaynak": "summary",
       "possession": {
-       "away": null,
-       "home": null
+       "away": 36.7,
+       "home": 63.3
       },
       "shots": {
-       "away": null,
-       "home": null
+       "away": 9.0,
+       "home": 25.0
       },
       "shotsOnTarget": {
-       "away": null,
-       "home": null
+       "away": 3.0,
+       "home": 11.0
       }
      },
-     "kanal": "Digiturk Play",
-     "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
+     "kanal": "",
+     "kirmizi_kartlar": [
+      {
+       "dakika": "65'",
+       "kendi_kalesine": false,
+       "oyuncu": "Lucas Torreira",
+       "penalti": false,
+       "takim_id": "432"
+      }
+     ],
+     "saat_gostergesi": "90'+7'",
+     "sari_kartlar": [
+      {
+       "dakika": "3'",
+       "kendi_kalesine": false,
+       "oyuncu": "Rafael Leão",
+       "penalti": false,
+       "takim_id": "432"
+      },
+      {
+       "dakika": "24'",
+       "kendi_kalesine": false,
+       "oyuncu": "Elson Mendes Da Silva",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "28'",
+       "kendi_kalesine": false,
+       "oyuncu": "Kerem Demirbay",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "40'",
+       "kendi_kalesine": false,
+       "oyuncu": "Davinson Sánchez",
+       "penalti": false,
+       "takim_id": "432"
+      },
+      {
+       "dakika": "51'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ali Yavuz Kol",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "56'",
+       "kendi_kalesine": false,
+       "oyuncu": "Andri Fannar Baldursson",
+       "penalti": false,
+       "takim_id": "6870"
+      }
+     ],
      "sehir": "Istanbul",
      "stadyum": "RAMS Park",
-     "utc": "2026-10-09T17:00Z"
+     "utc": "2026-10-09T17:00Z",
+     "video_id": "xbkftte",
+     "video_kanal": "beIN SPORTS USA",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -7695,6 +7795,7 @@
        "home": null
       }
      },
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -7754,6 +7855,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -7813,6 +7915,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8068,7 +8171,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -8202,7 +8305,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -8493,7 +8596,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -8927,7 +9030,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -8978,7 +9081,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -9412,7 +9515,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -9523,7 +9626,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -9717,7 +9820,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -10202,7 +10305,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -10382,7 +10485,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -10673,7 +10776,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -11093,7 +11196,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -11172,7 +11275,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -11652,7 +11755,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -11763,7 +11866,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -11883,7 +11986,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -12322,7 +12425,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -12502,7 +12605,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -13153,7 +13256,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -13273,7 +13376,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -13458,7 +13561,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -13818,7 +13921,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -14017,7 +14120,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -14257,7 +14360,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -14728,7 +14831,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -14802,7 +14905,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -15033,7 +15136,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -15227,7 +15330,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -15892,7 +15995,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -15938,7 +16041,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -16317,7 +16420,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -16483,7 +16586,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -16957,7 +17060,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -16968,7 +17071,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -16982,7 +17085,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -17017,7 +17120,7 @@
        "home": null
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -17407,7 +17510,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -17633,7 +17736,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -17878,7 +17981,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -18072,7 +18175,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -18303,7 +18406,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -18557,7 +18660,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -18788,7 +18891,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -19102,7 +19205,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -19333,7 +19436,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -19813,7 +19916,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -20012,7 +20115,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -20192,7 +20295,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -20483,7 +20586,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -20783,7 +20886,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -21102,7 +21205,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -21282,7 +21385,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -21513,7 +21616,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -21813,7 +21916,7 @@
     {
      "dep": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -22192,7 +22295,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "LWLWW",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -22372,7 +22475,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DWDDW",
+      "form": "DDWDD",
       "id": "6870",
       "istatistik": {},
       "kazandi": false,
@@ -22692,6 +22795,24 @@
  },
  "puan_durumu": [
   {
+   "attigi": "16",
+   "averaj": "+5",
+   "b": "1",
+   "form": "5-1-1",
+   "g": "5",
+   "kisa": "GAL",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
+   "m": "1",
+   "not": "Champions League",
+   "not_renk": "#81D6AC",
+   "o": "7",
+   "puan": "16",
+   "sira": 1,
+   "takim": "Galatasaray",
+   "takim_id": "432",
+   "yedigi": "11"
+  },
+  {
    "attigi": "15",
    "averaj": "+8",
    "b": "1",
@@ -22700,32 +22821,14 @@
    "kisa": "AMED",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132335.png",
    "m": "1",
-   "not": "Champions League",
-   "not_renk": "#81D6AC",
-   "o": "6",
-   "puan": "13",
-   "sira": 1,
-   "takim": "Amed SFK",
-   "takim_id": "132335",
-   "yedigi": "7"
-  },
-  {
-   "attigi": "13",
-   "averaj": "+3",
-   "b": "1",
-   "form": "4-1-1",
-   "g": "4",
-   "kisa": "GAL",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
-   "m": "1",
    "not": "Champions League qualifying",
    "not_renk": "#B5E7CE",
    "o": "6",
    "puan": "13",
    "sira": 2,
-   "takim": "Galatasaray",
-   "takim_id": "432",
-   "yedigi": "10"
+   "takim": "Amed SFK",
+   "takim_id": "132335",
+   "yedigi": "7"
   },
   {
    "attigi": "14",
@@ -22819,24 +22922,6 @@
   },
   {
    "attigi": "7",
-   "averaj": "+2",
-   "b": "4",
-   "form": "2-4-0",
-   "g": "2",
-   "kisa": "KAS",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
-   "m": "0",
-   "not": "",
-   "not_renk": "",
-   "o": "6",
-   "puan": "10",
-   "sira": 8,
-   "takim": "Kasimpasa",
-   "takim_id": "6870",
-   "yedigi": "5"
-  },
-  {
-   "attigi": "7",
    "averaj": "+1",
    "b": "1",
    "form": "3-1-2",
@@ -22848,10 +22933,28 @@
    "not_renk": "",
    "o": "6",
    "puan": "10",
-   "sira": 9,
+   "sira": 8,
    "takim": "Caykur Rizespor",
    "takim_id": "7656",
    "yedigi": "6"
+  },
+  {
+   "attigi": "8",
+   "averaj": "0",
+   "b": "4",
+   "form": "2-4-1",
+   "g": "2",
+   "kisa": "KAS",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
+   "m": "1",
+   "not": "",
+   "not_renk": "",
+   "o": "7",
+   "puan": "10",
+   "sira": 9,
+   "takim": "Kasimpasa",
+   "takim_id": "6870",
+   "yedigi": "8"
   },
   {
    "attigi": "7",
@@ -23126,5 +23229,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-09T13:25:34.920102+00:00"
+ "uretim": "2026-10-09T20:21:46.216326+00:00"
 }
