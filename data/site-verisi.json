@@ -7695,6 +7695,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -7754,6 +7755,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -7813,6 +7815,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -23126,5 +23129,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-09T02:10:10.738676+00:00"
+ "uretim": "2026-10-09T08:58:17.921655+00:00"
 }
