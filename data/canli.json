@@ -39,15 +39,15 @@
   "401888379": {
    "dep": "Amed SFK",
    "dep_id": "132335",
-   "depk": "1",
-   "durum": "in",
-   "durum_ad": "STATUS_HALFTIME",
-   "durum_metin": "HT",
+   "depk": "2",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "eksik": false,
    "ev": "Genclerbirligi",
    "ev_id": "996",
-   "evk": "0",
-   "saat": "45'+3'",
+   "evk": "2",
+   "saat": "90'+6'",
    "st": {
     "corners": {
      "away": 2.0,
@@ -169,14 +169,14 @@
   "401888379": {
    "dep": "Amed SFK",
    "dep_id": "132335",
-   "depk": "1",
-   "durum": "in",
-   "durum_ad": "STATUS_HALFTIME",
-   "durum_metin": "HT",
+   "depk": "2",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Genclerbirligi",
    "ev_id": "996",
-   "evk": "0",
-   "saat": "45'+3'",
+   "evk": "2",
+   "saat": "90'+6'",
    "utc": "2026-10-10T10:30Z"
   },
   "401888380": {
@@ -278,5 +278,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-10T11:22:57.237606+00:00"
+ "uretim": "2026-10-10T12:40:57.105376+00:00"
 }

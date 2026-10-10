@@ -7440,7 +7440,6 @@
       "home": 11.0
      }
     },
-    "kanal": "",
     "kirmizi_kartlar": [
      {
       "dakika": "65'",
@@ -7505,48 +7504,48 @@
    {
     "dep": {
      "ad": "Amed SFK",
-     "form": "WWDWL",
+     "form": "DWWDW",
      "id": "132335",
      "istatistik": {
       "appearances": "0",
-      "foulsCommitted": "6",
-      "goalAssists": "0",
-      "possessionPct": "55.5",
+      "foulsCommitted": "11",
+      "goalAssists": "1",
+      "possessionPct": "51.7",
       "shotAssists": "0",
-      "shotsOnTarget": "2",
-      "totalGoals": "1",
-      "totalShots": "11",
-      "wonCorners": "2"
+      "shotsOnTarget": "5",
+      "totalGoals": "2",
+      "totalShots": "19",
+      "wonCorners": "3"
      },
      "kazandi": false,
      "kisa": "AMED",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132335.png",
      "renk": "#000000",
-     "skor": "1"
+     "skor": "2"
     },
-    "durum": "in",
-    "durum_ad": "STATUS_HALFTIME",
-    "durum_metin": "HT",
+    "durum": "post",
+    "durum_ad": "STATUS_FULL_TIME",
+    "durum_metin": "FT",
     "ev": {
      "ad": "Genclerbirligi",
-     "form": "LLLDW",
+     "form": "DLLLD",
      "id": "996",
      "istatistik": {
       "appearances": "0",
-      "foulsCommitted": "6",
-      "goalAssists": "0",
-      "possessionPct": "44.5",
+      "foulsCommitted": "14",
+      "goalAssists": "1",
+      "possessionPct": "48.3",
       "shotAssists": "0",
-      "shotsOnTarget": "1",
-      "totalGoals": "0",
-      "totalShots": "5",
-      "wonCorners": "0"
+      "shotsOnTarget": "4",
+      "totalGoals": "2",
+      "totalShots": "11",
+      "wonCorners": "6"
      },
      "kazandi": false,
      "kisa": "GEN",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
      "renk": "#000000",
-     "skor": "0"
+     "skor": "2"
     },
     "goller": [
      {
@@ -7555,6 +7554,27 @@
       "oyuncu": "Dia Saba",
       "penalti": true,
       "takim_id": "132335"
+     },
+     {
+      "dakika": "54'",
+      "kendi_kalesine": false,
+      "oyuncu": "Rafael Luís",
+      "penalti": false,
+      "takim_id": "996"
+     },
+     {
+      "dakika": "67'",
+      "kendi_kalesine": false,
+      "oyuncu": "Samuel Ballet",
+      "penalti": false,
+      "takim_id": "132335"
+     },
+     {
+      "dakika": "90'+2'",
+      "kendi_kalesine": false,
+      "oyuncu": "Thalisson Kelven",
+      "penalti": false,
+      "takim_id": "996"
      }
     ],
     "id": "401888379",
@@ -7582,9 +7602,8 @@
       "home": 1.0
      }
     },
-    "kanal": "",
     "kirmizi_kartlar": [],
-    "saat_gostergesi": "45'+3'",
+    "saat_gostergesi": "90'+6'",
     "sari_kartlar": [
      {
       "dakika": "15'",
@@ -7599,21 +7618,70 @@
       "oyuncu": "Irfan Can Egribayat",
       "penalti": false,
       "takim_id": "996"
+     },
+     {
+      "dakika": "53'",
+      "kendi_kalesine": false,
+      "oyuncu": "Umut Meras",
+      "penalti": false,
+      "takim_id": "132335"
+     },
+     {
+      "dakika": "57'",
+      "kendi_kalesine": false,
+      "oyuncu": "Metehan Baltaci",
+      "penalti": false,
+      "takim_id": "996"
+     },
+     {
+      "dakika": "57'",
+      "kendi_kalesine": false,
+      "oyuncu": "Dia Saba",
+      "penalti": false,
+      "takim_id": "132335"
+     },
+     {
+      "dakika": "57'",
+      "kendi_kalesine": false,
+      "oyuncu": "Lumbardh Dellova",
+      "penalti": false,
+      "takim_id": "132335"
+     },
+     {
+      "dakika": "65'",
+      "kendi_kalesine": false,
+      "oyuncu": "Firatacan Uzum",
+      "penalti": false,
+      "takim_id": "996"
+     },
+     {
+      "dakika": "73'",
+      "kendi_kalesine": false,
+      "oyuncu": "Alban Lafont",
+      "penalti": false,
+      "takim_id": "132335"
      }
     ],
     "sehir": "Ankara",
     "stadyum": "Eryaman Stadium",
-    "utc": "2026-10-10T10:30Z",
-    "video_id": "",
-    "video_kanal": "",
-    "video_kaynak": ""
+    "utc": "2026-10-10T10:30Z"
    },
    {
     "dep": {
      "ad": "Erzurum BB",
      "form": "WLWDL",
      "id": "19267",
-     "istatistik": {},
+     "istatistik": {
+      "appearances": "0",
+      "foulsCommitted": "0",
+      "goalAssists": "0",
+      "possessionPct": "0",
+      "shotAssists": "0",
+      "shotsOnTarget": "0",
+      "totalGoals": "0",
+      "totalShots": "0",
+      "wonCorners": "0"
+     },
      "kazandi": false,
      "kisa": "ERZ",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
@@ -7627,7 +7695,17 @@
      "ad": "Alanyaspor",
      "form": "WDWLW",
      "id": "9078",
-     "istatistik": {},
+     "istatistik": {
+      "appearances": "0",
+      "foulsCommitted": "0",
+      "goalAssists": "0",
+      "possessionPct": "0",
+      "shotAssists": "0",
+      "shotsOnTarget": "0",
+      "totalGoals": "0",
+      "totalShots": "0",
+      "wonCorners": "0"
+     },
      "kazandi": false,
      "kisa": "ALA",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
@@ -7673,7 +7751,17 @@
      "ad": "Trabzonspor",
      "form": "WLWLL",
      "id": "997",
-     "istatistik": {},
+     "istatistik": {
+      "appearances": "0",
+      "foulsCommitted": "0",
+      "goalAssists": "0",
+      "possessionPct": "0",
+      "shotAssists": "0",
+      "shotsOnTarget": "0",
+      "totalGoals": "0",
+      "totalShots": "0",
+      "wonCorners": "0"
+     },
      "kazandi": false,
      "kisa": "TRAB",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
@@ -7687,7 +7775,17 @@
      "ad": "Samsunspor",
      "form": "LLLLW",
      "id": "11429",
-     "istatistik": {},
+     "istatistik": {
+      "appearances": "0",
+      "foulsCommitted": "0",
+      "goalAssists": "0",
+      "possessionPct": "0",
+      "shotAssists": "0",
+      "shotsOnTarget": "0",
+      "totalGoals": "0",
+      "totalShots": "0",
+      "wonCorners": "0"
+     },
      "kazandi": false,
      "kisa": "SAM",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11429.png",
@@ -7900,7 +7998,6 @@
       "home": null
      }
     },
-    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -7960,7 +8057,6 @@
       "home": null
      }
     },
-    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -8020,7 +8116,6 @@
       "home": null
      }
     },
-    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
