@@ -75,15 +75,15 @@
   "401888282": {
    "dep": "Fenerbahce",
    "dep_id": "436",
-   "depk": "1",
-   "durum": "in",
-   "durum_ad": "STATUS_FIRST_HALF",
-   "durum_metin": "17'",
+   "depk": "3",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "eksik": false,
    "ev": "Caykur Rizespor",
    "ev_id": "7656",
    "evk": "0",
-   "saat": "17'",
+   "saat": "90'+4'",
    "st": {
     "corners": {
      "away": 1.0,
@@ -238,14 +238,14 @@
   "401888282": {
    "dep": "Fenerbahce",
    "dep_id": "436",
-   "depk": "1",
-   "durum": "in",
-   "durum_ad": "STATUS_FIRST_HALF",
-   "durum_metin": "17'",
+   "depk": "3",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Caykur Rizespor",
    "ev_id": "7656",
    "evk": "0",
-   "saat": "17'",
+   "saat": "90'+4'",
    "utc": "2026-10-10T16:00Z"
   },
   "401888283": {
@@ -386,5 +386,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-10T16:17:00.782196+00:00"
+ "uretim": "2026-10-10T20:07:22.389372+00:00"
 }
