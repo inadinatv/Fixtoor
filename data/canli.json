@@ -1,5 +1,41 @@
 {
  "ist": {
+  "401888278": {
+   "dep": "Trabzonspor",
+   "dep_id": "997",
+   "depk": "3",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
+   "eksik": false,
+   "ev": "Samsunspor",
+   "ev_id": "11429",
+   "evk": "0",
+   "saat": "90'+4'",
+   "st": {
+    "corners": {
+     "away": 5.0,
+     "home": 9.0
+    },
+    "fouls": {
+     "away": 6.0,
+     "home": 22.0
+    },
+    "possession": {
+     "away": 44.1,
+     "home": 55.9
+    },
+    "shots": {
+     "away": 13.0,
+     "home": 23.0
+    },
+    "shotsOnTarget": {
+     "away": 7.0,
+     "home": 6.0
+    }
+   },
+   "utc": "2026-10-10T13:00Z"
+  },
   "401888280": {
    "dep": "Kasimpasa",
    "dep_id": "6870",
@@ -35,6 +71,78 @@
     }
    },
    "utc": "2026-10-09T17:00Z"
+  },
+  "401888282": {
+   "dep": "Fenerbahce",
+   "dep_id": "436",
+   "depk": "1",
+   "durum": "in",
+   "durum_ad": "STATUS_FIRST_HALF",
+   "durum_metin": "17'",
+   "eksik": false,
+   "ev": "Caykur Rizespor",
+   "ev_id": "7656",
+   "evk": "0",
+   "saat": "17'",
+   "st": {
+    "corners": {
+     "away": 1.0,
+     "home": 0.0
+    },
+    "fouls": {
+     "away": 0.0,
+     "home": 0.0
+    },
+    "possession": {
+     "away": 56.4,
+     "home": 43.6
+    },
+    "shots": {
+     "away": 2.0,
+     "home": 3.0
+    },
+    "shotsOnTarget": {
+     "away": 1.0,
+     "home": 2.0
+    }
+   },
+   "utc": "2026-10-10T16:00Z"
+  },
+  "401888283": {
+   "dep": "Erzurum BB",
+   "dep_id": "19267",
+   "depk": "0",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
+   "eksik": false,
+   "ev": "Alanyaspor",
+   "ev_id": "9078",
+   "evk": "0",
+   "saat": "90'+10'",
+   "st": {
+    "corners": {
+     "away": 3.0,
+     "home": 5.0
+    },
+    "fouls": {
+     "away": 10.0,
+     "home": 12.0
+    },
+    "possession": {
+     "away": 42.7,
+     "home": 57.3
+    },
+    "shots": {
+     "away": 15.0,
+     "home": 14.0
+    },
+    "shotsOnTarget": {
+     "away": 5.0,
+     "home": 5.0
+    }
+   },
+   "utc": "2026-10-10T13:00Z"
   },
   "401888379": {
    "dep": "Amed SFK",
@@ -78,14 +186,14 @@
   "401888278": {
    "dep": "Trabzonspor",
    "dep_id": "997",
-   "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "depk": "3",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Samsunspor",
    "ev_id": "11429",
    "evk": "0",
-   "saat": "0'",
+   "saat": "90'+4'",
    "utc": "2026-10-10T13:00Z"
   },
   "401888279": {
@@ -130,27 +238,27 @@
   "401888282": {
    "dep": "Fenerbahce",
    "dep_id": "436",
-   "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "depk": "1",
+   "durum": "in",
+   "durum_ad": "STATUS_FIRST_HALF",
+   "durum_metin": "17'",
    "ev": "Caykur Rizespor",
    "ev_id": "7656",
    "evk": "0",
-   "saat": "0'",
+   "saat": "17'",
    "utc": "2026-10-10T16:00Z"
   },
   "401888283": {
    "dep": "Erzurum BB",
    "dep_id": "19267",
    "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Alanyaspor",
    "ev_id": "9078",
    "evk": "0",
-   "saat": "0'",
+   "saat": "90'+10'",
    "utc": "2026-10-10T13:00Z"
   },
   "401888284": {
@@ -278,5 +386,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-10T12:40:57.105376+00:00"
+ "uretim": "2026-10-10T16:17:00.782196+00:00"
 }
