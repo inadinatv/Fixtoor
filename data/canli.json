@@ -36,6 +36,42 @@
    },
    "utc": "2026-10-10T13:00Z"
   },
+  "401888279": {
+   "dep": "Kocaelispor",
+   "dep_id": "995",
+   "depk": "1",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
+   "eksik": false,
+   "ev": "Besiktas",
+   "ev_id": "1895",
+   "evk": "2",
+   "saat": "90'+4'",
+   "st": {
+    "corners": {
+     "away": 7.0,
+     "home": 4.0
+    },
+    "fouls": {
+     "away": 13.0,
+     "home": 11.0
+    },
+    "possession": {
+     "away": 42.5,
+     "home": 57.5
+    },
+    "shots": {
+     "away": 11.0,
+     "home": 16.0
+    },
+    "shotsOnTarget": {
+     "away": 6.0,
+     "home": 6.0
+    }
+   },
+   "utc": "2026-10-11T16:00Z"
+  },
   "401888280": {
    "dep": "Kasimpasa",
    "dep_id": "6870",
@@ -271,14 +307,14 @@
   "401888279": {
    "dep": "Kocaelispor",
    "dep_id": "995",
-   "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "depk": "1",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Besiktas",
    "ev_id": "1895",
-   "evk": "0",
-   "saat": "0'",
+   "evk": "2",
+   "saat": "90'+4'",
    "utc": "2026-10-11T16:00Z"
   },
   "401888280": {
@@ -458,5 +494,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-11T15:05:00.196138+00:00"
+ "uretim": "2026-10-11T19:28:49.211189+00:00"
 }
