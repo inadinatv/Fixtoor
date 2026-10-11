@@ -7429,7 +7429,6 @@
        "home": 11.0
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [
       {
        "dakika": "65'",
@@ -7498,14 +7497,14 @@
       "id": "132335",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "6",
+       "foulsCommitted": "11",
        "goalAssists": "1",
-       "possessionPct": "55.5",
+       "possessionPct": "51.7",
        "shotAssists": "0",
-       "shotsOnTarget": "2",
+       "shotsOnTarget": "5",
        "totalGoals": "2",
-       "totalShots": "11",
-       "wonCorners": "2"
+       "totalShots": "19",
+       "wonCorners": "3"
       },
       "kazandi": false,
       "kisa": "AMED",
@@ -7522,14 +7521,14 @@
       "id": "996",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "6",
+       "foulsCommitted": "14",
        "goalAssists": "1",
-       "possessionPct": "44.5",
+       "possessionPct": "48.3",
        "shotAssists": "0",
-       "shotsOnTarget": "1",
+       "shotsOnTarget": "4",
        "totalGoals": "2",
-       "totalShots": "5",
-       "wonCorners": "0"
+       "totalShots": "11",
+       "wonCorners": "6"
       },
       "kazandi": false,
       "kisa": "GEN",
@@ -7592,7 +7591,6 @@
        "home": 1.0
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+6'",
      "sari_kartlar": [
@@ -7732,7 +7730,6 @@
        "home": 5.0
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+10'",
      "sari_kartlar": [
@@ -7880,7 +7877,6 @@
        "home": 6.0
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [
       {
        "dakika": "43'",
@@ -7928,14 +7924,14 @@
       "id": "436",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "0",
+       "foulsCommitted": "6",
        "goalAssists": "3",
-       "possessionPct": "56.4",
+       "possessionPct": "49.9",
        "shotAssists": "0",
-       "shotsOnTarget": "1",
+       "shotsOnTarget": "5",
        "totalGoals": "3",
-       "totalShots": "2",
-       "wonCorners": "1"
+       "totalShots": "13",
+       "wonCorners": "6"
       },
       "kazandi": true,
       "kisa": "FEN",
@@ -7952,14 +7948,14 @@
       "id": "7656",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "0",
+       "foulsCommitted": "4",
        "goalAssists": "0",
-       "possessionPct": "43.6",
+       "possessionPct": "50.1",
        "shotAssists": "0",
-       "shotsOnTarget": "2",
+       "shotsOnTarget": "5",
        "totalGoals": "0",
-       "totalShots": "3",
-       "wonCorners": "0"
+       "totalShots": "19",
+       "wonCorners": "2"
       },
       "kazandi": false,
       "kisa": "CAY",
@@ -8015,7 +8011,6 @@
        "home": 2.0
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+4'",
      "sari_kartlar": [],
@@ -8138,7 +8133,6 @@
        "home": null
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -23512,5 +23506,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-11T05:57:21.637402+00:00"
+ "uretim": "2026-10-11T08:42:08.500926+00:00"
 }
