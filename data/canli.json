@@ -219,35 +219,35 @@
   "401888380": {
    "dep": "Çorum FK",
    "dep_id": "132334",
-   "depk": "0",
-   "durum": "in",
-   "durum_ad": "STATUS_FIRST_HALF",
-   "durum_metin": "1'",
-   "eksik": true,
+   "depk": "3",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
+   "eksik": false,
    "ev": "Gaziantep FK",
    "ev_id": "20070",
    "evk": "0",
-   "saat": "1'",
+   "saat": "90'+8'",
    "st": {
     "corners": {
-     "away": null,
-     "home": null
+     "away": 5.0,
+     "home": 10.0
     },
     "fouls": {
-     "away": null,
-     "home": null
+     "away": 10.0,
+     "home": 6.0
     },
     "possession": {
-     "away": null,
-     "home": null
+     "away": 45.5,
+     "home": 54.5
     },
     "shots": {
-     "away": null,
-     "home": null
+     "away": 13.0,
+     "home": 13.0
     },
     "shotsOnTarget": {
-     "away": null,
-     "home": null
+     "away": 7.0,
+     "home": 2.0
     }
    },
    "utc": "2026-10-11T13:00Z"
@@ -362,14 +362,14 @@
   "401888380": {
    "dep": "Çorum FK",
    "dep_id": "132334",
-   "depk": "0",
-   "durum": "in",
-   "durum_ad": "STATUS_FIRST_HALF",
-   "durum_metin": "1'",
+   "depk": "3",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Gaziantep FK",
    "ev_id": "20070",
    "evk": "0",
-   "saat": "1'",
+   "saat": "90'+8'",
    "utc": "2026-10-11T13:00Z"
   }
  },
@@ -458,5 +458,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-11T13:01:59.182605+00:00"
+ "uretim": "2026-10-11T15:05:00.196138+00:00"
 }
