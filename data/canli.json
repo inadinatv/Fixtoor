@@ -72,6 +72,42 @@
    },
    "utc": "2026-10-09T17:00Z"
   },
+  "401888281": {
+   "dep": "Istanbul Basaksehir",
+   "dep_id": "7914",
+   "depk": "0",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
+   "eksik": false,
+   "ev": "Konyaspor",
+   "ev_id": "7648",
+   "evk": "0",
+   "saat": "90'+6'",
+   "st": {
+    "corners": {
+     "away": 5.0,
+     "home": 3.0
+    },
+    "fouls": {
+     "away": 11.0,
+     "home": 8.0
+    },
+    "possession": {
+     "away": 45.2,
+     "home": 54.8
+    },
+    "shots": {
+     "away": 7.0,
+     "home": 9.0
+    },
+    "shotsOnTarget": {
+     "away": 0.0,
+     "home": 3.0
+    }
+   },
+   "utc": "2026-10-11T10:30Z"
+  },
   "401888282": {
    "dep": "Fenerbahce",
    "dep_id": "436",
@@ -179,6 +215,42 @@
     }
    },
    "utc": "2026-10-10T10:30Z"
+  },
+  "401888380": {
+   "dep": "Çorum FK",
+   "dep_id": "132334",
+   "depk": "0",
+   "durum": "in",
+   "durum_ad": "STATUS_FIRST_HALF",
+   "durum_metin": "1'",
+   "eksik": true,
+   "ev": "Gaziantep FK",
+   "ev_id": "20070",
+   "evk": "0",
+   "saat": "1'",
+   "st": {
+    "corners": {
+     "away": null,
+     "home": null
+    },
+    "fouls": {
+     "away": null,
+     "home": null
+    },
+    "possession": {
+     "away": null,
+     "home": null
+    },
+    "shots": {
+     "away": null,
+     "home": null
+    },
+    "shotsOnTarget": {
+     "away": null,
+     "home": null
+    }
+   },
+   "utc": "2026-10-11T13:00Z"
   }
  },
  "lig": "tur.1",
@@ -226,13 +298,13 @@
    "dep": "Istanbul Basaksehir",
    "dep_id": "7914",
    "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Konyaspor",
    "ev_id": "7648",
    "evk": "0",
-   "saat": "0'",
+   "saat": "90'+6'",
    "utc": "2026-10-11T10:30Z"
   },
   "401888282": {
@@ -291,13 +363,13 @@
    "dep": "Çorum FK",
    "dep_id": "132334",
    "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "durum": "in",
+   "durum_ad": "STATUS_FIRST_HALF",
+   "durum_metin": "1'",
    "ev": "Gaziantep FK",
    "ev_id": "20070",
    "evk": "0",
-   "saat": "0'",
+   "saat": "1'",
    "utc": "2026-10-11T13:00Z"
   }
  },
@@ -386,5 +458,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-11T08:42:08.500926+00:00"
+ "uretim": "2026-10-11T13:01:59.182605+00:00"
 }
