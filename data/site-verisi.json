@@ -5,7 +5,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -271,7 +271,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -395,7 +395,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -619,7 +619,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -643,7 +643,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {
        "appearances": "0",
@@ -884,7 +884,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -1407,7 +1407,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -1507,7 +1507,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -1652,7 +1652,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -1756,7 +1756,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {
        "appearances": "0",
@@ -1915,7 +1915,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -2137,7 +2137,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -2366,7 +2366,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -2390,7 +2390,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -2688,7 +2688,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -2951,7 +2951,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {
        "appearances": "0",
@@ -3327,7 +3327,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -3351,7 +3351,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -3536,7 +3536,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {
        "appearances": "0",
@@ -3686,7 +3686,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -3810,7 +3810,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -3986,7 +3986,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -4269,7 +4269,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -4589,7 +4589,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -4785,7 +4785,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -5010,7 +5010,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -5324,7 +5324,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -5583,7 +5583,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {
        "appearances": "0",
@@ -5721,7 +5721,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -5869,7 +5869,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -5980,7 +5980,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -6141,7 +6141,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {
        "appearances": "0",
@@ -6255,7 +6255,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {
        "appearances": "0",
@@ -6279,7 +6279,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -6396,7 +6396,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {
        "appearances": "0",
@@ -6789,10 +6789,7 @@
      ],
      "sehir": "Erzurum",
      "stadyum": "Erzurum Kazim Karabekir",
-     "utc": "2026-09-20T14:00Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "utc": "2026-09-20T14:00Z"
     },
     {
      "dep": {
@@ -6944,15 +6941,12 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Şükrü Saracoğlu Stadium",
-     "utc": "2026-09-20T14:00Z",
-     "video_id": "xbama02",
-     "video_kanal": "beIN SPORTS USA",
-     "video_kaynak": "dm"
+     "utc": "2026-09-20T14:00Z"
     },
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -7163,10 +7157,7 @@
      ],
      "sehir": "Diyarbakir",
      "stadyum": "Diyarbakir Stadyumu",
-     "utc": "2026-09-20T17:00Z",
-     "video_id": "xbapjne",
-     "video_kanal": "beIN SPORTS USA",
-     "video_kaynak": "dm"
+     "utc": "2026-09-20T17:00Z"
     },
     {
      "dep": {
@@ -7318,10 +7309,7 @@
      ],
      "sehir": "Izmir",
      "stadyum": "Göztepe Gürsel Aksel Stadi",
-     "utc": "2026-09-20T17:00Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "utc": "2026-09-20T17:00Z"
     }
    ],
    "no": 6
@@ -7429,6 +7417,7 @@
        "home": 11.0
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [
       {
        "dakika": "65'",
@@ -7497,14 +7486,14 @@
       "id": "132335",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "11",
+       "foulsCommitted": "6",
        "goalAssists": "1",
-       "possessionPct": "51.7",
+       "possessionPct": "55.5",
        "shotAssists": "0",
-       "shotsOnTarget": "5",
+       "shotsOnTarget": "2",
        "totalGoals": "2",
-       "totalShots": "19",
-       "wonCorners": "3"
+       "totalShots": "11",
+       "wonCorners": "2"
       },
       "kazandi": false,
       "kisa": "AMED",
@@ -7521,14 +7510,14 @@
       "id": "996",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "14",
+       "foulsCommitted": "6",
        "goalAssists": "1",
-       "possessionPct": "48.3",
+       "possessionPct": "44.5",
        "shotAssists": "0",
-       "shotsOnTarget": "4",
+       "shotsOnTarget": "1",
        "totalGoals": "2",
-       "totalShots": "11",
-       "wonCorners": "6"
+       "totalShots": "5",
+       "wonCorners": "0"
       },
       "kazandi": false,
       "kisa": "GEN",
@@ -7591,6 +7580,7 @@
        "home": 1.0
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+6'",
      "sari_kartlar": [
@@ -7730,6 +7720,7 @@
        "home": 5.0
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+10'",
      "sari_kartlar": [
@@ -7877,6 +7868,7 @@
        "home": 6.0
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [
       {
        "dakika": "43'",
@@ -7924,14 +7916,14 @@
       "id": "436",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "6",
+       "foulsCommitted": "0",
        "goalAssists": "3",
-       "possessionPct": "49.9",
+       "possessionPct": "56.4",
        "shotAssists": "0",
-       "shotsOnTarget": "5",
+       "shotsOnTarget": "1",
        "totalGoals": "3",
-       "totalShots": "13",
-       "wonCorners": "6"
+       "totalShots": "2",
+       "wonCorners": "1"
       },
       "kazandi": true,
       "kisa": "FEN",
@@ -7948,14 +7940,14 @@
       "id": "7656",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "4",
+       "foulsCommitted": "0",
        "goalAssists": "0",
-       "possessionPct": "50.1",
+       "possessionPct": "43.6",
        "shotAssists": "0",
-       "shotsOnTarget": "5",
+       "shotsOnTarget": "2",
        "totalGoals": "0",
-       "totalShots": "19",
-       "wonCorners": "2"
+       "totalShots": "3",
+       "wonCorners": "0"
       },
       "kazandi": false,
       "kisa": "CAY",
@@ -8011,6 +8003,7 @@
        "home": 2.0
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+4'",
      "sari_kartlar": [],
@@ -8093,13 +8086,16 @@
        "home": 3.0
       }
      },
-     "kanal": "beIN Sports 1",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+6'",
      "sari_kartlar": [],
      "sehir": "Konya",
      "stadyum": "Medas Konya Büyüksehir Stadyumu",
-     "utc": "2026-10-11T10:30Z"
+     "utc": "2026-10-11T10:30Z",
+     "video_id": "xbloznu",
+     "video_kanal": "Maç Özetleri",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -8138,7 +8134,7 @@
        "shotAssists": "0",
        "shotsOnTarget": "2",
        "totalGoals": "0",
-       "totalShots": "12",
+       "totalShots": "13",
        "wonCorners": "10"
       },
       "kazandi": false,
@@ -8195,6 +8191,7 @@
        "home": 2.0
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+8'",
      "sari_kartlar": [
@@ -8236,7 +8233,10 @@
      ],
      "sehir": "Gaziantep",
      "stadyum": "Gaziantep Stadium",
-     "utc": "2026-10-11T13:00Z"
+     "utc": "2026-10-11T13:00Z",
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     },
     {
      "dep": {
@@ -8332,7 +8332,7 @@
        "home": 6.0
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+4'",
      "sari_kartlar": [
@@ -8367,7 +8367,10 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Vodafone Park",
-     "utc": "2026-10-11T16:00Z"
+     "utc": "2026-10-11T16:00Z",
+     "video_id": "xblobu2",
+     "video_kanal": "beIN SPORTS USA",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -8451,7 +8454,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -8546,7 +8549,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "beIN Sports 2",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8557,7 +8560,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -8606,7 +8609,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "beIN Sports 2",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8666,7 +8669,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8811,7 +8814,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -8857,7 +8860,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -8871,7 +8874,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -8917,7 +8920,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -8982,7 +8985,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -9116,7 +9119,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -9236,7 +9239,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -9282,7 +9285,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -9342,7 +9345,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -9356,7 +9359,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -9541,7 +9544,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -9587,7 +9590,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -9661,7 +9664,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -9841,7 +9844,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -9887,7 +9890,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -9947,7 +9950,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10086,7 +10089,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -10132,7 +10135,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -10192,7 +10195,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -10312,7 +10315,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -10446,7 +10449,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -10566,7 +10569,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10617,7 +10620,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -10811,7 +10814,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -10977,7 +10980,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10991,7 +10994,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -11097,7 +11100,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11111,7 +11114,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -11162,7 +11165,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -11356,7 +11359,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -11402,7 +11405,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -11416,7 +11419,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -11462,7 +11465,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -11656,7 +11659,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -11767,7 +11770,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -11781,7 +11784,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -11901,7 +11904,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -11947,7 +11950,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -12021,7 +12024,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12127,7 +12130,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -12266,7 +12269,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -12506,7 +12509,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -12552,7 +12555,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -12612,7 +12615,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -12732,7 +12735,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12746,7 +12749,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -12931,7 +12934,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -12991,7 +12994,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -13097,7 +13100,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -13157,7 +13160,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -13231,7 +13234,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -13277,7 +13280,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -13342,7 +13345,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -13462,7 +13465,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -13476,7 +13479,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -13716,7 +13719,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -13762,7 +13765,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -13836,7 +13839,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -13887,7 +13890,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -13947,7 +13950,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -14021,7 +14024,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -14127,7 +14130,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -14307,7 +14310,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -14321,7 +14324,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -14432,7 +14435,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -14506,7 +14509,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -14626,7 +14629,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -14746,7 +14749,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -14792,7 +14795,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -14866,7 +14869,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -15037,7 +15040,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -15097,7 +15100,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -15111,7 +15114,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -15337,7 +15340,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -15397,7 +15400,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -15411,7 +15414,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -15656,7 +15659,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -15702,7 +15705,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -15762,7 +15765,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -15836,7 +15839,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -15956,7 +15959,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -16002,7 +16005,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -16141,7 +16144,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -16187,7 +16190,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -16247,7 +16250,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -16381,7 +16384,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -16501,7 +16504,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -16547,7 +16550,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -16612,7 +16615,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -16686,7 +16689,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -16912,7 +16915,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -16926,7 +16929,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -16972,7 +16975,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -17046,7 +17049,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -17217,7 +17220,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -17231,7 +17234,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -17457,7 +17460,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -17471,7 +17474,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -17506,7 +17509,7 @@
        "home": null
       }
      },
-     "kanal": "beIN Sports 1",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -17577,7 +17580,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -17591,7 +17594,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -17626,7 +17629,7 @@
        "home": null
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -17776,7 +17779,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -17822,7 +17825,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -17931,7 +17934,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "beIN Sports 2",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -17991,7 +17994,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -18002,7 +18005,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -18016,7 +18019,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -18062,7 +18065,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -18136,7 +18139,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -18171,7 +18174,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "beIN Sports 2",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -18321,7 +18324,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -18367,7 +18370,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -18487,7 +18490,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -18547,7 +18550,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -18561,7 +18564,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -18681,7 +18684,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -18866,7 +18869,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -18912,7 +18915,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -18986,7 +18989,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -19092,7 +19095,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -19166,7 +19169,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -19272,7 +19275,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -19457,7 +19460,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -19517,7 +19520,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -19591,7 +19594,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -19637,7 +19640,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -19711,7 +19714,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -19771,7 +19774,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -19942,7 +19945,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -19956,7 +19959,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -20062,7 +20065,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -20076,7 +20079,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -20182,7 +20185,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -20256,7 +20259,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -20427,7 +20430,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -20547,7 +20550,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -20681,7 +20684,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -20787,7 +20790,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -20801,7 +20804,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -20861,7 +20864,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -21106,7 +21109,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -21212,7 +21215,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -21272,7 +21275,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -21286,7 +21289,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -21406,7 +21409,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -21452,7 +21455,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -21517,7 +21520,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -21577,7 +21580,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -21591,7 +21594,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -21697,7 +21700,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -21771,7 +21774,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -21891,7 +21894,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -22122,7 +22125,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -22196,7 +22199,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -22242,7 +22245,7 @@
     {
      "dep": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -22302,7 +22305,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -22436,7 +22439,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -22556,7 +22559,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -22681,7 +22684,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "LWWWW",
+      "form": "DLWWW",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -22727,7 +22730,7 @@
     {
      "dep": {
       "ad": "Gaziantep FK",
-      "form": "LDWLW",
+      "form": "DLDWL",
       "id": "20070",
       "istatistik": {},
       "kazandi": false,
@@ -22861,7 +22864,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Istanbul Basaksehir",
-      "form": "WLLDL",
+      "form": "DWLLD",
       "id": "7914",
       "istatistik": {},
       "kazandi": false,
@@ -22907,7 +22910,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "WLWWW",
+      "form": "DWLWW",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -22967,7 +22970,7 @@
     {
      "dep": {
       "ad": "Çorum FK",
-      "form": "LWWLL",
+      "form": "DLWWL",
       "id": "132334",
       "istatistik": {},
       "kazandi": false,
@@ -22981,7 +22984,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DWLLL",
+      "form": "DDWLL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -23259,6 +23262,24 @@
    "yedigi": "11"
   },
   {
+   "attigi": "16",
+   "averaj": "+8",
+   "b": "0",
+   "form": "5-0-2",
+   "g": "5",
+   "kisa": "BES",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+   "m": "2",
+   "not": "Champions League qualifying",
+   "not_renk": "#B5E7CE",
+   "o": "7",
+   "puan": "15",
+   "sira": 2,
+   "takim": "Besiktas",
+   "takim_id": "1895",
+   "yedigi": "8"
+  },
+  {
    "attigi": "17",
    "averaj": "+8",
    "b": "2",
@@ -23267,11 +23288,11 @@
    "kisa": "AMED",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132335.png",
    "m": "1",
-   "not": "Champions League qualifying",
-   "not_renk": "#B5E7CE",
+   "not": "Europa League qualifying",
+   "not_renk": "#B2BFD0",
    "o": "7",
    "puan": "14",
-   "sira": 2,
+   "sira": 3,
    "takim": "Amed SFK",
    "takim_id": "132335",
    "yedigi": "9"
@@ -23285,11 +23306,11 @@
    "kisa": "FEN",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
    "m": "2",
-   "not": "Europa League qualifying",
-   "not_renk": "#B2BFD0",
+   "not": "Conference League qualifying",
+   "not_renk": "#c6d1e0",
    "o": "7",
    "puan": "13",
-   "sira": 3,
+   "sira": 4,
    "takim": "Fenerbahce",
    "takim_id": "436",
    "yedigi": "6"
@@ -23303,50 +23324,14 @@
    "kisa": "TRAB",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
    "m": "2",
-   "not": "Conference League qualifying",
-   "not_renk": "#c6d1e0",
+   "not": "",
+   "not_renk": "",
    "o": "7",
    "puan": "13",
-   "sira": 4,
+   "sira": 5,
    "takim": "Trabzonspor",
    "takim_id": "997",
    "yedigi": "5"
-  },
-  {
-   "attigi": "14",
-   "averaj": "+7",
-   "b": "0",
-   "form": "4-0-2",
-   "g": "4",
-   "kisa": "BES",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
-   "m": "2",
-   "not": "",
-   "not_renk": "",
-   "o": "6",
-   "puan": "12",
-   "sira": 5,
-   "takim": "Besiktas",
-   "takim_id": "1895",
-   "yedigi": "7"
-  },
-  {
-   "attigi": "7",
-   "averaj": "+3",
-   "b": "0",
-   "form": "4-0-2",
-   "g": "4",
-   "kisa": "KOC",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
-   "m": "2",
-   "not": "",
-   "not_renk": "",
-   "o": "6",
-   "puan": "12",
-   "sira": 6,
-   "takim": "Kocaelispor",
-   "takim_id": "995",
-   "yedigi": "4"
   },
   {
    "attigi": "8",
@@ -23361,10 +23346,46 @@
    "not_renk": "",
    "o": "7",
    "puan": "12",
-   "sira": 7,
+   "sira": 6,
    "takim": "Alanyaspor",
    "takim_id": "9078",
    "yedigi": "6"
+  },
+  {
+   "attigi": "8",
+   "averaj": "+2",
+   "b": "0",
+   "form": "4-0-3",
+   "g": "4",
+   "kisa": "KOC",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
+   "m": "3",
+   "not": "",
+   "not_renk": "",
+   "o": "7",
+   "puan": "12",
+   "sira": 7,
+   "takim": "Kocaelispor",
+   "takim_id": "995",
+   "yedigi": "6"
+  },
+  {
+   "attigi": "16",
+   "averaj": "+4",
+   "b": "1",
+   "form": "3-1-3",
+   "g": "3",
+   "kisa": "COR",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132334.png",
+   "m": "3",
+   "not": "",
+   "not_renk": "",
+   "o": "7",
+   "puan": "10",
+   "sira": 8,
+   "takim": "Çorum FK",
+   "takim_id": "132334",
+   "yedigi": "12"
   },
   {
    "attigi": "8",
@@ -23379,7 +23400,7 @@
    "not_renk": "",
    "o": "7",
    "puan": "10",
-   "sira": 8,
+   "sira": 9,
    "takim": "Kasimpasa",
    "takim_id": "6870",
    "yedigi": "8"
@@ -23397,28 +23418,46 @@
    "not_renk": "",
    "o": "7",
    "puan": "10",
-   "sira": 9,
+   "sira": 10,
    "takim": "Caykur Rizespor",
    "takim_id": "7656",
    "yedigi": "9"
   },
   {
-   "attigi": "7",
-   "averaj": "0",
+   "attigi": "10",
+   "averaj": "-1",
    "b": "2",
-   "form": "2-2-2",
+   "form": "2-2-3",
+   "g": "2",
+   "kisa": "IBFK",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7914.png",
+   "m": "3",
+   "not": "",
+   "not_renk": "",
+   "o": "7",
+   "puan": "8",
+   "sira": 11,
+   "takim": "Istanbul Basaksehir",
+   "takim_id": "7914",
+   "yedigi": "11"
+  },
+  {
+   "attigi": "7",
+   "averaj": "-3",
+   "b": "2",
+   "form": "2-2-3",
    "g": "2",
    "kisa": "GAZ",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20070.png",
-   "m": "2",
+   "m": "3",
    "not": "",
    "not_renk": "",
-   "o": "6",
+   "o": "7",
    "puan": "8",
-   "sira": 10,
+   "sira": 12,
    "takim": "Gaziantep FK",
    "takim_id": "20070",
-   "yedigi": "7"
+   "yedigi": "10"
   },
   {
    "attigi": "7",
@@ -23433,7 +23472,7 @@
    "not_renk": "",
    "o": "7",
    "puan": "8",
-   "sira": 11,
+   "sira": 13,
    "takim": "Genclerbirligi",
    "takim_id": "996",
    "yedigi": "15"
@@ -23451,60 +23490,24 @@
    "not_renk": "",
    "o": "7",
    "puan": "8",
-   "sira": 12,
+   "sira": 14,
    "takim": "Erzurum BB",
    "takim_id": "19267",
    "yedigi": "11"
   },
   {
-   "attigi": "13",
-   "averaj": "+1",
-   "b": "1",
-   "form": "2-1-3",
-   "g": "2",
-   "kisa": "COR",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132334.png",
-   "m": "3",
-   "not": "",
-   "not_renk": "",
-   "o": "6",
-   "puan": "7",
-   "sira": 13,
-   "takim": "Çorum FK",
-   "takim_id": "132334",
-   "yedigi": "12"
-  },
-  {
-   "attigi": "10",
-   "averaj": "-1",
-   "b": "1",
-   "form": "2-1-3",
-   "g": "2",
-   "kisa": "IBFK",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7914.png",
-   "m": "3",
-   "not": "",
-   "not_renk": "",
-   "o": "6",
-   "puan": "7",
-   "sira": 14,
-   "takim": "Istanbul Basaksehir",
-   "takim_id": "7914",
-   "yedigi": "11"
-  },
-  {
    "attigi": "4",
    "averaj": "-4",
-   "b": "1",
-   "form": "1-1-4",
+   "b": "2",
+   "form": "1-2-4",
    "g": "1",
    "kisa": "KNY",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
    "m": "4",
    "not": "",
    "not_renk": "",
-   "o": "6",
-   "puan": "4",
+   "o": "7",
+   "puan": "5",
    "sira": 15,
    "takim": "Konyaspor",
    "takim_id": "7648",
@@ -23675,5 +23678,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-11T19:28:49.211189+00:00"
+ "uretim": "2026-10-12T02:17:43.391330+00:00"
 }
