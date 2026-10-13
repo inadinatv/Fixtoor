@@ -859,7 +859,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {
       "appearances": "0",
@@ -984,7 +984,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {
       "appearances": "0",
@@ -1675,7 +1675,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {
       "appearances": "0",
@@ -2026,7 +2026,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {
       "appearances": "0",
@@ -2518,7 +2518,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {
       "appearances": "0",
@@ -2811,7 +2811,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {
       "appearances": "0",
@@ -3961,7 +3961,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {
       "appearances": "0",
@@ -4612,7 +4612,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {
       "appearances": "0",
@@ -4908,7 +4908,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {
       "appearances": "0",
@@ -5154,7 +5154,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {
       "appearances": "0",
@@ -6793,7 +6793,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {
       "appearances": "0",
@@ -7185,7 +7185,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {
       "appearances": "0",
@@ -7485,14 +7485,14 @@
      "id": "132335",
      "istatistik": {
       "appearances": "0",
-      "foulsCommitted": "11",
+      "foulsCommitted": "6",
       "goalAssists": "1",
-      "possessionPct": "51.7",
+      "possessionPct": "55.5",
       "shotAssists": "0",
-      "shotsOnTarget": "5",
+      "shotsOnTarget": "2",
       "totalGoals": "2",
-      "totalShots": "19",
-      "wonCorners": "3"
+      "totalShots": "11",
+      "wonCorners": "2"
      },
      "kazandi": false,
      "kisa": "AMED",
@@ -7509,14 +7509,14 @@
      "id": "996",
      "istatistik": {
       "appearances": "0",
-      "foulsCommitted": "14",
+      "foulsCommitted": "6",
       "goalAssists": "1",
-      "possessionPct": "48.3",
+      "possessionPct": "44.5",
       "shotAssists": "0",
-      "shotsOnTarget": "4",
+      "shotsOnTarget": "1",
       "totalGoals": "2",
-      "totalShots": "11",
-      "wonCorners": "6"
+      "totalShots": "5",
+      "wonCorners": "0"
      },
      "kazandi": false,
      "kisa": "GEN",
@@ -7579,6 +7579,7 @@
       "home": 1.0
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "90'+6'",
     "sari_kartlar": [
@@ -7718,6 +7719,7 @@
       "home": 5.0
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "90'+10'",
     "sari_kartlar": [
@@ -7865,6 +7867,7 @@
       "home": 6.0
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [
      {
       "dakika": "43'",
@@ -7912,14 +7915,14 @@
      "id": "436",
      "istatistik": {
       "appearances": "0",
-      "foulsCommitted": "6",
+      "foulsCommitted": "0",
       "goalAssists": "3",
-      "possessionPct": "49.9",
+      "possessionPct": "56.4",
       "shotAssists": "0",
-      "shotsOnTarget": "5",
+      "shotsOnTarget": "1",
       "totalGoals": "3",
-      "totalShots": "13",
-      "wonCorners": "6"
+      "totalShots": "2",
+      "wonCorners": "1"
      },
      "kazandi": true,
      "kisa": "FEN",
@@ -7936,14 +7939,14 @@
      "id": "7656",
      "istatistik": {
       "appearances": "0",
-      "foulsCommitted": "4",
+      "foulsCommitted": "0",
       "goalAssists": "0",
-      "possessionPct": "50.1",
+      "possessionPct": "43.6",
       "shotAssists": "0",
-      "shotsOnTarget": "5",
+      "shotsOnTarget": "2",
       "totalGoals": "0",
-      "totalShots": "19",
-      "wonCorners": "2"
+      "totalShots": "3",
+      "wonCorners": "0"
      },
      "kazandi": false,
      "kisa": "CAY",
@@ -7999,6 +8002,7 @@
       "home": 2.0
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "90'+4'",
     "sari_kartlar": [],
@@ -8081,6 +8085,7 @@
       "home": 3.0
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "90'+6'",
     "sari_kartlar": [],
@@ -8128,7 +8133,7 @@
       "shotAssists": "0",
       "shotsOnTarget": "2",
       "totalGoals": "0",
-      "totalShots": "12",
+      "totalShots": "13",
       "wonCorners": "10"
      },
      "kazandi": false,
@@ -8185,6 +8190,7 @@
       "home": 2.0
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "90'+8'",
     "sari_kartlar": [
@@ -8226,7 +8232,10 @@
     ],
     "sehir": "Gaziantep",
     "stadyum": "Gaziantep Stadium",
-    "utc": "2026-10-11T13:00Z"
+    "utc": "2026-10-11T13:00Z",
+    "video_id": "",
+    "video_kanal": "",
+    "video_kaynak": ""
    },
    {
     "dep": {
@@ -8322,6 +8331,7 @@
       "home": 6.0
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "90'+4'",
     "sari_kartlar": [
@@ -8462,7 +8472,7 @@
       "home": 4.0
      }
     },
-    "kanal": "beIN Sports 1",
+    "kanal": "",
     "kirmizi_kartlar": [
      {
       "dakika": "9'",
@@ -8505,7 +8515,10 @@
     ],
     "sehir": "Istanbul",
     "stadyum": "Esenyurt Necmi Kadioglu Stadi",
-    "utc": "2026-10-12T17:00Z"
+    "utc": "2026-10-12T17:00Z",
+    "video_id": "xbmazju",
+    "video_kanal": "Maç Özetleri",
+    "video_kaynak": "dm"
    }
   ],
   "no": 7
@@ -8575,7 +8588,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -8804,7 +8817,7 @@
       "home": null
      }
     },
-    "kanal": "",
+    "kanal": "Digiturk Play",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -8875,7 +8888,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -9134,7 +9147,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -9374,7 +9387,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -9785,7 +9798,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -9845,7 +9858,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -10224,7 +10237,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -10404,7 +10417,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -10935,7 +10948,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -11115,7 +11128,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -11554,7 +11567,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -11674,7 +11687,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -12145,7 +12158,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -12265,7 +12278,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -12524,7 +12537,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -12704,7 +12717,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -12875,7 +12888,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -12995,7 +13008,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -13674,7 +13687,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -13854,7 +13867,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -14219,7 +14232,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -14339,7 +14352,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -14690,7 +14703,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -14750,7 +14763,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -15055,7 +15068,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -15369,7 +15382,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -15794,7 +15807,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -15900,7 +15913,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -16145,7 +16158,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -16399,7 +16412,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -16810,7 +16823,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -16884,7 +16897,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -17475,7 +17488,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -17489,7 +17502,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -17524,7 +17537,7 @@
       "home": null
      }
     },
-    "kanal": "beIN Sports 1",
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -17829,7 +17842,7 @@
       "home": null
      }
     },
-    "kanal": "",
+    "kanal": "Digiturk Play",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -17974,7 +17987,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -18154,7 +18167,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -18385,7 +18398,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -18685,7 +18698,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -19124,7 +19137,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -19304,7 +19317,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -19655,7 +19668,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -19775,7 +19788,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -20214,7 +20227,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -20394,7 +20407,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -20745,7 +20758,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -20985,7 +20998,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -21244,7 +21257,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -21424,7 +21437,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -21715,7 +21728,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -21955,7 +21968,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -22394,7 +22407,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
@@ -22574,7 +22587,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -22745,7 +22758,7 @@
    {
     "dep": {
      "ad": "Goztepe",
-     "form": "DDLLL",
+     "form": "DDDLL",
      "id": "789",
      "istatistik": {},
      "kazandi": false,
@@ -23105,7 +23118,7 @@
    {
     "dep": {
      "ad": "Eyupspor",
-     "form": "LLLWL",
+     "form": "DLLLW",
      "id": "20729",
      "istatistik": {},
      "kazandi": false,
