@@ -340,6 +340,19 @@
    "saat": "0'",
    "utc": "2026-10-17T10:30Z"
   },
+  "401888273": {
+   "dep": "Alanyaspor",
+   "dep_id": "9078",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Fenerbahce",
+   "ev_id": "436",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-17T16:00Z"
+  },
   "401888274": {
    "dep": "Galatasaray",
    "dep_id": "432",
@@ -378,19 +391,6 @@
    "evk": "2",
    "saat": "90'+4'",
    "utc": "2026-10-11T16:00Z"
-  },
-  "401888280": {
-   "dep": "Kasimpasa",
-   "dep_id": "6870",
-   "depk": "1",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Galatasaray",
-   "ev_id": "432",
-   "evk": "3",
-   "saat": "90'+7'",
-   "utc": "2026-10-09T17:00Z"
   },
   "401888281": {
    "dep": "Istanbul Basaksehir",
@@ -582,5 +582,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-13T15:18:32.243503+00:00"
+ "uretim": "2026-10-13T22:52:40.098267+00:00"
 }
