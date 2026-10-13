@@ -8086,7 +8086,6 @@
        "home": 3.0
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+6'",
      "sari_kartlar": [],
@@ -8134,7 +8133,7 @@
        "shotAssists": "0",
        "shotsOnTarget": "2",
        "totalGoals": "0",
-       "totalShots": "13",
+       "totalShots": "12",
        "wonCorners": "10"
       },
       "kazandi": false,
@@ -8191,7 +8190,6 @@
        "home": 2.0
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+8'",
      "sari_kartlar": [
@@ -8233,10 +8231,7 @@
      ],
      "sehir": "Gaziantep",
      "stadyum": "Gaziantep Stadium",
-     "utc": "2026-10-11T13:00Z",
-     "video_id": "",
-     "video_kanal": "",
-     "video_kaynak": ""
+     "utc": "2026-10-11T13:00Z"
     },
     {
      "dep": {
@@ -8332,7 +8327,6 @@
        "home": 6.0
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+4'",
      "sari_kartlar": [
@@ -8473,7 +8467,6 @@
        "home": 4.0
       }
      },
-     "kanal": "",
      "kirmizi_kartlar": [
       {
        "dakika": "9'",
@@ -23767,5 +23760,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-13T22:52:40.098267+00:00"
+ "uretim": "2026-10-13T23:55:05.803002+00:00"
 }
