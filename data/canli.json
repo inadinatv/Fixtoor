@@ -327,6 +327,32 @@
  },
  "lig": "tur.1",
  "maclar": {
+  "401888271": {
+   "dep": "Eyupspor",
+   "dep_id": "20729",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Erzurum BB",
+   "ev_id": "19267",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-17T10:30Z"
+  },
+  "401888274": {
+   "dep": "Galatasaray",
+   "dep_id": "432",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Genclerbirligi",
+   "ev_id": "996",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-17T13:00Z"
+  },
   "401888278": {
    "dep": "Trabzonspor",
    "dep_id": "997",
@@ -430,6 +456,19 @@
    "evk": "0",
    "saat": "0'",
    "utc": "2026-10-16T17:00Z"
+  },
+  "401888378": {
+   "dep": "Konyaspor",
+   "dep_id": "7648",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Amed SFK",
+   "ev_id": "132335",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-17T13:00Z"
   },
   "401888379": {
    "dep": "Amed SFK",
@@ -543,5 +582,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-13T07:48:30.842731+00:00"
+ "uretim": "2026-10-13T14:21:05.470045+00:00"
 }
