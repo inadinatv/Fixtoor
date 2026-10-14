@@ -366,6 +366,19 @@
    "saat": "0'",
    "utc": "2026-10-17T13:00Z"
   },
+  "401888276": {
+   "dep": "Samsunspor",
+   "dep_id": "11429",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Kasimpasa",
+   "ev_id": "6870",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-18T10:30Z"
+  },
   "401888278": {
    "dep": "Trabzonspor",
    "dep_id": "997",
@@ -470,19 +483,6 @@
    "saat": "0'",
    "utc": "2026-10-17T13:00Z"
   },
-  "401888379": {
-   "dep": "Amed SFK",
-   "dep_id": "132335",
-   "depk": "2",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Genclerbirligi",
-   "ev_id": "996",
-   "evk": "2",
-   "saat": "90'+6'",
-   "utc": "2026-10-10T10:30Z"
-  },
   "401888380": {
    "dep": "Çorum FK",
    "dep_id": "132334",
@@ -582,5 +582,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-14T02:47:59.537308+00:00"
+ "uretim": "2026-10-14T12:03:14.481713+00:00"
 }
