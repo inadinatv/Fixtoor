@@ -100,6 +100,7 @@
     "home": 4.0
    }
   },
+  "kanal": "",
   "kirmizi_kartlar": [
    {
     "dakika": "9'",
@@ -508,7 +509,7 @@
  {
   "dep": {
    "ad": "Fenerbahce",
-   "form": "DWDDL",
+   "form": "LWWDD",
    "id": "436",
    "istatistik": {
     "appearances": "0",

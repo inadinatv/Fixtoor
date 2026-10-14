@@ -509,7 +509,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -1531,7 +1531,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -7912,7 +7912,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -8473,6 +8473,7 @@
        "home": 4.0
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [
       {
        "dakika": "9'",
@@ -8577,6 +8578,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8781,7 +8783,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -9552,7 +9554,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -9811,7 +9813,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10522,7 +10524,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10887,7 +10889,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -11626,7 +11628,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -11977,7 +11979,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -12776,7 +12778,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -12947,7 +12949,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -13746,7 +13748,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -14291,7 +14293,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -14942,7 +14944,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -15321,7 +15323,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -15732,7 +15734,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -16351,7 +16353,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -16882,7 +16884,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -17441,7 +17443,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -17792,7 +17794,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -18531,7 +18533,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -19302,7 +19304,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -19561,7 +19563,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -20286,7 +20288,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -20577,7 +20579,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -21316,7 +21318,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -22087,7 +22089,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -22466,7 +22468,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -22697,7 +22699,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "DWDDL",
+      "form": "LWWDD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -23765,5 +23767,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-14T13:36:41.911407+00:00"
+ "uretim": "2026-10-14T21:37:39.431766+00:00"
 }
