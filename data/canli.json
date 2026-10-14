@@ -340,6 +340,19 @@
    "saat": "0'",
    "utc": "2026-10-17T10:30Z"
   },
+  "401888272": {
+   "dep": "Goztepe",
+   "dep_id": "789",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Kocaelispor",
+   "ev_id": "995",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-18T13:00Z"
+  },
   "401888273": {
    "dep": "Alanyaspor",
    "dep_id": "9078",
@@ -379,19 +392,6 @@
    "saat": "0'",
    "utc": "2026-10-18T10:30Z"
   },
-  "401888278": {
-   "dep": "Trabzonspor",
-   "dep_id": "997",
-   "depk": "3",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Samsunspor",
-   "ev_id": "11429",
-   "evk": "0",
-   "saat": "90'+4'",
-   "utc": "2026-10-10T13:00Z"
-  },
   "401888279": {
    "dep": "Kocaelispor",
    "dep_id": "995",
@@ -430,19 +430,6 @@
    "evk": "0",
    "saat": "90'+4'",
    "utc": "2026-10-10T16:00Z"
-  },
-  "401888283": {
-   "dep": "Erzurum BB",
-   "dep_id": "19267",
-   "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Alanyaspor",
-   "ev_id": "9078",
-   "evk": "0",
-   "saat": "90'+10'",
-   "utc": "2026-10-10T13:00Z"
   },
   "401888284": {
    "dep": "Goztepe",
@@ -582,5 +569,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-14T12:03:14.481713+00:00"
+ "uretim": "2026-10-14T13:36:41.911407+00:00"
 }
