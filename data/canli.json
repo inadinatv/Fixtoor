@@ -405,18 +405,18 @@
    "saat": "0'",
    "utc": "2026-10-18T10:30Z"
   },
-  "401888279": {
-   "dep": "Kocaelispor",
-   "dep_id": "995",
-   "depk": "1",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Besiktas",
-   "ev_id": "1895",
-   "evk": "2",
-   "saat": "90'+4'",
-   "utc": "2026-10-11T16:00Z"
+  "401888277": {
+   "dep": "Besiktas",
+   "dep_id": "1895",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Trabzonspor",
+   "ev_id": "997",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-19T17:00Z"
   },
   "401888284": {
    "dep": "Goztepe",
@@ -543,5 +543,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-15T14:12:09.763711+00:00"
+ "uretim": "2026-10-15T21:29:33.263664+00:00"
 }
