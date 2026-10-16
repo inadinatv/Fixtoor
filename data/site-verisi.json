@@ -2580,7 +2580,7 @@
       {
        "dakika": "55'",
        "kendi_kalesine": false,
-       "oyuncu": "Gabriel Sara",
+       "oyuncu": "Gabriel Gomes",
        "penalti": false,
        "takim_id": "432"
       },
@@ -3587,7 +3587,7 @@
       {
        "dakika": "90'",
        "kendi_kalesine": false,
-       "oyuncu": "Gabriel Sara",
+       "oyuncu": "Gabriel Gomes",
        "penalti": false,
        "takim_id": "432"
       }
@@ -8578,6 +8578,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8877,6 +8878,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8936,6 +8938,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -8995,6 +8998,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -23763,5 +23767,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-16T01:41:11.367861+00:00"
+ "uretim": "2026-10-16T11:33:51.181936+00:00"
 }
