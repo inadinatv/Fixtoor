@@ -252,6 +252,42 @@
    },
    "utc": "2026-10-12T17:00Z"
   },
+  "401888377": {
+   "dep": "Caykur Rizespor",
+   "dep_id": "7656",
+   "depk": "1",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
+   "eksik": false,
+   "ev": "Çorum FK",
+   "ev_id": "132334",
+   "evk": "2",
+   "saat": "90'+4'",
+   "st": {
+    "corners": {
+     "away": 8.0,
+     "home": 2.0
+    },
+    "fouls": {
+     "away": 12.0,
+     "home": 19.0
+    },
+    "possession": {
+     "away": 49.0,
+     "home": 51.0
+    },
+    "shots": {
+     "away": 15.0,
+     "home": 10.0
+    },
+    "shotsOnTarget": {
+     "away": 4.0,
+     "home": 4.0
+    }
+   },
+   "utc": "2026-10-16T17:00Z"
+  },
   "401888379": {
    "dep": "Amed SFK",
    "dep_id": "132335",
@@ -418,30 +454,17 @@
    "saat": "0'",
    "utc": "2026-10-19T17:00Z"
   },
-  "401888284": {
-   "dep": "Goztepe",
-   "dep_id": "789",
-   "depk": "4",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Eyupspor",
-   "ev_id": "20729",
-   "evk": "0",
-   "saat": "90'+2'",
-   "utc": "2026-10-12T17:00Z"
-  },
   "401888377": {
    "dep": "Caykur Rizespor",
    "dep_id": "7656",
-   "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "depk": "1",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Çorum FK",
    "ev_id": "132334",
-   "evk": "0",
-   "saat": "0'",
+   "evk": "2",
+   "saat": "90'+4'",
    "utc": "2026-10-16T17:00Z"
   },
   "401888378": {
@@ -543,5 +566,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-16T16:45:05.599744+00:00"
+ "uretim": "2026-10-16T18:57:15.692114+00:00"
 }
