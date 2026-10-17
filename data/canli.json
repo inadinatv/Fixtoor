@@ -36,6 +36,42 @@
    },
    "utc": "2026-10-17T10:30Z"
   },
+  "401888273": {
+   "dep": "Alanyaspor",
+   "dep_id": "9078",
+   "depk": "0",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
+   "eksik": false,
+   "ev": "Fenerbahce",
+   "ev_id": "436",
+   "evk": "3",
+   "saat": "90'+4'",
+   "st": {
+    "corners": {
+     "away": 4.0,
+     "home": 4.0
+    },
+    "fouls": {
+     "away": 3.0,
+     "home": 18.0
+    },
+    "possession": {
+     "away": 40.8,
+     "home": 59.2
+    },
+    "shots": {
+     "away": 13.0,
+     "home": 24.0
+    },
+    "shotsOnTarget": {
+     "away": 5.0,
+     "home": 7.0
+    }
+   },
+   "utc": "2026-10-17T16:00Z"
+  },
   "401888274": {
    "dep": "Galatasaray",
    "dep_id": "432",
@@ -501,13 +537,13 @@
    "dep": "Alanyaspor",
    "dep_id": "9078",
    "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Fenerbahce",
    "ev_id": "436",
-   "evk": "0",
-   "saat": "0'",
+   "evk": "3",
+   "saat": "90'+4'",
    "utc": "2026-10-17T16:00Z"
   },
   "401888274": {
@@ -674,5 +710,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-17T15:41:47.564557+00:00"
+ "uretim": "2026-10-17T17:56:11.089051+00:00"
 }
