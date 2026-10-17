@@ -1,5 +1,41 @@
 {
  "ist": {
+  "401888271": {
+   "dep": "Eyupspor",
+   "dep_id": "20729",
+   "depk": "0",
+   "durum": "in",
+   "durum_ad": "STATUS_FIRST_HALF",
+   "durum_metin": "22'",
+   "eksik": false,
+   "ev": "Erzurum BB",
+   "ev_id": "19267",
+   "evk": "1",
+   "saat": "22'",
+   "st": {
+    "corners": {
+     "away": 0.0,
+     "home": 1.0
+    },
+    "fouls": {
+     "away": 1.0,
+     "home": 3.0
+    },
+    "possession": {
+     "away": 48.8,
+     "home": 51.2
+    },
+    "shots": {
+     "away": 3.0,
+     "home": 2.0
+    },
+    "shotsOnTarget": {
+     "away": 1.0,
+     "home": 1.0
+    }
+   },
+   "utc": "2026-10-17T10:30Z"
+  },
   "401888278": {
    "dep": "Trabzonspor",
    "dep_id": "997",
@@ -367,13 +403,13 @@
    "dep": "Eyupspor",
    "dep_id": "20729",
    "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "durum": "in",
+   "durum_ad": "STATUS_FIRST_HALF",
+   "durum_metin": "22'",
    "ev": "Erzurum BB",
    "ev_id": "19267",
-   "evk": "0",
-   "saat": "0'",
+   "evk": "1",
+   "saat": "22'",
    "utc": "2026-10-17T10:30Z"
   },
   "401888272": {
@@ -566,5 +602,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-17T08:31:05.096765+00:00"
+ "uretim": "2026-10-17T10:53:13.545364+00:00"
 }
