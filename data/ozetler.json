@@ -93,6 +93,7 @@
     "home": 4.0
    }
   },
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -127,7 +128,10 @@
   ],
   "sehir": "Çorum",
   "stadyum": "Çorum Sehir Stadyumu",
-  "utc": "2026-10-16T17:00Z"
+  "utc": "2026-10-16T17:00Z",
+  "video_id": "xbopv4e",
+  "video_kanal": "Maç Özetleri",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -415,7 +419,7 @@
  {
   "dep": {
    "ad": "Çorum FK",
-   "form": "DLWWL",
+   "form": "DWLWW",
    "id": "132334",
    "istatistik": {
     "appearances": "0",
@@ -663,7 +667,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Caykur Rizespor",
-   "form": "DDWLW",
+   "form": "DLDWL",
    "id": "7656",
    "istatistik": {
     "appearances": "0",

@@ -4,7 +4,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {
       "appearances": "0",
@@ -246,7 +246,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {
       "appearances": "0",
@@ -1296,7 +1296,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {
       "appearances": "0",
@@ -1406,7 +1406,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {
       "appearances": "0",
@@ -2663,7 +2663,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {
       "appearances": "0",
@@ -3326,7 +3326,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {
       "appearances": "0",
@@ -3985,7 +3985,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {
       "appearances": "0",
@@ -4509,7 +4509,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {
       "appearances": "0",
@@ -4884,7 +4884,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {
       "appearances": "0",
@@ -5009,7 +5009,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {
       "appearances": "0",
@@ -6140,7 +6140,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {
       "appearances": "0",
@@ -7161,7 +7161,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {
       "appearances": "0",
@@ -7935,7 +7935,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {
       "appearances": "0",
@@ -8099,7 +8099,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {
       "appearances": "0",
@@ -8619,6 +8619,7 @@
       "home": 4.0
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "90'+4'",
     "sari_kartlar": [
@@ -8653,7 +8654,10 @@
     ],
     "sehir": "Çorum",
     "stadyum": "Çorum Sehir Stadyumu",
-    "utc": "2026-10-16T17:00Z"
+    "utc": "2026-10-16T17:00Z",
+    "video_id": "xbopv4e",
+    "video_kanal": "Maç Özetleri",
+    "video_kaynak": "dm"
    },
    {
     "dep": {
@@ -8947,6 +8951,7 @@
       "home": null
      }
     },
+    "kanal": "beIN Sports 1",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -9006,6 +9011,7 @@
       "home": null
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -9065,6 +9071,7 @@
       "home": null
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -9124,6 +9131,7 @@
       "home": null
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -9439,7 +9447,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -9573,7 +9581,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -9744,7 +9752,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -9804,7 +9812,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -10543,7 +10551,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -10603,7 +10611,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -10834,7 +10842,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -11254,7 +11262,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -11393,7 +11401,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -11573,7 +11581,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -11864,7 +11872,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -12284,7 +12292,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -12423,7 +12431,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -12723,7 +12731,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -13254,7 +13262,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -13374,7 +13382,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -13573,7 +13581,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -13633,7 +13641,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -14118,7 +14126,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -14178,7 +14186,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -14949,7 +14957,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -15069,7 +15077,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -15208,7 +15216,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -15268,7 +15276,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -15679,7 +15687,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -15859,7 +15867,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -16238,7 +16246,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -16298,7 +16306,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -16769,7 +16777,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -16903,7 +16911,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -17388,7 +17396,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -17494,7 +17502,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -17979,7 +17987,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -17993,7 +18001,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -18388,7 +18396,7 @@
       "home": null
      }
     },
-    "kanal": "",
+    "kanal": "beIN Sports 1",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "0'",
     "sari_kartlar": [],
@@ -18478,7 +18486,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -18884,7 +18892,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -19083,7 +19091,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -19143,7 +19151,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -19554,7 +19562,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -19614,7 +19622,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -20173,7 +20181,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -20233,7 +20241,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -20884,7 +20892,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -20944,7 +20952,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -21203,7 +21211,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -21263,7 +21271,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -21674,7 +21682,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -21914,7 +21922,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -22293,7 +22301,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -22353,7 +22361,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
@@ -22944,7 +22952,7 @@
    {
     "dep": {
      "ad": "Caykur Rizespor",
-     "form": "DDWLW",
+     "form": "DLDWL",
      "id": "7656",
      "istatistik": {},
      "kazandi": false,
@@ -23124,7 +23132,7 @@
    {
     "dep": {
      "ad": "Çorum FK",
-     "form": "DLWWL",
+     "form": "DWLWW",
      "id": "132334",
      "istatistik": {},
      "kazandi": false,
