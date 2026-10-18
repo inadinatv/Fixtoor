@@ -29,7 +29,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -271,7 +271,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -371,7 +371,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -509,7 +509,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -533,7 +533,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -750,7 +750,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {
        "appearances": "0",
@@ -774,7 +774,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -860,7 +860,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -1156,7 +1156,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -1180,7 +1180,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {
        "appearances": "0",
@@ -1507,7 +1507,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -1531,7 +1531,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -1676,7 +1676,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -1939,7 +1939,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -2003,7 +2003,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -2113,7 +2113,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -2228,7 +2228,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {
        "appearances": "0",
@@ -2252,7 +2252,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -2390,7 +2390,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -2543,7 +2543,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -2788,7 +2788,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -2812,7 +2812,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -3051,7 +3051,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -3185,7 +3185,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -3512,7 +3512,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -3686,7 +3686,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -3710,7 +3710,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {
        "appearances": "0",
@@ -3834,7 +3834,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -3962,7 +3962,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -4086,7 +4086,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -4341,7 +4341,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -4486,7 +4486,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -4761,7 +4761,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {
        "appearances": "0",
@@ -4909,7 +4909,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -5179,7 +5179,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -5324,7 +5324,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -5455,7 +5455,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -5607,7 +5607,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -5745,7 +5745,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -5845,7 +5845,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -5980,7 +5980,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -6117,7 +6117,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -6372,7 +6372,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -6503,7 +6503,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -6694,7 +6694,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {
        "appearances": "0",
@@ -6794,7 +6794,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -6818,7 +6818,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -6970,7 +6970,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -7343,7 +7343,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {
        "appearances": "0",
@@ -7482,7 +7482,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {
        "appearances": "0",
@@ -7506,7 +7506,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {
        "appearances": "0",
@@ -7651,7 +7651,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {
        "appearances": "0",
@@ -7675,7 +7675,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -7912,7 +7912,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {
        "appearances": "0",
@@ -8041,7 +8041,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {
        "appearances": "0",
@@ -8399,7 +8399,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {
        "appearances": "0",
@@ -8620,6 +8620,7 @@
        "home": 4.0
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+4'",
      "sari_kartlar": [
@@ -8666,13 +8667,13 @@
       "id": "20729",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "3",
+       "foulsCommitted": "2",
        "goalAssists": "0",
-       "possessionPct": "58.5",
+       "possessionPct": "57.3",
        "shotAssists": "0",
-       "shotsOnTarget": "4",
+       "shotsOnTarget": "3",
        "totalGoals": "0",
-       "totalShots": "10",
+       "totalShots": "8",
        "wonCorners": "2"
       },
       "kazandi": false,
@@ -8690,9 +8691,9 @@
       "id": "19267",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "20",
+       "foulsCommitted": "17",
        "goalAssists": "2",
-       "possessionPct": "41.5",
+       "possessionPct": "42.7",
        "shotAssists": "0",
        "shotsOnTarget": "3",
        "totalGoals": "2",
@@ -8746,7 +8747,7 @@
        "home": 3.0
       }
      },
-     "kanal": "beIN Sports 2",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+4'",
      "sari_kartlar": [
@@ -8760,7 +8761,10 @@
      ],
      "sehir": "Erzurum",
      "stadyum": "Erzurum Kazim Karabekir",
-     "utc": "2026-10-17T10:30Z"
+     "utc": "2026-10-17T10:30Z",
+     "video_id": "xbp6166",
+     "video_kanal": "Maç Özetleri",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -8842,7 +8846,7 @@
        "home": 4.0
       }
      },
-     "kanal": "beIN Sports 2",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+5'",
      "sari_kartlar": [
@@ -8877,7 +8881,10 @@
      ],
      "sehir": "Diyarbakir",
      "stadyum": "Diyarbakir Stadyumu",
-     "utc": "2026-10-17T13:00Z"
+     "utc": "2026-10-17T13:00Z",
+     "video_id": "xbp61ai",
+     "video_kanal": "Maç Özetleri",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -8959,7 +8966,7 @@
        "home": 6.0
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+5'",
      "sari_kartlar": [
@@ -8973,7 +8980,10 @@
      ],
      "sehir": "Ankara",
      "stadyum": "Eryaman Stadium",
-     "utc": "2026-10-17T13:00Z"
+     "utc": "2026-10-17T13:00Z",
+     "video_id": "xbp48b2",
+     "video_kanal": "beIN SPORTS USA",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -9069,7 +9079,7 @@
        "home": 7.0
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+4'",
      "sari_kartlar": [
@@ -9083,7 +9093,10 @@
      ],
      "sehir": "Istanbul",
      "stadyum": "Şükrü Saracoğlu Stadium",
-     "utc": "2026-10-17T16:00Z"
+     "utc": "2026-10-17T16:00Z",
+     "video_id": "xbp5d7u",
+     "video_kanal": "beIN SPORTS USA",
+     "video_kaynak": "dm"
     },
     {
      "dep": {
@@ -9197,6 +9210,7 @@
        "home": null
       }
      },
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -9256,6 +9270,7 @@
        "home": null
       }
      },
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -9315,6 +9330,7 @@
        "home": null
       }
      },
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -9344,7 +9360,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -9379,7 +9395,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -9404,7 +9420,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -9450,7 +9466,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -9510,7 +9526,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -9570,7 +9586,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -9584,7 +9600,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -9810,7 +9826,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -9824,7 +9840,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -9875,7 +9891,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -9889,7 +9905,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -9949,7 +9965,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -10069,7 +10085,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10115,7 +10131,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -10129,7 +10145,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -10355,7 +10371,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -10369,7 +10385,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -10494,7 +10510,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -10540,7 +10556,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -10600,7 +10616,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -10614,7 +10630,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -10720,7 +10736,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -10780,7 +10796,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -10854,7 +10870,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -10900,7 +10916,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -10979,7 +10995,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -11039,7 +11055,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -11099,7 +11115,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -11145,7 +11161,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -11219,7 +11235,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -11265,7 +11281,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -11339,7 +11355,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -11385,7 +11401,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -11510,7 +11526,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -11524,7 +11540,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -11630,7 +11646,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -11690,7 +11706,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -11824,7 +11840,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -11870,7 +11886,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -11884,7 +11900,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -11990,7 +12006,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -12069,7 +12085,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -12129,7 +12145,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -12175,7 +12191,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -12189,7 +12205,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -12235,7 +12251,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -12309,7 +12325,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -12415,7 +12431,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -12429,7 +12445,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -12600,7 +12616,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -12674,7 +12690,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -12734,7 +12750,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -12780,7 +12796,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -12794,7 +12810,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -12840,7 +12856,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -12960,7 +12976,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -13034,7 +13050,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -13159,7 +13175,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -13205,7 +13221,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -13265,7 +13281,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -13279,7 +13295,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -13325,7 +13341,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -13385,7 +13401,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -13399,7 +13415,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -13459,7 +13475,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -13704,7 +13720,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -13750,7 +13766,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -13810,7 +13826,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -13884,7 +13900,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -13944,7 +13960,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -13990,7 +14006,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -14004,7 +14020,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -14050,7 +14066,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -14249,7 +14265,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -14295,7 +14311,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -14355,7 +14371,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -14415,7 +14431,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -14429,7 +14445,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -14489,7 +14505,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -14535,7 +14551,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -14549,7 +14565,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -14794,7 +14810,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -14840,7 +14856,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -14900,7 +14916,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -14914,7 +14930,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -14960,7 +14976,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -15034,7 +15050,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -15200,7 +15216,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -15214,7 +15230,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -15325,7 +15341,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -15339,7 +15355,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -15505,7 +15521,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -15519,7 +15535,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -15579,7 +15595,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -15625,7 +15641,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -15745,7 +15761,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -15805,7 +15821,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -15884,7 +15900,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -15944,7 +15960,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -15990,7 +16006,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -16064,7 +16080,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -16124,7 +16140,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -16244,7 +16260,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -16290,7 +16306,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -16304,7 +16320,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -16415,7 +16431,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -16549,7 +16565,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -16609,7 +16625,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -16655,7 +16671,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -16715,7 +16731,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -16775,7 +16791,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -16835,7 +16851,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -16895,7 +16911,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -16974,7 +16990,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -17020,7 +17036,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -17140,7 +17156,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -17154,7 +17170,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -17214,7 +17230,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -17334,7 +17350,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -17394,7 +17410,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -17440,7 +17456,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -17505,7 +17521,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -17519,7 +17535,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -17625,7 +17641,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -17639,7 +17655,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -17699,7 +17715,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -17745,7 +17761,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -17805,7 +17821,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -17865,7 +17881,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -18050,7 +18066,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -18064,7 +18080,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -18099,7 +18115,7 @@
        "home": null
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -18159,7 +18175,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -18230,7 +18246,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -18244,7 +18260,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -18279,7 +18295,7 @@
        "home": null
       }
      },
-     "kanal": "beIN Sports 2",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -18290,7 +18306,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -18304,7 +18320,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -18339,7 +18355,7 @@
        "home": null
       }
      },
-     "kanal": "Digiturk Play",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -18399,7 +18415,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -18459,7 +18475,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -18470,7 +18486,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -18484,7 +18500,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -18519,7 +18535,7 @@
        "home": null
       }
      },
-     "kanal": "beIN Sports 2",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -18609,7 +18625,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -18729,7 +18745,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -18775,7 +18791,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -18789,7 +18805,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -18835,7 +18851,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -18849,7 +18865,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -18955,7 +18971,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -19015,7 +19031,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -19064,7 +19080,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -19140,7 +19156,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -19154,7 +19170,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -19320,7 +19336,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -19380,7 +19396,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -19394,7 +19410,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -19440,7 +19456,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -19454,7 +19470,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -19560,7 +19576,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -19685,7 +19701,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -19699,7 +19715,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -19759,7 +19775,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -19819,7 +19835,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -19879,7 +19895,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -20045,7 +20061,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -20119,7 +20135,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -20165,7 +20181,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -20244,7 +20260,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -20290,7 +20306,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -20350,7 +20366,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -20484,7 +20500,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -20544,7 +20560,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -20590,7 +20606,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -20650,7 +20666,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -20710,7 +20726,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -20789,7 +20805,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -20835,7 +20851,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -20849,7 +20865,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -20909,7 +20925,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -20969,7 +20985,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -21015,7 +21031,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -21195,7 +21211,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -21209,7 +21225,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -21320,7 +21336,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -21334,7 +21350,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -21380,7 +21396,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -21500,7 +21516,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -21514,7 +21530,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -21574,7 +21590,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -21620,7 +21636,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -21740,7 +21756,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -21879,7 +21895,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -21985,7 +22001,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -21999,7 +22015,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -22059,7 +22075,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -22165,7 +22181,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -22239,7 +22255,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -22285,7 +22301,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -22345,7 +22361,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -22410,7 +22426,7 @@
     {
      "dep": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -22424,7 +22440,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -22530,7 +22546,7 @@
     {
      "dep": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -22604,7 +22620,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -22650,7 +22666,7 @@
     {
      "dep": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -22664,7 +22680,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -22724,7 +22740,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -22830,7 +22846,7 @@
     {
      "dep": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -22955,7 +22971,7 @@
     {
      "dep": {
       "ad": "Fenerbahce",
-      "form": "LWWDD",
+      "form": "DLWWD",
       "id": "436",
       "istatistik": {},
       "kazandi": false,
@@ -22969,7 +22985,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Amed SFK",
-      "form": "DWWDW",
+      "form": "DDWWD",
       "id": "132335",
       "istatistik": {},
       "kazandi": false,
@@ -23089,7 +23105,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Galatasaray",
-      "form": "DWLWL",
+      "form": "DLWLW",
       "id": "432",
       "istatistik": {},
       "kazandi": false,
@@ -23149,7 +23165,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Genclerbirligi",
-      "form": "DLLLD",
+      "form": "DDLLL",
       "id": "996",
       "istatistik": {},
       "kazandi": false,
@@ -23195,7 +23211,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DWDWL",
+      "form": "DDWDW",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -23329,7 +23345,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Konyaspor",
-      "form": "DDWLL",
+      "form": "DDDWL",
       "id": "7648",
       "istatistik": {},
       "kazandi": false,
@@ -23375,7 +23391,7 @@
     {
      "dep": {
       "ad": "Eyupspor",
-      "form": "DLLLW",
+      "form": "DLLLL",
       "id": "20729",
       "istatistik": {},
       "kazandi": false,
@@ -23435,7 +23451,7 @@
     {
      "dep": {
       "ad": "Erzurum BB",
-      "form": "DWLWD",
+      "form": "DDWLW",
       "id": "19267",
       "istatistik": {},
       "kazandi": false,
@@ -23589,22 +23605,58 @@
  },
  "puan_durumu": [
   {
-   "attigi": "16",
-   "averaj": "+5",
+   "attigi": "17",
+   "averaj": "+6",
    "b": "1",
-   "form": "5-1-1",
-   "g": "5",
+   "form": "6-1-1",
+   "g": "6",
    "kisa": "GAL",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
    "m": "1",
    "not": "Champions League",
    "not_renk": "#81D6AC",
-   "o": "7",
-   "puan": "16",
+   "o": "8",
+   "puan": "19",
    "sira": 1,
    "takim": "Galatasaray",
    "takim_id": "432",
    "yedigi": "11"
+  },
+  {
+   "attigi": "18",
+   "averaj": "+9",
+   "b": "2",
+   "form": "5-2-1",
+   "g": "5",
+   "kisa": "AMED",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132335.png",
+   "m": "1",
+   "not": "Champions League qualifying",
+   "not_renk": "#B5E7CE",
+   "o": "8",
+   "puan": "17",
+   "sira": 2,
+   "takim": "Amed SFK",
+   "takim_id": "132335",
+   "yedigi": "9"
+  },
+  {
+   "attigi": "22",
+   "averaj": "+16",
+   "b": "1",
+   "form": "5-1-2",
+   "g": "5",
+   "kisa": "FEN",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+   "m": "2",
+   "not": "Europa League qualifying",
+   "not_renk": "#B2BFD0",
+   "o": "8",
+   "puan": "16",
+   "sira": 3,
+   "takim": "Fenerbahce",
+   "takim_id": "436",
+   "yedigi": "6"
   },
   {
    "attigi": "16",
@@ -23615,50 +23667,14 @@
    "kisa": "BES",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
    "m": "2",
-   "not": "Champions League qualifying",
-   "not_renk": "#B5E7CE",
-   "o": "7",
-   "puan": "15",
-   "sira": 2,
-   "takim": "Besiktas",
-   "takim_id": "1895",
-   "yedigi": "8"
-  },
-  {
-   "attigi": "17",
-   "averaj": "+8",
-   "b": "2",
-   "form": "4-2-1",
-   "g": "4",
-   "kisa": "AMED",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132335.png",
-   "m": "1",
-   "not": "Europa League qualifying",
-   "not_renk": "#B2BFD0",
-   "o": "7",
-   "puan": "14",
-   "sira": 3,
-   "takim": "Amed SFK",
-   "takim_id": "132335",
-   "yedigi": "9"
-  },
-  {
-   "attigi": "19",
-   "averaj": "+13",
-   "b": "1",
-   "form": "4-1-2",
-   "g": "4",
-   "kisa": "FEN",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
-   "m": "2",
    "not": "Conference League qualifying",
    "not_renk": "#c6d1e0",
    "o": "7",
-   "puan": "13",
+   "puan": "15",
    "sira": 4,
-   "takim": "Fenerbahce",
-   "takim_id": "436",
-   "yedigi": "6"
+   "takim": "Besiktas",
+   "takim_id": "1895",
+   "yedigi": "8"
   },
   {
    "attigi": "16",
@@ -23699,24 +23715,6 @@
   {
    "attigi": "8",
    "averaj": "+2",
-   "b": "3",
-   "form": "3-3-1",
-   "g": "3",
-   "kisa": "ALA",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
-   "m": "1",
-   "not": "",
-   "not_renk": "",
-   "o": "7",
-   "puan": "12",
-   "sira": 7,
-   "takim": "Alanyaspor",
-   "takim_id": "9078",
-   "yedigi": "6"
-  },
-  {
-   "attigi": "8",
-   "averaj": "+2",
    "b": "0",
    "form": "4-0-3",
    "g": "4",
@@ -23727,10 +23725,46 @@
    "not_renk": "",
    "o": "7",
    "puan": "12",
-   "sira": 8,
+   "sira": 7,
    "takim": "Kocaelispor",
    "takim_id": "995",
    "yedigi": "6"
+  },
+  {
+   "attigi": "8",
+   "averaj": "-1",
+   "b": "3",
+   "form": "3-3-2",
+   "g": "3",
+   "kisa": "ALA",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
+   "m": "2",
+   "not": "",
+   "not_renk": "",
+   "o": "8",
+   "puan": "12",
+   "sira": 8,
+   "takim": "Alanyaspor",
+   "takim_id": "9078",
+   "yedigi": "9"
+  },
+  {
+   "attigi": "5",
+   "averaj": "-6",
+   "b": "2",
+   "form": "3-2-3",
+   "g": "3",
+   "kisa": "ERZ",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
+   "m": "3",
+   "not": "",
+   "not_renk": "",
+   "o": "8",
+   "puan": "11",
+   "sira": 9,
+   "takim": "Erzurum BB",
+   "takim_id": "19267",
+   "yedigi": "11"
   },
   {
    "attigi": "8",
@@ -23745,7 +23779,7 @@
    "not_renk": "",
    "o": "7",
    "puan": "10",
-   "sira": 9,
+   "sira": 10,
    "takim": "Kasimpasa",
    "takim_id": "6870",
    "yedigi": "8"
@@ -23763,7 +23797,7 @@
    "not_renk": "",
    "o": "8",
    "puan": "10",
-   "sira": 10,
+   "sira": 11,
    "takim": "Caykur Rizespor",
    "takim_id": "7656",
    "yedigi": "11"
@@ -23781,7 +23815,7 @@
    "not_renk": "",
    "o": "7",
    "puan": "8",
-   "sira": 11,
+   "sira": 12,
    "takim": "Istanbul Basaksehir",
    "takim_id": "7914",
    "yedigi": "11"
@@ -23799,46 +23833,28 @@
    "not_renk": "",
    "o": "7",
    "puan": "8",
-   "sira": 12,
+   "sira": 13,
    "takim": "Gaziantep FK",
    "takim_id": "20070",
    "yedigi": "10"
   },
   {
    "attigi": "7",
-   "averaj": "-8",
+   "averaj": "-9",
    "b": "2",
-   "form": "2-2-3",
+   "form": "2-2-4",
    "g": "2",
    "kisa": "GEN",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
-   "m": "3",
+   "m": "4",
    "not": "",
    "not_renk": "",
-   "o": "7",
-   "puan": "8",
-   "sira": 13,
-   "takim": "Genclerbirligi",
-   "takim_id": "996",
-   "yedigi": "15"
-  },
-  {
-   "attigi": "3",
-   "averaj": "-8",
-   "b": "2",
-   "form": "2-2-3",
-   "g": "2",
-   "kisa": "ERZ",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19267.png",
-   "m": "3",
-   "not": "",
-   "not_renk": "",
-   "o": "7",
+   "o": "8",
    "puan": "8",
    "sira": 14,
-   "takim": "Erzurum BB",
-   "takim_id": "19267",
-   "yedigi": "11"
+   "takim": "Genclerbirligi",
+   "takim_id": "996",
+   "yedigi": "16"
   },
   {
    "attigi": "15",
@@ -23860,21 +23876,21 @@
   },
   {
    "attigi": "4",
-   "averaj": "-4",
+   "averaj": "-5",
    "b": "2",
-   "form": "1-2-4",
+   "form": "1-2-5",
    "g": "1",
    "kisa": "KNY",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7648.png",
-   "m": "4",
+   "m": "5",
    "not": "Relegated",
    "not_renk": "#FF7F84",
-   "o": "7",
+   "o": "8",
    "puan": "5",
    "sira": 16,
    "takim": "Konyaspor",
    "takim_id": "7648",
-   "yedigi": "8"
+   "yedigi": "9"
   },
   {
    "attigi": "6",
@@ -23896,21 +23912,21 @@
   },
   {
    "attigi": "2",
-   "averaj": "-18",
+   "averaj": "-20",
    "b": "0",
-   "form": "1-0-6",
+   "form": "1-0-7",
    "g": "1",
    "kisa": "EYU",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20729.png",
-   "m": "6",
+   "m": "7",
    "not": "Relegated",
    "not_renk": "#FF7F84",
-   "o": "7",
+   "o": "8",
    "puan": "3",
    "sira": 18,
    "takim": "Eyupspor",
    "takim_id": "20729",
-   "yedigi": "20"
+   "yedigi": "22"
   }
  ],
  "takimlar": {
@@ -24023,5 +24039,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-17T17:56:11.089051+00:00"
+ "uretim": "2026-10-18T01:33:39.507077+00:00"
 }

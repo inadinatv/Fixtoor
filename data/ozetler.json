@@ -93,7 +93,7 @@
     "home": 7.0
    }
   },
-  "kanal": "Digiturk Play",
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -107,7 +107,10 @@
   ],
   "sehir": "Istanbul",
   "stadyum": "Şükrü Saracoğlu Stadium",
-  "utc": "2026-10-17T16:00Z"
+  "utc": "2026-10-17T16:00Z",
+  "video_id": "xbp5d7u",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -189,7 +192,7 @@
     "home": 4.0
    }
   },
-  "kanal": "beIN Sports 2",
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+5'",
   "sari_kartlar": [
@@ -224,7 +227,10 @@
   ],
   "sehir": "Diyarbakir",
   "stadyum": "Diyarbakir Stadyumu",
-  "utc": "2026-10-17T13:00Z"
+  "utc": "2026-10-17T13:00Z",
+  "video_id": "xbp61ai",
+  "video_kanal": "Maç Özetleri",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -306,7 +312,7 @@
     "home": 6.0
    }
   },
-  "kanal": "Digiturk Play",
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+5'",
   "sari_kartlar": [
@@ -320,7 +326,10 @@
   ],
   "sehir": "Ankara",
   "stadyum": "Eryaman Stadium",
-  "utc": "2026-10-17T13:00Z"
+  "utc": "2026-10-17T13:00Z",
+  "video_id": "xbp48b2",
+  "video_kanal": "beIN SPORTS USA",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -329,13 +338,13 @@
    "id": "20729",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "3",
+    "foulsCommitted": "2",
     "goalAssists": "0",
-    "possessionPct": "58.5",
+    "possessionPct": "57.3",
     "shotAssists": "0",
-    "shotsOnTarget": "4",
+    "shotsOnTarget": "3",
     "totalGoals": "0",
-    "totalShots": "10",
+    "totalShots": "8",
     "wonCorners": "2"
    },
    "kazandi": false,
@@ -353,9 +362,9 @@
    "id": "19267",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "20",
+    "foulsCommitted": "17",
     "goalAssists": "2",
-    "possessionPct": "41.5",
+    "possessionPct": "42.7",
     "shotAssists": "0",
     "shotsOnTarget": "3",
     "totalGoals": "2",
@@ -409,7 +418,7 @@
     "home": 3.0
    }
   },
-  "kanal": "beIN Sports 2",
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -423,7 +432,10 @@
   ],
   "sehir": "Erzurum",
   "stadyum": "Erzurum Kazim Karabekir",
-  "utc": "2026-10-17T10:30Z"
+  "utc": "2026-10-17T10:30Z",
+  "video_id": "xbp6166",
+  "video_kanal": "Maç Özetleri",
+  "video_kaynak": "dm"
  },
  {
   "dep": {
@@ -519,6 +531,7 @@
     "home": 4.0
    }
   },
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -585,7 +598,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Eyupspor",
-   "form": "DLLLW",
+   "form": "DLLLL",
    "id": "20729",
    "istatistik": {
     "appearances": "0",
@@ -1009,7 +1022,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Konyaspor",
-   "form": "DDWLL",
+   "form": "DDDWL",
    "id": "7648",
    "istatistik": {
     "appearances": "0",
@@ -1068,7 +1081,7 @@
  {
   "dep": {
    "ad": "Fenerbahce",
-   "form": "LWWDD",
+   "form": "DLWWD",
    "id": "436",
    "istatistik": {
     "appearances": "0",
@@ -1173,7 +1186,7 @@
  {
   "dep": {
    "ad": "Erzurum BB",
-   "form": "DWLWD",
+   "form": "DDWLW",
    "id": "19267",
    "istatistik": {
     "appearances": "0",
@@ -1197,7 +1210,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Alanyaspor",
-   "form": "DWDWL",
+   "form": "DDWDW",
    "id": "9078",
    "istatistik": {
     "appearances": "0",
@@ -1434,7 +1447,7 @@
  {
   "dep": {
    "ad": "Amed SFK",
-   "form": "DWWDW",
+   "form": "DDWWD",
    "id": "132335",
    "istatistik": {
     "appearances": "0",
@@ -1458,7 +1471,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Genclerbirligi",
-   "form": "DLLLD",
+   "form": "DDLLL",
    "id": "996",
    "istatistik": {
     "appearances": "0",
@@ -1627,7 +1640,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Galatasaray",
-   "form": "DWLWL",
+   "form": "DLWLW",
    "id": "432",
    "istatistik": {
     "appearances": "0",
