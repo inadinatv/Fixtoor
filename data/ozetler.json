@@ -2,42 +2,42 @@
  {
   "dep": {
    "ad": "Goztepe",
-   "form": "DDDLL",
+   "form": "DWDDL",
    "id": "789",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "23",
+    "foulsCommitted": "25",
     "goalAssists": "1",
-    "possessionPct": "38.1",
+    "possessionPct": "37.5",
     "shotAssists": "0",
     "shotsOnTarget": "3",
     "totalGoals": "2",
-    "totalShots": "7",
+    "totalShots": "8",
     "wonCorners": "1"
    },
-   "kazandi": false,
+   "kazandi": true,
    "kisa": "GOZ",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
    "renk": "#000000",
    "skor": "2"
   },
-  "durum": "in",
-  "durum_ad": "STATUS_SECOND_HALF",
-  "durum_metin": "87'",
+  "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
+  "durum_metin": "FT",
   "ev": {
    "ad": "Kocaelispor",
-   "form": "DWLWW",
+   "form": "DLWLW",
    "id": "995",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "12",
+    "foulsCommitted": "13",
     "goalAssists": "0",
-    "possessionPct": "61.9",
+    "possessionPct": "62.5",
     "shotAssists": "0",
-    "shotsOnTarget": "2",
+    "shotsOnTarget": "4",
     "totalGoals": "1",
-    "totalShots": "10",
-    "wonCorners": "3"
+    "totalShots": "13",
+    "wonCorners": "5"
    },
    "kazandi": false,
    "kisa": "KOC",
@@ -95,7 +95,7 @@
   },
   "kanal": "beIN Sports 1",
   "kirmizi_kartlar": [],
-  "saat_gostergesi": "87'",
+  "saat_gostergesi": "90'+5'",
   "sari_kartlar": [
    {
     "dakika": "56'",
@@ -117,6 +117,13 @@
     "oyuncu": "Novatus Miroshi",
     "penalti": false,
     "takim_id": "789"
+   },
+   {
+    "dakika": "90'+3'",
+    "kendi_kalesine": false,
+    "oyuncu": "Emir Ortakaya",
+    "penalti": false,
+    "takim_id": "995"
    }
   ],
   "sehir": "Kocaeli",

@@ -40,14 +40,14 @@
    "dep": "Goztepe",
    "dep_id": "789",
    "depk": "2",
-   "durum": "in",
-   "durum_ad": "STATUS_SECOND_HALF",
-   "durum_metin": "87'",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "eksik": false,
    "ev": "Kocaelispor",
    "ev_id": "995",
    "evk": "1",
-   "saat": "87'",
+   "saat": "90'+5'",
    "st": {
     "corners": {
      "away": 1.0,
@@ -596,13 +596,13 @@
    "dep": "Goztepe",
    "dep_id": "789",
    "depk": "2",
-   "durum": "in",
-   "durum_ad": "STATUS_SECOND_HALF",
-   "durum_metin": "87'",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Kocaelispor",
    "ev_id": "995",
    "evk": "1",
-   "saat": "87'",
+   "saat": "90'+5'",
    "utc": "2026-10-18T13:00Z"
   },
   "401888273": {
@@ -782,5 +782,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-18T14:46:44.461430+00:00"
+ "uretim": "2026-10-18T15:57:29.660421+00:00"
 }
