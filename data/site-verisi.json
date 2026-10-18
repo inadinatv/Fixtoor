@@ -9100,14 +9100,14 @@
       "id": "11429",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "7",
+       "foulsCommitted": "20",
        "goalAssists": "0",
-       "possessionPct": "43.2",
+       "possessionPct": "51",
        "shotAssists": "0",
-       "shotsOnTarget": "1",
+       "shotsOnTarget": "4",
        "totalGoals": "1",
-       "totalShots": "3",
-       "wonCorners": "2"
+       "totalShots": "12",
+       "wonCorners": "6"
       },
       "kazandi": false,
       "kisa": "SAM",
@@ -9115,29 +9115,29 @@
       "renk": "#000000",
       "skor": "1"
      },
-     "durum": "in",
-     "durum_ad": "STATUS_HALFTIME",
-     "durum_metin": "HT",
+     "durum": "post",
+     "durum_ad": "STATUS_FULL_TIME",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Kasimpasa",
-      "form": "DDWDD",
+      "form": "DLDWD",
       "id": "6870",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "6",
-       "goalAssists": "2",
-       "possessionPct": "56.8",
+       "foulsCommitted": "13",
+       "goalAssists": "4",
+       "possessionPct": "49",
        "shotAssists": "0",
-       "shotsOnTarget": "6",
-       "totalGoals": "2",
-       "totalShots": "18",
-       "wonCorners": "5"
+       "shotsOnTarget": "9",
+       "totalGoals": "4",
+       "totalShots": "23",
+       "wonCorners": "9"
       },
-      "kazandi": false,
+      "kazandi": true,
       "kisa": "KAS",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
       "renk": "#000000",
-      "skor": "2"
+      "skor": "4"
      },
      "goller": [
       {
@@ -9160,6 +9160,20 @@
        "oyuncu": "Tanguy Coulibaly",
        "penalti": false,
        "takim_id": "11429"
+      },
+      {
+       "dakika": "64'",
+       "kendi_kalesine": false,
+       "oyuncu": "Adem Arous",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "78'",
+       "kendi_kalesine": false,
+       "oyuncu": "Adrian Benedyczak",
+       "penalti": false,
+       "takim_id": "6870"
       }
      ],
      "id": "401888276",
@@ -9188,8 +9202,37 @@
       }
      },
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "45'+5'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "90'+4'",
+     "sari_kartlar": [
+      {
+       "dakika": "51'",
+       "kendi_kalesine": false,
+       "oyuncu": "",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "55'",
+       "kendi_kalesine": false,
+       "oyuncu": "Afonso Sousa",
+       "penalti": false,
+       "takim_id": "11429"
+      },
+      {
+       "dakika": "79'",
+       "kendi_kalesine": false,
+       "oyuncu": "Elson Mendes Da Silva",
+       "penalti": false,
+       "takim_id": "6870"
+      },
+      {
+       "dakika": "89'",
+       "kendi_kalesine": false,
+       "oyuncu": "Elliot Watt",
+       "penalti": false,
+       "takim_id": "11429"
+      }
+     ],
      "sehir": "Istanbul",
      "stadyum": "Recep Tayyip Erdogan Stadium",
      "utc": "2026-10-18T10:30Z"
@@ -9199,57 +9242,121 @@
       "ad": "Goztepe",
       "form": "DDDLL",
       "id": "789",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "23",
+       "goalAssists": "1",
+       "possessionPct": "38.1",
+       "shotAssists": "0",
+       "shotsOnTarget": "3",
+       "totalGoals": "2",
+       "totalShots": "7",
+       "wonCorners": "1"
+      },
       "kazandi": false,
       "kisa": "GOZ",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/789.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "2"
      },
-     "durum": "pre",
-     "durum_ad": "STATUS_SCHEDULED",
-     "durum_metin": "Scheduled",
+     "durum": "in",
+     "durum_ad": "STATUS_SECOND_HALF",
+     "durum_metin": "87'",
      "ev": {
       "ad": "Kocaelispor",
       "form": "DWLWW",
       "id": "995",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "12",
+       "goalAssists": "0",
+       "possessionPct": "61.9",
+       "shotAssists": "0",
+       "shotsOnTarget": "2",
+       "totalGoals": "1",
+       "totalShots": "10",
+       "wonCorners": "3"
+      },
       "kazandi": false,
       "kisa": "KOC",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "1"
      },
-     "goller": [],
+     "goller": [
+      {
+       "dakika": "24'",
+       "kendi_kalesine": true,
+       "oyuncu": "Show",
+       "penalti": false,
+       "takim_id": "789"
+      },
+      {
+       "dakika": "77'",
+       "kendi_kalesine": false,
+       "oyuncu": "Novatus Miroshi",
+       "penalti": false,
+       "takim_id": "789"
+      },
+      {
+       "dakika": "82'",
+       "kendi_kalesine": false,
+       "oyuncu": "Berkan Kutlu",
+       "penalti": true,
+       "takim_id": "995"
+      }
+     ],
      "id": "401888272",
      "istatistik": {
       "corners": {
-       "away": null,
-       "home": null
+       "away": 1.0,
+       "home": 3.0
       },
-      "durum": "yok",
+      "durum": "ok",
       "fouls": {
-       "away": null,
-       "home": null
+       "away": 23.0,
+       "home": 12.0
       },
-      "kaynak": null,
+      "kaynak": "summary",
       "possession": {
-       "away": null,
-       "home": null
+       "away": 38.1,
+       "home": 61.9
       },
       "shots": {
-       "away": null,
-       "home": null
+       "away": 7.0,
+       "home": 10.0
       },
       "shotsOnTarget": {
-       "away": null,
-       "home": null
+       "away": 3.0,
+       "home": 2.0
       }
      },
      "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "87'",
+     "sari_kartlar": [
+      {
+       "dakika": "56'",
+       "kendi_kalesine": false,
+       "oyuncu": "Mahamadou Susoho",
+       "penalti": false,
+       "takim_id": "995"
+      },
+      {
+       "dakika": "76'",
+       "kendi_kalesine": false,
+       "oyuncu": "André Henrique",
+       "penalti": false,
+       "takim_id": "789"
+      },
+      {
+       "dakika": "78'",
+       "kendi_kalesine": false,
+       "oyuncu": "Novatus Miroshi",
+       "penalti": false,
+       "takim_id": "789"
+      }
+     ],
      "sehir": "Kocaeli",
      "stadyum": "Yildiz Entegre Kocaeli Stadyumu",
      "utc": "2026-10-18T13:00Z"
@@ -24075,5 +24182,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-18T11:36:29.338186+00:00"
+ "uretim": "2026-10-18T14:46:44.461430+00:00"
 }
