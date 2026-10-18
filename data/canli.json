@@ -144,6 +144,42 @@
    },
    "utc": "2026-10-17T13:00Z"
   },
+  "401888275": {
+   "dep": "Gaziantep FK",
+   "dep_id": "20070",
+   "depk": "1",
+   "durum": "in",
+   "durum_ad": "STATUS_SECOND_HALF",
+   "durum_metin": "76'",
+   "eksik": false,
+   "ev": "Istanbul Basaksehir",
+   "ev_id": "7914",
+   "evk": "1",
+   "saat": "76'",
+   "st": {
+    "corners": {
+     "away": 4.0,
+     "home": 4.0
+    },
+    "fouls": {
+     "away": 9.0,
+     "home": 21.0
+    },
+    "possession": {
+     "away": 48.2,
+     "home": 51.8
+    },
+    "shots": {
+     "away": 8.0,
+     "home": 12.0
+    },
+    "shotsOnTarget": {
+     "away": 3.0,
+     "home": 4.0
+    }
+   },
+   "utc": "2026-10-18T16:00Z"
+  },
   "401888276": {
    "dep": "Samsunspor",
    "dep_id": "11429",
@@ -634,14 +670,14 @@
   "401888275": {
    "dep": "Gaziantep FK",
    "dep_id": "20070",
-   "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "depk": "1",
+   "durum": "in",
+   "durum_ad": "STATUS_SECOND_HALF",
+   "durum_metin": "76'",
    "ev": "Istanbul Basaksehir",
    "ev_id": "7914",
-   "evk": "0",
-   "saat": "0'",
+   "evk": "1",
+   "saat": "76'",
    "utc": "2026-10-18T16:00Z"
   },
   "401888276": {
@@ -782,5 +818,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-18T15:57:29.660421+00:00"
+ "uretim": "2026-10-18T17:34:04.373450+00:00"
 }
