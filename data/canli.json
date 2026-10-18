@@ -148,14 +148,14 @@
    "dep": "Gaziantep FK",
    "dep_id": "20070",
    "depk": "1",
-   "durum": "in",
-   "durum_ad": "STATUS_SECOND_HALF",
-   "durum_metin": "76'",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "eksik": false,
    "ev": "Istanbul Basaksehir",
    "ev_id": "7914",
-   "evk": "1",
-   "saat": "76'",
+   "evk": "2",
+   "saat": "90'+5'",
    "st": {
     "corners": {
      "away": 4.0,
@@ -671,13 +671,13 @@
    "dep": "Gaziantep FK",
    "dep_id": "20070",
    "depk": "1",
-   "durum": "in",
-   "durum_ad": "STATUS_SECOND_HALF",
-   "durum_metin": "76'",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Istanbul Basaksehir",
    "ev_id": "7914",
-   "evk": "1",
-   "saat": "76'",
+   "evk": "2",
+   "saat": "90'+5'",
    "utc": "2026-10-18T16:00Z"
   },
   "401888276": {
@@ -818,5 +818,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-18T17:34:04.373450+00:00"
+ "uretim": "2026-10-18T19:36:02.149831+00:00"
 }
