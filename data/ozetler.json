@@ -93,7 +93,6 @@
     "home": 7.0
    }
   },
-  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -192,7 +191,6 @@
     "home": 4.0
    }
   },
-  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+5'",
   "sari_kartlar": [
@@ -312,7 +310,6 @@
     "home": 6.0
    }
   },
-  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+5'",
   "sari_kartlar": [
@@ -338,13 +335,13 @@
    "id": "20729",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "2",
+    "foulsCommitted": "3",
     "goalAssists": "0",
-    "possessionPct": "57.3",
+    "possessionPct": "58.5",
     "shotAssists": "0",
-    "shotsOnTarget": "3",
+    "shotsOnTarget": "4",
     "totalGoals": "0",
-    "totalShots": "8",
+    "totalShots": "10",
     "wonCorners": "2"
    },
    "kazandi": false,
@@ -362,9 +359,9 @@
    "id": "19267",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "17",
+    "foulsCommitted": "20",
     "goalAssists": "2",
-    "possessionPct": "42.7",
+    "possessionPct": "41.5",
     "shotAssists": "0",
     "shotsOnTarget": "3",
     "totalGoals": "2",
@@ -418,7 +415,6 @@
     "home": 3.0
    }
   },
-  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -531,7 +527,6 @@
     "home": 4.0
    }
   },
-  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
