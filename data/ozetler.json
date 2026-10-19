@@ -1,6 +1,137 @@
 [
  {
   "dep": {
+   "ad": "Besiktas",
+   "form": "DWWLW",
+   "id": "1895",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "17",
+    "goalAssists": "0",
+    "possessionPct": "62.4",
+    "shotAssists": "0",
+    "shotsOnTarget": "7",
+    "totalGoals": "0",
+    "totalShots": "19",
+    "wonCorners": "6"
+   },
+   "kazandi": false,
+   "kisa": "BES",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1895.png",
+   "renk": "#ffffff",
+   "skor": "0"
+  },
+  "durum": "post",
+  "durum_ad": "STATUS_FULL_TIME",
+  "durum_metin": "FT",
+  "ev": {
+   "ad": "Trabzonspor",
+   "form": "DWWWL",
+   "id": "997",
+   "istatistik": {
+    "appearances": "0",
+    "foulsCommitted": "11",
+    "goalAssists": "1",
+    "possessionPct": "37.6",
+    "shotAssists": "0",
+    "shotsOnTarget": "8",
+    "totalGoals": "2",
+    "totalShots": "13",
+    "wonCorners": "4"
+   },
+   "kazandi": true,
+   "kisa": "TRAB",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/997.png",
+   "renk": "#5699eb",
+   "skor": "2"
+  },
+  "goller": [
+   {
+    "dakika": "21'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ozan Tufan",
+    "penalti": false,
+    "takim_id": "997"
+   },
+   {
+    "dakika": "71'",
+    "kendi_kalesine": false,
+    "oyuncu": "Mohamed Salah",
+    "penalti": false,
+    "takim_id": "997"
+   }
+  ],
+  "id": "401888277",
+  "istatistik": {
+   "corners": {
+    "away": 6.0,
+    "home": 4.0
+   },
+   "durum": "ok",
+   "fouls": {
+    "away": 17.0,
+    "home": 11.0
+   },
+   "kaynak": "summary",
+   "possession": {
+    "away": 62.4,
+    "home": 37.6
+   },
+   "shots": {
+    "away": 19.0,
+    "home": 13.0
+   },
+   "shotsOnTarget": {
+    "away": 7.0,
+    "home": 8.0
+   }
+  },
+  "kanal": "Digiturk Play",
+  "kirmizi_kartlar": [],
+  "saat_gostergesi": "90'+4'",
+  "sari_kartlar": [
+   {
+    "dakika": "32'",
+    "kendi_kalesine": false,
+    "oyuncu": "Fabio Miretti",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "33'",
+    "kendi_kalesine": false,
+    "oyuncu": "Fabinho",
+    "penalti": false,
+    "takim_id": "997"
+   },
+   {
+    "dakika": "60'",
+    "kendi_kalesine": false,
+    "oyuncu": "Emir Han Topcu",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "85'",
+    "kendi_kalesine": false,
+    "oyuncu": "Ilhan Fakili",
+    "penalti": false,
+    "takim_id": "1895"
+   },
+   {
+    "dakika": "90'",
+    "kendi_kalesine": false,
+    "oyuncu": "Kassoum Ouattara",
+    "penalti": false,
+    "takim_id": "1895"
+   }
+  ],
+  "sehir": "Trabzon",
+  "stadyum": "Papara Park",
+  "utc": "2026-10-19T17:00Z"
+ },
+ {
+  "dep": {
    "ad": "Gaziantep FK",
    "form": "DLLDW",
    "id": "20070",
@@ -1891,175 +2022,6 @@
   "utc": "2026-10-10T13:00Z",
   "video_id": "xbkzoeq",
   "video_kanal": "beIN SPORTS USA",
-  "video_kaynak": "dm"
- },
- {
-  "dep": {
-   "ad": "Amed SFK",
-   "form": "DDWWD",
-   "id": "132335",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "6",
-    "goalAssists": "1",
-    "possessionPct": "55.5",
-    "shotAssists": "0",
-    "shotsOnTarget": "2",
-    "totalGoals": "2",
-    "totalShots": "11",
-    "wonCorners": "2"
-   },
-   "kazandi": false,
-   "kisa": "AMED",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132335.png",
-   "renk": "#000000",
-   "skor": "2"
-  },
-  "durum": "post",
-  "durum_ad": "STATUS_FULL_TIME",
-  "durum_metin": "FT",
-  "ev": {
-   "ad": "Genclerbirligi",
-   "form": "DDLLL",
-   "id": "996",
-   "istatistik": {
-    "appearances": "0",
-    "foulsCommitted": "6",
-    "goalAssists": "1",
-    "possessionPct": "44.5",
-    "shotAssists": "0",
-    "shotsOnTarget": "1",
-    "totalGoals": "2",
-    "totalShots": "5",
-    "wonCorners": "0"
-   },
-   "kazandi": false,
-   "kisa": "GEN",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/996.png",
-   "renk": "#000000",
-   "skor": "2"
-  },
-  "goller": [
-   {
-    "dakika": "25'",
-    "kendi_kalesine": false,
-    "oyuncu": "Dia Saba",
-    "penalti": true,
-    "takim_id": "132335"
-   },
-   {
-    "dakika": "54'",
-    "kendi_kalesine": false,
-    "oyuncu": "Rafael Luís",
-    "penalti": false,
-    "takim_id": "996"
-   },
-   {
-    "dakika": "67'",
-    "kendi_kalesine": false,
-    "oyuncu": "Samuel Ballet",
-    "penalti": false,
-    "takim_id": "132335"
-   },
-   {
-    "dakika": "90'+2'",
-    "kendi_kalesine": false,
-    "oyuncu": "Thalisson Kelven",
-    "penalti": false,
-    "takim_id": "996"
-   }
-  ],
-  "id": "401888379",
-  "istatistik": {
-   "corners": {
-    "away": 2.0,
-    "home": 0.0
-   },
-   "durum": "ok",
-   "fouls": {
-    "away": 6.0,
-    "home": 6.0
-   },
-   "kaynak": "summary",
-   "possession": {
-    "away": 55.5,
-    "home": 44.5
-   },
-   "shots": {
-    "away": 11.0,
-    "home": 5.0
-   },
-   "shotsOnTarget": {
-    "away": 2.0,
-    "home": 1.0
-   }
-  },
-  "kanal": "",
-  "kirmizi_kartlar": [],
-  "saat_gostergesi": "90'+6'",
-  "sari_kartlar": [
-   {
-    "dakika": "15'",
-    "kendi_kalesine": false,
-    "oyuncu": "Thalisson Kelven",
-    "penalti": false,
-    "takim_id": "996"
-   },
-   {
-    "dakika": "23'",
-    "kendi_kalesine": false,
-    "oyuncu": "Irfan Can Egribayat",
-    "penalti": false,
-    "takim_id": "996"
-   },
-   {
-    "dakika": "53'",
-    "kendi_kalesine": false,
-    "oyuncu": "Umut Meras",
-    "penalti": false,
-    "takim_id": "132335"
-   },
-   {
-    "dakika": "57'",
-    "kendi_kalesine": false,
-    "oyuncu": "Metehan Baltaci",
-    "penalti": false,
-    "takim_id": "996"
-   },
-   {
-    "dakika": "57'",
-    "kendi_kalesine": false,
-    "oyuncu": "Dia Saba",
-    "penalti": false,
-    "takim_id": "132335"
-   },
-   {
-    "dakika": "57'",
-    "kendi_kalesine": false,
-    "oyuncu": "Lumbardh Dellova",
-    "penalti": false,
-    "takim_id": "132335"
-   },
-   {
-    "dakika": "65'",
-    "kendi_kalesine": false,
-    "oyuncu": "Firatacan Uzum",
-    "penalti": false,
-    "takim_id": "996"
-   },
-   {
-    "dakika": "73'",
-    "kendi_kalesine": false,
-    "oyuncu": "Alban Lafont",
-    "penalti": false,
-    "takim_id": "132335"
-   }
-  ],
-  "sehir": "Ankara",
-  "stadyum": "Eryaman Stadium",
-  "utc": "2026-10-10T10:30Z",
-  "video_id": "xbl12im",
-  "video_kanal": "Maç Özetleri",
   "video_kaynak": "dm"
  }
 ]

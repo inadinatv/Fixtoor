@@ -216,6 +216,42 @@
    },
    "utc": "2026-10-18T10:30Z"
   },
+  "401888277": {
+   "dep": "Besiktas",
+   "dep_id": "1895",
+   "depk": "0",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
+   "eksik": false,
+   "ev": "Trabzonspor",
+   "ev_id": "997",
+   "evk": "2",
+   "saat": "90'+4'",
+   "st": {
+    "corners": {
+     "away": 6.0,
+     "home": 4.0
+    },
+    "fouls": {
+     "away": 17.0,
+     "home": 11.0
+    },
+    "possession": {
+     "away": 62.4,
+     "home": 37.6
+    },
+    "shots": {
+     "away": 19.0,
+     "home": 13.0
+    },
+    "shotsOnTarget": {
+     "away": 7.0,
+     "home": 8.0
+    }
+   },
+   "utc": "2026-10-19T17:00Z"
+  },
   "401888278": {
    "dep": "Trabzonspor",
    "dep_id": "997",
@@ -615,6 +651,19 @@
  },
  "lig": "tur.1",
  "maclar": {
+  "401888268": {
+   "dep": "Kocaelispor",
+   "dep_id": "995",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Alanyaspor",
+   "ev_id": "9078",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-23T17:00Z"
+  },
   "401888271": {
    "dep": "Eyupspor",
    "dep_id": "20729",
@@ -697,13 +746,13 @@
    "dep": "Besiktas",
    "dep_id": "1895",
    "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Trabzonspor",
    "ev_id": "997",
-   "evk": "0",
-   "saat": "0'",
+   "evk": "2",
+   "saat": "90'+4'",
    "utc": "2026-10-19T17:00Z"
   },
   "401888377": {
@@ -818,5 +867,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-19T14:05:02.914202+00:00"
+ "uretim": "2026-10-19T19:48:26.235543+00:00"
 }
