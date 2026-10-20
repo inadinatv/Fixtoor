@@ -664,6 +664,32 @@
    "saat": "0'",
    "utc": "2026-10-23T17:00Z"
   },
+  "401888269": {
+   "dep": "Kasimpasa",
+   "dep_id": "6870",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Eyupspor",
+   "ev_id": "20729",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-24T10:30Z"
+  },
+  "401888270": {
+   "dep": "Erzurum BB",
+   "dep_id": "19267",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Gaziantep FK",
+   "ev_id": "20070",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-24T13:00Z"
+  },
   "401888271": {
    "dep": "Eyupspor",
    "dep_id": "20729",
@@ -754,6 +780,19 @@
    "evk": "2",
    "saat": "90'+4'",
    "utc": "2026-10-19T17:00Z"
+  },
+  "401888375": {
+   "dep": "Amed SFK",
+   "dep_id": "132335",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Samsunspor",
+   "ev_id": "11429",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-24T16:00Z"
   },
   "401888377": {
    "dep": "Caykur Rizespor",
@@ -867,5 +906,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-20T06:39:14.672351+00:00"
+ "uretim": "2026-10-20T16:57:21.178870+00:00"
 }

@@ -86,6 +86,7 @@
     "home": 8.0
    }
   },
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -139,14 +140,14 @@
    "id": "20070",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "15",
+    "foulsCommitted": "9",
     "goalAssists": "1",
-    "possessionPct": "50",
+    "possessionPct": "48.2",
     "shotAssists": "0",
-    "shotsOnTarget": "4",
+    "shotsOnTarget": "3",
     "totalGoals": "1",
-    "totalShots": "12",
-    "wonCorners": "5"
+    "totalShots": "8",
+    "wonCorners": "4"
    },
    "kazandi": false,
    "kisa": "GAZ",
@@ -163,13 +164,13 @@
    "id": "7914",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "28",
+    "foulsCommitted": "21",
     "goalAssists": "1",
-    "possessionPct": "50",
+    "possessionPct": "51.8",
     "shotAssists": "0",
-    "shotsOnTarget": "6",
+    "shotsOnTarget": "4",
     "totalGoals": "2",
-    "totalShots": "14",
+    "totalShots": "12",
     "wonCorners": "4"
    },
    "kazandi": true,
@@ -226,6 +227,7 @@
     "home": 4.0
    }
   },
+  "kanal": "",
   "kirmizi_kartlar": [
    {
     "dakika": "90'+5'",
@@ -315,13 +317,13 @@
    "id": "789",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "25",
+    "foulsCommitted": "23",
     "goalAssists": "1",
-    "possessionPct": "37.5",
+    "possessionPct": "38.1",
     "shotAssists": "0",
     "shotsOnTarget": "3",
     "totalGoals": "2",
-    "totalShots": "8",
+    "totalShots": "7",
     "wonCorners": "1"
    },
    "kazandi": true,
@@ -339,14 +341,14 @@
    "id": "995",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "13",
+    "foulsCommitted": "12",
     "goalAssists": "0",
-    "possessionPct": "62.5",
+    "possessionPct": "61.9",
     "shotAssists": "0",
-    "shotsOnTarget": "4",
+    "shotsOnTarget": "2",
     "totalGoals": "1",
-    "totalShots": "13",
-    "wonCorners": "5"
+    "totalShots": "10",
+    "wonCorners": "3"
    },
    "kazandi": false,
    "kisa": "KOC",
@@ -402,6 +404,7 @@
     "home": 2.0
    }
   },
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+5'",
   "sari_kartlar": [
@@ -448,14 +451,14 @@
    "id": "11429",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "20",
+    "foulsCommitted": "7",
     "goalAssists": "0",
-    "possessionPct": "51",
+    "possessionPct": "43.2",
     "shotAssists": "0",
-    "shotsOnTarget": "4",
+    "shotsOnTarget": "1",
     "totalGoals": "1",
-    "totalShots": "12",
-    "wonCorners": "6"
+    "totalShots": "3",
+    "wonCorners": "2"
    },
    "kazandi": false,
    "kisa": "SAM",
@@ -472,14 +475,14 @@
    "id": "6870",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "13",
+    "foulsCommitted": "6",
     "goalAssists": "4",
-    "possessionPct": "49",
+    "possessionPct": "56.8",
     "shotAssists": "0",
-    "shotsOnTarget": "9",
+    "shotsOnTarget": "6",
     "totalGoals": "4",
-    "totalShots": "23",
-    "wonCorners": "9"
+    "totalShots": "18",
+    "wonCorners": "5"
    },
    "kazandi": true,
    "kisa": "KAS",
@@ -549,6 +552,7 @@
     "home": 6.0
    }
   },
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
