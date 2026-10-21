@@ -651,6 +651,19 @@
  },
  "lig": "tur.1",
  "maclar": {
+  "401888266": {
+   "dep": "Genclerbirligi",
+   "dep_id": "996",
+   "depk": "0",
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Konyaspor",
+   "ev_id": "7648",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-25T13:00Z"
+  },
   "401888268": {
    "dep": "Kocaelispor",
    "dep_id": "995",
@@ -702,32 +715,6 @@
    "evk": "1",
    "saat": "90'+5'",
    "utc": "2026-10-18T13:00Z"
-  },
-  "401888273": {
-   "dep": "Alanyaspor",
-   "dep_id": "9078",
-   "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Fenerbahce",
-   "ev_id": "436",
-   "evk": "3",
-   "saat": "90'+4'",
-   "utc": "2026-10-17T16:00Z"
-  },
-  "401888274": {
-   "dep": "Galatasaray",
-   "dep_id": "432",
-   "depk": "1",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Genclerbirligi",
-   "ev_id": "996",
-   "evk": "0",
-   "saat": "90'+5'",
-   "utc": "2026-10-17T13:00Z"
   },
   "401888275": {
    "dep": "Gaziantep FK",
@@ -781,18 +768,18 @@
    "saat": "0'",
    "utc": "2026-10-24T16:00Z"
   },
-  "401888378": {
-   "dep": "Konyaspor",
-   "dep_id": "7648",
+  "401888376": {
+   "dep": "Çorum FK",
+   "dep_id": "132334",
    "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Amed SFK",
-   "ev_id": "132335",
-   "evk": "1",
-   "saat": "90'+5'",
-   "utc": "2026-10-17T13:00Z"
+   "durum": "pre",
+   "durum_ad": "STATUS_SCHEDULED",
+   "durum_metin": "Scheduled",
+   "ev": "Goztepe",
+   "ev_id": "789",
+   "evk": "0",
+   "saat": "0'",
+   "utc": "2026-10-25T16:00Z"
   }
  },
  "sezon": 2026,
@@ -880,5 +867,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-21T12:14:00.388281+00:00"
+ "uretim": "2026-10-21T20:38:15.189603+00:00"
 }

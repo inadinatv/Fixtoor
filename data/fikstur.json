@@ -28,7 +28,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {
       "appearances": "0",
@@ -1155,7 +1155,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {
       "appearances": "0",
@@ -2542,7 +2542,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {
       "appearances": "0",
@@ -3511,7 +3511,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {
       "appearances": "0",
@@ -5744,7 +5744,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {
       "appearances": "0",
@@ -6502,7 +6502,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {
       "appearances": "0",
@@ -7342,7 +7342,7 @@
     "durum_metin": "FT",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {
       "appearances": "0",
@@ -8888,7 +8888,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {
       "appearances": "0",
@@ -9643,6 +9643,7 @@
       "home": 8.0
      }
     },
+    "kanal": "",
     "kirmizi_kartlar": [],
     "saat_gostergesi": "90'+4'",
     "sari_kartlar": [
@@ -10191,7 +10192,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -10242,7 +10243,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -10981,7 +10982,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -11466,7 +11467,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -12357,7 +12358,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -12436,7 +12437,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -13147,7 +13148,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -13766,7 +13767,7 @@
     "durum_metin": "Scheduled",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -14417,7 +14418,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -14722,7 +14723,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -15281,7 +15282,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -15992,7 +15993,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -16491,7 +16492,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -17202,7 +17203,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -17581,7 +17582,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -18232,7 +18233,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -18671,7 +18672,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -19142,7 +19143,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -19821,7 +19822,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -20052,7 +20053,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -21077,7 +21078,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -21276,7 +21277,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -21747,7 +21748,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -22366,7 +22367,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -22777,7 +22778,7 @@
    {
     "dep": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,
@@ -23456,7 +23457,7 @@
     "durum_metin": "TBD",
     "ev": {
      "ad": "Galatasaray",
-     "form": "DLWLW",
+     "form": "DWLWL",
      "id": "432",
      "istatistik": {},
      "kazandi": false,

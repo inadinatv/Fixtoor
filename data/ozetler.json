@@ -86,6 +86,7 @@
     "home": 8.0
    }
   },
+  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+4'",
   "sari_kartlar": [
@@ -827,7 +828,7 @@
  {
   "dep": {
    "ad": "Galatasaray",
-   "form": "DLWLW",
+   "form": "DWLWL",
    "id": "432",
    "istatistik": {
     "appearances": "0",
