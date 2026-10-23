@@ -1,5 +1,41 @@
 {
  "ist": {
+  "401888268": {
+   "dep": "Kocaelispor",
+   "dep_id": "995",
+   "depk": "0",
+   "durum": "in",
+   "durum_ad": "STATUS_FIRST_HALF",
+   "durum_metin": "14'",
+   "eksik": false,
+   "ev": "Alanyaspor",
+   "ev_id": "9078",
+   "evk": "0",
+   "saat": "14'",
+   "st": {
+    "corners": {
+     "away": 1.0,
+     "home": 2.0
+    },
+    "fouls": {
+     "away": 4.0,
+     "home": 2.0
+    },
+    "possession": {
+     "away": 36.1,
+     "home": 63.9
+    },
+    "shots": {
+     "away": 1.0,
+     "home": 0.0
+    },
+    "shotsOnTarget": {
+     "away": 1.0,
+     "home": 0.0
+    }
+   },
+   "utc": "2026-10-23T17:00Z"
+  },
   "401888271": {
    "dep": "Eyupspor",
    "dep_id": "20729",
@@ -323,42 +359,6 @@
     }
    },
    "utc": "2026-10-11T16:00Z"
-  },
-  "401888280": {
-   "dep": "Kasimpasa",
-   "dep_id": "6870",
-   "depk": "1",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "eksik": false,
-   "ev": "Galatasaray",
-   "ev_id": "432",
-   "evk": "3",
-   "saat": "90'+7'",
-   "st": {
-    "corners": {
-     "away": 1.0,
-     "home": 8.0
-    },
-    "fouls": {
-     "away": 15.0,
-     "home": 12.0
-    },
-    "possession": {
-     "away": 36.7,
-     "home": 63.3
-    },
-    "shots": {
-     "away": 9.0,
-     "home": 25.0
-    },
-    "shotsOnTarget": {
-     "away": 3.0,
-     "home": 11.0
-    }
-   },
-   "utc": "2026-10-09T17:00Z"
   },
   "401888281": {
    "dep": "Istanbul Basaksehir",
@@ -707,13 +707,13 @@
    "dep": "Kocaelispor",
    "dep_id": "995",
    "depk": "0",
-   "durum": "pre",
-   "durum_ad": "STATUS_SCHEDULED",
-   "durum_metin": "Scheduled",
+   "durum": "in",
+   "durum_ad": "STATUS_FIRST_HALF",
+   "durum_metin": "14'",
    "ev": "Alanyaspor",
    "ev_id": "9078",
    "evk": "0",
-   "saat": "0'",
+   "saat": "14'",
    "utc": "2026-10-23T17:00Z"
   },
   "401888269": {
@@ -741,19 +741,6 @@
    "evk": "0",
    "saat": "0'",
    "utc": "2026-10-24T13:00Z"
-  },
-  "401888277": {
-   "dep": "Besiktas",
-   "dep_id": "1895",
-   "depk": "0",
-   "durum": "post",
-   "durum_ad": "STATUS_FULL_TIME",
-   "durum_metin": "FT",
-   "ev": "Trabzonspor",
-   "ev_id": "997",
-   "evk": "2",
-   "saat": "90'+4'",
-   "utc": "2026-10-19T17:00Z"
   },
   "401888375": {
    "dep": "Amed SFK",
@@ -867,5 +854,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-23T16:55:30.835280+00:00"
+ "uretim": "2026-10-23T17:14:56.010841+00:00"
 }

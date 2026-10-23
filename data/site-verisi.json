@@ -9703,14 +9703,14 @@
       "id": "995",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "0",
+       "foulsCommitted": "4",
        "goalAssists": "0",
-       "possessionPct": "0",
+       "possessionPct": "36.1",
        "shotAssists": "0",
-       "shotsOnTarget": "0",
+       "shotsOnTarget": "1",
        "totalGoals": "0",
-       "totalShots": "0",
-       "wonCorners": "0"
+       "totalShots": "1",
+       "wonCorners": "1"
       },
       "kazandi": false,
       "kisa": "KOC",
@@ -9718,23 +9718,23 @@
       "renk": "#000000",
       "skor": "0"
      },
-     "durum": "pre",
-     "durum_ad": "STATUS_SCHEDULED",
-     "durum_metin": "Scheduled",
+     "durum": "in",
+     "durum_ad": "STATUS_FIRST_HALF",
+     "durum_metin": "14'",
      "ev": {
       "ad": "Alanyaspor",
       "form": "DDWDW",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "0",
+       "foulsCommitted": "2",
        "goalAssists": "0",
-       "possessionPct": "0",
+       "possessionPct": "63.9",
        "shotAssists": "0",
        "shotsOnTarget": "0",
        "totalGoals": "0",
        "totalShots": "0",
-       "wonCorners": "0"
+       "wonCorners": "2"
       },
       "kazandi": false,
       "kisa": "ALA",
@@ -9746,31 +9746,31 @@
      "id": "401888268",
      "istatistik": {
       "corners": {
-       "away": null,
-       "home": null
+       "away": 1.0,
+       "home": 2.0
       },
-      "durum": "yok",
+      "durum": "ok",
       "fouls": {
-       "away": null,
-       "home": null
+       "away": 4.0,
+       "home": 2.0
       },
-      "kaynak": null,
+      "kaynak": "summary",
       "possession": {
-       "away": null,
-       "home": null
+       "away": 36.1,
+       "home": 63.9
       },
       "shots": {
-       "away": null,
-       "home": null
+       "away": 1.0,
+       "home": 0.0
       },
       "shotsOnTarget": {
-       "away": null,
-       "home": null
+       "away": 1.0,
+       "home": 0.0
       }
      },
      "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
+     "saat_gostergesi": "14'",
      "sari_kartlar": [],
      "sehir": "Antalya",
      "stadyum": "Kirbiyik Holding Stadyumu",
@@ -24411,5 +24411,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-23T16:55:30.835280+00:00"
+ "uretim": "2026-10-23T17:14:56.010841+00:00"
 }
