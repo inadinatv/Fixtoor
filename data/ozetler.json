@@ -2,7 +2,7 @@
  {
   "dep": {
    "ad": "Besiktas",
-   "form": "DWWLW",
+   "form": "DLWWL",
    "id": "1895",
    "istatistik": {
     "appearances": "0",
@@ -1340,7 +1340,7 @@
   "durum_metin": "FT",
   "ev": {
    "ad": "Besiktas",
-   "form": "DWWLW",
+   "form": "DLWWL",
    "id": "1895",
    "istatistik": {
     "appearances": "0",
@@ -1905,7 +1905,7 @@
  {
   "dep": {
    "ad": "Trabzonspor",
-   "form": "DWWWL",
+   "form": "DWWWW",
    "id": "997",
    "istatistik": {
     "appearances": "0",

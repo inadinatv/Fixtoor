@@ -884,7 +884,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -1915,7 +1915,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -3161,7 +3161,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "DWWWL",
+      "form": "DWWWW",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -3351,7 +3351,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -3810,7 +3810,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -4365,7 +4365,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "DWWWL",
+      "form": "DWWWW",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -4785,7 +4785,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -5300,7 +5300,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "DWWWL",
+      "form": "DWWWW",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -6527,7 +6527,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Trabzonspor",
-      "form": "DWWWL",
+      "form": "DWWWW",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -6946,7 +6946,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -7777,7 +7777,7 @@
     {
      "dep": {
       "ad": "Trabzonspor",
-      "form": "DWWWL",
+      "form": "DWWWW",
       "id": "997",
       "istatistik": {
        "appearances": "0",
@@ -8265,7 +8265,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -9560,7 +9560,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {
        "appearances": "0",
@@ -10048,6 +10048,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -10072,7 +10073,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -10663,7 +10664,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -11282,7 +11283,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -11693,7 +11694,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12372,7 +12373,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -12737,7 +12738,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -13448,7 +13449,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -13947,7 +13948,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -14478,7 +14479,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -14843,7 +14844,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -15222,7 +15223,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -15813,7 +15814,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -16372,7 +16373,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -16903,7 +16904,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -17402,7 +17403,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -18293,7 +18294,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -18492,7 +18493,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -19263,7 +19264,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -19582,7 +19583,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -20233,7 +20234,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -20672,7 +20673,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -21263,7 +21264,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -22168,7 +22169,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -22307,7 +22308,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -22838,7 +22839,7 @@
     {
      "dep": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -23397,7 +23398,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Besiktas",
-      "form": "DWWLW",
+      "form": "DLWWL",
       "id": "1895",
       "istatistik": {},
       "kazandi": false,
@@ -24391,5 +24392,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-23T01:51:58.835199+00:00"
+ "uretim": "2026-10-23T11:48:00.645134+00:00"
 }
