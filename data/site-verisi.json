@@ -9699,50 +9699,72 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "4",
-       "goalAssists": "0",
-       "possessionPct": "36.1",
+       "foulsCommitted": "11",
+       "goalAssists": "2",
+       "possessionPct": "49.7",
        "shotAssists": "0",
-       "shotsOnTarget": "1",
-       "totalGoals": "0",
-       "totalShots": "1",
-       "wonCorners": "1"
+       "shotsOnTarget": "5",
+       "totalGoals": "2",
+       "totalShots": "17",
+       "wonCorners": "7"
       },
-      "kazandi": false,
+      "kazandi": true,
       "kisa": "KOC",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "2"
      },
-     "durum": "in",
-     "durum_ad": "STATUS_FIRST_HALF",
-     "durum_metin": "14'",
+     "durum": "post",
+     "durum_ad": "STATUS_FULL_TIME",
+     "durum_metin": "FT",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "2",
-       "goalAssists": "0",
-       "possessionPct": "63.9",
+       "foulsCommitted": "16",
+       "goalAssists": "1",
+       "possessionPct": "50.3",
        "shotAssists": "0",
-       "shotsOnTarget": "0",
-       "totalGoals": "0",
-       "totalShots": "0",
-       "wonCorners": "2"
+       "shotsOnTarget": "4",
+       "totalGoals": "1",
+       "totalShots": "11",
+       "wonCorners": "7"
       },
       "kazandi": false,
       "kisa": "ALA",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "1"
      },
-     "goller": [],
+     "goller": [
+      {
+       "dakika": "27'",
+       "kendi_kalesine": false,
+       "oyuncu": "Berkan Kutlu",
+       "penalti": false,
+       "takim_id": "995"
+      },
+      {
+       "dakika": "42'",
+       "kendi_kalesine": false,
+       "oyuncu": "Makana Baku",
+       "penalti": false,
+       "takim_id": "995"
+      },
+      {
+       "dakika": "52'",
+       "kendi_kalesine": false,
+       "oyuncu": "Ruan",
+       "penalti": false,
+       "takim_id": "9078"
+      }
+     ],
      "id": "401888268",
      "istatistik": {
       "corners": {
@@ -9770,8 +9792,65 @@
      },
      "kanal": "beIN Sports 1",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "14'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "90'+6'",
+     "sari_kartlar": [
+      {
+       "dakika": "45'+1'",
+       "kendi_kalesine": false,
+       "oyuncu": "Emir Ortakaya",
+       "penalti": false,
+       "takim_id": "995"
+      },
+      {
+       "dakika": "53'",
+       "kendi_kalesine": false,
+       "oyuncu": "Fatih Aksoy",
+       "penalti": false,
+       "takim_id": "9078"
+      },
+      {
+       "dakika": "71'",
+       "kendi_kalesine": false,
+       "oyuncu": "",
+       "penalti": false,
+       "takim_id": "9078"
+      },
+      {
+       "dakika": "81'",
+       "kendi_kalesine": false,
+       "oyuncu": "Berkan Kutlu",
+       "penalti": false,
+       "takim_id": "995"
+      },
+      {
+       "dakika": "86'",
+       "kendi_kalesine": false,
+       "oyuncu": "Onur Öztonga",
+       "penalti": false,
+       "takim_id": "995"
+      },
+      {
+       "dakika": "90'",
+       "kendi_kalesine": false,
+       "oyuncu": "Fidan Aliti",
+       "penalti": false,
+       "takim_id": "9078"
+      },
+      {
+       "dakika": "90'+2'",
+       "kendi_kalesine": false,
+       "oyuncu": "Izzet Celik",
+       "penalti": false,
+       "takim_id": "9078"
+      },
+      {
+       "dakika": "90'+3'",
+       "kendi_kalesine": false,
+       "oyuncu": "Show",
+       "penalti": false,
+       "takim_id": "995"
+      }
+     ],
      "sehir": "Antalya",
      "stadyum": "Kirbiyik Holding Stadyumu",
      "utc": "2026-10-23T17:00Z"
@@ -24411,5 +24490,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-23T17:14:56.010841+00:00"
+ "uretim": "2026-10-23T20:09:49.844662+00:00"
 }

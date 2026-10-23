@@ -3,15 +3,15 @@
   "401888268": {
    "dep": "Kocaelispor",
    "dep_id": "995",
-   "depk": "0",
-   "durum": "in",
-   "durum_ad": "STATUS_FIRST_HALF",
-   "durum_metin": "14'",
+   "depk": "2",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "eksik": false,
    "ev": "Alanyaspor",
    "ev_id": "9078",
-   "evk": "0",
-   "saat": "14'",
+   "evk": "1",
+   "saat": "90'+6'",
    "st": {
     "corners": {
      "away": 1.0,
@@ -706,14 +706,14 @@
   "401888268": {
    "dep": "Kocaelispor",
    "dep_id": "995",
-   "depk": "0",
-   "durum": "in",
-   "durum_ad": "STATUS_FIRST_HALF",
-   "durum_metin": "14'",
+   "depk": "2",
+   "durum": "post",
+   "durum_ad": "STATUS_FULL_TIME",
+   "durum_metin": "FT",
    "ev": "Alanyaspor",
    "ev_id": "9078",
-   "evk": "0",
-   "saat": "14'",
+   "evk": "1",
+   "saat": "90'+6'",
    "utc": "2026-10-23T17:00Z"
   },
   "401888269": {
@@ -854,5 +854,5 @@
   "2027-05-16",
   "2027-05-23"
  ],
- "uretim": "2026-10-23T17:14:56.010841+00:00"
+ "uretim": "2026-10-23T20:09:49.844662+00:00"
 }
