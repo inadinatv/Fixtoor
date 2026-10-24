@@ -6,9 +6,9 @@
    "id": "6870",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "10",
+    "foulsCommitted": "12",
     "goalAssists": "1",
-    "possessionPct": "52.7",
+    "possessionPct": "54",
     "shotAssists": "0",
     "shotsOnTarget": "2",
     "totalGoals": "1",
@@ -22,21 +22,21 @@
    "skor": "1"
   },
   "durum": "in",
-  "durum_ad": "STATUS_FIRST_HALF",
-  "durum_metin": "43'",
+  "durum_ad": "STATUS_HALFTIME",
+  "durum_metin": "HT",
   "ev": {
    "ad": "Eyupspor",
    "form": "DLLLL",
    "id": "20729",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "4",
+    "foulsCommitted": "5",
     "goalAssists": "0",
-    "possessionPct": "47.3",
+    "possessionPct": "46",
     "shotAssists": "0",
     "shotsOnTarget": "2",
     "totalGoals": "0",
-    "totalShots": "6",
+    "totalShots": "7",
     "wonCorners": "2"
    },
    "kazandi": false,
@@ -62,26 +62,25 @@
    },
    "durum": "ok",
    "fouls": {
-    "away": 10.0,
-    "home": 4.0
+    "away": 12.0,
+    "home": 5.0
    },
    "kaynak": "summary",
    "possession": {
-    "away": 52.7,
-    "home": 47.3
+    "away": 54.0,
+    "home": 46.0
    },
    "shots": {
     "away": 5.0,
-    "home": 6.0
+    "home": 7.0
    },
    "shotsOnTarget": {
     "away": 2.0,
     "home": 2.0
    }
   },
-  "kanal": "",
   "kirmizi_kartlar": [],
-  "saat_gostergesi": "43'",
+  "saat_gostergesi": "45'+1'",
   "sari_kartlar": [
    {
     "dakika": "29'",
@@ -93,10 +92,7 @@
   ],
   "sehir": "Istanbul",
   "stadyum": "Esenyurt Necmi Kadioglu Stadi",
-  "utc": "2026-10-24T10:30Z",
-  "video_id": "",
-  "video_kanal": "",
-  "video_kaynak": ""
+  "utc": "2026-10-24T10:30Z"
  },
  {
   "dep": {
@@ -105,14 +101,14 @@
    "id": "995",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "4",
+    "foulsCommitted": "11",
     "goalAssists": "2",
-    "possessionPct": "36.1",
+    "possessionPct": "49.7",
     "shotAssists": "0",
-    "shotsOnTarget": "1",
+    "shotsOnTarget": "5",
     "totalGoals": "2",
-    "totalShots": "1",
-    "wonCorners": "1"
+    "totalShots": "17",
+    "wonCorners": "7"
    },
    "kazandi": true,
    "kisa": "KOC",
@@ -129,14 +125,14 @@
    "id": "9078",
    "istatistik": {
     "appearances": "0",
-    "foulsCommitted": "2",
+    "foulsCommitted": "16",
     "goalAssists": "1",
-    "possessionPct": "63.9",
+    "possessionPct": "50.3",
     "shotAssists": "0",
-    "shotsOnTarget": "0",
+    "shotsOnTarget": "4",
     "totalGoals": "1",
-    "totalShots": "0",
-    "wonCorners": "2"
+    "totalShots": "11",
+    "wonCorners": "7"
    },
    "kazandi": false,
    "kisa": "ALA",
@@ -192,7 +188,6 @@
     "home": 0.0
    }
   },
-  "kanal": "",
   "kirmizi_kartlar": [],
   "saat_gostergesi": "90'+6'",
   "sari_kartlar": [
@@ -255,10 +250,7 @@
   ],
   "sehir": "Antalya",
   "stadyum": "Kirbiyik Holding Stadyumu",
-  "utc": "2026-10-23T17:00Z",
-  "video_id": "",
-  "video_kanal": "",
-  "video_kaynak": ""
+  "utc": "2026-10-23T17:00Z"
  },
  {
   "dep": {
