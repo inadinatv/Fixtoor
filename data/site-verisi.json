@@ -371,7 +371,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -619,7 +619,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -1939,7 +1939,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -2137,7 +2137,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -2366,7 +2366,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -2788,7 +2788,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -4269,7 +4269,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -4486,7 +4486,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -5179,7 +5179,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -5721,7 +5721,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -6117,7 +6117,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -6279,7 +6279,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -7675,7 +7675,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -8241,7 +8241,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -8988,7 +8988,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {
        "appearances": "0",
@@ -9273,7 +9273,7 @@
      "durum_metin": "FT",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {
        "appearances": "0",
@@ -9703,14 +9703,14 @@
       "id": "995",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "11",
+       "foulsCommitted": "4",
        "goalAssists": "2",
-       "possessionPct": "49.7",
+       "possessionPct": "36.1",
        "shotAssists": "0",
-       "shotsOnTarget": "5",
+       "shotsOnTarget": "1",
        "totalGoals": "2",
-       "totalShots": "17",
-       "wonCorners": "7"
+       "totalShots": "1",
+       "wonCorners": "1"
       },
       "kazandi": true,
       "kisa": "KOC",
@@ -9727,14 +9727,14 @@
       "id": "9078",
       "istatistik": {
        "appearances": "0",
-       "foulsCommitted": "16",
+       "foulsCommitted": "2",
        "goalAssists": "1",
-       "possessionPct": "50.3",
+       "possessionPct": "63.9",
        "shotAssists": "0",
-       "shotsOnTarget": "4",
+       "shotsOnTarget": "0",
        "totalGoals": "1",
-       "totalShots": "11",
-       "wonCorners": "7"
+       "totalShots": "0",
+       "wonCorners": "2"
       },
       "kazandi": false,
       "kisa": "ALA",
@@ -9790,7 +9790,7 @@
        "home": 0.0
       }
      },
-     "kanal": "beIN Sports 1",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "90'+6'",
      "sari_kartlar": [
@@ -9853,67 +9853,109 @@
      ],
      "sehir": "Antalya",
      "stadyum": "Kirbiyik Holding Stadyumu",
-     "utc": "2026-10-23T17:00Z"
+     "utc": "2026-10-23T17:00Z",
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     },
     {
      "dep": {
       "ad": "Kasimpasa",
       "form": "DLDWD",
       "id": "6870",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "10",
+       "goalAssists": "1",
+       "possessionPct": "52.7",
+       "shotAssists": "0",
+       "shotsOnTarget": "2",
+       "totalGoals": "1",
+       "totalShots": "5",
+       "wonCorners": "1"
+      },
       "kazandi": false,
       "kisa": "KAS",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6870.png",
       "renk": "#000000",
-      "skor": "0"
+      "skor": "1"
      },
-     "durum": "pre",
-     "durum_ad": "STATUS_SCHEDULED",
-     "durum_metin": "Scheduled",
+     "durum": "in",
+     "durum_ad": "STATUS_FIRST_HALF",
+     "durum_metin": "43'",
      "ev": {
       "ad": "Eyupspor",
       "form": "DLLLL",
       "id": "20729",
-      "istatistik": {},
+      "istatistik": {
+       "appearances": "0",
+       "foulsCommitted": "4",
+       "goalAssists": "0",
+       "possessionPct": "47.3",
+       "shotAssists": "0",
+       "shotsOnTarget": "2",
+       "totalGoals": "0",
+       "totalShots": "6",
+       "wonCorners": "2"
+      },
       "kazandi": false,
       "kisa": "EYU",
       "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20729.png",
       "renk": "#000000",
       "skor": "0"
      },
-     "goller": [],
+     "goller": [
+      {
+       "dakika": "37'",
+       "kendi_kalesine": false,
+       "oyuncu": "Adrian Benedyczak",
+       "penalti": false,
+       "takim_id": "6870"
+      }
+     ],
      "id": "401888269",
      "istatistik": {
       "corners": {
-       "away": null,
-       "home": null
+       "away": 1.0,
+       "home": 2.0
       },
-      "durum": "yok",
+      "durum": "ok",
       "fouls": {
-       "away": null,
-       "home": null
+       "away": 10.0,
+       "home": 4.0
       },
-      "kaynak": null,
+      "kaynak": "summary",
       "possession": {
-       "away": null,
-       "home": null
+       "away": 52.7,
+       "home": 47.3
       },
       "shots": {
-       "away": null,
-       "home": null
+       "away": 5.0,
+       "home": 6.0
       },
       "shotsOnTarget": {
-       "away": null,
-       "home": null
+       "away": 2.0,
+       "home": 2.0
       }
      },
-     "kanal": "beIN Sports 1",
+     "kanal": "",
      "kirmizi_kartlar": [],
-     "saat_gostergesi": "0'",
-     "sari_kartlar": [],
+     "saat_gostergesi": "43'",
+     "sari_kartlar": [
+      {
+       "dakika": "29'",
+       "kendi_kalesine": false,
+       "oyuncu": "Kerem Demirbay",
+       "penalti": false,
+       "takim_id": "6870"
+      }
+     ],
      "sehir": "Istanbul",
      "stadyum": "Esenyurt Necmi Kadioglu Stadi",
-     "utc": "2026-10-24T10:30Z"
+     "utc": "2026-10-24T10:30Z",
+     "video_id": "",
+     "video_kanal": "",
+     "video_kaynak": ""
     },
     {
      "dep": {
@@ -10147,6 +10189,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -10206,6 +10249,7 @@
        "home": null
       }
      },
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -10265,6 +10309,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -10324,6 +10369,7 @@
        "home": null
       }
      },
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -10473,7 +10519,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -10819,7 +10865,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -10944,7 +10990,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -11318,7 +11364,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -11623,7 +11669,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -11729,7 +11775,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -11988,7 +12034,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -12214,7 +12260,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -12639,7 +12685,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -12759,7 +12805,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -13198,7 +13244,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -13318,7 +13364,7 @@
      "durum_metin": "Scheduled",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -13849,7 +13895,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -14089,7 +14135,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -14168,7 +14214,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -14648,7 +14694,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -14713,7 +14759,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -15133,7 +15179,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -15244,7 +15290,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -15304,7 +15350,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -15803,7 +15849,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -16223,7 +16269,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -16348,7 +16394,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -16814,7 +16860,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -17119,7 +17165,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -17313,7 +17359,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -17438,7 +17484,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -17724,7 +17770,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -18089,7 +18135,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -18403,7 +18449,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -18528,7 +18574,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -18874,7 +18920,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -19408,7 +19454,7 @@
        "home": null
       }
      },
-     "kanal": "",
+     "kanal": "Digiturk Play",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -19468,7 +19514,7 @@
        "home": null
       }
      },
-     "kanal": "beIN Sports 1",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -19479,7 +19525,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -19493,7 +19539,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -19528,7 +19574,7 @@
        "home": null
       }
      },
-     "kanal": "beIN Sports 1",
+     "kanal": "",
      "kirmizi_kartlar": [],
      "saat_gostergesi": "0'",
      "sari_kartlar": [],
@@ -19618,7 +19664,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -19724,7 +19770,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -20523,7 +20569,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -20629,7 +20675,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -20708,7 +20754,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -20994,7 +21040,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -21613,7 +21659,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -21659,7 +21705,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -21798,7 +21844,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -22218,7 +22264,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -22509,7 +22555,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -22749,7 +22795,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -22888,7 +22934,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -23368,7 +23414,7 @@
      "durum_metin": "TBD",
      "ev": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -23659,7 +23705,7 @@
     {
      "dep": {
       "ad": "Alanyaspor",
-      "form": "DDWDW",
+      "form": "DLDWD",
       "id": "9078",
       "istatistik": {},
       "kazandi": false,
@@ -23719,7 +23765,7 @@
     {
      "dep": {
       "ad": "Kocaelispor",
-      "form": "DLWLW",
+      "form": "DLLWL",
       "id": "995",
       "istatistik": {},
       "kazandi": false,
@@ -24143,6 +24189,24 @@
    "yedigi": "10"
   },
   {
+   "attigi": "11",
+   "averaj": "+2",
+   "b": "0",
+   "form": "5-0-4",
+   "g": "5",
+   "kisa": "KOC",
+   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
+   "m": "4",
+   "not": "",
+   "not_renk": "",
+   "o": "9",
+   "puan": "15",
+   "sira": 6,
+   "takim": "Kocaelispor",
+   "takim_id": "995",
+   "yedigi": "9"
+  },
+  {
    "attigi": "18",
    "averaj": "+5",
    "b": "1",
@@ -24155,7 +24219,7 @@
    "not_renk": "",
    "o": "8",
    "puan": "13",
-   "sira": 6,
+   "sira": 7,
    "takim": "Çorum FK",
    "takim_id": "132334",
    "yedigi": "13"
@@ -24173,46 +24237,28 @@
    "not_renk": "",
    "o": "8",
    "puan": "13",
-   "sira": 7,
+   "sira": 8,
    "takim": "Kasimpasa",
    "takim_id": "6870",
    "yedigi": "9"
   },
   {
    "attigi": "9",
-   "averaj": "+1",
-   "b": "0",
-   "form": "4-0-4",
-   "g": "4",
-   "kisa": "KOC",
-   "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/995.png",
-   "m": "4",
-   "not": "",
-   "not_renk": "",
-   "o": "8",
-   "puan": "12",
-   "sira": 8,
-   "takim": "Kocaelispor",
-   "takim_id": "995",
-   "yedigi": "8"
-  },
-  {
-   "attigi": "8",
-   "averaj": "-1",
+   "averaj": "-2",
    "b": "3",
-   "form": "3-3-2",
+   "form": "3-3-3",
    "g": "3",
    "kisa": "ALA",
    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9078.png",
-   "m": "2",
+   "m": "3",
    "not": "",
    "not_renk": "",
-   "o": "8",
+   "o": "9",
    "puan": "12",
    "sira": 9,
    "takim": "Alanyaspor",
    "takim_id": "9078",
-   "yedigi": "9"
+   "yedigi": "11"
   },
   {
    "attigi": "12",
@@ -24487,5 +24533,5 @@
    "renk": "#5699eb"
   }
  },
- "uretim": "2026-10-24T01:31:17.601768+00:00"
+ "uretim": "2026-10-24T11:13:00.005885+00:00"
 }
